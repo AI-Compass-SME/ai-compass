@@ -68,7 +68,22 @@ This document explains the setup and startup scripts for AI-Compass.
   ```
 - **No separate mac_start.sh needed**: The existing start.sh handles both macOS and Linux!
 
-### 4. **SETUP_GUIDE.md** - Comprehensive Documentation
+### 4. **stop.sh** - Application Stop Script (NEW)
+- **Purpose**: Stop both FastAPI and Streamlit services gracefully
+- **Multi-platform**: Works on macOS, Linux, and WSL
+- **What it does**:
+  - ✅ Kills all uvicorn processes (FastAPI backend)
+  - ✅ Kills all streamlit processes (frontend)
+  - ✅ Checks ports 8000 and 8501 for lingering processes
+  - ✅ Verifies everything is stopped
+  - ✅ Multiple fallback methods (pgrep, pkill, lsof)
+- **Usage**:
+  ```bash
+  bash stop.sh
+  ```
+- **When to use**: End of workday, before restarting, troubleshooting
+
+### 5. **SETUP_GUIDE.md** - Comprehensive Documentation
 - **Purpose**: Detailed setup instructions and troubleshooting
 - **Contains**:
   - ✅ Prerequisites for each platform
@@ -139,30 +154,34 @@ source venv/bin/activate
 
 # 3. Start application
 bash start.sh
-
 # The script will open two terminal windows automatically!
+
+# 4. When done for the day, stop everything
+bash stop.sh
 ```
 
 ---
 
 ## 🎯 Scripts Comparison
 
-| Feature | setup_ubuntu.sh | setup_macos.sh | start.sh |
-|---------|----------------|----------------|----------|
-| **Purpose** | First-time setup | First-time setup | Daily startup |
-| **Installs System Packages** | ✅ Yes | ✅ Yes | ❌ No |
-| **Installs Python** | ✅ Yes (apt) | ✅ Yes (brew) | ❌ No |
-| **Installs PostgreSQL** | ✅ Yes (apt) | ✅ Yes (brew) | ❌ No |
-| **Creates venv** | ✅ Yes | ✅ Yes | ❌ No |
-| **Installs Python Packages** | ✅ Yes | ✅ Yes | ❌ No |
-| **Creates Database** | ✅ Yes | ✅ Yes | ❌ No |
-| **Runs Migrations** | ✅ Yes | ✅ Yes | ❌ No |
-| **Sets up .env** | ✅ Yes | ✅ Yes | ❌ No |
-| **Starts API** | ❌ No | ❌ No | ✅ Yes |
-| **Starts Streamlit** | ❌ No | ❌ No | ✅ Yes |
-| **Run Once** | ✅ Once | ✅ Once | 🔄 Every time |
-| **Requires sudo** | ✅ Yes | ❌ No* | ❌ No |
-| **Time Required** | ~5-10 min | ~10-15 min | ~5 sec |
+| Feature | setup_ubuntu.sh | setup_macos.sh | start.sh | stop.sh |
+|---------|----------------|----------------|----------|----------|
+| **Purpose** | First-time setup | First-time setup | Daily startup | Daily shutdown |
+| **Installs System Packages** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Installs Python** | ✅ Yes (apt) | ✅ Yes (brew) | ❌ No | ❌ No |
+| **Installs PostgreSQL** | ✅ Yes (apt) | ✅ Yes (brew) | ❌ No | ❌ No |
+| **Creates venv** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Installs Python Packages** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Creates Database** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Runs Migrations** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Sets up .env** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Starts API** | ❌ No | ❌ No | ✅ Yes | ❌ No |
+| **Starts Streamlit** | ❌ No | ❌ No | ✅ Yes | ❌ No |
+| **Stops API** | ❌ No | ❌ No | ❌ No | ✅ Yes |
+| **Stops Streamlit** | ❌ No | ❌ No | ❌ No | ✅ Yes |
+| **Run Once** | ✅ Once | ✅ Once | 🔄 Every time | 🔄 When needed |
+| **Requires sudo** | ✅ Yes | ❌ No* | ❌ No | ❌ No |
+| **Time Required** | ~5-10 min | ~10-15 min | ~5 sec | ~2 sec |
 
 *macOS setup only needs sudo for Homebrew installation if not present
 
@@ -380,9 +399,19 @@ No need to re-run full setup script!
 1. ✅ **setup_ubuntu.sh** - For Ubuntu/Linux (first-time setup)
 2. ✅ **setup_macos.sh** - For macOS (first-time setup)
 
-**You have 1 startup script:**
-3. ✅ **start.sh** - For both platforms (daily use)
+**You have 2 operational scripts:**
+3. ✅ **start.sh** - For both platforms (start services)
+4. ✅ **stop.sh** - For both platforms (stop services)
 
-**No separate mac_start.sh needed** - the existing `start.sh` handles both macOS and Linux perfectly!
+**Complete Workflow:**
+```bash
+# Once
+bash setup_ubuntu.sh  # or setup_macos.sh
 
-Run setup once, then use `start.sh` every time you want to run the application. 🚀
+# Daily
+source venv/bin/activate
+bash start.sh         # Start working
+bash stop.sh          # End of day
+```
+
+**No separate mac_start.sh or mac_stop.sh needed** - the existing scripts handle both macOS and Linux perfectly! 🚀

@@ -84,7 +84,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     else
         echo -e "${YELLOW}Could not detect terminal emulator. Starting in background...${NC}"
         cd apps/api && uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
-        cd ../web && streamlit run Home.py &
+        sleep 2
+        cd "$(dirname "$0")" && cd apps/web && streamlit run Home.py &
     fi
 
 else

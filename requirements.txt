@@ -5,7 +5,7 @@ streamlit==1.31.0
 
 # Database
 sqlalchemy==2.0.25
-psycopg[binary]==3.1.17
+psycopg2-binary==2.9.9
 alembic==1.13.1
 
 # Data Validation & Config

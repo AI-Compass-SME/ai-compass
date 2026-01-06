@@ -247,6 +247,26 @@ cd apps/web
 streamlit run Home.py
 ```
 
+### Stopping the Application
+
+**Using stop.sh (Recommended):**
+```bash
+bash stop.sh
+```
+
+This will gracefully stop both FastAPI and Streamlit services.
+
+**Manual Stop:**
+```bash
+# Kill all processes
+pkill -f uvicorn
+pkill -f streamlit
+
+# Or kill by port
+lsof -ti:8000 | xargs kill -9  # API
+lsof -ti:8501 | xargs kill -9  # Streamlit
+```
+
 ---
 
 ## 🌐 Accessing the Application
