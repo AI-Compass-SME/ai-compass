@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0",
+  "questionnaire_id": "ai-compass-mvp",
+  "questionnaire_version": "2026-01-06",
+  "title": "AI-Compass – AI Maturity Assessment",
+  "language": "de",
+  "estimated_time_minutes": 12,
+  "ui": {
+    "layout": "stepper",
+    "show_progress": true
+  },
+  "scoring": {
+    "scale_min": 0,
+    "scale_max": 4,
+    "dimension_score_method": "average",
+    "multi_choice_aggregation": "average",
+    "normalize_to_0_100": true,
+    "levels_1_to_5_thresholds": [
+      { "level": 1, "min_score_inclusive": 0, "max_score_inclusive": 19 },
+      { "level": 2, "min_score_inclusive": 20, "max_score_inclusive": 39 },
+      { "level": 3, "min_score_inclusive": 40, "max_score_inclusive": 59 },
+      { "level": 4, "min_score_inclusive": 60, "max_score_inclusive": 79 },
+      { "level": 5, "min_score_inclusive": 80, "max_score_inclusive": 100 }
+    ],
+    "overall_score_method": "weighted_average"
+  },
+  "dimensions": [
+    {
+      "id": "strategy_business_vision",
+      "title": "Strategy & Business Vision",
+      "order": 1,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "sbv_01_strategy_defined",
+          "text": "Wie klar ist eure KI-/Datenstrategie (Ziele, Prioritäten, Abgrenzung)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "sbv_01_o1", "label": "Nicht vorhanden / ad hoc", "points": 0, "tags": ["no_strategy"] },
+            { "id": "sbv_01_o2", "label": "Grob vorhanden, aber nicht operationalisiert", "points": 1, "tags": ["partial_strategy"] },
+            { "id": "sbv_01_o3", "label": "Definiert und kommuniziert, teilweise umgesetzt", "points": 3, "tags": ["defined_strategy"] },
+            { "id": "sbv_01_o4", "label": "Klar definiert, messbar, regelmäßig überprüft", "points": 4, "tags": ["measurable_strategy"] }
+          ]
+        },
+        {
+          "id": "sbv_02_exec_sponsorship",
+          "text": "Gibt es Executive Sponsorship (CEO/COO/IT-Leitung) mit Zeit/Budget?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "sbv_02_o1", "label": "Nein", "points": 0, "tags": ["no_sponsorship"] },
+            { "id": "sbv_02_o2", "label": "Informell, ohne Budget", "points": 1, "tags": ["informal_support"] },
+            { "id": "sbv_02_o3", "label": "Ja, Budget/Owner vorhanden", "points": 3, "tags": ["sponsorship_budget"] },
+            { "id": "sbv_02_o4", "label": "Ja, inkl. KPIs/Steuerkreis", "points": 4, "tags": ["governed_sponsorship"] }
+          ]
+        },
+        {
+          "id": "sbv_03_value_prioritization",
+          "text": "Wie bewertet und priorisiert ihr KI-Initiativen nach Nutzen/ROI?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "sbv_03_o1", "label": "Bauchgefühl", "points": 0, "tags": ["no_framework"] },
+            { "id": "sbv_03_o2", "label": "Grobe Nutzen-Schätzung", "points": 2, "tags": ["basic_framework"] },
+            { "id": "sbv_03_o3", "label": "Impact/Effort + Business Case", "points": 3, "tags": ["standard_framework"] },
+            { "id": "sbv_03_o4", "label": "KPIs + Reviews + Benefit Owner", "points": 4, "tags": ["kpi_framework"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data_maturity",
+      "title": "Data Maturity",
+      "order": 2,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "dm_01_data_access",
+          "text": "Wie gut ist der Zugriff auf relevante Daten (Quellen, Schnittstellen, Rechte)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "dm_01_o1", "label": "Schwierig / manuell / Silos", "points": 0, "tags": ["data_silos"] },
+            { "id": "dm_01_o2", "label": "Teilweise automatisiert, aber lückenhaft", "points": 2, "tags": ["partial_access"] },
+            { "id": "dm_01_o3", "label": "Weitgehend verfügbar via Schnittstellen/BI", "points": 3, "tags": ["good_access"] },
+            { "id": "dm_01_o4", "label": "Zentral/standardisiert, Rollen/Rechte sauber", "points": 4, "tags": ["governed_access"] }
+          ]
+        },
+        {
+          "id": "dm_02_data_quality",
+          "text": "Wie ist die Datenqualität (Vollständigkeit, Konsistenz, Aktualität)?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "dm_02_o1", "label": "Oft unzuverlässig", "points": 0, "tags": ["low_quality"] },
+            { "id": "dm_02_o2", "label": "Uneinheitlich je Quelle", "points": 2, "tags": ["inconsistent"] },
+            { "id": "dm_02_o3", "label": "Meist gut, bekannte Probleme werden adressiert", "points": 3, "tags": ["managed_quality"] },
+            { "id": "dm_02_o4", "label": "DQ-KPIs, Monitoring & Verantwortliche", "points": 4, "tags": ["dq_kpis"] }
+          ]
+        },
+        {
+          "id": "dm_03_data_governance",
+          "text": "Gibt es Data Ownership und Regeln (Definitionen, Policies, Katalog)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "dm_03_o1", "label": "Nein", "points": 0, "tags": ["no_governance"] },
+            { "id": "dm_03_o2", "label": "Ansätze in einzelnen Bereichen", "points": 2, "tags": ["partial_governance"] },
+            { "id": "dm_03_o3", "label": "Standardisiert in wichtigen Domänen", "points": 3, "tags": ["domain_governance"] },
+            { "id": "dm_03_o4", "label": "Unternehmensweit etabliert", "points": 4, "tags": ["enterprise_governance"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tech_infrastructure",
+      "title": "Tech Infrastructure",
+      "order": 3,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "ti_01_integration",
+          "text": "Wie gut sind Kernsysteme integriert (APIs, ETL, Datenflüsse)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ti_01_o1", "label": "Kaum integriert (Exporte/Excel)", "points": 0, "tags": ["manual"] },
+            { "id": "ti_01_o2", "label": "Einige Integrationen, nicht standardisiert", "points": 2, "tags": ["partial"] },
+            { "id": "ti_01_o3", "label": "Standardisierte Schnittstellen in Kernsystemen", "points": 3, "tags": ["standard_apis"] },
+            { "id": "ti_01_o4", "label": "Skalierbare Plattform + dokumentierte APIs", "points": 4, "tags": ["platform_ready"] }
+          ]
+        },
+        {
+          "id": "ti_02_delivery_envs",
+          "text": "Gibt es Dev/Test/Prod Umgebungen für Experimente und Betrieb?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ti_02_o1", "label": "Nur produktiv", "points": 0, "tags": ["no_envs"] },
+            { "id": "ti_02_o2", "label": "Teilweise vorhanden", "points": 2, "tags": ["partial_envs"] },
+            { "id": "ti_02_o3", "label": "Dev/Test/Prod vorhanden", "points": 3, "tags": ["envs_ready"] },
+            { "id": "ti_02_o4", "label": "CI/CD + automatisierte Deployments", "points": 4, "tags": ["cicd"] }
+          ]
+        },
+        {
+          "id": "ti_03_security_basics",
+          "text": "Wie reif sind Security-Basics (IAM, Logging, Patch, Zugriffskontrolle)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ti_03_o1", "label": "Unklar / reaktiv", "points": 0, "tags": ["weak_security"] },
+            { "id": "ti_03_o2", "label": "Grundlagen vorhanden", "points": 2, "tags": ["basic_security"] },
+            { "id": "ti_03_o3", "label": "Standardisiert in Kernsystemen", "points": 3, "tags": ["standard_security"] },
+            { "id": "ti_03_o4", "label": "Security-by-Design + Audits/Monitoring", "points": 4, "tags": ["security_by_design"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "people_culture",
+      "title": "People & Culture",
+      "order": 4,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "pc_01_ai_literacy",
+          "text": "Wie ist die AI/Data Literacy im Unternehmen?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "pc_01_o1", "label": "Sehr gering / keine Schulungen", "points": 0, "tags": ["low_literacy"] },
+            { "id": "pc_01_o2", "label": "Einzelne Champions", "points": 2, "tags": ["champions"] },
+            { "id": "pc_01_o3", "label": "Breite Grundlagen, erste Trainings", "points": 3, "tags": ["growing"] },
+            { "id": "pc_01_o4", "label": "Systematisch (Rollen, Trainingsplan)", "points": 4, "tags": ["structured_enablement"] }
+          ]
+        },
+        {
+          "id": "pc_02_ownership",
+          "text": "Ist Ownership klar (PO/Data Owner/Security Owner)?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "pc_02_o1", "label": "Nein", "points": 0, "tags": ["no_ownership"] },
+            { "id": "pc_02_o2", "label": "Teilweise", "points": 2, "tags": ["partial_ownership"] },
+            { "id": "pc_02_o3", "label": "Klar für wichtige Initiativen", "points": 3, "tags": ["clear_ownership"] },
+            { "id": "pc_02_o4", "label": "Unternehmensweit klar", "points": 4, "tags": ["enterprise_ownership"] }
+          ]
+        },
+        {
+          "id": "pc_03_change_readiness",
+          "text": "Wie hoch ist die Bereitschaft, Prozesse durch KI zu verändern?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "pc_03_o1", "label": "Hohe Skepsis/Angst", "points": 0, "tags": ["low_change"] },
+            { "id": "pc_03_o2", "label": "Gemischt je Team", "points": 2, "tags": ["mixed_change"] },
+            { "id": "pc_03_o3", "label": "Grundsätzlich offen", "points": 3, "tags": ["open_change"] },
+            { "id": "pc_03_o4", "label": "Aktiv gemanagt (Change-Plan, Feedback)", "points": 4, "tags": ["managed_change"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "processes_scaling",
+      "title": "Processes & Scaling",
+      "order": 5,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "ps_01_delivery",
+          "text": "Wie gut könnt ihr Use Cases liefern (Pilot → Produktiv)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ps_01_o1", "label": "Sehr langsam / unklarer Prozess", "points": 0, "tags": ["slow_delivery"] },
+            { "id": "ps_01_o2", "label": "Piloten möglich, Produktiv schwierig", "points": 2, "tags": ["pilot_only"] },
+            { "id": "ps_01_o3", "label": "Wiederholbar (Releases, Standards)", "points": 3, "tags": ["repeatable"] },
+            { "id": "ps_01_o4", "label": "Skalierbar (Templates, CI/CD, Monitoring)", "points": 4, "tags": ["scalable"] }
+          ]
+        },
+        {
+          "id": "ps_02_measurement",
+          "text": "Werden Ergebnisse gemessen (KPIs, Adoption, Qualität, Kosten)?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ps_02_o1", "label": "Nein", "points": 0, "tags": ["no_kpis"] },
+            { "id": "ps_02_o2", "label": "Teilweise", "points": 2, "tags": ["partial_kpis"] },
+            { "id": "ps_02_o3", "label": "Standardisiert", "points": 3, "tags": ["standard_kpis"] },
+            { "id": "ps_02_o4", "label": "End-to-end + Verbesserungszyklus", "points": 4, "tags": ["continuous_improvement"] }
+          ]
+        },
+        {
+          "id": "ps_03_ops_model",
+          "text": "Gibt es ein Betriebsmodell (Support, Incident, Updates, Monitoring)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ps_03_o1", "label": "Nein", "points": 0, "tags": ["no_ops"] },
+            { "id": "ps_03_o2", "label": "Ad hoc / personenabhängig", "points": 1, "tags": ["hero_ops"] },
+            { "id": "ps_03_o3", "label": "Grundprozesse definiert", "points": 3, "tags": ["basic_ops"] },
+            { "id": "ps_03_o4", "label": "Professionell (SLA, Runbooks, Reviews)", "points": 4, "tags": ["mature_ops"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "governance_compliance",
+      "title": "Governance & Compliance",
+      "order": 6,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "gc_01_privacy",
+          "text": "Wie wird DSGVO praktisch umgesetzt (Prozess, DPIA, Dokumentation)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "gc_01_o1", "label": "Unklar / reaktiv", "points": 0, "tags": ["privacy_risk"] },
+            { "id": "gc_01_o2", "label": "Grundlagen vorhanden", "points": 2, "tags": ["basic_privacy"] },
+            { "id": "gc_01_o3", "label": "Prozess etabliert für relevante Projekte", "points": 3, "tags": ["privacy_process"] },
+            { "id": "gc_01_o4", "label": "Privacy-by-Design, auditierbar", "points": 4, "tags": ["privacy_by_design"] }
+          ]
+        },
+        {
+          "id": "gc_02_ai_policy",
+          "text": "Gibt es Regeln/Policies für KI-Nutzung (Tools, Daten, Freigaben)?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "gc_02_o1", "label": "Nein", "points": 0, "tags": ["no_policy"] },
+            { "id": "gc_02_o2", "label": "In Arbeit", "points": 2, "tags": ["draft_policy"] },
+            { "id": "gc_02_o3", "label": "Policy aktiv angewendet", "points": 3, "tags": ["policy_active"] },
+            { "id": "gc_02_o4", "label": "Starke Governance (Risk-Klassen, Monitoring)", "points": 4, "tags": ["strong_governance"] }
+          ]
+        },
+        {
+          "id": "gc_03_vendor_risk",
+          "text": "Wie wird Drittanbieter-/Modellrisiko gesteuert (Security/Exit/Verträge)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "gc_03_o1", "label": "Gar nicht", "points": 0, "tags": ["unmanaged_vendor_risk"] },
+            { "id": "gc_03_o2", "label": "Teilweise", "points": 2, "tags": ["partial_vendor_risk"] },
+            { "id": "gc_03_o3", "label": "Standardprüfung vor Einsatz", "points": 3, "tags": ["standard_vendor_risk"] },
+            { "id": "gc_03_o4", "label": "Reif (Monitoring + Exit-Strategie)", "points": 4, "tags": ["mature_vendor_risk"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use_cases_business_value",
+      "title": "Use Cases & Business Value",
+      "order": 7,
+      "weight": 1.0,
+      "questions": [
+        {
+          "id": "ucv_01_pipeline",
+          "text": "Wie systematisch identifiziert ihr KI Use Cases?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ucv_01_o1", "label": "Ad hoc", "points": 0, "tags": ["no_pipeline"] },
+            { "id": "ucv_01_o2", "label": "Liste vorhanden, aber unsortiert", "points": 2, "tags": ["unstructured_backlog"] },
+            { "id": "ucv_01_o3", "label": "Strukturiert (Intake + Kriterien)", "points": 3, "tags": ["structured_pipeline"] },
+            { "id": "ucv_01_o4", "label": "Kontinuierlich (Ownership + KPIs)", "points": 4, "tags": ["continuous_pipeline"] }
+          ]
+        },
+        {
+          "id": "ucv_02_feasibility",
+          "text": "Prüft ihr Machbarkeit (Daten, Prozess, Compliance) vor dem Start?",
+          "type": "single_choice",
+          "render": "tags",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ucv_02_o1", "label": "Selten / gar nicht", "points": 0, "tags": ["no_feasibility"] },
+            { "id": "ucv_02_o2", "label": "Manuell, ohne Standard", "points": 2, "tags": ["manual_feasibility"] },
+            { "id": "ucv_02_o3", "label": "Standard-Checkliste", "points": 3, "tags": ["standard_feasibility"] },
+            { "id": "ucv_02_o4", "label": "Gate-Prozess + Dokumentation", "points": 4, "tags": ["gated_feasibility"] }
+          ]
+        },
+        {
+          "id": "ucv_03_value_realization",
+          "text": "Wie gut gelingt Nutzenrealisierung nach Rollout (Adoption/ROI)?",
+          "type": "single_choice",
+          "render": "radio",
+          "required": true,
+          "weight": 1.0,
+          "options": [
+            { "id": "ucv_03_o1", "label": "Wird nicht nachgehalten", "points": 0, "tags": ["no_tracking"] },
+            { "id": "ucv_03_o2", "label": "Teilweise", "points": 2, "tags": ["partial_tracking"] },
+            { "id": "ucv_03_o3", "label": "Regelmäßig mit KPIs/Feedback", "points": 3, "tags": ["value_tracking"] },
+            { "id": "ucv_03_o4", "label": "Strikt (Benefits Owner + Reviews)", "points": 4, "tags": ["benefits_management"] }
+          ]
+        }
+      ]
+    }
+  ]
+}
