@@ -34,5 +34,5 @@ rich==13.7.0
 python-multipart==0.0.6
 
 # Testing (optional)
-pytest==8.0.0
+pytest==7.4.4
 pytest-asyncio==0.23.4

@@ -1,181 +1,63 @@
-"""
-AI-Compass Streamlit Home Page
-"""
 import streamlit as st
-import os
 
-# Page config
+# Page configuration
 st.set_page_config(
-    page_title="AI-Compass",
+    page_title="AI-Compass - Home",
     page_icon="🧭",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
-st.markdown("""
-<style>
-    .main-header {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #1f77b4;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .sub-header {
-        font-size: 1.5rem;
-        color: #555;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    .feature-box {
-        background-color: #f0f2f6;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin: 1rem 0;
-    }
-    .cta-button {
-        background-color: #1f77b4;
-        color: white;
-        padding: 0.75rem 2rem;
-        border-radius: 5px;
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# Header
-st.markdown('<div class="main-header">🧭 AI-Compass</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">AI Maturity Assessment für KMU-Entscheider</div>', unsafe_allow_html=True)
+# Main title
+st.title("🧭 AI-Compass")
+st.subheader("AI Maturity Assessment Tool")
 
 # Introduction
-st.markdown("---")
-col1, col2, col3 = st.columns([1, 2, 1])
+st.markdown("""
+Welcome to **AI-Compass**, your comprehensive AI maturity assessment platform.
 
-with col2:
-    st.markdown("""
-    ### Willkommen bei AI-Compass
-    
-    **AI-Compass** ist ein professionelles Assessment-Tool zur Bewertung Ihrer KI-Reife. 
-    In nur **12 Minuten** erhalten Sie:
-    
-    ✅ **Klaren Reifegrad** (1-5) über 7 Dimensionen  
-    ✅ **Benchmarking** vs. Peer-Unternehmen  
-    ✅ **Konkrete Roadmap** (Quick Wins + 90d/6m/12m)  
-    ✅ **Executive PDF-Report** zum Teilen
-    """)
+### What is AI-Compass?
 
-# Features
-st.markdown("---")
-st.markdown("### 🎯 Die 7 Dimensionen")
+AI-Compass is a consulting tool designed to help organizations:
+- **Assess** their current AI maturity level
+- **Benchmark** against industry standards
+- **Identify** gaps and opportunities
+- **Plan** strategic AI initiatives
 
-col1, col2 = st.columns(2)
+### How It Works
+
+1. **Assessment**: Complete a comprehensive questionnaire about your organization's AI capabilities
+2. **Scoring**: Receive an objective maturity score across multiple dimensions
+3. **Benchmarking**: Compare your results with industry standards
+4. **Recommendations**: Get actionable insights powered by AI analysis
+5. **Reports**: Download detailed PDF reports for stakeholders
+
+### Get Started
+
+Use the sidebar to navigate between different sections:
+- **📋 Assessment**: Take the AI maturity questionnaire
+- **📊 Results**: View your assessment scores and insights
+- **📈 Benchmark**: Compare with industry peers
+- **📄 Reports**: Generate and download PDF reports
+""")
+
+# Quick stats or features
+col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown('<div class="feature-box">', unsafe_allow_html=True)
-    st.markdown("""
-    **1. Strategy & Business Vision**  
-    Klarheit und Commitment zu KI-Initiativen
-    
-    **2. Data Maturity**  
-    Verfügbarkeit, Qualität & Governance
-    
-    **3. Tech Infrastructure**  
-    APIs, Umgebungen, Security
-    
-    **4. People & Culture**  
-    Literacy, Ownership, Change-Bereitschaft
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.metric(label="Assessment Questions", value="50+", delta="Comprehensive")
 
 with col2:
-    st.markdown('<div class="feature-box">', unsafe_allow_html=True)
-    st.markdown("""
-    **5. Processes & Scaling**  
-    Delivery, Messung, Betrieb
-    
-    **6. Governance & Compliance**  
-    DSGVO, KI-Policy, Vendor Risk
-    
-    **7. Use Cases & Business Value**  
-    Pipeline, Machbarkeit, Realisierung
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.metric(label="Maturity Dimensions", value="8", delta="Multi-faceted")
 
-# How it works
+with col3:
+    st.metric(label="Avg. Completion Time", value="15 min", delta="Quick & Easy")
+
+# Call to action
 st.markdown("---")
-st.markdown("### 📋 So funktioniert's")
-
-steps_col1, steps_col2, steps_col3 = st.columns(3)
-
-with steps_col1:
-    st.markdown("""
-    #### 1️⃣ Company Snapshot
-    Grunddaten Ihres Unternehmens (Branche, Größe)
-    """)
-
-with steps_col2:
-    st.markdown("""
-    #### 2️⃣ Assessment
-    21 Fragen über 7 Dimensionen (~12 Min)
-    """)
-
-with steps_col3:
-    st.markdown("""
-    #### 3️⃣ Ergebnisse
-    Score, Benchmark, Roadmap & PDF
-    """)
-
-# CTA
-st.markdown("---")
-col1, col2, col3 = st.columns([1, 1, 1])
-
-with col2:
-    if st.button("🚀 Assessment starten", use_container_width=True, type="primary"):
-        st.switch_page("pages/1_Company_Snapshot.py")
+st.markdown("### Ready to get started?")
+st.markdown("Navigate to the **Assessment** page to begin your AI maturity journey!")
 
 # Footer
 st.markdown("---")
-st.markdown("""
-<div style='text-align: center; color: #888; font-size: 0.9rem;'>
-    AI-Compass MVP | Deterministic Scoring • ML Benchmarking • LLM Recommendations
-</div>
-""", unsafe_allow_html=True)
-
-# Sidebar info
-with st.sidebar:
-    st.markdown("### ℹ️ Info")
-    st.markdown("""
-    **AI-Compass** ist ein consulting-ready Assessment-Tool.
-    
-    - 🎯 Deterministische Bewertung
-    - 📊 Peer-Benchmarking (K-Means)
-    - 🤖 LLM-Empfehlungen (Groq)
-    - 📄 PDF-Export
-    
-    **API Status:**
-    """)
-    
-    # Check API health
-    import requests
-    api_url = os.getenv("API_URL", "http://localhost:8000")
-    
-    try:
-        response = requests.get(f"{api_url}/health", timeout=2)
-        if response.status_code == 200:
-            st.success("✓ API Connected")
-        else:
-            st.error("✗ API Error")
-    except:
-        st.error("✗ API Offline")
-    
-    st.markdown("---")
-    st.markdown("""
-    **Dauer:** ~12 Minuten  
-    **Sprache:** Deutsch  
-    **Version:** 1.0
-    """)
+st.caption("AI-Compass MVP | Powered by Streamlit")
