@@ -1,160 +1,124 @@
+"""
+Results Dashboard
+Displays overall score, dimension scores, charts, benchmark, and recommendations.
+"""
 import streamlit as st
-import pandas as pd
+import requests
 import plotly.graph_objects as go
-import plotly.express as px
+import os
 
 st.set_page_config(page_title="Results", page_icon="📊", layout="wide")
 
-st.title("📊 Assessment Results")
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
-# Check if assessment is completed
-if 'assessment_completed' not in st.session_state or not st.session_state.assessment_completed:
-    st.warning("⚠️ You haven't completed the assessment yet. Please go to the Assessment page first.")
+# Check if assessment_id exists
+if "assessment_id" not in st.session_state:
+    st.error("Kein Assessment gefunden.")
+    if st.button("Zur Startseite"):
+        st.switch_page("Home.py")
     st.stop()
 
-# Calculate scores based on assessment data
-def calculate_scores():
-    """Calculate maturity scores from assessment data"""
-    scores = {}
-    
-    # Strategic Alignment Score
-    strategic_score = 0
-    if 'strategic_s1' in st.session_state.assessment_data:
-        s1_value = st.session_state.assessment_data['strategic_s1']
-        strategic_map = {"No strategy": 0, "Informal strategy": 33, "Documented strategy": 67, "Well-integrated strategy": 100}
-        strategic_score += strategic_map.get(s1_value, 0) * 0.5
-    
-    if 'strategic_s2' in st.session_state.assessment_data:
-        strategic_score += st.session_state.assessment_data['strategic_s2'] * 0.5
-    
-    scores['Strategic Alignment'] = min(100, strategic_score)
-    
-    # Data Readiness Score
-    data_score = 0
-    if 'data_d1' in st.session_state.assessment_data:
-        d1_value = st.session_state.assessment_data['data_d1']
-        data_map = {"Poor": 0, "Fair": 33, "Good": 67, "Excellent": 100}
-        data_score += data_map.get(d1_value, 0) * 0.4
-    
-    if 'data_d2' in st.session_state.assessment_data:
-        d2_value = st.session_state.assessment_data['data_d2']
-        governance_map = {"No": 0, "In development": 33, "Partially implemented": 67, "Fully implemented": 100}
-        data_score += governance_map.get(d2_value, 0) * 0.3
-    
-    if 'data_d3' in st.session_state.assessment_data:
-        data_score += st.session_state.assessment_data['data_d3'] * 0.3
-    
-    scores['Data Readiness'] = min(100, data_score)
-    
-    # Technology Infrastructure Score
-    tech_score = 0
-    if 'technology_t2' in st.session_state.assessment_data:
-        t2_value = st.session_state.assessment_data['technology_t2']
-        mlops_map = {"No": 0, "Planning": 25, "Basic implementation": 60, "Advanced implementation": 100}
-        tech_score += mlops_map.get(t2_value, 0) * 0.5
-    
-    if 'technology_t3' in st.session_state.assessment_data:
-        tech_score += st.session_state.assessment_data['technology_t3'] * 0.5
-    
-    scores['Technology Infrastructure'] = min(100, tech_score)
-    
-    # Organizational Capability Score
-    org_score = 0
-    if 'organization_o2' in st.session_state.assessment_data:
-        o2_value = st.session_state.assessment_data['organization_o2']
-        team_map = {"No": 0, "Ad-hoc team": 33, "Dedicated team": 67, "Center of Excellence": 100}
-        org_score += team_map.get(o2_value, 0) * 0.5
-    
-    if 'organization_o3' in st.session_state.assessment_data:
-        o3_value = st.session_state.assessment_data['organization_o3']
-        training_map = {"None": 0, "Occasional training": 33, "Regular programs": 67, "Comprehensive learning culture": 100}
-        org_score += training_map.get(o3_value, 0) * 0.5
-    
-    scores['Organizational Capability'] = min(100, org_score)
-    
-    return scores
+assessment_id = st.session_state.assessment_id
 
-# Calculate scores
-scores = calculate_scores()
-overall_score = sum(scores.values()) / len(scores) if scores else 0
+# Complete assessment if not already done
+if "results" not in st.session_state:
+    with st.spinner("Berechne Ergebnisse..."):
+        try:
+            response = requests.post(
+                f"{API_URL}/api/v1/assessments/{assessment_id}/complete",
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                st.session_state.results = response.json()
+            else:
+                st.error(f"Fehler bei der Auswertung: {response.text}")
+                st.stop()
+        
+        except Exception as e:
+            st.error(f"Verbindungsfehler: {str(e)}")
+            st.stop()
 
-# Determine maturity level
-def get_maturity_level(score):
-    if score < 25:
-        return "Initial", "🔴", "Just starting the AI journey"
-    elif score < 50:
-        return "Developing", "🟡", "Building AI capabilities"
-    elif score < 75:
-        return "Defined", "🟢", "Established AI practices"
-    else:
-        return "Optimized", "🔵", "Advanced AI maturity"
+results = st.session_state.results
 
-maturity_level, level_icon, level_desc = get_maturity_level(overall_score)
+# Header
+st.markdown("# 📊 Ihre AI-Compass Ergebnisse")
+st.markdown("---")
 
-# Display overall score
-st.markdown("### Overall AI Maturity Score")
-col1, col2, col3 = st.columns([2, 1, 1])
+# Overall Score
+st.markdown("## 🎯 Gesamtergebnis")
+col1, col2, col3 = st.columns([1, 1, 2])
 
 with col1:
-    # Gauge chart for overall score
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number+delta",
-        value=overall_score,
-        domain={'x': [0, 1], 'y': [0, 1]},
-        title={'text': "Overall Maturity", 'font': {'size': 24}},
-        delta={'reference': 50, 'increasing': {'color': "green"}},
-        gauge={
-            'axis': {'range': [None, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-            'bar': {'color': "darkblue"},
-            'bgcolor': "white",
-            'borderwidth': 2,
-            'bordercolor': "gray",
-            'steps': [
-                {'range': [0, 25], 'color': '#ffcccc'},
-                {'range': [25, 50], 'color': '#ffffcc'},
-                {'range': [50, 75], 'color': '#ccffcc'},
-                {'range': [75, 100], 'color': '#ccccff'}
-            ],
-            'threshold': {
-                'line': {'color': "red", 'width': 4},
-                'thickness': 0.75,
-                'value': overall_score
-            }
-        }
-    ))
-    fig.update_layout(height=300, margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig, use_container_width=True)
+    overall_score = results["overall"]["score_0_100"]
+    st.metric(
+        label="Gesamtscore",
+        value=f"{overall_score:.1f}",
+        delta="/ 100"
+    )
 
 with col2:
-    st.metric(label="Maturity Level", value=maturity_level, delta=level_desc)
-    st.write(f"{level_icon} **{maturity_level}**")
+    overall_level = results["overall"]["level_1_5"]
+    st.metric(
+        label="Reifestufe",
+        value=f"{overall_level}",
+        delta="/ 5"
+    )
 
 with col3:
-    st.metric(label="Overall Score", value=f"{overall_score:.1f}/100")
-    if 'completion_time' in st.session_state:
-        st.caption(f"Completed: {st.session_state.completion_time}")
+    # Level description
+    level_descriptions = {
+        1: "🟥 Beginner – Erste Schritte",
+        2: "🟧 Explorierend – Grundlagen vorhanden",
+        3: "🟨 Etabliert – Strukturierte Ansätze",
+        4: "🟩 Fortgeschritten – Best Practices",
+        5: "🟦 Führend – Weltklasse"
+    }
+    st.info(level_descriptions.get(overall_level, "N/A"))
 
 st.markdown("---")
 
-# Dimension scores
-st.markdown("### Scores by Dimension")
+# Dimension Scores Table
+st.markdown("## 📈 Reife nach Dimensionen")
+
+dimension_scores = results["dimension_scores"]
+
+# Create table data
+table_data = []
+for dim in dimension_scores:
+    table_data.append({
+        "Dimension": dim["title"],
+        "Score": f"{dim['score_0_100']:.1f}",
+        "Level": f"{dim['level_1_5']}/5"
+    })
+
+st.table(table_data)
+
+st.markdown("---")
+
+# Charts
+st.markdown("## 📊 Visualisierungen")
+
+chart_data = results["chart_data"]
 
 col1, col2 = st.columns(2)
 
 with col1:
-    # Radar chart
-    categories = list(scores.keys())
-    values = list(scores.values())
+    st.markdown("### Radar Chart (Alle Dimensionen)")
     
-    fig = go.Figure()
-    fig.add_trace(go.Scatterpolar(
-        r=values,
-        theta=categories,
+    # Radar chart
+    radar_fig = go.Figure()
+    
+    radar_fig.add_trace(go.Scatterpolar(
+        r=chart_data["radar"]["values"],
+        theta=chart_data["radar"]["labels"],
         fill='toself',
-        name='Your Score'
+        name='Ihr Unternehmen',
+        line=dict(color='#1f77b4', width=2),
+        fillcolor='rgba(31, 119, 180, 0.3)'
     ))
     
-    fig.update_layout(
+    radar_fig.update_layout(
         polar=dict(
             radialaxis=dict(
                 visible=True,
@@ -162,97 +126,173 @@ with col1:
             )
         ),
         showlegend=False,
-        title="Maturity Dimensions",
         height=400
     )
-    st.plotly_chart(fig, use_container_width=True)
+    
+    st.plotly_chart(radar_fig, use_container_width=True)
 
 with col2:
-    # Bar chart
-    df_scores = pd.DataFrame({
-        'Dimension': categories,
-        'Score': values
-    })
+    st.markdown("### Bar Chart (Sortiert)")
     
-    fig = px.bar(
-        df_scores,
-        x='Score',
-        y='Dimension',
+    # Bar chart
+    bar_fig = go.Figure()
+    
+    bar_fig.add_trace(go.Bar(
+        x=chart_data["bars"]["values"],
+        y=chart_data["bars"]["labels"],
         orientation='h',
-        title='Dimension Scores',
-        color='Score',
-        color_continuous_scale='Blues',
-        range_x=[0, 100]
+        marker=dict(
+            color=chart_data["bars"]["values"],
+            colorscale='RdYlGn',
+            cmin=0,
+            cmax=100
+        ),
+        text=[f"{v:.1f}" for v in chart_data["bars"]["values"]],
+        textposition='outside'
+    ))
+    
+    bar_fig.update_layout(
+        xaxis=dict(range=[0, 110], title="Score"),
+        yaxis=dict(title=""),
+        height=400,
+        showlegend=False
     )
-    fig.update_layout(height=400, showlegend=False)
-    st.plotly_chart(fig, use_container_width=True)
+    
+    st.plotly_chart(bar_fig, use_container_width=True)
 
-# Detailed scores
-st.markdown("### Detailed Breakdown")
+st.markdown("---")
 
-for dimension, score in scores.items():
-    with st.expander(f"{dimension}: {score:.1f}/100"):
-        # Progress bar
-        st.progress(score / 100)
-        
-        # Interpretation
-        if score < 25:
-            st.error("**Low maturity** - Significant improvement needed in this area")
-        elif score < 50:
-            st.warning("**Moderate maturity** - Good foundation, but room for growth")
-        elif score < 75:
-            st.info("**Good maturity** - Well-established practices")
+# Focus Areas (lowest scoring dimensions)
+st.markdown("## 🎯 Top Handlungsfelder")
+st.markdown("Die drei Dimensionen mit dem größten Verbesserungspotenzial:")
+
+sorted_dims = sorted(dimension_scores, key=lambda x: x["score_0_100"])
+focus_areas = sorted_dims[:3]
+
+for idx, dim in enumerate(focus_areas, 1):
+    with st.expander(f"{idx}. {dim['title']} (Score: {dim['score_0_100']:.1f})"):
+        st.markdown("**Warum?**")
+        drivers = dim.get("drivers", [])
+        if drivers:
+            for driver in drivers:
+                st.markdown(f"- **{driver['question_text']}**  \n  Antwort: _{driver['selected_label']}_ ({driver['points']} Punkte)")
         else:
-            st.success("**Excellent maturity** - Leading practices in place")
+            st.markdown("Keine Details verfügbar.")
 
-# Recommendations
 st.markdown("---")
-st.markdown("### Key Recommendations")
 
-recommendations = []
+# Benchmark
+st.markdown("## 🏆 Benchmark-Vergleich")
 
-if scores.get('Strategic Alignment', 0) < 50:
-    recommendations.append("**Strategic Alignment**: Develop a comprehensive AI strategy aligned with business objectives")
-
-if scores.get('Data Readiness', 0) < 50:
-    recommendations.append("**Data Readiness**: Invest in data governance and quality improvement initiatives")
-
-if scores.get('Technology Infrastructure', 0) < 50:
-    recommendations.append("**Technology Infrastructure**: Build robust MLOps capabilities and cloud infrastructure")
-
-if scores.get('Organizational Capability', 0) < 50:
-    recommendations.append("**Organizational Capability**: Expand AI talent and establish training programs")
-
-if recommendations:
-    for i, rec in enumerate(recommendations, 1):
-        st.markdown(f"{i}. {rec}")
-else:
-    st.success("✅ Your organization demonstrates strong AI maturity across all dimensions! Focus on continuous improvement and innovation.")
-
-# Export option
-st.markdown("---")
-st.markdown("### Export Results")
+benchmark = results["benchmark"]
+cluster_label = benchmark["cluster_label"]
+percentile = benchmark["percentile"]
+mismatch_flag = benchmark["mismatch_flag"]
+mismatch_note = benchmark.get("mismatch_note")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("📄 Generate PDF Report", use_container_width=True):
-        st.info("PDF generation will be available in the Reports page")
+    st.metric(label="Cluster", value=cluster_label)
 
 with col2:
-    # Export as JSON
-    if st.button("💾 Download as JSON", use_container_width=True):
-        import json
-        result_data = {
-            "overall_score": overall_score,
-            "maturity_level": maturity_level,
-            "dimension_scores": scores,
-            "completion_time": st.session_state.get('completion_time', 'N/A'),
-            "assessment_data": st.session_state.assessment_data
-        }
-        st.download_button(
-            label="Download JSON",
-            data=json.dumps(result_data, indent=2),
-            file_name="ai_compass_results.json",
-            mime="application/json"
-        )
+    st.metric(label="Perzentil", value=f"{percentile:.0f}%")
+
+if mismatch_flag and mismatch_note:
+    st.warning(f"**Hinweis:** {mismatch_note}")
+
+st.markdown("---")
+
+# Recommendations
+st.markdown("## 💡 Empfehlungen")
+
+recommendations = results["recommendations"]
+
+# Executive Summary
+st.markdown("### Zusammenfassung")
+st.info(recommendations["executive_summary"])
+
+# Quick Wins
+st.markdown("### 🚀 Quick Wins (0–30 Tage)")
+for item in recommendations["quick_wins"]:
+    st.markdown(f"- {item}")
+
+# Roadmap
+st.markdown("### 🗺️ Roadmap")
+
+roadmap = recommendations["roadmap"]
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("**90 Tage**")
+    for item in roadmap.get("days_90", []):
+        st.markdown(f"- {item}")
+
+with col2:
+    st.markdown("**6 Monate**")
+    for item in roadmap.get("months_6", []):
+        st.markdown(f"- {item}")
+
+with col3:
+    st.markdown("**12 Monate**")
+    for item in roadmap.get("months_12", []):
+        st.markdown(f"- {item}")
+
+# Risks
+st.markdown("### ⚠️ Hauptrisiken")
+for item in recommendations["risks"]:
+    st.markdown(f"- {item}")
+
+st.markdown("---")
+
+# PDF Download
+st.markdown("## 📄 PDF-Report")
+st.markdown("Laden Sie einen vollständigen PDF-Bericht Ihrer Ergebnisse herunter.")
+
+if st.button("📥 PDF herunterladen", type="primary"):
+    with st.spinner("Erstelle PDF..."):
+        try:
+            response = requests.get(
+                f"{API_URL}/api/v1/assessments/{assessment_id}/pdf",
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                st.download_button(
+                    label="💾 PDF speichern",
+                    data=response.content,
+                    file_name=f"ai-compass-report-{assessment_id}.pdf",
+                    mime="application/pdf"
+                )
+            else:
+                st.error(f"Fehler beim Erstellen des PDFs: {response.text}")
+        
+        except Exception as e:
+            st.error(f"Verbindungsfehler: {str(e)}")
+
+# Sidebar
+with st.sidebar:
+    st.markdown("### 🎉 Schritt 3/3")
+    st.progress(1.0)
+    st.markdown("""
+    **Assessment abgeschlossen!**
+    
+    Ihre Ergebnisse wurden erfolgreich berechnet.
+    
+    ---
+    
+    **Nächste Schritte:**
+    - Ergebnisse ansehen
+    - PDF herunterladen
+    - Mit Team teilen
+    - Roadmap umsetzen
+    """)
+    
+    st.markdown("---")
+    
+    if st.button("🔄 Neues Assessment starten"):
+        # Clear session state
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+        st.switch_page("Home.py")

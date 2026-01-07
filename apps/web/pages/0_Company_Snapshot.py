@@ -127,7 +127,7 @@ with st.form("company_snapshot_form"):
                         st.info("Weiterleitung zum Fragebogen...")
                         
                         # Navigate to assessment page
-                        st.switch_page("pages/2_Assessment.py")
+                        st.switch_page("pages/1_📋_Assessment.py")
                     else:
                         st.error(f"Fehler beim Erstellen des Assessments: {response.text}")
                 
