@@ -23,9 +23,12 @@ class QuestionnaireLoader:
             file_path: Path to questions.json. If None, uses default from env or fallback.
         """
         if file_path is None:
+            # Get absolute path from project root
+            project_root = Path(__file__).parent.parent.parent
+            default_path = project_root / "data" / "questionnaire" / "questions.json"
             file_path = os.getenv(
                 "QUESTIONNAIRE_PATH",
-                "../../data/questionnaire/questions.json"
+                str(default_path)
             )
         
         self.file_path = Path(file_path)
