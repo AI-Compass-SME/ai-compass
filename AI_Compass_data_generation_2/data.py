@@ -2,12 +2,6 @@ import pandas as pd
 import numpy as np
 import random
 
-# 1. Load the files
-# Adjusting filenames to match the uploaded CSV paths
-questions_df = pd.read_csv('Questions.csv', sep=';', skiprows=1)
-output_template = pd.read_csv('Questionnaire_Output.csv', sep=';', skiprows=1)
-output_template = output_template.loc[:, ~output_template.columns.str.contains('^Unnamed')]
-
 # 2. Define Clusters and their Target Levels
 clusters = {
     "1. The Traditionalist": {"count": 100, "base_lvl": 1},
@@ -38,55 +32,68 @@ def get_weighted_level(base_lvl):
         else: weights.append(0.033)
     return np.random.choice(levels, p=[w/sum(weights) for w in weights])
 
-# 5. Build the Dataset
-all_rows = []
-comp_id_pool = list(range(1, 1501))
-random.shuffle(comp_id_pool)
-
-for profile, config in clusters.items():
-    for _ in range(config['count']):
-        base_lvl = config['base_lvl']
-        c_name = generate_company_name()
-        
-        row = {
-            "Company_ID": comp_id_pool.pop(),
-            "Company_Name*": c_name,
-            "Industry*": random.choice(industries),
-            "Website": f"www.{c_name.lower().replace(' ', '-')}.de",
-            "Employee_Count": random.choice(["1-50", "51-250", "251-500", "500+"]),
-            "City": random.choice(cities),
-            "Cluster_Profile": profile
-        }
-        
-        # Fill Questions 1 to 34
-        for idx, q_row in questions_df.iterrows():
-            q_text = q_row['Question_Text']
-            q_type = q_row['Question_Type']
+def generate_data(questions_df, comp_id_pool=None):
+    if comp_id_pool is None:
+        comp_id_pool = list(range(1, 1501))
+        random.shuffle(comp_id_pool)
+    
+    all_rows = []
+    
+    for profile, config in clusters.items():
+        for _ in range(config['count']):
+            base_lvl = config['base_lvl']
+            c_name = generate_company_name()
             
-            # Identify the Level columns (Level 1 to Level 9)
-            lvl_options = [q_row[f'Level {i}'] for i in range(1, 10) if pd.notna(q_row[f'Level {i}'])]
+            row = {
+                "Company_ID": comp_id_pool.pop() if comp_id_pool else random.randint(1000, 9999),
+                "Company_Name*": c_name,
+                "Industry*": random.choice(industries),
+                "Website": f"www.{c_name.lower().replace(' ', '-')}.de",
+                "Employee_Count": random.choice(["1-50", "51-250", "251-500", "500+"]),
+                "City": random.choice(cities),
+                "Cluster_Profile": profile
+            }
             
-            if q_type == "Checklist":
-                # For checklists, pick 1-3 random options from the available levels
-                # Higher clusters pick more options
-                num_to_pick = random.randint(1, min(3, len(lvl_options))) if base_lvl < 4 else random.randint(2, min(4, len(lvl_options)))
-                row[q_text] = ", ".join(random.sample(lvl_options, num_to_pick))
-            
-            elif idx < 28: # Weighted Assessment Questions (1-28)
-                selected_lvl = get_weighted_level(base_lvl)
-                # Ensure we don't index out of bounds if question has fewer than 5 levels
-                idx_to_use = min(selected_lvl, len(lvl_options)) - 1
-                row[q_text] = lvl_options[idx_to_use]
+            # Fill Questions 1 to 34
+            for idx, q_row in questions_df.iterrows():
+                q_text = q_row['Question_Text']
+                q_type = q_row['Question_Type']
                 
-            else: # Information Questions (29-34) - No Weighting
-                row[q_text] = random.choice(lvl_options)
+                # Identify the Level columns (Level 1 to Level 9)
+                lvl_options = [q_row[f'Level {i}'] for i in range(1, 10) if pd.notna(q_row[f'Level {i}'])]
+                
+                if q_type == "Checklist":
+                    # For checklists, pick 1-3 random options from the available levels
+                    # Higher clusters pick more options
+                    num_to_pick = random.randint(1, min(3, len(lvl_options))) if base_lvl < 4 else random.randint(2, min(4, len(lvl_options)))
+                    row[q_text] = ", ".join(random.sample(lvl_options, num_to_pick))
+                
+                elif idx < 28: # Weighted Assessment Questions (1-28)
+                    selected_lvl = get_weighted_level(base_lvl)
+                    # Ensure we don't index out of bounds if question has fewer than 5 levels
+                    idx_to_use = min(selected_lvl, len(lvl_options)) - 1
+                    row[q_text] = lvl_options[idx_to_use]
+                    
+                else: # Information Questions (29-34) - No Weighting
+                    row[q_text] = random.choice(lvl_options)
+    
+            all_rows.append(row)
+            
+    return pd.DataFrame(all_rows)
 
-        all_rows.append(row)
+if __name__ == "__main__":
+    # 1. Load the files
+    questions_df = pd.read_csv('Questions.csv', sep=';', skiprows=1)
+    output_template = pd.read_csv('Questionnaire_Output.csv', sep=';', skiprows=1)
+    output_template = output_template.loc[:, ~output_template.columns.str.contains('^Unnamed')]
 
-# 6. Finalize and Export
-df_final = pd.DataFrame(all_rows)
-# Reorder columns to match output template
-df_final = df_final[output_template.columns]
-df_final.to_csv('assessment_data.csv', index=False)
-
-print("Dataset generated successfully: 500 rows across 5 clusters.")
+    print("Generating dataset...")
+    df_final = generate_data(questions_df)
+    
+    # Reorder columns to match output template
+    # Only keep columns that are in df_final (some info questions might not be in template or vice versa)
+    common_cols = [c for c in output_template.columns if c in df_final.columns]
+    df_final = df_final[common_cols]
+    
+    df_final.to_csv('assessment_data.csv', index=False)
+    print("Dataset generated successfully: 500 rows across 5 clusters.")
