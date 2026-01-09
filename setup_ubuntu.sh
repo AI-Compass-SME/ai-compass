@@ -193,12 +193,49 @@ fi
 
 print_step "Setting up PostgreSQL Database"
 
-# Create database user and database
-sudo -u postgres psql -c "CREATE USER aicompass_user WITH PASSWORD 'aicompass_pass';" 2>/dev/null || print_warning "User might already exist"
-sudo -u postgres psql -c "CREATE DATABASE aicompass OWNER aicompass_user;" 2>/dev/null || print_warning "Database might already exist"
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE aicompass TO aicompass_user;" 2>/dev/null
+# Parse database credentials from .env file
+if [ ! -f ".env" ]; then
+    print_error ".env file not found. Please run config.sh first to create it."
+    exit 1
+fi
 
-print_success "Database 'aicompass' created (or already exists)"
+# Source .env and extract DATABASE_URL components
+source .env
+
+if [ -z "$DATABASE_URL" ]; then
+    print_error "DATABASE_URL not found in .env file"
+    exit 1
+fi
+
+# Parse DATABASE_URL (format: postgresql://user:password@host:port/dbname)
+# Remove postgresql:// prefix
+DB_STRING="${DATABASE_URL#postgresql://}"
+
+# Extract user:password
+DB_CREDENTIALS="${DB_STRING%%@*}"
+DB_USER="${DB_CREDENTIALS%%:*}"
+DB_PASS="${DB_CREDENTIALS#*:}"
+
+# Extract host:port/dbname
+DB_REMAINDER="${DB_STRING#*@}"
+DB_HOST="${DB_REMAINDER%%:*}"
+
+# Extract port/dbname
+DB_PORT_AND_DB="${DB_REMAINDER#*:}"
+DB_PORT="${DB_PORT_AND_DB%%/*}"
+DB_NAME="${DB_PORT_AND_DB#*/}"
+
+print_success "Database configuration loaded from .env"
+echo "  Database: $DB_NAME"
+echo "  User: $DB_USER"
+echo "  Host: $DB_HOST:$DB_PORT"
+
+# Create database user and database
+sudo -u postgres psql -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';" 2>/dev/null || print_warning "User might already exist"
+sudo -u postgres psql -c "CREATE DATABASE $DB_NAME OWNER $DB_USER;" 2>/dev/null || print_warning "Database might already exist"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;" 2>/dev/null
+
+print_success "Database '$DB_NAME' created (or already exists)"
 
 # ==============================================================================
 # 6. Install Additional System Libraries
@@ -259,18 +296,9 @@ print_success "All Python packages installed"
 print_step "Setting up Environment Variables"
 
 if [ ! -f ".env" ]; then
-    if [ -f "infra/.env.example" ]; then
-        cp infra/.env.example .env
-        print_success "Created .env from template"
-        
-        # Update DATABASE_URL
-        sed -i 's|DATABASE_URL=.*|DATABASE_URL=postgresql://aicompass_user:aicompass_pass@localhost:5432/aicompass|g' .env
-        
-        print_warning "IMPORTANT: Edit .env and add your GROQ_API_KEY"
-        print_warning "Get your free API key at: https://console.groq.com"
-    else
-        print_error "infra/.env.example not found"
-    fi
+    print_error ".env file not found. Please run config.sh first to create it."
+    print_warning "Run: bash config.sh"
+    exit 1
 else
     print_success ".env file already exists"
 fi
