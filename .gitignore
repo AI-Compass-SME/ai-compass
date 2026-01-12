@@ -78,3 +78,8 @@ ai_compass_at_supabase.txt
 dimensions_table_output.txt
 *.xlsx
 *.csv
+
+# -------------------------
+# VSCode Workspace
+# -------------------------
+ai-compass.code-workspace
