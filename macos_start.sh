@@ -62,8 +62,9 @@ UI_LOG="$ROOT_DIR/streamlit.log"
 PID_FILE="$ROOT_DIR/.mac_start.pids"
 
 start_api() {
-  ( cd "$ROOT_DIR/apps/api" && \
-    uvicorn main:app --host "$API_HOST" --port "$API_PORT" --reload \
+  (
+    cd "$ROOT_DIR" && \
+    uvicorn apps.api.main:app --host "$API_HOST" --port "$API_PORT" --reload
   )
 }
 

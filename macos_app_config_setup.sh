@@ -305,7 +305,7 @@ if command_exists lsof; then
 fi
 
 # Start API in background
-( cd "$ROOT_DIR/apps/api" && uvicorn main:app --host 127.0.0.1 --port "$API_PORT" --reload ) &
+( cd "$ROOT_DIR" && uvicorn apps.api.main:app --host 127.0.0.1 --port "$API_PORT" --reload ) &
 API_PID=$!
 
 cleanup() {
