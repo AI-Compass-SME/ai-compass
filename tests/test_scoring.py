@@ -5,8 +5,8 @@ Tests deterministic scoring with known inputs.
 import sys
 from pathlib import Path
 
-# Add project root to path
-project_root = Path(__file__).parent.parent.parent
+# Add project root to path (one level up from tests/)
+project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from core.questionnaire.loader import QuestionnaireLoader
@@ -53,7 +53,7 @@ def test_scoring_engine_basic():
     assert 0 <= overall_score <= 100
     assert 1 <= overall_level <= 5
     
-    print("✓ Basic scoring test passed")
+    print("[PASS] Basic scoring test passed")
     print(f"  Overall score: {overall_score:.2f}")
     print(f"  Overall level: {overall_level}")
     print(f"  Dimensions scored: {len(dimension_scores)}")
@@ -92,7 +92,7 @@ def test_chart_data_generation():
     assert len(chart_data["bars"]["labels"]) == len(schema["dimensions"])
     assert len(chart_data["bars"]["values"]) == len(schema["dimensions"])
     
-    print("✓ Chart data generation test passed")
+    print("[PASS] Chart data generation test passed")
     print(f"  Radar labels count: {len(chart_data['radar']['labels'])}")
     print(f"  Bar labels count: {len(chart_data['bars']['labels'])}")
     
@@ -115,7 +115,7 @@ def test_questionnaire_loading():
     assert metadata["questionnaire_id"] == schema["questionnaire_id"]
     assert metadata["questions_count"] > 0
     
-    print("✓ Questionnaire loading test passed")
+    print("[PASS] Questionnaire loading test passed")
     print(f"  Questionnaire ID: {metadata['questionnaire_id']}")
     print(f"  Dimensions: {metadata['dimensions_count']}")
     print(f"  Questions: {metadata['questions_count']}")
@@ -134,11 +134,11 @@ if __name__ == "__main__":
         test_chart_data_generation()
         print()
         print("=" * 50)
-        print("✓ All tests passed!")
+        print("[PASS] All tests passed!")
         print("=" * 50)
     
     except Exception as e:
-        print(f"\n✗ Tests failed: {e}")
+        print(f"\n[FAIL] Tests failed: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)
