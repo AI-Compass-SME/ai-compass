@@ -40,6 +40,42 @@ from core.reporting.pdf_generator import PDFReportGenerator
 router = APIRouter()
 
 
+@router.get("/assessments")
+async def list_assessments(
+    limit: int = 50,
+    status: str = None,
+    db: Session = Depends(get_db)
+):
+    """
+    List all assessments with optional filtering.
+    Used for assessment selection/history UI.
+    """
+    query = db.query(CompanyAssessment)
+    
+    # Filter by status if provided
+    if status:
+        query = query.filter(CompanyAssessment.status == status)
+    
+    # Order by most recent first
+    assessments = query.order_by(
+        CompanyAssessment.created_at.desc()
+    ).limit(limit).all()
+    
+    # Build response
+    return [
+        {
+            "id": str(a.id),
+            "company_name": a.company_meta.get("company_name", "Unbekannt"),
+            "industry": a.company_meta.get("industry", "N/A"),
+            "employee_count": a.company_meta.get("employee_count", "N/A"),
+            "status": a.status,
+            "created_at": a.created_at.isoformat() if a.created_at else None,
+            "completed_at": a.completed_at.isoformat() if a.completed_at else None
+        }
+        for a in assessments
+    ]
+
+
 @router.get("/questionnaire", response_model=GetQuestionnaireResponse)
 async def get_questionnaire():
     """
