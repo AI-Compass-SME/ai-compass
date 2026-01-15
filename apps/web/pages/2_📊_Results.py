@@ -11,32 +11,81 @@ st.set_page_config(page_title="Results", page_icon="📊", layout="wide")
 
 API_URL = os.getenv("API_URL", "http://localhost:8000")
 
-# Check if assessment_id exists
-if "assessment_id" not in st.session_state:
-    st.error("Kein Assessment gefunden.")
-    if st.button("Zur Startseite"):
-        st.switch_page("Home.py")
+# Get assessment_id from URL parameter OR session state
+# This allows page reload AND direct links to work
+assessment_id = None
+
+if "id" in st.query_params:
+    assessment_id = st.query_params["id"]
+    st.session_state.assessment_id = assessment_id  # Save to session
+elif "assessment_id" in st.session_state:
+    assessment_id = st.session_state.assessment_id
+    # Add to URL for sharability
+    st.query_params["id"] = assessment_id
+
+if not assessment_id:
+    st.warning("⚠️ Kein Assessment ausgewählt.")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("📋 Zu Assessments"):
+            st.switch_page("pages/5_📋_Assessments.py")
+    with col2:
+        if st.button("➕ Neues Assessment"):
+            st.switch_page("Home.py")
     st.stop()
 
-assessment_id = st.session_state.assessment_id
-
-# Complete assessment if not already done
+# Load assessment from database (not from session state!)
+# This way it works even after page reload
 if "results" not in st.session_state:
-    with st.spinner("Berechne Ergebnisse..."):
+    with st.spinner("Lade Assessment-Daten..."):
         try:
-            response = requests.post(
-                f"{API_URL}/api/v1/assessments/{assessment_id}/complete",
-                timeout=30
+            # First check if assessment exists
+            response = requests.get(
+                f"{API_URL}/api/v1/assessments/{assessment_id}",
+                timeout=10
             )
             
-            if response.status_code == 200:
-                st.session_state.results = response.json()
-            else:
-                st.error(f"Fehler bei der Auswertung: {response.text}")
+            if response.status_code == 404:
+                st.error("❌ Assessment nicht gefunden.")
+                if st.button("📋 Zurück zu Assessments"):
+                    st.switch_page("pages/5_📋_Assessments.py")
                 st.stop()
+            elif response.status_code != 200:
+                st.error(f"Fehler beim Laden: {response.text}")
+                st.stop()
+            
+            assessment_data = response.json()
+            
+            # Check if completed
+            if assessment_data["status"] != "completed":
+                # Need to complete it first
+                st.info("⏳ Assessment wird berechnet...")
+                complete_response = requests.post(
+                    f"{API_URL}/api/v1/assessments/{assessment_id}/complete",
+                    timeout=30
+                )
+                
+                if complete_response.status_code == 200:
+                    st.session_state.results = complete_response.json()
+                    st.session_state.assessment_completed = True
+                    st.rerun()  # Reload to show results
+                else:
+                    st.error(f"Fehler bei der Auswertung: {complete_response.text}")
+                    st.stop()
+            else:
+                # Already completed, use results from GET endpoint
+                if assessment_data["results"]:
+                    st.session_state.results = assessment_data["results"]
+                    st.session_state.assessment_completed = True
+                else:
+                    st.error("Ergebnisse nicht verfügbar.")
+                    st.stop()
         
+        except requests.exceptions.ConnectionError:
+            st.error("🔌 Keine Verbindung zur API")
+            st.stop()
         except Exception as e:
-            st.error(f"Verbindungsfehler: {str(e)}")
+            st.error(f"Fehler: {str(e)}")
             st.stop()
 
 results = st.session_state.results

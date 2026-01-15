@@ -1,15 +1,69 @@
 import streamlit as st
 from datetime import datetime
 import json
+import requests
+import os
 
 st.set_page_config(page_title="Reports", page_icon="📄", layout="wide")
 
+API_URL = os.getenv("API_URL", "http://localhost:8000")
+
 st.title("📄 Reports & Documentation")
 
-# Check if assessment is completed
-if 'assessment_completed' not in st.session_state or not st.session_state.assessment_completed:
-    st.warning("⚠️ You haven't completed the assessment yet. Please complete the Assessment first to generate reports.")
+# Get assessment_id from URL parameter OR session state
+assessment_id = None
+
+if "id" in st.query_params:
+    assessment_id = st.query_params["id"]
+elif "assessment_id" in st.session_state:
+    assessment_id = st.session_state.assessment_id
+
+if not assessment_id:
+    st.warning("⚠️ Kein Assessment ausgewählt.")
+    if st.button("📋 Zu Assessments"):
+        st.switch_page("pages/5_📋_Assessments.py")
     st.stop()
+
+# Load assessment from database
+with st.spinner("Lade Assessment-Daten..."):
+    try:
+        response = requests.get(
+            f"{API_URL}/api/v1/assessments/{assessment_id}",
+            timeout=10
+        )
+        
+        if response.status_code == 404:
+            st.error("❌ Assessment nicht gefunden.")
+            if st.button("📋 Zurück zu Assessments"):
+                st.switch_page("pages/5_📋_Assessments.py")
+            st.stop()
+        elif response.status_code != 200:
+            st.error(f"Fehler beim Laden: {response.text}")
+            st.stop()
+        
+        assessment_data = response.json()
+        
+        # Check if completed
+        if assessment_data["status"] != "completed":
+            st.warning("⚠️ Assessment noch nicht abgeschlossen.")
+            if st.button("📋 Assessment fortsetzen"):
+                st.session_state.assessment_id = assessment_id
+                st.switch_page("pages/1_📋_Assessment.py")
+            st.stop()
+        
+        # Store in session for use on this page
+        if assessment_data.get("results"):
+            st.session_state.assessment_data = assessment_data
+        else:
+            st.error("Report-Daten nicht verfügbar.")
+            st.stop()
+        
+    except requests.exceptions.ConnectionError:
+        st.error("🔌 Keine Verbindung zur API")
+        st.stop()
+    except Exception as e:
+        st.error(f"Fehler: {str(e)}")
+        st.stop()
 
 st.markdown("""
 Generate and download comprehensive reports of your AI maturity assessment.

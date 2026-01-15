@@ -3,21 +3,86 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
+import requests
+import os
 
 st.set_page_config(page_title="Benchmark", page_icon="📈", layout="wide")
 
+API_URL = os.getenv("API_URL", "http://localhost:8000")
+
 st.title("📈 Industry Benchmark Comparison")
 
-# Check if assessment is completed
-if 'assessment_completed' not in st.session_state or not st.session_state.assessment_completed:
-    st.warning("⚠️ You haven't completed the assessment yet. Please complete the Assessment first.")
+# Get assessment_id from URL parameter OR session state
+assessment_id = None
+
+if "id" in st.query_params:
+    assessment_id = st.query_params["id"]
+elif "assessment_id" in st.session_state:
+    assessment_id = st.session_state.assessment_id
+
+if not assessment_id:
+    st.warning("⚠️ Kein Assessment ausgewählt.")
+    if st.button("📋 Zu Assessments"):
+        st.switch_page("pages/5_📋_Assessments.py")
     st.stop()
+
+# Load assessment from database
+with st.spinner("Lade Benchmark-Daten..."):
+    try:
+        response = requests.get(
+            f"{API_URL}/api/v1/assessments/{assessment_id}",
+            timeout=10
+        )
+        
+        if response.status_code == 404:
+            st.error("❌ Assessment nicht gefunden.")
+            if st.button("📋 Zurück zu Assessments"):
+                st.switch_page("pages/5_📋_Assessments.py")
+            st.stop()
+        elif response.status_code != 200:
+            st.error(f"Fehler beim Laden: {response.text}")
+            st.stop()
+        
+        assessment_data = response.json()
+        
+        # Check if completed
+        if assessment_data["status"] != "completed":
+            st.warning("⚠️ Assessment noch nicht abgeschlossen.")
+            if st.button("📋 Assessment fortsetzen"):
+                st.session_state.assessment_id = assessment_id
+                st.switch_page("pages/1_📋_Assessment.py")
+            st.stop()
+        
+        # Check if results exist
+        if not assessment_data.get("results"):
+            st.error("Benchmark-Daten nicht verfügbar.")
+            st.stop()
+        
+        # Store in session state for this page's use
+        results = assessment_data["results"]
+        
+    except requests.exceptions.ConnectionError:
+        st.error("🔌 Keine Verbindung zur API")
+        st.stop()
+    except Exception as e:
+        st.error(f"Fehler: {str(e)}")
+        st.stop()
 
 # Mock industry data (in a real app, this would come from a database)
 def get_industry_benchmarks():
     """Generate mock industry benchmark data"""
     industries = ['Financial Services', 'Healthcare', 'Retail', 'Manufacturing', 'Technology', 'Your Organization']
-    dimensions = ['Strategic Alignment', 'Data Readiness', 'Technology Infrastructure', 'Organizational Capability']
+    
+    # Use the actual 7 dimensions from the assessment
+    dimensions = [
+        'Strategy & Business Vision',
+        'Data Maturity',
+        'Tech Infrastructure', 
+        'People & Culture',
+        'Processes & Scaling',
+        'Governance & Compliance',
+        'Use Cases & Business Value'
+    ]
     
     # Generate random benchmark data for industries
     np.random.seed(42)
@@ -41,37 +106,26 @@ def get_industry_benchmarks():
     
     return pd.DataFrame(data)
 
-# Calculate user scores (simplified version from Results page)
-def get_user_scores():
-    """Get user's scores from assessment data"""
+# Calculate user scores from actual assessment results
+def get_user_scores(results_data):
+    """Get user's scores from assessment results - all 7 dimensions"""
     scores = {}
     
-    # Strategic Alignment Score
-    strategic_score = 0
-    if 'strategic_s2' in st.session_state.assessment_data:
-        strategic_score = st.session_state.assessment_data['strategic_s2']
-    scores['Strategic Alignment'] = strategic_score
+    # Get dimension scores from results
+    dimension_scores = results_data.get("dimension_scores", [])
     
-    # Data Readiness Score
-    data_score = 50  # Default
-    if 'data_d3' in st.session_state.assessment_data:
-        data_score = st.session_state.assessment_data['data_d3']
-    scores['Data Readiness'] = data_score
-    
-    # Technology Infrastructure Score
-    tech_score = 50  # Default
-    if 'technology_t3' in st.session_state.assessment_data:
-        tech_score = st.session_state.assessment_data['technology_t3']
-    scores['Technology Infrastructure'] = tech_score
-    
-    # Organizational Capability Score (estimated)
-    scores['Organizational Capability'] = sum(scores.values()) / len(scores)
+    # Map each dimension by title to score
+    for dim in dimension_scores:
+        title = dim.get("title", "")
+        score = dim.get("score_0_100", 0)
+        scores[title] = score
     
     return scores
 
 # Get benchmark data
 benchmark_df = get_industry_benchmarks()
-user_scores = get_user_scores()
+user_scores = get_user_scores(results)
+
 
 # Add user data to benchmark
 for dimension, score in user_scores.items():
