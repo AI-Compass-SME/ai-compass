@@ -37,6 +37,11 @@ export default function LandingPage() {
         prefetchData();
     }, []);
 
+    // Set page title
+    useEffect(() => {
+        document.title = "AI Compass";
+    }, []);
+
     // Navigation is fixed at the top, content starts below
     return (
         <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden">

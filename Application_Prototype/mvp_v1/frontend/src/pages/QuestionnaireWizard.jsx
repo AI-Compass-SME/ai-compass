@@ -45,6 +45,11 @@ export default function QuestionnaireWizard() {
         }
     }, [responseId]);
 
+    // Set page title
+    useEffect(() => {
+        document.title = "AI Compass: Assessment";
+    }, []);
+
     // Save progress to local storage
     useEffect(() => {
         if (questions.length > 0) {
