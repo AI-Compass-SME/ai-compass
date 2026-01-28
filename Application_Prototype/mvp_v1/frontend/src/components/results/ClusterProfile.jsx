@@ -68,7 +68,10 @@ export function ClusterProfile({ data }) {
                                 return (
                                     <div key={cluster.id} className="flex flex-col items-center justify-end h-full gap-0 group relative">
                                         {isActive && (
-                                            <div className="absolute -top-10 bg-slate-900 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-lg animate-bounce z-10 whitespace-nowrap">
+                                            <div
+                                                className="absolute bg-slate-900 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-lg animate-bounce z-10 whitespace-nowrap"
+                                                style={{ bottom: `calc(${cluster.height} + 16px)` }}
+                                            >
                                                 You are here
                                             </div>
                                         )}
@@ -118,7 +121,7 @@ export function ClusterProfile({ data }) {
 
                         {/* X-Axis Label */}
                         <div className="mt-6 text-center">
-                            <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">Organizational Maturity Archetypes</span>
+                            <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">AI Maturity</span>
                         </div>
                     </div>
                 </CardContent>

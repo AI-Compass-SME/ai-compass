@@ -19,7 +19,7 @@ export function ResultsHero({ data }) {
         <div className="section-container space-y-8">
             {/* Header Text */}
             <div className="text-center max-w-4xl mx-auto space-y-4">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-primary">
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
                     AI Compass: Executive Results Report
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">

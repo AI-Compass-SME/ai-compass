@@ -61,7 +61,7 @@ export default function QuestionnaireWizard() {
             try {
                 // 1. Try Cache
                 // 1. Try Cache
-                const cached = sessionStorage.getItem('cached_questionnaire_data');
+                const cached = sessionStorage.getItem('cached_questionnaire_data_v2');
                 if (cached) {
                     console.log("Found cached data in sessionStorage");
                     try {
@@ -87,7 +87,7 @@ export default function QuestionnaireWizard() {
                 if (data && data.questions) {
                     setQuestions(data.questions);
                     // Update cache for persistence on refresh
-                    sessionStorage.setItem('cached_questionnaire_data', JSON.stringify(data));
+                    sessionStorage.setItem('cached_questionnaire_data_v2', JSON.stringify(data));
                 }
             } catch (error) {
                 console.error("Failed to load questions", error);
@@ -285,12 +285,12 @@ export default function QuestionnaireWizard() {
 
             return (
                 <div className="flex flex-col justify-center h-full px-4 md:px-8 py-4">
-                    <div className="mb-8 text-center">
+                    <div className="mb-4 text-center">
                         <motion.div
                             key={answers[safeIndex]?.answer_text}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-block px-8 py-4 rounded-2xl bg-blue-50 text-blue-700 text-2xl font-bold border border-blue-100 shadow-sm"
+                            className="inline-block px-6 py-2 rounded-2xl bg-blue-50 text-blue-700 text-xl font-bold border border-blue-100 shadow-sm"
                         >
                             {answers[safeIndex]?.answer_text || "Drag to select"}
                         </motion.div>
@@ -334,7 +334,7 @@ export default function QuestionnaireWizard() {
                             />
                             <Label
                                 htmlFor={`ans-${ans.answer_id}`}
-                                className="text-sm font-medium leading-snug cursor-pointer flex-1 select-none text-slate-700"
+                                className="text-[13px] font-medium leading-snug cursor-pointer flex-1 select-none text-slate-700"
                             >
                                 {ans.answer_text}
                             </Label>
@@ -352,7 +352,7 @@ export default function QuestionnaireWizard() {
                 value={selectedAnswers[0]?.toString()}
                 onValueChange={handleRadioChange}
                 className={cn(
-                    "w-full gap-2",
+                    "w-full gap-1.5",
                     isShortText
                         ? "flex flex-col w-full"
                         : "grid grid-cols-1 md:grid-cols-2"
@@ -365,7 +365,7 @@ export default function QuestionnaireWizard() {
                         whileTap={{ scale: 0.995 }}
                         className={cn(
                             "flex space-x-3 border rounded-xl cursor-pointer transition-all duration-200 h-full",
-                            isShortText ? "p-3.5 items-center" : "p-4 items-start",
+                            isShortText ? "p-3 items-center" : "p-3 items-start",
                             selectedAnswers.includes(ans.answer_id)
                                 ? "border-blue-600 bg-blue-50/50 shadow-md ring-1 ring-blue-600/20"
                                 : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50 hover:shadow-sm"
@@ -379,7 +379,7 @@ export default function QuestionnaireWizard() {
                         />
                         <Label
                             htmlFor={`ans-${ans.answer_id}`}
-                            className="text-sm font-medium leading-snug flex-1 cursor-pointer select-none text-slate-700"
+                            className="text-[13px] font-medium leading-snug flex-1 cursor-pointer select-none text-slate-700"
                         >
                             {ans.answer_text}
                         </Label>
@@ -497,7 +497,7 @@ export default function QuestionnaireWizard() {
 
             {/* Main Content Area */}
             <main className="flex-1 flex flex-col h-full relative z-10 pt-16 lg:pt-0 overflow-hidden">
-                <div className="flex-1 flex flex-col w-full h-full max-w-5xl mx-auto p-1 md:p-2 justify-center overflow-hidden">
+                <div className="flex-1 flex flex-col w-full h-full max-w-3xl mx-auto p-1 md:p-2 justify-center overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentIndex}
@@ -509,8 +509,8 @@ export default function QuestionnaireWizard() {
                         >
                             <Card className="flex flex-col glass-premium rounded-[1.5rem] overflow-hidden w-full h-full max-h-full border-white/50 ring-1 ring-white/60">
                                 {/* Question Header */}
-                                <CardHeader className="flex-none border-b border-white/20 bg-white/20 pb-1 pt-3 px-4 md:px-6 backdrop-blur-md">
-                                    <div className="flex items-center justify-between mb-1">
+                                <CardHeader className="flex-none border-b border-white/20 bg-white/20 pb-0 pt-3 px-4 md:px-6 backdrop-blur-md">
+                                    <div className="flex items-center justify-between mb-0.5">
                                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-white/60 shadow-sm text-indigo-900 text-[10px] font-bold uppercase tracking-widest backdrop-blur-sm">
                                             <span className="relative flex h-1.5 w-1.5 mr-0.5">
                                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -520,20 +520,20 @@ export default function QuestionnaireWizard() {
                                         </div>
                                     </div>
 
-                                    <CardTitle className="text-base font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
+                                    <CardTitle className="text-[15px] font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
                                         {currentQuestion.question_text}
                                     </CardTitle>
                                 </CardHeader>
 
                                 {/* Answers Area */}
-                                <CardContent className="flex-1 overflow-y-auto px-4 py-1 md:px-6 custom-scrollbar">
-                                    <div className="max-w-5xl mx-auto h-full flex flex-col gap-2">
+                                <CardContent className="flex-1 overflow-y-auto px-4 py-0 md:px-6 custom-scrollbar">
+                                    <div className="max-w-3xl mx-auto h-full flex flex-col gap-1.5 pt-2">
                                         {renderAnswers()}
                                     </div>
                                 </CardContent>
 
                                 {/* Persistent Footer */}
-                                <CardFooter className="flex-none border-t border-slate-100/50 bg-white/40 px-4 py-2 md:px-6 backdrop-blur-md">
+                                <CardFooter className="flex-none border-t border-slate-100/50 bg-white/40 px-4 py-1.5 md:px-6 backdrop-blur-md">
                                     <div className="flex justify-between w-full items-center">
                                         <div className="flex gap-4">
                                             <Button

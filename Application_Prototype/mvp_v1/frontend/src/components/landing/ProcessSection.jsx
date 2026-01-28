@@ -26,9 +26,9 @@ export function ProcessSection() {
 
     return (
         <section id="how-it-works" className="py-10 px-6 bg-white">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-[66rem] mx-auto">
                 <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">The Process</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The Process</h2>
                     <p className="text-xl text-gray-600">Three simple steps to your AI roadmap</p>
                 </div>
 

@@ -11,7 +11,7 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="h-[190px]"
+            className="h-[175px]"
             style={{ perspective: '1000px' }}
         >
             <motion.div
@@ -23,7 +23,7 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
             >
                 {/* Front */}
                 <div
-                    className="absolute inset-0 bg-white rounded-xl shadow-lg border border-gray-200 p-3 flex flex-col items-center justify-center text-center h-full overflow-hidden"
+                    className="absolute inset-0 bg-white rounded-xl shadow-lg border border-gray-200 p-2 flex flex-col items-center justify-center text-center h-full overflow-hidden"
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                 >
                     <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-2 rounded-full mb-2">
@@ -38,7 +38,7 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
 
                 {/* Back */}
                 <div
-                    className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl shadow-lg border border-transparent p-3 text-white flex flex-col justify-center overflow-hidden"
+                    className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl shadow-lg border border-transparent p-2 text-white flex flex-col justify-center overflow-hidden"
                     style={{
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',

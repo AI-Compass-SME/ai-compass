@@ -23,36 +23,33 @@ The ML v5 system is a comprehensive machine learning pipeline that powers the AI
 
 ## System Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        ML v5 System                              │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │   Cluster    │  │  Strategic   │  │   Roadmap    │          │
-│  │   Engine     │  │     Gap      │  │  Generator   │          │
-│  │              │  │   Analyzer   │  │              │          │
-│  │  (KMeans)    │  │ (Rule-based) │  │    (KNN)     │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-│         │                  │                  │                 │
-│         └──────────────────┴──────────────────┘                 │
-│                            │                                    │
-│                   ┌────────▼────────┐                          │
-│                   │  Inference      │                          │
-│                   │  Engine         │                          │
-│                   └────────┬────────┘                          │
-│                            │                                    │
-└────────────────────────────┼────────────────────────────────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   FastAPI       │
-                    │   Backend       │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   React         │
-                    │   Frontend      │
-                    └─────────────────┘
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                       ML v5 System                          │
+│                                                             │
+│  ┌────────────────┐   ┌─────────────────┐   ┌─────────────┐ │
+│  │ Cluster Engine │   │  Strategic Gap  │   │ Roadmap Gen │ │
+│  │    (K-Means)   │   │ Analyzer (Rule) │   │    (KNN)    │ │
+│  └───────┬────────┘   └────────┬────────┘   └──────┬──────┘ │
+│          │                     │                   │        │
+│          └─────────────────────┼───────────────────┘        │
+│                                │                            │
+│                                ▼                            │
+│                     ┌──────────────────┐                    │
+│                     │ Inference Engine │                    │
+│                     └────────┬─────────┘                    │
+│                              │                              │
+└──────────────────────────────┼──────────────────────────────┘
+                               │
+                               ▼
+                     ┌───────────────────┐
+                     │  FastAPI Backend  │
+                     └─────────┬─────────┘
+                               │
+                               ▼
+                     ┌───────────────────┐
+                     │   React Frontend  │
+                     └───────────────────┘
 ```
 
 ---
@@ -391,9 +388,9 @@ results = engine.run_analysis(
 
 ### End-to-End User Journey
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
-│                    USER INTERACTION                              │
+│                    USER INTERACTION                             │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -423,53 +420,53 @@ results = engine.run_analysis(
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Step 4: ML Inference (Backend - InferenceEngine)               │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.1 Cluster Prediction (ClusterEngine)                 │    │
-│  │     - Load v5_scaler.pkl, v5_kmeans.pkl                  │    │
-│  │     - Scale dimension scores                           │    │
-│  │     - Predict cluster (1-5)                            │    │
-│  │     - Output: Cluster ID, Name, Coordinates            │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                              │                                   │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.2 Percentile Calculation (ClusterEngine)             │    │
-│  │     - Load v5_industry_data.pkl                        │    │
-│  │     - Compare total_maturity to industry peers         │    │
-│  │     - Output: Percentile rank (e.g., "Top 35%")        │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                              │                                   │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.3 Peer Benchmark (RoadmapGenerator)                  │    │
-│  │     - Load v5_scaler.pkl, v5_roadmap_gen.pkl           │    │
-│  │     - Find 15 nearest neighbors (global)               │    │
-│  │     - Average their dimension scores                   │    │
-│  │     - Output: Peer benchmark scores                    │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                              │                                   │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.4 Strategic Gap Analysis (StrategicGapAnalyzer)      │    │
-│  │     - Detect structural imbalances (variance > 1.0)    │    │
-│  │     - Identify critical gaps (score < 2.5)             │    │
-│  │     - Calculate impact scores                          │    │
-│  │     - Output: Top 2 findings with context              │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                              │                                   │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.5 Executive Briefing (StrategicGapAnalyzer)          │    │
-│  │     - Synthesize narrative from findings               │    │
-│  │     - Template-based text generation                   │    │
-│  │     - Output: Markdown-formatted briefing              │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                              │                                   │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ 4.6 Roadmap Generation (RoadmapGenerator)              │    │
-│  │     - Phase 1: Address strategic gaps (0-3 months)     │    │
-│  │     - Phase 2: Growth opportunities (3-9 months)       │    │
-│  │     - Phase 3: Advanced capabilities (9+ months)       │    │
-│  │     - Output: 3-phase roadmap with actions             │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.1 Cluster Prediction (ClusterEngine)                    │  │
+│  │     - Load v5_scaler.pkl, v5_kmeans.pkl                   │  │
+│  │     - Scale dimension scores                              │  │
+│  │     - Predict cluster (1-5)                               │  │
+│  │     - Output: Cluster ID, Name, Coordinates               │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.2 Percentile Calculation (ClusterEngine)                │  │
+│  │     - Load v5_industry_data.pkl                           │  │
+│  │     - Compare total_maturity to industry peers            │  │
+│  │     - Output: Percentile rank (e.g., "Top 35%")           │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.3 Peer Benchmark (RoadmapGenerator)                     │  │
+│  │     - Load v5_scaler.pkl, v5_roadmap_gen.pkl              │  │
+│  │     - Find 15 nearest neighbors (global)                  │  │
+│  │     - Average their dimension scores                      │  │
+│  │     - Output: Peer benchmark scores                       │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.4 Strategic Gap Analysis (StrategicGapAnalyzer)         │  │
+│  │     - Detect structural imbalances (variance > 1.0)       │  │
+│  │     - Identify critical gaps (score < 2.5)                │  │
+│  │     - Calculate impact scores                             │  │
+│  │     - Output: Top 2 findings with context                 │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.5 Executive Briefing (StrategicGapAnalyzer)             │  │
+│  │     - Synthesize narrative from findings                  │  │
+│  │     - Template-based text generation                      │  │
+│  │     - Output: Markdown-formatted briefing                 │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ 4.6 Roadmap Generation (RoadmapGenerator)                 │  │
+│  │     - Phase 1: Address strategic gaps (0-3 months)        │  │
+│  │     - Phase 2: Growth opportunities (3-9 months)          │  │
+│  │     - Phase 3: Advanced capabilities (9+ months)          │  │
+│  │     - Output: 3-phase roadmap with actions                │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -482,40 +479,40 @@ results = engine.run_analysis(
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Step 6: Results Display (Frontend)                             │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ ResultsHero.jsx                                        │    │
-│  │ - Display total_score, cluster_name                    │    │
-│  │ - Show percentile rank                                 │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ MaturityProfile.jsx (Radar Chart)                      │    │
-│  │ - Plot dimension_scores (user)                         │    │
-│  │ - Plot benchmark_scores (peers)                        │    │
-│  │ - Interactive visualization                            │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ ExecutiveBriefing.jsx                                  │    │
-│  │ - Render executive_briefing (markdown)                 │    │
-│  │ - Premium card design                                  │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ GapAnalysis.jsx                                        │    │
-│  │ - Display strategic_findings                           │    │
-│  │ - Show impact scores, context                          │    │
-│  │ - Priority badges                                      │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
-│  ┌────────────────────────────────────────────────────────┐    │
-│  │ Roadmap.jsx                                            │    │
-│  │ - Display phase_1, phase_2, phase_3                    │    │
-│  │ - Expandable action items                              │    │
-│  │ - Timeline visualization                               │    │
-│  └────────────────────────────────────────────────────────┘    │
-│                                                                  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ ResultsHero.jsx                                           │  │
+│  │ - Display total_score, cluster_name                       │  │
+│  │ - Show percentile rank                                    │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ MaturityProfile.jsx (Radar Chart)                         │  │
+│  │ - Plot dimension_scores (user)                            │  │
+│  │ - Plot benchmark_scores (peers)                           │  │
+│  │ - Interactive visualization                               │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ ExecutiveBriefing.jsx                                     │  │
+│  │ - Render executive_briefing (markdown)                    │  │
+│  │ - Premium card design                                     │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ GapAnalysis.jsx                                           │  │
+│  │ - Display strategic_findings                              │  │
+│  │ - Show impact scores, context                             │  │
+│  │ - Priority badges                                         │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │ Roadmap.jsx                                               │  │
+│  │ - Display phase_1, phase_2, phase_3                       │  │
+│  │ - Expandable action items                                 │  │
+│  │ - Timeline visualization                                  │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
