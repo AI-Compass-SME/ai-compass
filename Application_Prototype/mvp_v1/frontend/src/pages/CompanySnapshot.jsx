@@ -58,6 +58,11 @@ export default function CompanySnapshot() {
         prefetchData();
     }, []);
 
+    // Set page title
+    useEffect(() => {
+        document.title = "AI Compass: Company Profile";
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);

@@ -37,6 +37,11 @@ export default function ResultsPage() {
         fetchResults();
     }, [responseId]);
 
+    // Set page title
+    useEffect(() => {
+        document.title = "AI Compass: Executive Results";
+    }, []);
+
     if (loading) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
