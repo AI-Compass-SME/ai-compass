@@ -98,7 +98,7 @@ Each dimension maps to **Level 1–5** with clear criteria. These level definiti
 
 ## Architecture (MVP)
 
-**UI:** Streamlit (desktop-first, mobile-compatible)  
+**UI:** React 18 + Vite (Responsive, Component-based)  
 **API:** FastAPI (clean separation)  
 **DB:** PostgreSQL (users, companies, assessments, history, reports)  
 **Vector DB:** ChromaDB (RAG knowledge base, framework text blocks)  

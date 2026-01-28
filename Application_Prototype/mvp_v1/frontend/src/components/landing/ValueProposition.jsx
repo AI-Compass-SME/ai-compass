@@ -43,18 +43,18 @@ export function ValueProposition() {
     ];
 
     return (
-        <section id="benefits" className="py-10 px-6 bg-gray-50">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <section id="benefits" className="py-8 px-4 bg-gray-50">
+            <div className="max-w-[66rem] mx-auto">
+                <div className="text-center mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                         The Value Proposition
                     </h2>
-                    <p className="text-base text-gray-600 max-w-4xl mx-auto">
+                    <p className="text-sm text-gray-600 max-w-4xl mx-auto">
                         AI is not a tool you buy; it is a capability you build. The AI Compass is a professional consulting tool designed to provide the diagnostic clarity needed to ensure your investment leads to growth, not just expense.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
                     {cards.map((card, index) => (
                         <FlipCard
                             key={index}
