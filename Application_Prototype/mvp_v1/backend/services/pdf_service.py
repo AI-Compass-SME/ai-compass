@@ -260,13 +260,16 @@ class PDFService:
             [Paragraph("/ 5.0", ParagraphStyle('tiny', parent=style_score_label, fontSize=10))],
         ]
         
+        # Clean cluster name
+        clean_cluster_name = re.sub(r'^\d+\s*[-:]\s*', '', cluster_name)
+        
         right_metrics_block = [
             [Paragraph("INDUSTRY BENCHMARK", style_score_label)],
             [Paragraph(f"Top <b>{percentile_rank}%</b>", style_score_sub)],
             [Paragraph(f"vs {peer_group} Peers", ParagraphStyle('tiny', parent=style_score_label, textTransform='none'))],
             [Spacer(1, 15)],
             [Paragraph("CLUSTER PROFILE", style_score_label)],
-            [Paragraph(f"<b>{re.sub(r'^\d+\s*[-:]\s*', '', cluster_name)}</b>", style_score_sub)],
+            [Paragraph(f"<b>{clean_cluster_name}</b>", style_score_sub)],
         ]
         
         t_left = Table(left_score_block, colWidths=[6*cm])
