@@ -90,3 +90,14 @@ dimensions_table_output.txt
 # VS Code Workspace
 # -------------------------
 ai-compass.code-workspace
+Application_Prototype/mvp_v1/setup.sh
+Application_Prototype/mvp_v1/start.sh
+Application_Prototype/mvp_v1/stop.sh
+Application_Prototype/mvp_v1/backend/services/pdf_service.py
+benchmarking_ai/ml_v5/model_artifacts/v5_gap_analyzer.pkl
+benchmarking_ai/ml_v5/model_artifacts/v5_industry_data.pkl
+benchmarking_ai/ml_v5/model_artifacts/v5_kmeans.pkl
+benchmarking_ai/ml_v5/model_artifacts/v5_labels.json
+benchmarking_ai/ml_v5/model_artifacts/v5_pca.pkl
+benchmarking_ai/ml_v5/model_artifacts/v5_roadmap_gen.pkl
+benchmarking_ai/ml_v5/model_artifacts/v5_scaler.pkl
