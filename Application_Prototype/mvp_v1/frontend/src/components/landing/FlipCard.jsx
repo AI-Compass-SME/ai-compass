@@ -26,10 +26,10 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
                     className="absolute inset-0 bg-white rounded-xl shadow-lg border border-gray-200 p-2 flex flex-col items-center justify-center text-center h-full overflow-hidden"
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                 >
-                    <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-2 rounded-full mb-2">
-                        <Icon className="w-4 h-4 text-blue-600" />
+                    <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-3 rounded-full mb-3">
+                        <Icon className="w-6 h-6 text-blue-600" />
                     </div>
-                    <h3 className="text-xs font-semibold text-gray-900 leading-tight px-1">{title}</h3>
+                    <h3 className="text-sm font-bold text-gray-900 leading-tight px-2">{title}</h3>
 
                     <div className="absolute bottom-2 right-2 text-gray-400 group-hover:text-blue-500 transition-colors">
                         <CornerDownRight className="w-3 h-3" />

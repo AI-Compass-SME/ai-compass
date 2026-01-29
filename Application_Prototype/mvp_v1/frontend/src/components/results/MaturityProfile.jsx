@@ -27,7 +27,7 @@ export function MaturityProfile({ data }) {
     return (
         <section className="space-y-4">
             <div className="space-y-1">
-                <h2 className="text-3xl font-bold tracking-tight text-primary">The Multi-Dimensional Maturity Profile</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-black">The Multi-Dimensional Maturity Profile</h2>
                 <p className="text-muted-foreground text-lg">A high-fidelity visualization comparing your organizational performance across 7 core dimensions.</p>
             </div>
 
@@ -53,14 +53,6 @@ export function MaturityProfile({ data }) {
                                     axisLine={false}
                                 />
                                 <Radar
-                                    name="Your Company"
-                                    dataKey="A"
-                                    stroke="#4f46e5" // Indigo-600
-                                    strokeWidth={3}
-                                    fill="#6366f1" // Indigo-500
-                                    fillOpacity={0.3}
-                                />
-                                <Radar
                                     name="Industry Benchmark"
                                     dataKey="B"
                                     stroke="#f97316" // Orange-500
@@ -69,9 +61,18 @@ export function MaturityProfile({ data }) {
                                     fill="#fb923c" // Orange-400
                                     fillOpacity={0.15}
                                 />
+                                <Radar
+                                    name="Your Company"
+                                    dataKey="A"
+                                    stroke="#4f46e5" // Indigo-600
+                                    strokeWidth={3}
+                                    fill="#6366f1" // Indigo-500
+                                    fillOpacity={0.3}
+                                />
                                 <Tooltip
                                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
                                     itemStyle={{ fontWeight: 600 }}
+                                    itemSorter={(item) => item.name === 'Your Company' ? -1 : 1}
                                 />
                             </RadarChart>
                         </ResponsiveContainer>

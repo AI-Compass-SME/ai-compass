@@ -52,7 +52,7 @@ export function GapAnalysis({ data }) {
         <section className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tight text-primary">Strategic Gap Analysis</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-black">Strategic Gap Analysis</h2>
                     <p className="text-muted-foreground text-lg">A concise synthesis of your strategic position and high-priority risks.</p>
                 </div>
             </div>

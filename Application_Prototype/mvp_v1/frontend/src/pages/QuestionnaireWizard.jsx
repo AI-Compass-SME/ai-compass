@@ -526,7 +526,20 @@ export default function QuestionnaireWizard() {
                                     </div>
 
                                     <CardTitle className="text-[15px] font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
-                                        {currentQuestion.question_text}
+                                        {(() => {
+                                            const text = currentQuestion.question_text;
+                                            const parts = text.split('(Select all that apply)');
+                                            if (parts.length > 1) {
+                                                return (
+                                                    <>
+                                                        {parts[0]}
+                                                        <span className="font-normal text-slate-500">(Select all that apply)</span>
+                                                        {parts[1]}
+                                                    </>
+                                                );
+                                            }
+                                            return text;
+                                        })()}
                                     </CardTitle>
                                 </CardHeader>
 

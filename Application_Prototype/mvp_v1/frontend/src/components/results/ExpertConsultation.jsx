@@ -38,7 +38,7 @@ export function ExpertConsultation() {
                             </h3>
 
                             <p className="text-base text-slate-300 leading-relaxed max-w-xl">
-                                "Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'."
+                                Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'.
                             </p>
 
                             <div className="space-y-2 pt-1">

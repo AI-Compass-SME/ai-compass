@@ -32,7 +32,7 @@ export function OutcomePreview() {
         },
         {
             icon: Zap,
-            title: 'Next Steps',
+            title: 'Roadmap',
             description: 'Immediate \'Low-Hanging Fruit\' vs. Long-term strategic shifts.',
         },
     ];

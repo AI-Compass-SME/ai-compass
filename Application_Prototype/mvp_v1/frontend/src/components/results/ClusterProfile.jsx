@@ -46,9 +46,11 @@ export function ClusterProfile({ data }) {
         <section className="space-y-8 relative">
             <div className="absolute inset-0 bg-slate-50/50 -skew-y-1 transform rounded-3xl -z-10" />
             <div className="space-y-4 text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Your Cluster Profile: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{activeClusterName}</span></h2>
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                    <span className="font-normal text-slate-600">Your Cluster Profile:</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{activeClusterName}</span>
+                </h2>
                 <p className="text-slate-600 text-lg leading-relaxed">
-                    A data-driven synthesis of your company's AI maturity level relative to industry patterns.
+                    A data-driven synthesis of your company's AI maturity level.
                 </p>
             </div>
 

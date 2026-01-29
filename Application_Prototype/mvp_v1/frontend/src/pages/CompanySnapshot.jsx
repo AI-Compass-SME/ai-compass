@@ -113,7 +113,9 @@ export default function CompanySnapshot() {
                     <form onSubmit={handleSubmit} className="space-y-3">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div className="space-y-1.5 md:col-span-2">
-                                <Label htmlFor="company_name" className="text-slate-700 font-medium text-xs uppercase tracking-wide">Company Name</Label>
+                                <Label htmlFor="company_name" className="text-slate-700 font-medium text-xs uppercase tracking-wide">
+                                    Company Name <span className="text-red-500">*</span>
+                                </Label>
                                 <div className="relative group">
                                     <Building2 className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
                                     <Input
@@ -129,7 +131,9 @@ export default function CompanySnapshot() {
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="industry" className="text-slate-700 font-medium text-xs uppercase tracking-wide">Industry</Label>
+                                <Label htmlFor="industry" className="text-slate-700 font-medium text-xs uppercase tracking-wide">
+                                    Industry <span className="text-red-500">*</span>
+                                </Label>
                                 <Select
                                     name="industry"
                                     value={formData.industry}
@@ -150,7 +154,9 @@ export default function CompanySnapshot() {
                             </div>
 
                             <div className="space-y-1.5">
-                                <Label htmlFor="number_of_employees" className="text-slate-700 font-medium text-xs uppercase tracking-wide">Employees</Label>
+                                <Label htmlFor="number_of_employees" className="text-slate-700 font-medium text-xs uppercase tracking-wide">
+                                    Employees <span className="text-red-500">*</span>
+                                </Label>
                                 <div className="relative group">
                                     <Users className="absolute left-3 top-2.5 h-4 w-4 z-10 text-slate-400 pointer-events-none group-focus-within:text-indigo-600 transition-colors" />
                                     <Select
@@ -220,6 +226,7 @@ export default function CompanySnapshot() {
                             </div>
                         </div>
 
+                        <p className="text-xs text-slate-400 text-center">* fields are required</p>
                         <Button
                             type="submit"
                             size="lg"

@@ -23,7 +23,7 @@ export function ResultsHero({ data }) {
                     AI Compass: Executive Results Report
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                    Welcome to your AI Evolution Blueprint—a data-driven synthesis of your organizational maturity, competitive standing, and the strategic path forward to scaling measurable AI value.
+                    This is your strategic Blueprint — a verified baseline of where you stand today.our organizational maturity, competitive standing, and the strategic path forward to scaling measurable AI value.
                 </p>
             </div>
 
