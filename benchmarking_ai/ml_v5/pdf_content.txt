@@ -1,0 +1,6 @@
+--- Processing aipm_credential_2026_neuefische.pdf ---
+Error reading D:\Hamza\Family\Hamza\Certifications\aipm_credential_2026_neuefische.pdf: cryptography>=3.1 is required for AES algorithm
+------------------------------------------------
+--- Processing AIPM_Graduation_Event.pdf ---
+Error reading D:\Hamza\Family\Hamza\Certifications\AIPM_Graduation_Event.pdf: 'charmap' codec can't encode character '\u25cf' in position 32: character maps to <undefined>
+------------------------------------------------

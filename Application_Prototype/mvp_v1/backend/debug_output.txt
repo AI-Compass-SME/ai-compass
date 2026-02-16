@@ -1,20 +1,6 @@
-Loading data from: D:\SpicedProjects\Projects\ai-compass\benchmarking_ai\ml_v5\model_artifacts\v5_industry_data.pkl
-
---- Stats ---
-Industries: ['Construction', 'Technology', 'Hospitality', 'Healthcare', 'Manufacturing', 'Finance', 'Logistics', 'Retail']
-Industry Counts:
-industry
-Manufacturing    83
-Retail           76
-Construction     75
-Healthcare       75
-Finance          73
-Logistics        62
-Hospitality      54
-Technology        1
-Name: count, dtype: int64
-Min: 1.9134554803937747
-Max: 5.574750765831557
-Mean: 2.942953162559039
-Count: 499
-Sample Values: [2.767887744186029, 5.574750765831557, 2.505977920836067, 2.612863477330195, 2.7410341999198624]
+Connecting to database: sqlite:///./sql_app.db
+Listing last 5 responses in DB:
+ - ID: 2, CompanyID: 2, Created: 2026-02-12 22:57:09.180427
+ - ID: 1, CompanyID: 1, Created: 2026-02-12 22:49:03.668670
+Checking Response 503...
+Response 503 NOT FOUND in database.

@@ -1,0 +1,285 @@
+--- Processing aipm_credential_2026_neuefische.pdf ---
+Certificate 
+We hereby confirm that 
+Muhammad Hamza Latif 
+has completed the intensive program 
+AI Project Manager 
+with 810 hours of programming practice (corresponds to 1080 lessons) successfully. 
+The course has been delivered remotely. 
+Participation from 15.9.2025 until 30.01.2026 
+Certified by 
+Filip Vukovic 
+Program Manager 
+Petra Kischkewitz Anastasia Mikheeva 
+Lead Coach Managing Director 
+
+Certified by:
+Curriculum AI Project Management
+In 720 lessons the students have learned, discussed and practiced the following content in several 
+tasks and projects:
+Programming & Database
+Python
+○ pandas
+○ scikit-learn
+○ TensorFlow/Keras
+Visualization
+○ Matplotlib
+○ Seaborn
+○ SQL
+○ Unix
+○ Git
+○ GitHub
+Exploratory Data Analysis
+EDA
+○ Data Analysis & Statistics
+○ Distributional Analysis
+○ General Statistics
+○ Data Visualization
+○ Distribution Plots
+○ Relationship Plots
+○ Geo Visualizations
+Data Science Portfolio
+Projects
+○ EDA Project
+○ Predictive Modeling Project
+○ Final Project / Capstone 4 
+weeks)
+Machine Learning Algorithms
+Supervised Learning
+○ Linear Regression
+○ Logistic Regression
+○ KNN
+○ Decision Trees
+○ Random Forest
+○ Ensemble Methods
+Deep Learning
+○ Artificial Neural Networks
+○ Convolutional Neural Networks
+Natural language processing
+○ Bag of words
+○ Word embeddings
+Large language models
+○ Prompt Engineering
+○ Retrieval augmented 
+generation
+○ AI Agents
+Evaluation & Performance
+Metrics
+○ Confusion Matrix
+○ Regression and 
+Classification Metrics
+○ Error Analysis
+○ Model Tuning
+○ Bias-Variance Tradeoff
+○ Regularization
+○ Cross-Validation
+Optimization
+○ Gradient Descent
+○ Loss and Cost Functions
+APIs & Web Scraping
+Streamlit
+Machine Learning
+Engineering
+○ Sklearn Pipeline
+○ MLflow
+○ Docker and APIs
+○ Model Deployment and 
+Monitoring
+Statistics 
+○ A/B testing
+Project management○ AI PM Basics○ Agile Frameworks○ Tools Jira, Confluence)○ Rituals Meetings, Refinement)○ Artifacts DoR, DoD, Stories)○ Request for Proposal○ Feasibility study○ Data product scoping○ Product discovery○ User research○ Prototyping○ Roadmap creation○ Software architecture○ AI/ML architectureCollaborative Working &Social Learning○ Pair Coding○ Agile Workflow○ Daily Stand-Ups○ Retrospective○ Kanban Project Board○ Daily Class Review○ Team Work & Self-Organization Skills○ Career Coaching & MentoringCommunication withStakeholdersBusiness Presentation○ Non-TechnicalStakeholdersData Science LifecyclePresentation○ Technical StakeholdersStakeholder Review○ Compact & Time-Critical Project Alignment
+
+
+------------------------------------------------
+--- Processing AIPM_Graduation_Event.pdf ---
+AI PM graduation
+
+
+Schedule
+● Welcome and introduction by Sylvain - 15 mins
+● Presentations and Q&A  60 mins
+a. KlarText
+b. Career Scout Privacy-first)
+c. SafeChild Chat 
+● Break - 15 mins 
+● Presentations and Q&A  40 mins
+a. Rausgegangen Concierge 
+b. AI Compass 
+Code of Conduct
+We expect all participants to our events and community to abide to this code of conduct: 
+LadyNerds Code of Conduct (http://bit.ly/LadyNerds-CoC).
+We follow the LadyNerds Code of Conduct because we are dedicated to providing a safe, inclusive, 
+welcoming, and harassment-free space and experience for all members and guests, regardless of gender 
+identity and expression, sexual orientation, disability, physical appearance, socioeconomic status, body 
+size, ethnicity, nationality, level of experience, age, or religion (or lack thereof). 
+The Code of Conduct exists because of that dedication. We do not tolerate harassment in any form and we 
+prioritise marginalised peopleʼs safety over privileged peopleʼs comfort.
+
+Graduation Event AIPM
+15.09.2025  01.02.2026
+
+AI
+Bootcamp
+Team Work
+Transparency
+teams are more than the 
+sum of the individuals
+document and present 
+intermediate results often
+Problem formulation
+Influence
+formulate and structure 
+problems
+use data to tell clear and 
+compelling data stories
+Technical and 
+analytical ability
+Synthesis
+programming and scientific 
+skills for data wrangling &
+manipulate datasets and 
+extract value from data
+interpret results, simplify 
+and synthesize
+Core skills
+
+How it all started…
+Git, Unix, Terminal, 
+VSCode, Python
+Getting started
+
+How it all started…
+Git, Unix, Terminal, 
+VSCode, Python
+Pandas, Numpy, 
+Visualisations
+Getting started
+SQL and data 
+wrangling
+
+How it all started…
+Git, Unix, Terminal, 
+VSCode, Python
+Pandas, Numpy, 
+Visualisations
+Data Ethics, 
+EDA project
+Getting started
+SQL and data 
+wrangling
+EDA Project
+
+…and continued…
+Linear/Logistic Regression, 
+Bias-Variance Trade-Off, 
+Evaluation Metrics, 
+Gradient Descent
+Supervised 
+Learning Vol. 1
+
+…and continued…
+Linear/Logistic Regression, 
+Bias-Variance Trade-Off, 
+Evaluation Metrics, 
+Gradient Descent
+KNN, Decision Trees, 
+Ensemble Methods, 
+Pipelines
+Supervised 
+Learning Vol. 1
+Supervised 
+Learning Vol. 2
+
+…and continued…
+Linear/Logistic Regression, 
+Bias-Variance Trade-Off, 
+Evaluation Metrics, 
+Gradient Descent
+KNN, Decision Trees, 
+Ensemble Methods, 
+Pipelines Machine Learning 
+Project
+Supervised 
+Learning Vol. 1
+Supervised 
+Learning Vol. 2
+Machine Learning 
+Project
+
+…and continued…
+Artificial and convolutional 
+neural networks,CNN, NL
+Deep Learning
+
+Artificial and convolutional 
+neural networks,CNN, NL
+Deep Learning
+Bag of words, word 
+embeddings
+Natural language 
+Processing
+…and continued…
+Artificial and convolutional 
+neural networks,CNN, NL
+Deep Learning
+Bag of words, word 
+embeddings
+Natural language 
+Processing
+Prompt engineering, 
+retrieval augmented 
+generation, AI agents
+Large language 
+models
+…and continued…
+A/B Testing
+Statistics
+
+…and continued…
+A/B Testing
+Statistics
+Google Cloud
+Deployment
+…and continued…
+A/B Testing
+Statistics
+Google Cloud
+Deployment
+CV and Career 
+Sessions
+
+Project and product management
+● Artificial Intelligence Product Management Fundamentals
+● Agile Methodologies
+● Project Management Tools
+● Standard Operating Procedures Meetings, Refinement)
+● Project Deliverables Definition of Ready, Definition of Done, User Stories)
+● Request for Proposal Development
+● Data Product Scoping
+● Product Discovery Processes
+● User Research Methodologies
+● Prototyping Techniques
+● Roadmap Development
+● Software Architecture Principles
+● AI/Machine Learning Architecture
+4 Week Project
+Planning // Self-organization
+Product definition
+Autonomy // Ownership
+Problem Scoping
+Teamwork
+Data Engineering
+Capstone Phase
+skills
+
+ SafeChild 
+Chat
+Rausgegang
+en Concierge
+KlarText Career Scout 
+Privacy-first)
+Capstone Projects
+AI Compass
+Break until 1030
+
+------------------------------------------------

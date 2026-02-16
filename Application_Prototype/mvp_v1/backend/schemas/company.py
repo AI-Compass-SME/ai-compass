@@ -7,7 +7,7 @@ class CompanyBase(BaseModel):
     website: Optional[str] = None
     number_of_employees: str
     city: Optional[str] = None
-    email: Optional[str] = None
+    email: EmailStr
 
 class CompanyCreate(CompanyBase):
     pass

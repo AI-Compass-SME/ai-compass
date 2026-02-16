@@ -1,0 +1,14 @@
+Connecting to database: postgresql://postgres:***@db.vxlbohrtynivparbdahm.supabase.co:5432/postgres
+Listing last 5 responses in DB:
+ - ID: 1004, CompanyID: 1517, Created: 2026-02-11 10:44:20.141916
+ - ID: 1002, CompanyID: 1002, Created: 2026-01-29 16:17:59.711545
+ - ID: 1001, CompanyID: 1001, Created: 2026-01-29 16:17:32.63691
+ - ID: 526, CompanyID: 1515, Created: 2026-01-29 11:14:41.779139
+ - ID: 525, CompanyID: 1514, Created: 2026-01-29 09:18:13.417057
+Checking Response 503...
+Response Found: ID=503, CompanyID=1492
+Company: Hamza Corp (ID: 1492)
+Response Items (Answers): 33
+Attempting to calculate score...
+Score Calculation: SUCCESS
+{'total_score': 2.25, 'dimension_scores': [{'dimension_id': 1, 'dimension_name': 'Strategy & Leadership', 'score': 2.02, 'max_score': 5.0}, {'dimension_id': 2, 'dimension_name': 'Use Cases & Value', 'score': 2.45, 'max_score': 5.0}, {'dimension_id': 3, 'dimension_name': 'Data & Infrastructure', 'score': 2.84, 'max_score': 5.0}, {'dimension_id': 4, 'dimension_name': 'Talent & Culture', 'score': 2.6, 'max_score': 5.0}, {'dimension_id': 5, 'dimension_name': 'Governance & Ethics', 'score': 2.2, 'max_score': 5.0}, {'dimension_id': 6, 'dimension_name': 'Technology & Tools', 'score': 2.02, 'max_score': 5.0}, {'dimension_id': 7, 'dimension_name': 'Partnerships & Ecosystem', 'score': 2.89, 'max_score': 5.0}, {'dimension_id': 8, 'dimension_name': 'Execution & Scale', 'score': 1.0, 'max_score': 5.0}]}

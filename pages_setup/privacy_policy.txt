@@ -1,0 +1,54 @@
+Privacy Policy
+1. General Information and Mandatory Information
+The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.
+Responsible Party (Controller)
+The responsible party for data processing on this website is:
+Christian Miething Görschstrasse 10A
+13187 Berlin, Germany
+Email: [Your Email Address]
+The responsible party is the natural or legal person who alone or jointly with others decides on the purposes and means of processing personal data (e.g., names, email addresses, etc.).
+2. Data Collection on This Website
+Server Log Files
+The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:
+Browser type and browser version
+Operating system used
+Referrer URL
+Host name of the accessing computer
+Time of the server request
+IP address
+This data is not merged with other data sources. The basis for data processing is Art. 6 Para. 1 lit. f GDPR, which permits the processing of data for the legitimate interest of the technically error-free presentation and optimization of the website.
+Hosting
+We host the content of our website with the following provider: [Insert Name of Hoster, e.g., Hostinger / Hetzner / AWS]
+Data Processing Agreement (AVV): We have concluded a data processing agreement with the above-mentioned provider. This is a contract required by data protection law, which ensures that they process the personal data of our website visitors only in accordance with our instructions and in compliance with the GDPR.
+3. The AI Compass Assessment & Lead Generation
+Processing of Input Data
+When you use the AI Compass, we collect the scores you provide across 7 dimensions (e.g., Strategy, Data Readiness, Tech Infrastructure).
+Purpose: To calculate your AI maturity level and generate a personalized roadmap.
+Legal Basis: The processing is based on your consent (Art. 6 Para. 1 lit. a GDPR) or for the performance of a contract-like relationship (Art. 6 Para. 1 lit. b GDPR).
+Automated Data Processing (Machine Learning)
+Our system uses automated algorithms to process your inputs:
+Clustering: We use a K-Means Clustering algorithm to assign your company to one of five maturity levels.
+Benchmarking: We use a k-Nearest Neighbors (k-NN) algorithm to compare your data against a global dataset to identify strategic gaps.
+Logic: Results are generated based on mathematical proximity to peer groups and predefined rule-based heuristics.
+Note: This processing does not constitute "automated decision-making" with legal effects according to Art. 22 GDPR; the output is purely advisory and intended for orientation.
+Lead Data (Contact Form)
+If you choose to receive your full report via email or request a follow-up, we store:
+Name / Company Name
+Industry and Number of Employees (for benchmarking purposes)
+Email Address
+This data is used solely to send the report or to contact you for potential consulting purposes.
+4. Email Delivery (Brevo)
+For the delivery of our reports, we use Brevo (Brevo GmbH, Köpenicker Straße 126, 10179 Berlin). Data (Email address, Name) is transferred to Brevo for the sole purpose of sending the requested report. We have concluded a Data Processing Agreement with Brevo.
+5. Data Security and Technical Measures
+To protect your data against accidental or intentional manipulation, loss, or unauthorized access, we use state-of-the-art technical and organizational measures:
+Encryption in Transit: Communication is protected by TLS 1.2/1.3 encryption (HTTPS).
+Encryption at Rest: All personal data and assessment results stored in our database are encrypted at rest using industry-standard encryption protocols (AES-256).
+Data Minimization: We only collect data points required for the ML model's logic.
+6. Storage Duration and Your Rights
+We store your data only as long as necessary for the purposes for which it was collected or to comply with legal retention periods. Lead data provided via consent will be stored until you revoke your consent.
+You have the following rights at any time, free of charge:
+Right to access (Art. 15 GDPR): Request information about your stored data.
+Right to rectification (Art. 16 GDPR): Request the correction of incorrect data.
+Right to erasure (Art. 17 GDPR): Request the deletion of your data.
+Right to withdraw consent (Art. 7 Para. 3 GDPR): You can cancel your consent for future processing at any time.
+To exercise these rights, please contact us via the email address provided in the "Responsible Party" section.

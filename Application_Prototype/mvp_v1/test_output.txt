@@ -1,0 +1,85 @@
+Traceback (most recent call last):
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 711, in wrap
+    W,H = _listWrapOn(self._content,aW,self.canv,dims=dims)
+          ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 637, in _listWrapOn
+    w,h = f.wrapOn(canv,availWidth,0xfffffff)
+          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 123, in wrapOn
+    w, h = self.wrap(aW,aH)
+           ~~~~~~~~~^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 1354, in wrap
+    self._calc(availWidth, availHeight)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 740, in _calc
+    self._calc_height(availHeight,availWidth,W=W)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 664, in _calc_height
+    dW,t = self._listCellGeom(v,w or self._listValueWidth(v),s)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 490, in _listCellGeom
+    raise ValueError(f'{self.identity()}: flowable given negative availWidth={aW} == width={w} - leftPadding={s.leftPadding} - rightPadding={s.rightPadding}')
+                        ~~~~~~~~~~~~~^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 440, in identity
+    tallest = '(tallest row %d)' % int(max(rh))
+                                   ~~~^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SpicedProjects\Projects\ai-compass\Application_Prototype\mvp_v1\test_pdf.py", line 29, in <module>
+    pdf_bytes = service.generate_pdf(mock_data)
+  File "D:\SpicedProjects\Projects\ai-compass\Application_Prototype\mvp_v1\backend\services\pdf_service.py", line 466, in generate_pdf
+    doc.build(story)
+    ~~~~~~~~~^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\doctemplate.py", line 1322, in build
+    BaseDocTemplate.build(self,flowables, canvasmaker=canvasmaker)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\doctemplate.py", line 1083, in build
+    self.handle_flowable(flowables)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\doctemplate.py", line 932, in handle_flowable
+    if frame.add(f, canv, trySplit=self.allowSplitting):
+       ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\frames.py", line 158, in _add
+    w, h = flowable.wrap(aW, h)
+           ~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 713, in wrap
+    annotateException('\nraised by class %s(%s)@0x%8.8x wrap\n' % (self.__class__.__name__,self.__class__.__module__,id(self)))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\lib\utils.py", line 1178, in annotateException
+    rl_reraise(t,t(sep.join((_ for _ in (msg,str(v),postMsg) if _))),b)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\lib\utils.py", line 138, in rl_reraise
+    raise v.with_traceback(b)
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 711, in wrap
+    W,H = _listWrapOn(self._content,aW,self.canv,dims=dims)
+          ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 637, in _listWrapOn
+    w,h = f.wrapOn(canv,availWidth,0xfffffff)
+          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\flowables.py", line 123, in wrapOn
+    w, h = self.wrap(aW,aH)
+           ~~~~~~~~~^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 1354, in wrap
+    self._calc(availWidth, availHeight)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 740, in _calc
+    self._calc_height(availHeight,availWidth,W=W)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 664, in _calc_height
+    dW,t = self._listCellGeom(v,w or self._listValueWidth(v),s)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 490, in _listCellGeom
+    raise ValueError(f'{self.identity()}: flowable given negative availWidth={aW} == width={w} - leftPadding={s.leftPadding} - rightPadding={s.rightPadding}')
+                        ~~~~~~~~~~~~~^^
+  File "C:\Users\Hamza Latif\AppData\Local\Programs\Python\Python313\Lib\site-packages\reportlab\platypus\tables.py", line 440, in identity
+    tallest = '(tallest row %d)' % int(max(rh))
+                                   ~~~^^^^^^^^^
+TypeError: 
+raised by class KeepTogether(reportlab.platypus.flowables)@0x283b7269450 wrap
+ int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+Initializing PDF Service...
+Generating PDF...
+ERROR:

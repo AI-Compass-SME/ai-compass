@@ -1,0 +1,18 @@
+Footer disclaimer
+To comply with the EU AI Act and protect yourself from liability, your footer needs to be clear and professional. Since this is a "Lead Magnet" for a consultancy, the disclaimer should sound authoritative but also act as a legal safety net.
+Here is how to set up the footer in your React (Vite) project, including the specific wording you requested.
+1. The Footer Component (React/Tailwind)
+This structure ensures that the AI transparency notice is visible but doesn't distract from the main design.
+
+const Footer = () => {    return (
+);  };
+export default Footer;
+
+2. Why this specific setup?
+The "Methodology" Section: By naming the algorithm (K-Means Clustering), you fulfill the "Explainability" expectations of the EU AI Act. It shows the user that this isn't "magic," but math.
+The "No Relationship" Clause: In consulting, it’s vital to state that using a free tool doesn't make someone your client yet. This protects you if they make a bad business decision based on the chart.
+The "Human Expert" Hook: By saying "A human expert review is required," you are subtly reminding the user that the AI is only step one—and you are step two.
+3. Extra Tip: The "AI-Assisted" Label
+Under the EU AI Act, systems that generate content or provide assessments should ideally have a small visual indicator.
+I suggest placing a small badge or text string right next to your Radar Chart or on the Results PDF:
+🤖 AI-Generated Report | Powered by AI Compass ML Engine

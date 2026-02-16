@@ -47,8 +47,8 @@ export default function ResultsPage() {
             <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
                 <PageBackground />
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mb-4 z-10"></div>
-                <h2 className="text-xl font-semibold text-slate-800 z-10">Generating AI Analysis...</h2>
-                <p className="text-slate-600 z-10">Comparing your data with industry benchmarks</p>
+                <h2 className="text-xl font-semibold text-slate-800 z-10">Finalizing your strategic AI roadmap...</h2>
+                <p className="text-slate-600 z-10">Verifying your industry benchmarks</p>
             </div>
         );
     }
@@ -77,7 +77,7 @@ export default function ResultsPage() {
             <PageBackground />
             <Navigation />
 
-            <main className="flex-grow w-full max-w-[66rem] mx-auto px-4 sm:px-6 pt-24 pb-12 space-y-8 md:space-y-12 z-10 relative">
+            <main className="flex-grow w-full max-w-[80rem] mx-auto px-4 sm:px-6 pt-24 pb-12 space-y-8 md:space-y-12 z-10 relative">
                 <ResultsHero data={data} responseId={responseId} />
                 <ClusterProfile data={data} />
                 <MaturityProfile data={data} />
@@ -87,6 +87,8 @@ export default function ResultsPage() {
                     <ExpertConsultation />
                     <DownloadCTA responseId={responseId} />
                 </div>
+
+
             </main>
 
             <Footer />

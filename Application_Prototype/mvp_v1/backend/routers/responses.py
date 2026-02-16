@@ -35,15 +35,29 @@ def save_answer(response_id: int, item: schemas.ResponseUpdate, db: Session = De
     return response_data
 
 @router.post("/{response_id}/complete")
-def complete_assessment(response_id: int, db: Session = Depends(get_db)):
+def complete_assessment(response_id: int, completion_data: schemas.ResponseComplete, db: Session = Depends(get_db)):
     """
-    Mark assessment as complete, persist data to DB, and trigger scoring/analysis.
+    Mark assessment as complete, update company details, persist data to DB, and trigger scoring/analysis.
     """
+    # 0. Update Company Details in Session Store
+    # We need to find the company_id associated with this response first
+    # Or we can just get the session and update it
+    
     # 1. Retrieve full session data
     session_data = session_store.get_full_session(response_id)
     if not session_data:
         raise HTTPException(status_code=404, detail="Response session not found")
         
+    # Update Company in Session Store
+    company_id = session_data["company"]["company_id"]
+    updated_company = session_store.update_company(company_id, completion_data.company_details)
+    
+    if not updated_company:
+         raise HTTPException(status_code=500, detail="Failed to update company details in session")
+         
+    # Refresh session data with updated company
+    session_data["company"] = updated_company
+
     company_data = session_data["company"]
     response_data = session_data["response"]
     items_data = session_data["items"]
@@ -102,3 +116,5 @@ def complete_assessment(response_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail=f"Failed to persist assessment data: {str(e)}")
 
     return {"message": "Assessment completed and saved", "response_id": response_id}
+
+# get_results removed to use logic from routers/results.py
