@@ -1,0 +1,45 @@
+Privacy Policy additional info
+This is the most critical document for your launch. Since you are collecting specific dimension scores and contact info ("Leads"), and then processing them through an ML pipeline, you must be transparent about the automated processing of that data.
+Here is a GDPR-compliant Privacy Policy (Datenschutzerklärung) template tailored for the AI Compass.
+
+Critical Implementation Checklist for You:
+
+The Consent Checkbox: Under your "Get My Results" button, you MUST have a checkbox (not pre-ticked!) that says:
+"I agree to the processing of my data according to the Privacy Policy to generate my AI Maturity Report."
+Google Fonts (Again!): If your Vite app still pulls fonts from Google's servers, you must add a section about "Google Web Fonts." But seriously: host them locally to avoid the need for this clause and the legal risk.
+Analytics: Are you using Posthog, Matomo, or Google Analytics? If yes, we need to add a specific section for that tool. If you aren't using tracking yet, leave it out for now to keep the policy simple.
+Local Storage/Cookies: Does your React app save the state in localStorage so the user doesn't lose their progress? If so, we should add a small note about "Technically necessary local storage."
+How are you handling the email delivery of the reports? (e.g., via SendGrid, Mailgun, or just a FastAPI SMTP mailer?) If you use a third party like SendGrid, we must add them to the "Data Transfer" section.
+email delivery
+For a professional "Lead Magnet" like the AI Compass, sending emails directly via a standard Gmail or Outlook account (via SMTP) is a recipe for disaster. Your emails will likely end up in the spam folder, and your account could be flagged for "unusual activity."
+Since you are in the EU and handling sensitive "Consulting Leads," I recommend choosing a Transactional Email Provider. These services ensure high deliverability and provide the legal documentation you need for GDPR.
+1. The Top Recommendation: Brevo (formerly Sendinblue)
+Brevo is the best choice for an EU-based individual or small business.
+Why: They are headquartered in France, meaning their GDPR compliance is native. Their servers are in the EU, and they provide a Data Processing Agreement (AVV) immediately.
+The "Free" Tier: You can send up to 300 emails per day for free, which is plenty for a starting lead magnet.
+FastAPI Integration: You can use their simple Python SDK or a standard SMTP relay.
+2. The Developer’s Favorite: Resend
+If you want the cleanest "modern" experience (matching your Vite/React vibes), go with Resend.
+Why: It is built specifically for developers. The documentation is beautiful, and it integrates perfectly with Python/FastAPI.
+The Catch: They are US-based. While they are "Data Privacy Framework" certified, it requires a slightly more detailed section in your Privacy Policy than Brevo.
+The "Free" Tier: 3,000 emails per month (100 per day).
+3. The Enterprise Choice: Postmark
+If you absolutely must ensure that your PDF report arrives in the inbox within 0.5 seconds.
+Why: They have the best reputation in the industry for "Transactional only" mail.
+The Catch: They have a very strict manual approval process. They might reject your site if it looks too much like a "work in progress."
+Technical Setup: The "Deliverability Trifecta"
+Regardless of which provider you choose, you must configure your DNS settings (where you bought your domain). If you skip this, your "Executive Briefing" will go straight to the junk folder.
+SPF (Sender Policy Framework): A list of "authorized" servers that can send mail for your domain.
+DKIM (DomainKeys Identified Mail): A digital signature that proves the email wasn't tampered with.
+DMARC: A policy that tells receiving servers (like Gmail) what to do if SPF or DKIM fails.
+Strategy: PDF vs. Web Link
+How should the user receive their "Personalized Roadmap"?
+The "Low Friction" Way (Link): Send an email with a unique link back to your site: the-ai-compass.io/results/[unique-id].
+Pro: You can track if they clicked it.
+Con: It doesn't feel as "valuable" as a file.
+The "High Value" Way (PDF): Attach a generated PDF to the email.
+Pro: Users save PDFs. Your name and "Consulting" branding stay on their hard drive forever.
+Con: Slightly harder to code in FastAPI (you’ll need a library like ReportLab or WeasyPrint).
+Updated Privacy Policy Clause
+If you choose Brevo, add this to your Privacy Policy:
+Email Delivery: For the delivery of our reports, we use Brevo (Brevo GmbH, Köpenicker Straße 126, 10179 Berlin). Data (Email address, Name) is transferred to Brevo for the sole purpose of sending the requested report. We have concluded a Data Processing Agreement with Brevo.

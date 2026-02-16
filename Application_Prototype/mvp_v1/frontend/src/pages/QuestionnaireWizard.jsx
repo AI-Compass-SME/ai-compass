@@ -66,7 +66,7 @@ export default function QuestionnaireWizard() {
             try {
                 // 1. Try Cache
                 // 1. Try Cache
-                const cached = sessionStorage.getItem('cached_questionnaire_data_v2');
+                const cached = sessionStorage.getItem('cached_questionnaire_data_v3');
                 if (cached) {
                     console.log("Found cached data in sessionStorage");
                     try {
@@ -92,7 +92,7 @@ export default function QuestionnaireWizard() {
                 if (data && data.questions) {
                     setQuestions(data.questions);
                     // Update cache for persistence on refresh
-                    sessionStorage.setItem('cached_questionnaire_data_v2', JSON.stringify(data));
+                    sessionStorage.setItem('cached_questionnaire_data_v3', JSON.stringify(data));
                 }
             } catch (error) {
                 console.error("Failed to load questions", error);
@@ -179,11 +179,9 @@ export default function QuestionnaireWizard() {
             if (currentIndex < questions.length - 1) {
                 setCurrentIndex(prev => prev + 1);
             } else {
-                await api.completeAssessment(parseInt(responseId));
-                // Clear local storage on complete
-                localStorage.removeItem(`assessment_progress_${responseId}`);
-                toast.success("Assessment complete!");
-                navigate(`/results/${responseId}`);
+                // Do NOT complete assessment yet. Navigate to Company Snapshot for details.
+                toast.success("Questions complete! Just one last step.");
+                navigate('/snapshot');
             }
         } catch (error) {
             console.error("Failed to save answer", error);
@@ -246,9 +244,9 @@ export default function QuestionnaireWizard() {
                 setCurrentIndex(nextIndex);
                 toast.info("Skipped remaining Dimension 8 questions.");
             } else {
-                await api.completeAssessment(parseInt(responseId));
-                toast.success("Assessment complete!");
-                navigate(`/results/${responseId}`);
+                // Do NOT complete assessment yet. Navigate to Company Snapshot.
+                toast.success("Questions complete! Just one last step.");
+                navigate('/snapshot');
             }
         } catch (error) {
             console.error("Skip failed", error);

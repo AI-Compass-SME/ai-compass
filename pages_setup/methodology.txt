@@ -1,0 +1,21 @@
+Methodology page
+To build trust with technical stakeholders (CTOs, Data Leads), this component should move away from "AI buzzwords" and toward "Statistical Transparency."
+The following is a clean, modern React/Tailwind CSS component. It uses a "Technical Whitepaper" aesthetic to signal that the AI Compass is a serious analytical tool.
+1. The Methodology Fact Sheet (React Component)
+import React from 'react';  import { ShieldCheck, Database, Cpu, BarChart3 } from 'lucide-react';
+const MethodologyFactSheet = () => {    return ( 
+       {/* Header */}
+Technical Methodology & AI Architecture
+Version 5.2 | Documentation for Technical Stakeholders
+
+);  };
+export default MethodologyFactSheet;
+2. Why this builds trust (The "Technical" Logic)
+Dimension Normalization: Mentions that you scale data (0 to 1). This shows you understand that raw scores shouldn't distort the model.
+Archetypes over "Scores": Using the term "Cluster" and "Centroid" sounds far more professional than just saying "the AI calculated it."
+k-NN vs. K-Means: Explaining that you use two different methods (one for grouping, one for comparison) suggests a sophisticated pipeline.
+The "Stack" Footer: Listing the technologies (Scikit-Learn, AES-256) reassures CTOs that you are using industry-standard tools.
+3. How to use this for Go-Live
+Create a route at /methodology.
+Add a small link in your Result Page's footer: "Curious about the math? View our Methodology Fact Sheet."
+PDF Export: If you generate a PDF for your leads, include a simplified version of this as an "Appendix" at the end of the report. It adds massive credibility to your consulting offer.

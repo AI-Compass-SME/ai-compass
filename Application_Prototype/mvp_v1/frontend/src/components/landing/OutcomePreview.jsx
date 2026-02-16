@@ -39,7 +39,7 @@ export function OutcomePreview() {
 
     return (
         <section className="py-10 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div className="max-w-[66rem] mx-auto">
+            <div className="max-w-[80rem] mx-auto">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Outcome Preview</h2>
                     <p className="text-lg text-gray-600">Your results page will include:</p>

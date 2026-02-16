@@ -1,0 +1,17 @@
+Imprint 
+Information according to § 5 DDG
+Christian Miething Görschstrasse 10A  13187 Berlin, Germany
+Contact
+Phone: TBD
+Email: [Your Professional Email Address]
+Website: [Your Domain, e.g., www.the-ai-compass.io]
+Responsible for content according to § 18 MStV
+Christian Miething
+Görschstrasse 10A
+13187 Berlin, Germany
+EU Dispute Resolution
+The European Commission provides a platform for online dispute resolution (ODR): https://consumer-redress.ec.europa.eu/index_de. Our email address can be found above in the imprint.
+Consumer dispute resolution/Universal arbitration board
+We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.
+
+Disclaimer for AI-Generated Content: The "AI Compass" uses automated machine learning models (specifically K-Means Clustering and k-Nearest Neighbors) to analyze data. The results, maturity scores, and roadmaps provided are for informational and orientation purposes only. They do not constitute professional business, legal, or strategic consulting. The operator assumes no liability for business decisions made based on the generated output.

@@ -72,10 +72,13 @@ export const api = {
     /**
      * Complete the assessment
      * @param {number} responseId 
+     * @param {Object} companyDetails 
      */
-    completeAssessment: async (responseId) => {
+    completeAssessment: async (responseId, companyDetails) => {
         const response = await fetch(`${API_BASE_URL}/responses/${responseId}/complete`, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ company_details: companyDetails }),
         });
         return handleResponse(response);
     },

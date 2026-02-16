@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
 
     class Config:
-        env_file = "../../.env"
+        env_file = ".env"
         # Since the .env is in the root project folder (../../), we might need to point to it explicitly
         # or rely on the environment being loaded before running the app.
         # For now, we'll assume the .env is loaded or copied to backend.

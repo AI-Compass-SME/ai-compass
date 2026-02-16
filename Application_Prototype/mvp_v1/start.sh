@@ -1,58 +1,37 @@
 #!/bin/bash
+echo "Starting AI Compass MVP v1..."
 
-echo "=========================================="
-echo "Starting AI-Compass Prototype (Mac/Linux)"
-echo "=========================================="
-
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT_DIR="$BASE_DIR/../.."
-cd "$BASE_DIR"
-
-# Check if root venv exists
-if [ ! -d "$ROOT_DIR/.venv" ]; then
-    echo "Error: Root virtual environment not found at $ROOT_DIR/.venv"
-    exit 1
-fi
-
-if [ ! -d "frontend/node_modules" ]; then
-    echo "Error: node_modules not found. Please run ./setup.sh first."
-    exit 1
-fi
-
-# Function to kill background processes on exit
+# Function to handle cleanup on exit
 cleanup() {
-    echo ""
-    echo "Stopping processes..."
-    # Kill the process groups
-    kill $(jobs -p) 2>/dev/null
+    echo "Stopping services..."
+    kill $(jobs -p)
     exit
 }
 
 trap cleanup SIGINT SIGTERM
 
-echo "Launching Backend (FastAPI)..."
+# Start Backend
+echo "Starting Backend..."
 cd backend
-if [ -d "$ROOT_DIR/.venv/Scripts" ]; then
-    source "$ROOT_DIR/.venv/Scripts/activate"
-else
-    source "$ROOT_DIR/.venv/bin/activate"
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
 fi
-# Point to root .env explicitely
-uvicorn main:app --reload --port 8000 --env-file "$ROOT_DIR/.env" &
-cd "$BASE_DIR"
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000 &
+BACKEND_PID=$!
+cd ..
 
-echo "Launching Frontend (Vite)..."
+# Start Frontend
+echo "Starting Frontend..."
 cd frontend
+npm install
 npm run dev &
-cd "$BASE_DIR"
+FRONTEND_PID=$!
+cd ..
 
-echo ""
-echo "=========================================="
-echo "Application is starting!"
-echo "Backend API Docs: http://localhost:8000/docs"
-echo "Frontend URL:      http://localhost:5173"
-echo "=========================================="
-echo "Press Ctrl+C to stop both servers."
+echo "Application started!"
+echo "Frontend: http://localhost:5173"
+echo "Backend: http://localhost:8000/docs"
 
-# Wait for background processes
-wait
+wait $BACKEND_PID $FRONTEND_PID

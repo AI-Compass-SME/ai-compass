@@ -52,6 +52,14 @@ class SessionStore:
     def get_company(self, company_id: int) -> Optional[dict]:
         return self.companies.get(company_id)
 
+    def update_company(self, company_id: int, company_data: CompanyCreate) -> Optional[dict]:
+        if company_id in self.companies:
+            updated_data = company_data.model_dump()
+            updated_data["company_id"] = company_id
+            self.companies[company_id] = updated_data
+            return self.companies[company_id]
+        return None
+
     def create_response(self, response: ResponseCreate) -> dict:
         self.response_counter += 1
         # Create a dict representation

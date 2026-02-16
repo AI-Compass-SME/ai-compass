@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Compass, Download, Loader2, ArrowRight } from 'lucide-react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { api } from '../lib/api';
+import { initializeVisitorSession } from '../lib/assessment';
 import { toast } from "sonner";
 
 export function Navigation() {
@@ -34,15 +35,32 @@ export function Navigation() {
         }
     };
 
+    const navigate = useNavigate();
+    const [isStarting, setIsStarting] = useState(false);
+
+    const handleStartAssessment = async () => {
+        try {
+            setIsStarting(true);
+            const session = await initializeVisitorSession();
+            toast.success("Assignment started!");
+            navigate(`/assessment/${session.responseId}`);
+        } catch (error) {
+            toast.error("Failed to start assessment.");
+            console.error(error);
+        } finally {
+            setIsStarting(false);
+        }
+    };
+
     return (
         <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
-            <div className="max-w-[66rem] mx-auto px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
+            <div className="max-w-[80rem] mx-auto px-6 py-4 flex items-center justify-between">
+                <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                     <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-lg">
                         <Compass className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-xl font-semibold text-gray-900">AI Compass</span>
-                </div>
+                </Link>
                 {showDownload && (
                     <Button
                         size="sm"
@@ -58,11 +76,23 @@ export function Navigation() {
                     </Button>
                 )}
                 {showStart && (
-                    <Button asChild size="sm" className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 h-10 rounded-xl font-bold hover:shadow-lg transition-all border-0 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)]">
-                        <Link to="/snapshot" className="flex items-center gap-2">
-                            Start Free Assessment
-                            <ArrowRight className="w-4 h-4" />
-                        </Link>
+                    <Button
+                        onClick={handleStartAssessment}
+                        disabled={isStarting}
+                        size="sm"
+                        className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 h-10 rounded-xl font-bold hover:shadow-lg transition-all border-0 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)]"
+                    >
+                        {isStarting ? (
+                            <>
+                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                Starting...
+                            </>
+                        ) : (
+                            <>
+                                Start Free Assessment
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </>
+                        )}
                     </Button>
                 )}
             </div>

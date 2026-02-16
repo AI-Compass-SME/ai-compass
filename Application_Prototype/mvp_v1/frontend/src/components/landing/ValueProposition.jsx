@@ -44,7 +44,7 @@ export function ValueProposition() {
 
     return (
         <section id="benefits" className="py-8 px-4 bg-gray-50">
-            <div className="max-w-[66rem] mx-auto">
+            <div className="max-w-[80rem] mx-auto">
                 <div className="text-center mb-4">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                         The Value Proposition

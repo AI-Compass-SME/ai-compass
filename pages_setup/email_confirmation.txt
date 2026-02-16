@@ -1,0 +1,41 @@
+Confirmation Email
+Here is a professional, conversion-optimized email template for your Double Opt-In process. This email is the first "real" touchpoint your lead has with your brand, so it needs to look like a premium consulting product.
+In Brevo, you can create this as a Transactional Template using their Drag-and-Drop editor or HTML.
+Subject Line Options
+Option 1 (Action-oriented): 🧭 Confirm your email to unlock your AI Roadmap
+Option 2 (Strategic): Your AI Maturity Results for [Company Name] are ready
+Option 3 (Urgent): One step left: Access your AI Compass Strategy
+Email Body Template
+Header: [Logo Placeholder: AI Compass]
+Hi there,
+Thank you for completing the AI Compass Assessment.
+We have analyzed your inputs across all 7 dimensions of AI maturity. Your preliminary results are calculated, and your personalized 3-Phase Strategic Roadmap is ready to be generated.
+To ensure your data remains secure and to provide you with your executive briefing, please confirm your email address by clicking the button below:
+[Button: UNLOCK MY AI ROADMAP](Link: https://your-domain.io/verify?token={{params.token}})
+What happens next? Once confirmed, you will be redirected to your interactive dashboard where you can:
+Explore your Radar Chart benchmarking against 500+ peers.
+Deep-dive into your Strategic Gap Analysis.
+Download your Phase-by-Phase AI Implementation Plan.
+Why did I receive this? You are receiving this email because you (or someone using this email address) completed the AI Compass Assessment at [your-domain.io]. If this wasn't you, you can safely ignore this email.
+Stay Strategic, The AI Compass Team
+Footer (Legal Requirement): [Your Name] | [Your Address] [Link: Privacy Policy] | [Link: Imprint] Powered by AI Compass ML v5 Engine
+Technical Implementation in FastAPI
+When the user submits the React form, your backend needs to generate a token and trigger the Brevo API. Here is a simplified logic flow:
+Python
+
+import secrets
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.post("/api/v1/leads")async def create_lead(lead_data: LeadSchema):# 1. Generate a secure random token
+    token = secrets.token_urlsafe(32)
+    
+    # 2. Save lead to DB with 'is_verified = False' and the token# db.save_lead(lead_data, token)# 3. Trigger Brevo API (Using sib_api_v3_sdk)# send_brevo_email(#     to=lead_data.email, #     template_id=1,  # Your Brevo Template ID#     params={"token": token, "companyName": lead_data.companyName}# )return {"message": "Verification email sent"}
+A Quick "Chris-Style" Strategic Tip:
+By making them click this link, you aren't just being GDPR-compliant—you are training your lead. You are showing them that your insights are valuable and protected. A "confirmed" email address in your database is worth 10x more than a "raw" one because you know there is a real person behind it who is willing to take action.
+A Quick Technical Note on Security:
+Once the user clicks the link in the email, your FastAPI backend should:
+Validate the token.
+Mark the lead as is_verified = True in your database.
+Return the pre-calculated ML results in the JSON response so the React page can render the chart.

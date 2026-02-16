@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Clock, Award } from 'lucide-react';
+import { ArrowRight, Shield, Clock, Award, Loader2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ImageWithFallback } from './ImageWithFallback';
 
-export function HeroSection() {
+export function HeroSection({ onStart, isStarting }) {
     return (
         <section className="pt-24 pb-12 px-6">
-            <div className="max-w-[66rem] mx-auto">
+            <div className="max-w-[80rem] mx-auto">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <div>
                         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
@@ -18,11 +18,22 @@ export function HeroSection() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Button asChild className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-lg text-lg font-semibold hover:shadow-xl transition-all h-auto">
-                                <Link to="/snapshot" className="flex items-center gap-2">
-                                    Start Free Assessment
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                            <Button
+                                onClick={onStart}
+                                disabled={isStarting}
+                                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-lg text-lg font-semibold hover:shadow-xl transition-all h-auto"
+                            >
+                                {isStarting ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                        Starting...
+                                    </>
+                                ) : (
+                                    <>
+                                        Start Free Assessment
+                                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
                             </Button>
                         </div>
 

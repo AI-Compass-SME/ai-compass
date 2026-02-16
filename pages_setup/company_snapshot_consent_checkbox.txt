@@ -1,0 +1,27 @@
+Consent Checkbox (Double Opt-In for leads)
+To ensure your AI Compass is GDPR-compliant and creates high-quality leads, you should implement this lead-capture form as a "gateway" between the last assessment question and the results page.
+In Germany and the EU, Double Opt-In (DOI) is the gold standard. This means:
+The user fills out the form and ticks the box.
+You send an automated "Confirmation" email via your provider (e.g., Brevo).
+The user clicks a link in that email. Only then is their lead "verified" for your consulting follow-up.
+The Lead Capture Component (React)  Here is a clean implementation for your Vite-powered frontend. I've included the logic to disable the "Show My Results" button until the consent is ticked.
+JavaScript
+import React, { useState } from 'react';
+const LeadCaptureForm = ({ onFormSubmit }) => {    const [formData, setFormData] = useState({      companyName: '',      industry: '',      employeeCount: '',      email: '',      consent: false    });
+const handleSubmit = (e) => {      e.preventDefault();      if (formData.consent) {        onFormSubmit(formData);      }    };
+return ( 
+ Ready for your Roadmap?
+ We've calculated your maturity. Enter your details to unlock the full strategic analysis.
+
+);  };
+export default LeadCaptureForm;
+The Double Opt-In Workflow  To make this fully legal and professional, your FastAPI backend should handle the logic like this:
+Submission: When the user clicks "Generate," send the data to your /api/v1/leads endpoint.
+Verification Email: The backend generates a unique verification_token and sends an email via Brevo saying: "Please confirm your email to view your AI Compass Roadmap."
+The Reveal: You have two options here:
+The "Teaser" approach: Show the Radar Chart immediately, but keep the "Strategic Roadmap" (the high-value part) locked behind the email confirmation link.
+The "Professional" approach: Show a "Success!" message: "Check your inbox. We've sent a confirmation link. Your custom roadmap is ready and waiting."
+Why this works for you (The Strategy)  Filter Quality: By asking for "Number of Employees" and "Industry," your ML model can actually refine its peer benchmarking. You can say: "Compared to other companies in [Industry] with [Size] employees, you are a Leader."
+Consultancy Hook: The "Work Email" requirement ensures you don't just get spiderman123@gmail.com addresses, but actual business leads.
+Legal Safety: The "I can withdraw my consent at any time" sentence in the checkbox is a mandatory GDPR requirement.
+Visualizing the Interaction  The Screen: The radar chart is blurred in the background. In the foreground, a clean, white card asks for the details. The Effect: It creates a "Value Exchange." The user has already spent 2-3 minutes answering questions; they are highly likely to provide their email to see the result of their effort.

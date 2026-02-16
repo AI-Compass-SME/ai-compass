@@ -1,0 +1,44 @@
+About us
+To create maximum accountability and trust, the "About the Founders" section should bridge the gap between technical innovation and strategic consulting.
+For a professional Go-Live, you should communicate:
+Professional Pedigree: Why are you qualified to build an AI roadmap? (Experience in Tech, Strategy, or Industry).
+The "Why": Why did you build this? (e.g., "To help companies avoid Pilot Purgatory").
+Personal Accountability: Real names and links to LinkedIn profiles.
+
+CONTENT FOR THE PAGE
+Your Partner in your AI Transformation        
+Christian Miething + picture
+Leadership meets Strategy and Execution
+With over 14 years of leadership experience, I have built a career on a proven track record of fostering strong professional relationships, leading complex projects, and driving sustainable business growth. My expertise sits at the intersection of strategic consulting, project management, and high-level client relations.
+I am deeply passionate about digital transformation and the evolution of Artificial Intelligence. Driven by a desire to create long-term value, I thrive on collaborating with diverse teams to solve problems through effective communication and strategic insight.
+The Architect of the AI Compass 
+I conceived the AI Compass because I recognized a critical gap in the market. While AI is evolving rapidly, its relevance to the German Mittelstand is often lost in technical complexity.
+As the Product Owner and strategist, I led this initiative from ideation to launch – defining the business model, the strategic roadmap, and the specific feature set. I see my role as a bridge-builder: translating complex AI capabilities into actionable business logic and driving the end-to-end delivery that ensures these innovations are successfully integrated into everyday SME operations.
+My goal is to provide businesses with the clarity and precision needed to master the AI landscape. I ensure that every technological milestone is anchored in measurable, ROI-driven business value, transforming innovation into a sustainable competitive advantage. 
+      linkedIn: "https://www.linkedin.com/in/christian-miething-ai-strategy-execution/",  
+Hamza Latif
+Data Science & ML Engineering – Architecture, Intelligence & Explainability
+With over 8 years of experience across enterprise systems, digital transformation initiatives, and AI-driven product development, I have built my career at the intersection of structured engineering, statistical modeling, and scalable SaaS architecture. My expertise lies in transforming complex business challenges into robust data systems that are transparent, measurable, and production-ready.
+I am deeply driven by the evolution of Artificial Intelligence — not as abstract experimentation, but as a disciplined engineering practice. My work focuses on building ML systems that balance predictive intelligence with deterministic logic, ensuring that every algorithmic output is grounded in statistical rigor and architectural clarity.
+The Intelligence Architect Behind AI Compass
+I designed and implemented the ML v5 engine that powers AI Compass, identifying the need for a benchmarking framework that goes beyond static assessments. While many AI maturity tools rely on generic scoring, I engineered a system that combines weighted deterministic models with advanced clustering techniques to generate structured, explainable roadmaps.
+As the Data Science & ML Engineering lead, I developed the K-Means clustering logic, statistical deviation modeling, and peer benchmarking framework that underpin the platform’s intelligence layer. My role ensures that every AI Compass recommendation is not only data-backed, but architecturally sound and reproducible at scale.
+My objective is clear: to build AI systems that decision-makers can trust. By aligning statistical modeling with clean data architecture and explainable outputs, I transform machine learning from a black-box mechanism into a strategic instrument for measurable business progress.           
+
+
+return (            
+ Accountability Behind the Algorithm
+             The AI Compass isn't a "Black Box." It is a tool built by experts to bring transparency and structure to AI transformation.
+
+);  };
+export default AboutFounders;
+
+2. Missing Information Needed (Action Items)
+To make this section live-ready, you need to collect these details:
+Hamza's Last Name & Bio: Define his specific "Value Proposition" for the tool (e.g., "Former Data Scientist at X" or "Expert in ML scaling").
+High-Quality Headshots: Since you are selling high-ticket consulting, do not use casual selfies. Use professional portraits or AI-generated business headshots with a neutral background.
+LinkedIn URLs: Ensure your LinkedIn profiles are updated and mention the "AI Compass" in your current roles. This creates an immediate "Trust Loop" when leads check you out.
+3. Why this builds "Go-Live" Confidence
+Grayscale to Color Transition: (In the code) Hovering over your photos brings them to life. It’s a subtle modern touch that feels premium.
+Role Distinction: By splitting roles between Strategy (Christian) and Data Science (Hamza), you cover both bases of a business decision: "Will this work for my company?" and "Is the tech actually sound?"
+Accessibility: Providing the email icon directly shows you aren't hiding behind a website.
