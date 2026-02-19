@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 from typing import Any, Union, List, Annotated
-from pydantic import BeforeValidator
+from pydantic import BeforeValidator, field_validator
 
 def parse_cors(v: Any) -> List[str]:
     if isinstance(v, str) and not v.startswith("["):
