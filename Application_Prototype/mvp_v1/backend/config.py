@@ -24,7 +24,28 @@ class Settings(BaseSettings):
     ML_MODELS_PATH: str = "../benchmarking_ai/ml_v5/model_artifacts/v5"
     
     # CORS
-    CORS_ORIGINS: Annotated[List[str], BeforeValidator(parse_cors)] = ["http://localhost:5173"]
+    # We use a string here to avoid Pydantic validation errors with lists from Env vars
+    CORS_ORIGINS_STR: str = "http://localhost:5173"
+
+    @property
+    def CORS_ORIGINS(self) -> List[str]:
+        """
+        Parses the CORS_ORIGINS_STR into a list of strings.
+        Handles comma-separated values or JSON-like strings.
+        """
+        if not self.CORS_ORIGINS_STR:
+            return []
+        
+        raw_val = self.CORS_ORIGINS_STR.strip()
+        
+        if raw_val.startswith("["):
+            import json
+            try:
+                return json.loads(raw_val)
+            except json.JSONDecodeError:
+                pass # Fallback to comma split
+
+        return [origin.strip() for origin in raw_val.split(",") if origin.strip()]
 
     class Config:
         env_file = ".env"
