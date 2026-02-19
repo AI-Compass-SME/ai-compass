@@ -21,7 +21,19 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     
     # ML Models
-    ML_MODELS_PATH: str = "../benchmarking_ai/ml_v5/model_artifacts/v5"
+    # Updated to handle Prod vs Dev differences
+    # Prod: modules/benchmarking_ai/ml_v5
+    # Dev (relative to backend): ../../../benchmarking_ai/ml_v5
+    ML_MODELS_PATH: str = "modules/benchmarking_ai/ml_v5/model_artifacts/v5"
+
+    @field_validator("ML_MODELS_PATH", mode="before")
+    @classmethod
+    def set_models_path(cls, v: Any) -> str:
+        # Check if we are in Prod (modules folder exists)
+        if os.path.exists("modules/benchmarking_ai"):
+            return "modules/benchmarking_ai/ml_v5/model_artifacts/v5"
+        # Fallback to Dev path (siblings)
+        return "../../../benchmarking_ai/ml_v5/model_artifacts/v5"
     
     # CORS
     # We use a string here to avoid Pydantic validation errors with lists from Env vars
