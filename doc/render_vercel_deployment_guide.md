@@ -36,23 +36,54 @@ The production application will continue to use **Supabase** as the database, co
 
 ---
 
-## Phase 3: Vercel Frontend (React)
+## Phase 3: Vercel Frontend (React) - Detailed Steps
 1.  Log in to [Vercel.com](https://vercel.com).
-2.  Click **Add New...** → **Project**.
-3.  Import the **`the-ai-compass.de`** repository.
-4.  **Framework Preset:** Vite (Should be auto-detected).
-5.  **Root Directory:** `frontend` (Crucial!).
-6.  **Environment Variables:** Add:
-    *   `VITE_API_URL`: `https://ai-compass-backend.onrender.com` (Your Render URL).
-7.  Click **Deploy**.
+2.  **Dashboard:** Click the **"Add New..."** button (top right) → select **"Project"**.
+3.  **Import Git Repository:**
+    *   Find **`AI-Compass-SME/the-ai-compass.de`** in the list.
+    *   Click the **Import** button next to it.
+    *   > [!WARNING]
+    *   > **DO NOT** click "Create Git Repository". Only use the **Import** button next to your existing `the-ai-compass.de` repo.
+
+4.  **Configure Project (Crucial Step):**
+    *   **Project Name:**
+        *   Vercel might default to `the-ai-compass-de`.
+        *   **If it says "Name already used":** Change the **Project Name** field here (e.g., `ai-compass-prod-app`).
+        *   *Note:* This does NOT create a new repo. It just names the Vercel dashboard item.
+    *   **Framework Preset:** Ensure it says **Vite** (It should auto-detect this).
+    *   **Root Directory:**
+        *   Click **Edit** next to Root Directory.
+        *   Select the **`frontend`** folder from the file browser popup.
+        *   Click **Continue**.
+5.  **Build and Output Settings:** (Leave these as default).
+    *   Build Command: `npm run build`
+    *   Output Directory: `dist`
+    *   Install Command: `npm install`
+6.  **Environment Variables:**
+    *   Expand the **Environment Variables** section.
+    *   Key: `VITE_API_URL`
+    *   Value: `https://ai-compass-backend.onrender.com` (Copy this from your Render dashboard).
+    *   Click **Add**.
+7.  **Finalize:** Click **Deploy**.
+    *   Wait for the build to finish (approx. 1 minute).
+    *   You will see a "Congratulations!" screen with a preview.
 
 ---
 
 ## Phase 4: Connecting the Domain (the-ai-compass.de)
-1.  In **Vercel**, go to your Project Settings → **Domains**.
-2.  Type `the-ai-compass.de` and click **Add**.
-3.  Vercel will provide **A Records** and **CNAME** records.
-4.  Log in to your **Domain Registrar** (e.g., GoDaddy, Namecheap, Hostinger) and enter those DNS values.
+1.  In your new Vercel Project, go to **Settings** (top tab) → **Domains** (left sidebar).
+2.  Type `the-ai-compass.de` in the box and click **Add**.
+3.  Vercel will show a "Invalid Configuration" or "Config Required" status.
+4.  **DNS Configuration:**
+    *   Log in to your **Domain Registrar** (e.g., GoDaddy, Namecheap, Hostinger).
+    *   Find the DNS Management area for your domain.
+    *   Add an **A Record**:
+        *   Host/Name: `@`
+        *   Value: `76.76.21.21` (Vercel's IP).
+    *   Add a **CNAME Record**:
+        *   Host/Name: `www`
+        *   Value: `cname.vercel-dns.com`.
+5.  Return to Vercel and wait. It usually verifies in a few minutes, but can take up to 24-48 hours.
 
 ---
 
@@ -63,11 +94,3 @@ The production application will continue to use **Supabase** as the database, co
 4.  **Check Logs:**
     *   If Backend fails: Check Render's **Events** and **Logs** tabs.
     *   If Frontend fails: Open Browser Console (F12) and check for "CORS" or "Network" errors.
-
----
-
-## Summary of URLs
-*   **Repo:** `the-ai-compass.de`
-*   **Backend:** `ai-compass-backend.onrender.com`
-*   **Frontend:** `the-ai-compass.de`
-*   **Database:** Supabase (Shared with Dev or separate Prod instance)
