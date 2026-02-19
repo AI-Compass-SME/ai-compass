@@ -1,0 +1,43 @@
+name: Sync to Production Repository
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development Repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Production Repo
+        uses: actions/checkout@v4
+        with:
+          repository: AI-Compass-SME/the-ai-compass.de
+          token: ${{ secrets.PROD_REPO_TOKEN }}
+          path: prod-repo
+
+      - name: Restructure and Sync
+        run: |
+          # Clean old prod files
+          rm -rf prod-repo/backend prod-repo/frontend
+          
+          # Copy Backend & Frontend
+          mkdir -p prod-repo/backend/modules/benchmarking_ai
+          cp -r Application_Prototype/mvp_v1/backend/* prod-repo/backend/
+          cp -r Application_Prototype/mvp_v1/frontend/* prod-repo/frontend/
+          
+          # Copy ML Logic (ml_v5)
+          cp -r benchmarking_ai/ml_v5 prod-repo/backend/modules/benchmarking_ai/ml_v5
+          
+          # Cleanup
+          rm -rf prod-repo/backend/venv
+          rm -rf prod-repo/backend/__pycache__
+
+      - name: Commit and Push
+        working-directory: prod-repo
+        run: |
+          git config user.name "GitHub Action [Bot]"
+          git config user.email "actions@github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Deploy: ${{ github.event.head_commit.message }}" && git push origin main)
