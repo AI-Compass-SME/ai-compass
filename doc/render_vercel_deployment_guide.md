@@ -33,6 +33,12 @@ The production application will continue to use **Supabase** as the database, co
     *   `CORS_ORIGINS`: `https://the-ai-compass.de`.
     *   `PYTHON_VERSION`: `3.11.0` (Recommended).
 11. Click **Create Web Service**.
+12. **Auto-Deploy Setup (Crucial):**
+    *   Go to **Settings** (left sidebar of your new service).
+    *   Scroll down to **Deploy Hook**.
+    *   Copy the **Deploy Hook URL**.
+    *   **Action:** Go to your **Dev Repo** (`ai-compass`) -> Settings -> Secrets -> Actions.
+    *   Add a new secret named `RENDER_DEPLOY_HOOK` and paste this URL.
 
 ---
 
