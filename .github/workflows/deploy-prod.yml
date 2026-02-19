@@ -1,15 +1,17 @@
 name: Sync to Production Repository
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]  # Automation triggers only when merging/pushing to main
 
 jobs:
   sync-prod:
     runs-on: ubuntu-latest
     steps:
+      # 1. Pull the code from your current dev repo
       - name: Checkout Development Repo
         uses: actions/checkout@v4
 
+      # 2. Pull the code from your production repo using your Secret Token
       - name: Checkout Production Repo
         uses: actions/checkout@v4
         with:
@@ -17,27 +19,32 @@ jobs:
           token: ${{ secrets.PROD_REPO_TOKEN }}
           path: prod-repo
 
+      # 3. Apply the production folder structure
       - name: Restructure and Sync
         run: |
-          # Clean old prod files
+          # Delete existing files in the prod-repo copy to ensure a clean sync
           rm -rf prod-repo/backend prod-repo/frontend
           
-          # Copy Backend & Frontend
+          # Create the new module structure for ML
           mkdir -p prod-repo/backend/modules/benchmarking_ai
+          
+          # Copy Backend & Frontend from Dev -> Prod
           cp -r Application_Prototype/mvp_v1/backend/* prod-repo/backend/
           cp -r Application_Prototype/mvp_v1/frontend/* prod-repo/frontend/
           
-          # Copy ML Logic (ml_v5)
+          # Copy specific ML v5 logic into the backend modules
           cp -r benchmarking_ai/ml_v5 prod-repo/backend/modules/benchmarking_ai/ml_v5
           
-          # Cleanup
+          # Cleanup: Remove local environment files and caches from production
           rm -rf prod-repo/backend/venv
           rm -rf prod-repo/backend/__pycache__
 
+      # 4. Push the restructured code back to the production repo
       - name: Commit and Push
         working-directory: prod-repo
         run: |
           git config user.name "GitHub Action [Bot]"
           git config user.email "actions@github.com"
           git add .
+          # Only push if code actually changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "Deploy: ${{ github.event.head_commit.message }}" && git push origin main)
