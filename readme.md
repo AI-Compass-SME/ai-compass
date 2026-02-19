@@ -178,15 +178,29 @@ Benchmarking can start using synthetic profiles. If used, the product should sta
 
 ---
 
-## Repository structure (suggested)
+## 🚀 Project Status (February 2026)
+- **Current Milestone:** Automated Production Deployment & Sync logic implemented.
+- **Architecture:** Transitioned to a **Dual-Repository Strategy** to separate active development from the live environment.
+- **Sync Logic:** GitHub Actions now automatically restructure and push code from the Dev repo (`ai-compass`) to the Prod repo (`the-ai-compass.de`).
 
+---
+
+## 🤖 AI Agent Instructions
+To ensure consistency and safety, all AI assistants working on this project must follow the [AGENT_GUIDELINES.md](AGENT_GUIDELINES.md) and the persistent rules defined in [.antigravity.rules](.antigravity.rules).
+
+---
+
+## ├── Repository Structure
 ├── Application_Prototype/
-│   └── mvp_v1/             # Working prototype
+│   └── mvp_v1/             # Working prototype (Active Dev)
 │       ├── backend/        # FastAPI
 │       ├── frontend/       # React + Vite
-│       ├── setup.bat / .sh # Environment setup
-│       ├── start.bat / .sh # Launch application
-│       └── stop.bat / .sh  # Close application
 ├── benchmarking_ai/
-│   └── ml_v5/              # Current ML models & engine
-├── scripts/                # Utility & data migration scripts
+│   └── ml_v5/              # Core ML Analysis Engine
+├── doc/                    # Deployment & Architecture Guides
+│   ├── deployment_plan.md
+│   ├── github_actions_setup.md
+│   ├── github_workflow_guide.md
+│   └── render_vercel_deployment_guide.md
+├── AGENT_GUIDELINES.md     # Persistent Context for AI Assistants
+└── .antigravity.rules      # AI Instruction Set for IDEs

@@ -2,6 +2,9 @@ import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
+from typing import Any, Union
+from pydantic import field_validator
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "AI-Compass API"
     VERSION: str = "1.0.0"
@@ -16,11 +19,17 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
 
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def assemble_cors_origins(cls, v: Any) -> list[str]:
+        if isinstance(v, str) and not v.startswith("["):
+            return [i.strip() for i in v.split(",")]
+        elif isinstance(v, (list, str)):
+            return v
+        raise ValueError(v)
+
     class Config:
         env_file = ".env"
-        # Since the .env is in the root project folder (../../), we might need to point to it explicitly
-        # or rely on the environment being loaded before running the app.
-        # For now, we'll assume the .env is loaded or copied to backend.
         case_sensitive = True
         extra = "ignore"
 
