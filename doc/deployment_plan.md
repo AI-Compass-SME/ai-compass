@@ -1,89 +1,92 @@
 
-# Deployment Plan: PaaS (Render + Vercel)
+# Deployment Plan: Automated Dual-Repo Strategy
 
 ## 1. Project Configuration
-This plan covers the deployment of the AI Compass application to a production environment using a PaaS (Platform as a Service) architecture.
+This strategy automates the synchronization between your **Development** and **Production** repositories.
 
-*   **Deployment Repository:** `https://github.com/AI-Compass-SME/the-ai-compass.de.git`
+*   **Development Repo (Source):** `https://github.com/AI-Compass-SME/ai-compass.git`
+*   **Production Repo (Target):** `https://github.com/AI-Compass-SME/the-ai-compass.de.git`
 *   **Production Domain:** `the-ai-compass.de`
-*   **Backend Hosting:** Render (Web Service + PostgreSQL)
-*   **Frontend Hosting:** Vercel
 
 ---
 
-## 2. Essential Pre-Deployment Restructuring
-To ensure reliable deployment on Render/Vercel, the backend must be self-contained within the forked repository.
+## 2. Automated Production Sync (GitHub Actions)
+To automate the release, we will use a GitHub Action in the **ai-compass** (Dev) repository. Every time you merge into `main`, it will automatically:
+1.  Restructure the code (Backend/Frontend/ML).
+2.  Clean up the Production repo.
+3.  Push the "Production-Ready" code to `the-ai-compass.de`.
 
-### Structural Goal
-Move the `benchmarking_ai` logic *inside* the backend folder so it can be deployed as a single unit.
+### Phase 1: Setup GitHub Secrets
+In your `ai-compass` [Settings > Secrets and variables > Actions], add:
+*   `PROD_REPO_TOKEN`: A Personal Access Token (PAT) with `repo` scope to allow pushing to the other repository.
 
-**Current (in fork):**
-```text
-the-ai-compass.de/
-├── benchmarking_ai/
-└── Application_Prototype/
-    └── mvp_v1/
-        ├── backend/
-        └── frontend/
+### Phase 2: The Workflow File
+Create `.github/workflows/deploy-prod.yml` in the `ai-compass` repo:
+
+```yaml
+name: Sync to Production Repository
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development Repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Production Repo
+        uses: actions/checkout@v4
+        with:
+          repository: AI-Compass-SME/the-ai-compass.de
+          token: ${{ secrets.PROD_REPO_TOKEN }}
+          path: prod-repo
+
+      - name: Restructure and Sync
+        run: |
+          # Clean old prod files
+          rm -rf prod-repo/backend prod-repo/frontend
+          
+          # Copy from Dev to Prod-Repo
+          mkdir -p prod-repo/backend/modules/benchmarking_ai
+          cp -r Application_Prototype/mvp_v1/backend/* prod-repo/backend/
+          cp -r Application_Prototype/mvp_v1/frontend/* prod-repo/frontend/
+          cp -r benchmarking_ai/ml_v5 prod-repo/backend/modules/benchmarking_ai/ml_v5
+          
+          # Remove dev scripts from prod backend
+          rm -rf prod-repo/backend/venv
+          rm -rf prod-repo/backend/__pycache__
+
+      - name: Commit and Push to Production
+        working-directory: prod-repo
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "Automated Sync: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
+          git push origin main
 ```
 
-**Required Structure:**
-```text
-the-ai-compass.de/
-└── Application_Prototype/
-    └── mvp_v1/
-        ├── backend/
-        │   ├── main.py
-        │   └── modules/
-        │       └── benchmarking_ai/  <-- MOVED/COPIED HERE
-        └── frontend/
-```
+---
 
-### Required Code Changes
-1.  **Imports:** Update `config.py` and `routers/results.py` to use local module imports (e.g., `from .modules.benchmarking_ai import ...`) instead of `sys.path` hacks.
-2.  **Model Paths:** Update `ML_MODELS_PATH` in `config.py` to point to the new internal location.
+## 3. Deployment Checklist (PaaS)
+
+### Backend (Render)
+- [ ] Connect to `the-ai-compass.de` repo.
+- [ ] **Root Directory:** `backend`
+- [ ] **Build:** `pip install -r requirements.txt`
+- [ ] **Start:** `uvicorn main:app --host 0.0.0.0 --port 10000`
+- [ ] **Environment Variables:** `DATABASE_URL` (Supabase connection string), `CORS_ORIGINS=https://the-ai-compass.de`.
+
+### Frontend (Vercel)
+- [ ] Connect to `the-ai-compass.de` repo.
+- [ ] **Root Directory:** `frontend`
+- [ ] **Framework:** Vite.
 
 ---
 
-## 3. Deployment Checklist
-
-### Phase 1: local Cleanup & Push
-- [ ] **Restructure:** Move `benchmarking_ai` into `backend/modules/`.
-- [ ] **Refactor:** Clean up all imports to be relative/local.
-- [ ] **Verify:** Run `uvicorn main:app` locally within the `backend` folder to ensure it starts without error.
-- [ ] **Push:** Commit and push these changes to `https://github.com/AI-Compass-SME/the-ai-compass.de.git`.
-
-### Phase 2: Backend & Database (Render)
-- [ ] **Database:**
-    *   Create a **PostgreSQL** instance on Render.
-    *   Copy the `Internal Database URL`.
-- [ ] **Web Service:**
-    *   Create a New Web Service connected to the GitHub repo.
-    *   **Root Directory:** `Application_Prototype/mvp_v1/backend`
-    *   **Runtime:** `Python 3`
-    *   **Build Command:** `pip install -r requirements.txt`
-    *   **Start Command:** `uvicorn main:app --host 0.0.0.0 --port 10000`
-- [ ] **Environment Variables:**
-    *   `DATABASE_URL`: (Your Render Postgres URL)
-    *   `CORS_ORIGINS`: `https://the-ai-compass.de`
-
-### Phase 3: Frontend (Vercel)
-- [ ] **Project Setup:**
-    *   Import the GitHub repo into Vercel.
-    *   **Root Directory:** `Application_Prototype/mvp_v1/frontend`
-    *   **Framework Preset:** Vite
-- [ ] **Environment Variables:**
-    *   `VITE_API_URL`: (Your Render Backend URL, e.g., `https://ai-compass-api.onrender.com`)
-
-### Phase 4: Domain Configuration
-- [ ] **Vercel Custom Domain:**
-    *   Add `the-ai-compass.de` in Vercel project settings.
-    *   Configure DNS (A/CNAME records) at your domain registrar.
-- [ ] **Backend Custom Subdomain (Optional):**
-    *   Add `api.the-ai-compass.de` in Render settings if desired, or use the default `.onrender.com` URL.
-
----
-
-## 4. Maintenance
-*   **Auto-Deploy:** Once configured, any push to the `main` branch of the fork will automatically trigger builds on Render and Vercel.
-*   **Logs:** Use the "Logs" tab in both platforms to debug any startup or runtime errors.
+## 4. Key Considerations
+*   **Merge Safety:** Changes only go to production when you merge into `main`. You can work on other branches without affecting the live site.
+*   **Refactoring Script:** If we need to modify imports during the sync, we can add a simple Python line to the GitHub Action `run` block.
+*   **Zero Manual Work:** After the initial setup, you never have to manually copy files or restructuring folders again.
