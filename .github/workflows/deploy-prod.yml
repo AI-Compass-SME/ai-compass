@@ -56,3 +56,14 @@ jobs:
           else
             echo "No changes detect, skipping commit."
           fi
+
+      - name: Trigger Render Deploy
+        if: success()
+        run: |
+          # Only run if the secret is set
+          if [ -n "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+            echo "Triggering Render Deploy..."
+            curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+          else
+             echo "RENDER_DEPLOY_HOOK not set. Skipping auto-deploy trigger."
+          fi
