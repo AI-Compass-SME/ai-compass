@@ -2,8 +2,15 @@ import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
-from typing import Any, Union
-from pydantic import field_validator
+from typing import Any, Union, List, Annotated
+from pydantic import BeforeValidator
+
+def parse_cors(v: Any) -> List[str]:
+    if isinstance(v, str) and not v.startswith("["):
+        return [i.strip() for i in v.split(",")]
+    elif isinstance(v, (list, str)):
+        return v
+    raise ValueError(v)
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "AI-Compass API"
@@ -17,16 +24,7 @@ class Settings(BaseSettings):
     ML_MODELS_PATH: str = "../benchmarking_ai/ml_v5/model_artifacts/v5"
     
     # CORS
-    CORS_ORIGINS: list[str] = ["http://localhost:5173"]
-
-    @field_validator("CORS_ORIGINS", mode="before")
-    @classmethod
-    def assemble_cors_origins(cls, v: Any) -> list[str]:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
-            return v
-        raise ValueError(v)
+    CORS_ORIGINS: Annotated[List[str], BeforeValidator(parse_cors)] = ["http://localhost:5173"]
 
     class Config:
         env_file = ".env"
