@@ -89,6 +89,8 @@ The production application will continue to use **Supabase** as the database, co
     *   Add a **CNAME Record**:
         *   Host/Name: `www`
         *   Value: `cname.vercel-dns.com`.
+        *   > [!TIP]
+        *   > **DNS Conflict Error?** If you see "The DNS resource entry is invalid or conflicts with another resource entry", it means you already have a `www` record (e.g., a Parking Page). **Delete the existing `www` record first**, then try adding the Vercel CNAME again.
 5.  Return to Vercel and wait. It usually verifies in a few minutes, but can take up to 24-48 hours.
 
 ---
