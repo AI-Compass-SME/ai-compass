@@ -41,6 +41,10 @@ jobs:
           # 4. Final Cleanup of unneeded production files
           rm -rf prod-repo/backend/venv
           rm -rf prod-repo/backend/__pycache__
+
+          # 5. Force Change (Timestamp) to ensure git always detects a commit
+          echo "$(date)" > prod-repo/deployment_timestamp.txt
+          
           echo "Sync completed successfully."
 
       - name: Commit and Push
