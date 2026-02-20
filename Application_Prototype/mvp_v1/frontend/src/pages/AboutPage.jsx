@@ -5,7 +5,7 @@ import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
 
 // Team Member Component for cleaner code
-function TeamMember({ name, role, description, linkedInUrl, imageUrl }) {
+function TeamMember({ name, role, description, linkedInUrl, portfolioUrl, imageUrl }) {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
