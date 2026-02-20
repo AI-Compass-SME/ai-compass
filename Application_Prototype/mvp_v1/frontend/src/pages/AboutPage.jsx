@@ -135,7 +135,7 @@ export default function AboutPage() {
                                         </span>
                                     }
                                     linkedInUrl="https://www.linkedin.com/in/mhlatif207/"
-                                    imageUrl="/team/profile_image_mhl.png"
+                                    imageUrl="/team/profile_image_mhl.jpg"
                                 />
                             </div>
                         </section>
