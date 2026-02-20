@@ -29,6 +29,21 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
+# CORS - Applied FIRST to ensure it runs
+# Debugging: Allow ALL origins to rule out mismatch
+try:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"], # Allow EVERYTHING for debugging
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    logger.info(f"CORS enabled for ALL ORIGINS (*)")
+except Exception as e:
+    logger.error(f"Error setting up CORS: {e}")
+    raise e
+
 # Includes
 try:
     app.include_router(api_router, prefix=settings.API_V1_STR)
@@ -36,21 +51,6 @@ try:
 except Exception as e:
     logger.error(f"Error including router: {e}")
     raise e
-
-# CORS
-if settings.CORS_ORIGINS:
-    try:
-        app.add_middleware(
-            CORSMiddleware,
-            allow_origins=settings.CORS_ORIGINS,
-            allow_credentials=True,
-            allow_methods=["*"],
-            allow_headers=["*"],
-        )
-        logger.info(f"CORS enabled for: {settings.CORS_ORIGINS}")
-    except Exception as e:
-        logger.error(f"Error setting up CORS: {e}")
-        raise e
 
 @app.get("/")
 def root():
