@@ -11,10 +11,19 @@ import AboutPage from './pages/AboutPage';
 
 import ContactPage from './pages/ContactPage';
 import HowItWorksPage from './pages/HowItWorksPage';
+import ComingSoonPage from './pages/ComingSoonPage';
 
 import { Toaster } from "@/components/ui/sonner"
 
 function App() {
+  // Check if we are running locally
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+  // If not localhost, show the Coming Soon page and block the rest of the app
+  if (!isLocalhost) {
+    return <ComingSoonPage />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <Routes>
