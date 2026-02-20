@@ -9,8 +9,20 @@ from models import Response, ResponseItem, Company, Question, Answer, Dimension,
 from sqlalchemy import func
 
 # Add project root to sys.path to allow importing from benchmarking_ai
-# results.py is in backend/routers/ -> ../../../ is Application_Prototype -> ../../../../ is ai-compass (Root)
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
+# PROD: backend/modules/benchmarking_ai -> Add ../modules to path
+# DEV: benchmarking_ai (sibling of backend) -> Add ../../../.. to path
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+prod_module_path = os.path.join(current_dir, "../modules")
+
+if os.path.exists(prod_module_path):
+    sys.path.append(prod_module_path)
+    print(f"Added PROD path to sys.path: {prod_module_path}")
+else:
+    # Fallback to Dev
+    dev_path = os.path.abspath(os.path.join(current_dir, "../../../../"))
+    sys.path.append(dev_path)
+    print(f"Added DEV path to sys.path: {dev_path}")
 
 try:
     from benchmarking_ai.ml_v5.inference import InferenceEngine
