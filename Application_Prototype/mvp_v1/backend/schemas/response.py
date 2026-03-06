@@ -17,6 +17,7 @@ class ResponseUpdate(BaseModel):
 
 class ResponseComplete(BaseModel):
     company_details: CompanyCreate
+    lang: str = 'en'
 
 class ResponseDetail(BaseModel):
     response_id: int

@@ -4,26 +4,28 @@ import { Button } from "@/components/ui/button";
 import { FileDown, Check, Download, Loader2 } from 'lucide-react';
 import { toast } from "sonner";
 import { api } from '@/lib/api';
+import { useTranslation } from 'react-i18next';
 
 export function DownloadCTA({ responseId }) {
+    const { t, i18n } = useTranslation();
     const [isDownloading, setIsDownloading] = useState(false);
 
     const handleDownload = async () => {
         try {
             setIsDownloading(true);
-            const blob = await api.downloadPDF(responseId);
+            const blob = await api.downloadPDF(responseId, i18n.language);
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `ai_maturity_report_${responseId}.pdf`;
+            a.download = `ai_maturity_report_${responseId}_${i18n.language}.pdf`;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
-            toast.success("Report downloaded successfully!");
+            toast.success(t('results.download.toastSuccess'));
         } catch (error) {
             console.error("Download failed", error);
-            toast.error("Failed to download report.");
+            toast.error(t('results.download.toastError'));
         } finally {
             setIsDownloading(false);
         }
@@ -47,19 +49,19 @@ export function DownloadCTA({ responseId }) {
                         {/* Content Section */}
                         <div className="flex-1 space-y-6">
                             <div>
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Download Your Complete Report</h2>
+                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{t('results.download.title')}</h2>
                                 <p className="text-slate-600 text-lg mt-2">
-                                    Get a comprehensive PDF version of your AI maturity assessment including all charts, benchmarks, and your custom roadmap.
+                                    {t('results.download.desc')}
                                 </p>
                             </div>
 
                             {/* Features Grid */}
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                                 {[
-                                    "Full Technical Analysis",
-                                    "Executive Summary",
-                                    "High-Resolution Charts",
-                                    "Team Licensing Included"
+                                    t('results.download.features.technical', 'Full Technical Analysis'),
+                                    t('results.download.features.executive', 'Executive Summary'),
+                                    t('results.download.features.charts', 'High-Resolution Charts'),
+                                    t('results.download.features.licensing', 'Team Licensing Included')
                                 ].map((feature, i) => (
                                     <div key={i} className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100 text-sm font-semibold text-slate-700">
                                         <Check className="w-4 h-4 text-emerald-500" /> {feature}
@@ -79,11 +81,11 @@ export function DownloadCTA({ responseId }) {
                                 <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
                                 <span className="relative z-20 flex items-center">
                                     {isDownloading ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : <Download className="mr-2 w-5 h-5" />}
-                                    {isDownloading ? "Generating..." : "Download Report"}
+                                    {isDownloading ? t('results.download.btnGenerating', "Generating...") : t('results.download.btnDownload', "Download Full PDF Report")}
                                 </span>
                             </Button>
                             <p className="text-xs text-center mt-3 text-slate-400 font-medium">
-                                Generated instantly • PDF
+                                {t('results.download.instantly', 'Generated instantly • PDF')}
                             </p>
                         </div>
                     </div>

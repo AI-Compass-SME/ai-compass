@@ -1,0 +1,299 @@
+[
+    {
+        "question_id": 1,
+        "dimension_id": 1,
+        "header": "Leadership Alignment",
+        "question_text": "How is AI prioritized in management meetings?",
+        "type": "Statement",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 2,
+        "dimension_id": 1,
+        "header": "Clarity",
+        "question_text": "Does a documented AI strategy or roadmap exist?",
+        "type": "Slider",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 3,
+        "dimension_id": 1,
+        "header": "Budget Allocation",
+        "question_text": "How is AI funding and investment handled?",
+        "type": "Choice",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 4,
+        "dimension_id": 1,
+        "header": "Competitive Ambition",
+        "question_text": "What is your goal regarding AI vs. competitors?",
+        "type": "Choice",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 5,
+        "dimension_id": 2,
+        "header": "AI Mindset",
+        "question_text": "How do employees generally react to the topic of AI?",
+        "type": "Slider",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 6,
+        "dimension_id": 2,
+        "header": "AI Competencies",
+        "question_text": "To what extent are AI capabilities and technical literacy established across your workforce? E.g. expertise in machine learning and NLP, as well as general AI literacy for non-technical staff.",
+        "type": "Statement",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 7,
+        "dimension_id": 2,
+        "header": "Training Program",
+        "question_text": "How often do employees receive AI training?",
+        "type": "Choice",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 8,
+        "dimension_id": 2,
+        "header": "Psychological Safety",
+        "question_text": "Is it \"okay\" to fail with an AI pilot project?",
+        "type": "Slider",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 9,
+        "dimension_id": 3,
+        "header": "Data types",
+        "question_text": "What types of business data do you actively collect? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 10,
+        "dimension_id": 3,
+        "header": "Data Centralization",
+        "question_text": "Do you currently use any of these technologies? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 11,
+        "dimension_id": 3,
+        "header": "Data Quality",
+        "question_text": "Describe the \"cleanliness\" of your business data.",
+        "type": "Slider",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 12,
+        "dimension_id": 3,
+        "header": "Staff Proficiency",
+        "question_text": "How comfortable is your team with data insights?",
+        "type": "Choice",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 13,
+        "dimension_id": 4,
+        "header": "AI Feasibility",
+        "question_text": "How rigorously does your organization validate the technical and regulatory feasibility of an AI use case before committing resources?",
+        "type": "Statement",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 14,
+        "dimension_id": 4,
+        "header": "Current Activity",
+        "question_text": "How many AI use cases are currently active?",
+        "type": "Slider",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 15,
+        "dimension_id": 4,
+        "header": "ROI Tracking",
+        "question_text": "Do you measure the financial impact of AI projects?",
+        "type": "Choice",
+        "weight": 4.0,
+        "optional": false
+    },
+    {
+        "question_id": 16,
+        "dimension_id": 4,
+        "header": "Strategic Priority",
+        "question_text": "To what extent does AI address concrete bottlenecks in your core business operations rather than experimental topics?\n",
+        "type": "Statement",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 17,
+        "dimension_id": 5,
+        "header": "Standardization",
+        "question_text": "Are core processes documented and repeatable?",
+        "type": "Choice",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 18,
+        "dimension_id": 5,
+        "header": "Execution Maturity",
+        "question_text": "How structured is your approach to planning, implementing, and delivering AI-related projects?\n",
+        "type": "Statement",
+        "weight": 4.5,
+        "optional": false
+    },
+    {
+        "question_id": 19,
+        "dimension_id": 5,
+        "header": "Execution Speed",
+        "question_text": "How long to implement a new digital tool?",
+        "type": "Slider",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 20,
+        "dimension_id": 5,
+        "header": "Scaling Capability",
+        "question_text": "Is there a defined path to move AI idea to production?",
+        "type": "Choice",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 21,
+        "dimension_id": 6,
+        "header": "Guidelines",
+        "question_text": "Do you have an internal \"AI Code of Conduct\"?",
+        "type": "Choice",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 22,
+        "dimension_id": 6,
+        "header": "Data Privacy",
+        "question_text": "How strictly is data handled according to the EU AI Act?",
+        "type": "Slider",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 23,
+        "dimension_id": 6,
+        "header": "Accountability",
+        "question_text": "Who is responsible for AI outcomes and errors?",
+        "type": "Choice",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 24,
+        "dimension_id": 6,
+        "header": "Transparency",
+        "question_text": "What disclosure requirements exist for external partners?",
+        "type": "Choice",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 25,
+        "dimension_id": 7,
+        "header": "Cloud Readiness",
+        "question_text": "To what extent do you use Cloud infrastructure?",
+        "type": "Slider",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 26,
+        "dimension_id": 7,
+        "header": "AI Tooling Stack",
+        "question_text": "What types of AI development tools are currently available in your organization? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 3.5,
+        "optional": false
+    },
+    {
+        "question_id": 27,
+        "dimension_id": 7,
+        "header": "IT Scalability",
+        "question_text": "How easily can you scale new software company-wide?",
+        "type": "Slider",
+        "weight": 3.0,
+        "optional": false
+    },
+    {
+        "question_id": 28,
+        "dimension_id": 8,
+        "header": "Motivation",
+        "question_text": "Why are you doing this AI assessment?",
+        "type": "Statement",
+        "weight": 0.0,
+        "optional": true
+    },
+    {
+        "question_id": 29,
+        "dimension_id": 8,
+        "header": "Business Priorities",
+        "question_text": "Which business challenge is your top priority? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 0.0,
+        "optional": true
+    },
+    {
+        "question_id": 30,
+        "dimension_id": 8,
+        "header": "Strategic Impact",
+        "question_text": "How is AI influencing your organization\ufffds strategy?",
+        "type": "Choice",
+        "weight": 0.0,
+        "optional": true
+    },
+    {
+        "question_id": 31,
+        "dimension_id": 8,
+        "header": "AI Ownership",
+        "question_text": "Who is the primary driver of AI  within your organization? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 0.0,
+        "optional": true
+    },
+    {
+        "question_id": 32,
+        "dimension_id": 8,
+        "header": "Responsibility",
+        "question_text": "Are you in charge of AI initiatives?",
+        "type": "Choice",
+        "weight": 0.0,
+        "optional": true
+    },
+    {
+        "question_id": 33,
+        "dimension_id": 8,
+        "header": "Role & Seniority",
+        "question_text": "Which option best describes your position and decision authority? (Select all that apply)",
+        "type": "Checklist",
+        "weight": 0.0,
+        "optional": true
+    }
+]

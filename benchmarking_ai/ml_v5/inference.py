@@ -34,12 +34,13 @@ class InferenceEngine:
             print(f"Warning: Models not loaded. {e}")
             self.loaded = False
 
-    def run_analysis(self, company_dim_series, company_question_df, company_industry=None):
+    def run_analysis(self, company_dim_series, company_question_df, company_industry=None, lang="en"):
         """
         Runs full analysis for a single company.
         company_dim_series: pd.Series of dimension scores.
         company_question_df: pd.DataFrame of question details.
         company_industry: String, optional industry for percentile benchmarking.
+        lang: str, 'en' or 'de' for localization.
         """
         if not self.loaded:
             return {"error": "Models not loaded"}
@@ -68,6 +69,16 @@ class InferenceEngine:
             "coordinates": coords[0].tolist()
         }
         
+        if lang == "de":
+            cluster_de_map = {
+                "1 - The Traditionalist": "1 - Der Traditionalist",
+                "2 - The Experimental Explorer": "2 - Der experimentelle Entdecker",
+                "3 - The Structured Builder": "3 - Der strukturierte Aufbauer",
+                "4 - The Operational Scaler": "4 - Der operative Skalierer",
+                "5 - The AI-Driven Leader": "5 - Der KI-gesteuerte Vorreiter"
+            }
+            cluster_info["cluster_name"] = cluster_de_map.get(raw_name, raw_name)
+        
         # 1.5 Percentile Calculation
         percentile_info = None
         if company_industry:
@@ -79,17 +90,18 @@ class InferenceEngine:
         print(f"DEBUG Peer Scores: {peer_scores}")
 
         # 2. Strategic Gap Analysis
-        findings = self.sga.analyze(company_dim_series, company_question_df)
-        narrative = self.sga.synthesize_narrative(findings, company_dim_series)
+        findings = self.sga.analyze(company_dim_series, company_question_df, lang=lang)
+        narrative = self.sga.synthesize_narrative(findings, company_dim_series, lang=lang)
         
         # 3. Roadmap Generation
         roadmap = self.rg.generate(
             company_id=None, # Not strictly needed if internal logic uses vector search on series
             company_dim_series=company_dim_series, 
             company_question_df=company_question_df,
-            strategic_gaps=findings
+            strategic_gaps=findings,
+            lang=lang
         )
-        briefing = self.rg.synthesize_briefing(roadmap)
+        briefing = self.rg.synthesize_briefing(roadmap, lang=lang)
         
         return {
             "cluster": cluster_info,

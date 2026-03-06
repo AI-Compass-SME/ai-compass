@@ -3,8 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, CheckCircle, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export function ExpertConsultation() {
+    const { t } = useTranslation();
     const handleBooking = () => {
         toast.info("Consultation booking feature coming soon!", {
             description: "We are currently integrating with our scheduling system."
@@ -21,9 +23,9 @@ export function ExpertConsultation() {
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center mb-4">
-                    <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Expert Consultation & Next Steps</h2>
+                    <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('results.consultation.title', 'Expert Consultation & Next Steps')}</h2>
                     <p className="mt-2 text-base text-slate-300">
-                        Transition from digital analysis to human-led transformation.
+                        {t('results.consultation.subtitle', 'Transition from digital analysis to human-led transformation.')}
                     </p>
                 </div>
 
@@ -34,11 +36,11 @@ export function ExpertConsultation() {
                         {/* Left Content */}
                         <div className="flex-1 space-y-3 text-center md:text-left">
                             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                                Get in Touch for a Strategy Deep-Dive
+                                {t('results.consultation.cta.title', 'Get in Touch for a Strategy Deep-Dive')}
                             </h3>
 
                             <p className="text-base text-slate-300 leading-relaxed max-w-xl">
-                                Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'.
+                                {t('results.consultation.cta.desc', "Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'.")}
                             </p>
 
                             <div className="space-y-2 pt-1">
@@ -52,7 +54,7 @@ export function ExpertConsultation() {
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-xs font-medium text-slate-400">Email</p>
+                                                <p className="text-xs font-medium text-slate-400">{t('results.consultation.contact.email', 'Email')}</p>
                                                 <a href="mailto:contact@ai-compass.com" className="text-white text-sm font-semibold hover:text-indigo-300 transition-colors">
                                                     contact@ai-compass.com
                                                 </a>
@@ -66,7 +68,7 @@ export function ExpertConsultation() {
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-xs font-medium text-slate-400">Phone</p>
+                                                <p className="text-xs font-medium text-slate-400">{t('results.consultation.contact.phone', 'Phone')}</p>
                                                 <a href="tel:+1234567890" className="text-white text-sm font-semibold hover:text-indigo-300 transition-colors">
                                                     +1 (234) 567-890
                                                 </a>
@@ -82,10 +84,10 @@ export function ExpertConsultation() {
                             <div className="bg-slate-900/50 rounded-2xl p-4 ring-1 ring-white/10 max-w-sm mx-auto">
                                 <ul className="space-y-2.5">
                                     {[
-                                        "30-minute expert session",
-                                        "Industry-specific benchmarks",
-                                        "Roadmap validation",
-                                        "Budget ROI modeling"
+                                        t('results.consultation.features.0', '30-minute expert session'),
+                                        t('results.consultation.features.1', 'Industry-specific benchmarks'),
+                                        t('results.consultation.features.2', 'Roadmap validation'),
+                                        t('results.consultation.features.3', 'Budget ROI modeling')
                                     ].map((feature, i) => (
                                         <li key={i} className="flex items-center gap-2.5 text-slate-200 text-sm">
                                             <div className="flex-none p-0.5 rounded-full bg-emerald-500/20 text-emerald-400">

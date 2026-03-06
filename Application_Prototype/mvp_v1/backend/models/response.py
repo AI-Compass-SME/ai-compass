@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, TIMESTAMP, BigInteger, ForeignKey, ARRAY
+import uuid
+from sqlalchemy import Column, Integer, String, Float, TIMESTAMP, BigInteger, ForeignKey, ARRAY, Boolean
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -14,10 +15,13 @@ class Response(Base):
     __tablename__ = "responses"
 
     response_id = Column(Integer, primary_key=True, index=True)
+    result_hash = Column(String(36), unique=True, index=True, default=lambda: str(uuid.uuid4()))
+    is_verified = Column(Boolean, default=False)
     company_id = Column(Integer, ForeignKey("companies.company_id"))
     total_score = Column(String)
     created_at = Column(TIMESTAMP(timezone=True))
     cluster_id = Column(BigInteger, ForeignKey("cluster_profiles.cluster_id"))
+    lang = Column(String, default='en')
 
     # Relationships
     company = relationship("Company")

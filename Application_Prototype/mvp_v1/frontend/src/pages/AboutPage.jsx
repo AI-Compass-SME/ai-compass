@@ -3,9 +3,11 @@ import { Navigation } from '../components/Navigation';
 import { PageBackground } from '@/components/ui/PageBackground';
 import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
+import { useTranslation, Trans } from 'react-i18next';
 
 // Team Member Component for cleaner code
 function TeamMember({ name, role, description, linkedInUrl, portfolioUrl, imageUrl }) {
+    const { t } = useTranslation();
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
@@ -43,7 +45,7 @@ function TeamMember({ name, role, description, linkedInUrl, portfolioUrl, imageU
                                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                             >
                                 <svg className="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                                Connect on LinkedIn
+                                {t('pages.about.team.linkedin')}
                             </a>
                         )}
                         {portfolioUrl && (
@@ -56,7 +58,7 @@ function TeamMember({ name, role, description, linkedInUrl, portfolioUrl, imageU
                                 <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                Digital Portfolio
+                                {t('pages.about.team.portfolio')}
                             </a>
                         )}
                     </div>
@@ -73,9 +75,11 @@ function TeamMember({ name, role, description, linkedInUrl, portfolioUrl, imageU
 }
 
 export default function AboutPage() {
+    const { t } = useTranslation();
+
     useEffect(() => {
-        document.title = "About Us | AI Compass";
-    }, []);
+        document.title = `${t('pages.about.title')} | AI Compass`;
+    }, [t]);
 
     return (
         <div className="min-h-screen flex flex-col relative overflow-hidden bg-slate-50">
@@ -85,43 +89,43 @@ export default function AboutPage() {
             <main className="flex-grow w-full max-w-[80rem] mx-auto px-6 pt-28 pb-16 relative z-10">
 
                 <PageHeader
-                    title="About Us"
-                    subtitle="TEAM & MISSION"
+                    title={t('pages.about.title')}
+                    subtitle={t('pages.about.subtitle')}
                 />
 
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-12">
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 text-sm text-gray-700">
                         {/* Row 1: Accountability Intro */}
                         <section className="md:col-span-2 mb-8">
-                            <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide text-xs">Accountability Behind the Algorithm</h2>
+                            <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide text-xs">{t('pages.about.accountability.title')}</h2>
                             <p className="leading-relaxed text-lg font-medium text-gray-800">
-                                The AI Compass isn't a "Black Box." It is a tool built by experts to bring transparency and structure to AI transformation.
+                                {t('pages.about.accountability.text')}
                             </p>
                         </section>
 
                         {/* Row 2: Team (Full Width, Horizontal Cards) */}
                         <section className="md:col-span-2 mt-4">
-                            <h2 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wide text-xs">Your Partners in AI Transformation</h2>
+                            <h2 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wide text-xs">{t('pages.about.partners.title')}</h2>
                             <div className="grid md:grid-cols-2 gap-12">
                                 {/* Role: Christian Miething */}
                                 <TeamMember
                                     name="Christian Miething"
-                                    role="Product Owner & Strategist"
+                                    role={t('pages.about.cm.role')}
                                     description={
                                         <span className="space-y-4 block">
                                             <span className="block">
-                                                <strong className="block text-gray-900 mb-1">Leadership meets Strategy and Execution</strong>
-                                                With over 14 years of leadership experience, I have built a career on a proven track record of fostering strong professional relationships, leading complex projects, and driving sustainable business growth. My expertise sits at the intersection of strategic consulting, project management, and high-level client relations.
+                                                <strong className="block text-gray-900 mb-1">{t('pages.about.cm.p1Heading')}</strong>
+                                                {t('pages.about.cm.p1')}
                                             </span>
                                             <span className="block">
-                                                I am deeply passionate about digital transformation and the evolution of Artificial Intelligence. Driven by a desire to create long-term value, I thrive on collaborating with diverse teams to solve problems through effective communication and strategic insight.
+                                                {t('pages.about.cm.p2')}
                                             </span>
                                             <span className="block">
-                                                <strong className="block text-gray-900 mb-1 mt-2">The Architect of the AI Compass</strong>
-                                                I conceived the AI Compass because I recognized a critical gap in the market. While AI is evolving rapidly, its relevance to the German Mittelstand is often lost in technical complexity.
+                                                <strong className="block text-gray-900 mb-1 mt-2">{t('pages.about.cm.p3Heading')}</strong>
+                                                {t('pages.about.cm.p3')}
                                             </span>
                                             <span className="block">
-                                                As the Product Owner, I see my role as a bridge-builder: translating complex AI capabilities into actionable business logic. My goal is to serve businesses with the clarity and precision needed to master the AI landscape, ensuring every technological milestone is anchored in measurable, ROI-driven business value.
+                                                {t('pages.about.cm.p4')}
                                             </span>
                                         </span>
                                     }
@@ -132,22 +136,22 @@ export default function AboutPage() {
                                 {/* Role: Hamza Latif */}
                                 <TeamMember
                                     name="Hamza Latif"
-                                    role="Lead Data Scientist & ML Engineer"
+                                    role={t('pages.about.hl.role')}
                                     description={
                                         <span className="space-y-4 block">
                                             <span className="block">
-                                                <strong className="block text-gray-900 mb-1">Architecture meets Intelligence and Explainability</strong>
-                                                With over 8 years of experience across enterprise systems and AI-driven product development, I have built my career at the intersection of structured engineering, statistical modeling, and scalable SaaS architecture. My expertise lies in transforming complex business challenges into robust data systems that are transparent, measurable, and production-ready.
+                                                <strong className="block text-gray-900 mb-1">{t('pages.about.hl.p1Heading')}</strong>
+                                                {t('pages.about.hl.p1')}
                                             </span>
                                             <span className="block">
-                                                I approach the evolution of AI not as abstract experimentation, but as a disciplined engineering practice. My work focuses on building ML systems that balance predictive intelligence with deterministic logic, ensuring every algorithmic output is grounded in statistical rigor.
+                                                {t('pages.about.hl.p2')}
                                             </span>
                                             <span className="block">
-                                                <strong className="block text-gray-900 mb-1 mt-2">The Intelligence Architect Behind AI Compass</strong>
-                                                I built the ML v5 engine powering AI Compass. Unlike generic scoring tools, I engineered a system combining deterministic models with advanced clustering to create structured, explainable roadmaps.
+                                                <strong className="block text-gray-900 mb-1 mt-2">{t('pages.about.hl.p3Heading')}</strong>
+                                                {t('pages.about.hl.p3')}
                                             </span>
                                             <span className="block">
-                                                My goal is simple: building AI systems that leaders can trust. By aligning statistical modeling with clean architecture, I transform machine learning from a black-box into a strategic instrument for measurable progress, ensuring that every insight is backed by robust performance and long-term engineering reliability.
+                                                {t('pages.about.hl.p4')}
                                             </span>
                                         </span>
                                     }
@@ -160,11 +164,11 @@ export default function AboutPage() {
 
                         <section className="md:col-span-2 bg-purple-50 p-4 rounded-lg border border-purple-100 mt-2">
                             <h2 className="text-xs font-bold text-purple-900 mb-1 uppercase tracking-wide">
-                                Location & Roots
+                                {t('pages.about.location.title')}
                             </h2>
                             <p className="text-xs text-purple-800 leading-relaxed">
-                                Based in the heart of Berlin's tech ecosystem.<br />
-                                Görschstrasse 10A, 13187 Berlin, Germany
+                                {t('pages.about.location.l1')}<br />
+                                {t('pages.about.location.l2')}
                             </p>
                         </section>
                     </div>

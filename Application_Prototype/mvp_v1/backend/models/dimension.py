@@ -6,4 +6,5 @@ class Dimension(Base):
 
     dimension_id = Column(Integer, primary_key=True, index=True)
     dimension_name = Column(String)
+    dimension_name_de = Column(String)
     dimension_weight = Column(Float)

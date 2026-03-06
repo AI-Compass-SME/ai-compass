@@ -5,31 +5,38 @@ import { Button } from "@/components/ui/button";
 import { api } from '../lib/api';
 import { initializeVisitorSession } from '../lib/assessment';
 import { toast } from "sonner";
+import { useTranslation } from 'react-i18next';
 
 export function Navigation() {
+    const { t, i18n } = useTranslation();
     const location = useLocation();
     const showDownload = location.pathname.includes('/results/');
     const showStart = location.pathname === '/';
     const responseId = showDownload ? location.pathname.split('/results/')[1] : null;
     const [isDownloading, setIsDownloading] = useState(false);
 
+    const toggleLanguage = () => {
+        const newLang = i18n.language === 'en' ? 'de' : 'en';
+        i18n.changeLanguage(newLang);
+    };
+
     const handleDownload = async () => {
         if (!responseId) return;
         try {
             setIsDownloading(true);
-            const blob = await api.downloadPDF(responseId);
+            const blob = await api.downloadPDF(responseId, i18n.language);
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `ai_maturity_report_${responseId}.pdf`;
+            a.download = `ai_maturity_report_${responseId}_${i18n.language}.pdf`;
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
-            toast.success("Report downloaded successfully!");
+            toast.success(t('download.toastSuccess', "Report downloaded successfully!"));
         } catch (error) {
             console.error("Download failed", error);
-            toast.error("Failed to download report.");
+            toast.error(t('download.toastError', "Failed to download report."));
         } finally {
             setIsDownloading(false);
         }
@@ -41,11 +48,11 @@ export function Navigation() {
     const handleStartAssessment = async () => {
         try {
             setIsStarting(true);
-            const session = await initializeVisitorSession();
-            toast.success("Assignment started!");
+            const session = await initializeVisitorSession(i18n.language);
+            toast.success(t('landing.hero.success', "Assignment started!"));
             navigate(`/assessment/${session.responseId}`);
         } catch (error) {
-            toast.error("Failed to start assessment.");
+            toast.error(t('landing.hero.error', "Failed to start assessment."));
             console.error(error);
         } finally {
             setIsStarting(false);
@@ -61,40 +68,54 @@ export function Navigation() {
                     </div>
                     <span className="text-xl font-semibold text-gray-900">AI Compass</span>
                 </Link>
-                {showDownload && (
-                    <Button
-                        size="sm"
-                        disabled={isDownloading}
-                        className="relative px-6 h-10 text-sm font-bold rounded-xl transition-all shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)] active:scale-95 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white border-0 ring-1 ring-white/20 overflow-hidden group"
-                        onClick={handleDownload}
+                <div className="flex items-center gap-3">
+                    {showDownload && (
+                        <Button
+                            size="sm"
+                            disabled={isDownloading}
+                            className="relative px-6 h-10 text-sm font-bold rounded-xl transition-all shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)] active:scale-95 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white border-0 ring-1 ring-white/20 overflow-hidden group"
+                            onClick={handleDownload}
+                        >
+                            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
+                            <span className="relative z-20 flex items-center">
+                                {isDownloading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
+                                {isDownloading ? t('nav.generatingPdf', "Generating...") : t('nav.downloadReport', "Download Report")}
+                            </span>
+                        </Button>
+                    )}
+                    {showStart && (
+                        <Button
+                            onClick={handleStartAssessment}
+                            disabled={isStarting}
+                            size="sm"
+                            className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 h-10 rounded-xl font-bold hover:shadow-lg transition-all border-0 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)]"
+                        >
+                            {isStarting ? (
+                                <>
+                                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                    {t('nav.starting', "Starting...")}
+                                </>
+                            ) : (
+                                <>
+                                    {t('nav.getStarted')}
+                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                </>
+                            )}
+                        </Button>
+                    )}
+
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center justify-between w-[68px] h-8 bg-slate-100 rounded-full p-1 relative cursor-pointer border border-slate-200 transition-colors hover:border-slate-300 shadow-inner md:ml-2"
+                        aria-label="Toggle language"
                     >
-                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
-                        <span className="relative z-20 flex items-center">
-                            {isDownloading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
-                            {isDownloading ? "Generating..." : "Download Report"}
-                        </span>
-                    </Button>
-                )}
-                {showStart && (
-                    <Button
-                        onClick={handleStartAssessment}
-                        disabled={isStarting}
-                        size="sm"
-                        className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 h-10 rounded-xl font-bold hover:shadow-lg transition-all border-0 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)]"
-                    >
-                        {isStarting ? (
-                            <>
-                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                Starting...
-                            </>
-                        ) : (
-                            <>
-                                Start Free Assessment
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </>
-                        )}
-                    </Button>
-                )}
+                        <div
+                            className={`absolute left-1 top-1 bottom-1 w-7 bg-white rounded-full shadow transition-transform duration-300 ease-in-out ${i18n.language === 'en' ? 'translate-x-[30px]' : 'translate-x-0'}`}
+                        />
+                        <span className={`relative z-10 w-7 text-center text-xs font-bold transition-colors duration-300 flex items-center justify-center ${i18n.language === 'de' ? 'text-slate-900' : 'text-slate-400 hover:text-slate-600'}`}>DE</span>
+                        <span className={`relative z-10 w-7 text-center text-xs font-bold transition-colors duration-300 flex items-center justify-center ${i18n.language === 'en' ? 'text-slate-900' : 'text-slate-400 hover:text-slate-600'}`}>EN</span>
+                    </button>
+                </div>
             </div>
         </nav>
     );

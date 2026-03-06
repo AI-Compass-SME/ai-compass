@@ -1,0 +1,962 @@
+{
+  "dimensions": {
+    "1": {
+      "name": "Strategy & Business Vision",
+      "de": "Strategie und Gesch\u00e4ftsvision"
+    },
+    "2": {
+      "name": "People & Culture",
+      "de": "Menschen & Kultur"
+    },
+    "3": {
+      "name": "Data Readiness & Literacy",
+      "de": "Datenbereitschaft und -kompetenz"
+    },
+    "4": {
+      "name": "Use Cases & Business Value",
+      "de": "Anwendungsf\u00e4lle und Gesch\u00e4ftswert"
+    },
+    "5": {
+      "name": "Processes & Scaling",
+      "de": "Prozesse & Skalierung"
+    },
+    "6": {
+      "name": "Governance & Compliance",
+      "de": "Governance und Compliance"
+    },
+    "7": {
+      "name": "Tech Infrastructure",
+      "de": "Technische Infrastruktur"
+    },
+    "8": {
+      "name": "General Psychology",
+      "de": "Allgemeine Psychologie"
+    }
+  },
+  "questions": {
+    "1": {
+      "header": "Leadership Alignment",
+      "text": "How is AI prioritized in management meetings?",
+      "header_de": "F\u00fchrungsausrichtung",
+      "text_de": "Wie wird KI in Management-Meetings priorisiert?"
+    },
+    "2": {
+      "header": "Clarity",
+      "text": "Does a documented AI strategy or roadmap exist?",
+      "header_de": "Klarheit",
+      "text_de": "Gibt es eine dokumentierte KI-Strategie oder Roadmap?"
+    },
+    "3": {
+      "header": "Budget Allocation",
+      "text": "How is AI funding and investment handled?",
+      "header_de": "Budgetzuweisung",
+      "text_de": "Wie werden KI-Finanzierung und -Investitionen gehandhabt?"
+    },
+    "4": {
+      "header": "Competitive Ambition",
+      "text": "What is your goal regarding AI vs. competitors?",
+      "header_de": "Wettbewerbsambitionen",
+      "text_de": "Was ist Ihr Ziel in Bezug auf KI im Vergleich zu Mitbewerbern?"
+    },
+    "5": {
+      "header": "AI Mindset",
+      "text": "How do employees generally react to the topic of AI?",
+      "header_de": "KI-Denkweise",
+      "text_de": "Wie reagieren Mitarbeiter generell auf das Thema KI?"
+    },
+    "6": {
+      "header": "AI Competencies",
+      "text": "To what extent are AI capabilities and technical literacy established across your workforce? E.g. expertise in machine learning and NLP, as well as general AI literacy for non-technical staff.",
+      "header_de": "KI-Kompetenzen",
+      "text_de": "Inwieweit sind KI-F\u00e4higkeiten und technische Kompetenz in Ihrer Belegschaft etabliert? Z.B. Fachkenntnisse in maschinellem Lernen und NLP sowie allgemeine KI-Kenntnisse f\u00fcr nichttechnisches Personal."
+    },
+    "7": {
+      "header": "Training Program",
+      "text": "How often do employees receive AI training?",
+      "header_de": "Trainingsprogramm",
+      "text_de": "Wie oft erhalten Mitarbeiter eine KI-Schulung?"
+    },
+    "8": {
+      "header": "Psychological Safety",
+      "text": "Is it \"okay\" to fail with an AI pilot project?",
+      "header_de": "Psychologische Sicherheit",
+      "text_de": "Ist es \u201ein Ordnung\u201c, mit einem KI-Pilotprojekt zu scheitern?"
+    },
+    "9": {
+      "header": "Data types",
+      "text": "What types of business data do you actively collect? (Select all that apply)",
+      "header_de": "Datentypen",
+      "text_de": "Welche Arten von Gesch\u00e4ftsdaten sammeln Sie aktiv? (Alles Zutreffende ausw\u00e4hlen)"
+    },
+    "10": {
+      "header": "Data Centralization",
+      "text": "Do you currently use any of these technologies? (Select all that apply)",
+      "header_de": "Datenzentralisierung",
+      "text_de": "Nutzen Sie derzeit eine dieser Technologien? (Alles Zutreffende ausw\u00e4hlen)"
+    },
+    "11": {
+      "header": "Data Quality",
+      "text": "Describe the \"cleanliness\" of your business data.",
+      "header_de": "Datenqualit\u00e4t",
+      "text_de": "Beschreiben Sie die \u201eSauberkeit\u201c Ihrer Gesch\u00e4ftsdaten."
+    },
+    "12": {
+      "header": "Staff Proficiency",
+      "text": "How comfortable is your team with data insights?",
+      "header_de": "Personalkompetenz",
+      "text_de": "Wie vertraut ist Ihr Team mit Dateneinblicken?"
+    },
+    "13": {
+      "header": "AI Feasibility",
+      "text": "How rigorously does your organization validate the technical and regulatory feasibility of an AI use case before committing resources?",
+      "header_de": "KI-Machbarkeit",
+      "text_de": "Wie gr\u00fcndlich validiert Ihr Unternehmen die technische und regulatorische Machbarkeit eines KI-Anwendungsfalls, bevor es Ressourcen bereitstellt?"
+    },
+    "14": {
+      "header": "Current Activity",
+      "text": "How many AI use cases are currently active?",
+      "header_de": "Aktuelle Aktivit\u00e4t",
+      "text_de": "Wie viele KI-Anwendungsf\u00e4lle sind derzeit aktiv?"
+    },
+    "15": {
+      "header": "ROI Tracking",
+      "text": "Do you measure the financial impact of AI projects?",
+      "header_de": "ROI-Tracking",
+      "text_de": "Messen Sie die finanziellen Auswirkungen von KI-Projekten?"
+    },
+    "16": {
+      "header": "Strategic Priority",
+      "text": "To what extent does AI address concrete bottlenecks in your core business operations rather than experimental topics?\n",
+      "header_de": "Strategische Priorit\u00e4t",
+      "text_de": "Inwieweit behebt KI konkrete Engp\u00e4sse in Ihrem Kerngesch\u00e4ft und nicht experimentelle Themen?"
+    },
+    "17": {
+      "header": "Standardization",
+      "text": "Are core processes documented and repeatable?",
+      "header_de": "Standardisierung",
+      "text_de": "Sind Kernprozesse dokumentiert und wiederholbar?"
+    },
+    "18": {
+      "header": "Execution Maturity",
+      "text": "How structured is your approach to planning, implementing, and delivering AI-related projects?\n",
+      "header_de": "Ausf\u00fchrungsreife",
+      "text_de": "Wie strukturiert ist Ihr Ansatz bei der Planung, Umsetzung und Durchf\u00fchrung von KI-bezogenen Projekten?"
+    },
+    "19": {
+      "header": "Execution Speed",
+      "text": "How long to implement a new digital tool?",
+      "header_de": "Ausf\u00fchrungsgeschwindigkeit",
+      "text_de": "Wie lange dauert die Implementierung eines neuen digitalen Tools?"
+    },
+    "20": {
+      "header": "Scaling Capability",
+      "text": "Is there a defined path to move AI idea to production?",
+      "header_de": "Skalierungsf\u00e4higkeit",
+      "text_de": "Gibt es einen definierten Weg, um die KI-Idee in die Produktion zu \u00fcberf\u00fchren?"
+    },
+    "21": {
+      "header": "Guidelines",
+      "text": "Do you have an internal \"AI Code of Conduct\"?",
+      "header_de": "Richtlinien",
+      "text_de": "Gibt es einen internen \u201eKI-Verhaltenskodex\u201c?"
+    },
+    "22": {
+      "header": "Data Privacy",
+      "text": "How strictly is data handled according to the EU AI Act?",
+      "header_de": "Datenschutz",
+      "text_de": "Wie streng wird mit Daten nach dem EU-KI-Gesetz umgegangen?"
+    },
+    "23": {
+      "header": "Accountability",
+      "text": "Who is responsible for AI outcomes and errors?",
+      "header_de": "Rechenschaftspflicht",
+      "text_de": "Wer ist f\u00fcr KI-Ergebnisse und -Fehler verantwortlich?"
+    },
+    "24": {
+      "header": "Transparency",
+      "text": "What disclosure requirements exist for external partners?",
+      "header_de": "Transparenz",
+      "text_de": "Welche Offenlegungspflichten bestehen f\u00fcr externe Partner?"
+    },
+    "25": {
+      "header": "Cloud Readiness",
+      "text": "To what extent do you use Cloud infrastructure?",
+      "header_de": "Cloud-Bereitschaft",
+      "text_de": "In welchem \u200b\u200bUmfang nutzen Sie Cloud-Infrastruktur?"
+    },
+    "26": {
+      "header": "AI Tooling Stack",
+      "text": "What types of AI development tools are currently available in your organization? (Select all that apply)",
+      "header_de": "KI-Tooling-Stack",
+      "text_de": "Welche Arten von KI-Entwicklungstools sind derzeit in Ihrem Unternehmen verf\u00fcgbar? (Alles Zutreffende ausw\u00e4hlen)"
+    },
+    "27": {
+      "header": "IT Scalability",
+      "text": "How easily can you scale new software company-wide?",
+      "header_de": "IT-Skalierbarkeit",
+      "text_de": "Wie einfach k\u00f6nnen Sie neue Software unternehmensweit skalieren?"
+    },
+    "28": {
+      "header": "Motivation",
+      "text": "Why are you doing this AI assessment?",
+      "header_de": "Motivation",
+      "text_de": "Warum f\u00fchren Sie diese KI-Bewertung durch?"
+    },
+    "29": {
+      "header": "Business Priorities",
+      "text": "Which business challenge is your top priority? (Select all that apply)",
+      "header_de": "Gesch\u00e4ftspriorit\u00e4ten",
+      "text_de": "Welche gesch\u00e4ftliche Herausforderung hat f\u00fcr Sie h\u00f6chste Priorit\u00e4t? (Alles Zutreffende ausw\u00e4hlen)"
+    },
+    "30": {
+      "header": "Strategic Impact",
+      "text": "How is AI influencing your organization\ufffds strategy?",
+      "header_de": "Strategische Auswirkungen",
+      "text_de": "Wie beeinflusst KI die Strategie Ihres Unternehmens?"
+    },
+    "31": {
+      "header": "AI Ownership",
+      "text": "Who is the primary driver of AI  within your organization? (Select all that apply)",
+      "header_de": "KI-Eigentum",
+      "text_de": "Wer ist der Haupttreiber der KI in Ihrem Unternehmen? (Alles Zutreffende ausw\u00e4hlen)"
+    },
+    "32": {
+      "header": "Responsibility",
+      "text": "Are you in charge of AI initiatives?",
+      "header_de": "Verantwortung",
+      "text_de": "Sind Sie f\u00fcr KI-Initiativen verantwortlich?"
+    },
+    "33": {
+      "header": "Role & Seniority",
+      "text": "Which option best describes your position and decision authority? (Select all that apply)",
+      "header_de": "Rolle und Dienstalter",
+      "text_de": "Welche Option beschreibt Ihre Position und Entscheidungsbefugnis am besten? (Alles Zutreffende ausw\u00e4hlen)"
+    }
+  },
+  "answers": {
+    "1": {
+      "text": "Not a topic / Ignored",
+      "de": "Kein Thema / Ignoriert"
+    },
+    "2": {
+      "text": "Rare mention in meetings",
+      "de": "Seltene Erw\u00e4hnung in Besprechungen"
+    },
+    "3": {
+      "text": "Occasional discussion",
+      "de": "Gelegentliche Diskussion"
+    },
+    "4": {
+      "text": "Regular agenda item",
+      "de": "Regelm\u00e4\u00dfiger Tagesordnungspunkt"
+    },
+    "5": {
+      "text": "Core strategic pillar",
+      "de": "Strategischer Kernpfeiler"
+    },
+    "6": {
+      "text": "None / No plan",
+      "de": "Keine / Kein Plan"
+    },
+    "7": {
+      "text": "Rough ideas shared",
+      "de": "Grobe Ideen geteilt"
+    },
+    "8": {
+      "text": "High-level draft exists",
+      "de": "Es liegt ein Entwurf auf hoher Ebene vor"
+    },
+    "9": {
+      "text": "Formalized document",
+      "de": "Formalisiertes Dokument"
+    },
+    "10": {
+      "text": "Approved & detailed",
+      "de": "Genehmigt und detailliert"
+    },
+    "11": {
+      "text": "No budget available",
+      "de": "Kein Budget verf\u00fcgbar"
+    },
+    "12": {
+      "text": "Case-by-case funding",
+      "de": "Einzelfallfinanzierung"
+    },
+    "13": {
+      "text": "Ad-hoc project funds",
+      "de": "Ad-hoc-Projektmittel"
+    },
+    "14": {
+      "text": "Dedicated Dept. budget",
+      "de": "Eigenes Abteilungsbudget"
+    },
+    "15": {
+      "text": "Fixed annual AI budget",
+      "de": "Festes j\u00e4hrliches KI-Budget"
+    },
+    "16": {
+      "text": "Avoidance / Refusal",
+      "de": "Vermeidung/Verweigerung"
+    },
+    "17": {
+      "text": "Late adopter",
+      "de": "Sp\u00e4tanwender"
+    },
+    "18": {
+      "text": "Fast Follower",
+      "de": "Schneller Follower"
+    },
+    "19": {
+      "text": "Proactive innovator",
+      "de": "Proaktiver Innovator"
+    },
+    "20": {
+      "text": "Market Leader",
+      "de": "Marktf\u00fchrer"
+    },
+    "21": {
+      "text": "Fear / Resistance",
+      "de": "Angst / Widerstand"
+    },
+    "22": {
+      "text": "Skeptical / Passive",
+      "de": "Skeptisch / Passiv"
+    },
+    "23": {
+      "text": "Neutral / Cautious",
+      "de": "Neutral / Vorsichtig"
+    },
+    "24": {
+      "text": "Interested / Open",
+      "de": "Interessiert / Offen"
+    },
+    "25": {
+      "text": "Proactive excitement",
+      "de": "Proaktive Begeisterung"
+    },
+    "26": {
+      "text": "Unaware / Non-Existent - We lack clarity on our current AI proficiency, and there are no identifiable AI skills or initiatives within the workforce.",
+      "de": "Unbewusst/nicht vorhanden \u2013 Es mangelt uns an Klarheit \u00fcber unsere aktuellen KI-Kenntnisse und es gibt keine erkennbaren KI-F\u00e4higkeiten oder -Initiativen innerhalb der Belegschaft."
+    },
+    "27": {
+      "text": "Isolated Proficiency - AI knowledge is siloed within a few individuals; significant skill gaps across most departments currently hinder broader adoption.",
+      "de": "Isolierte Kompetenz \u2013 KI-Wissen ist bei einigen wenigen Personen isoliert; Erhebliche Qualifikationsdefizite in den meisten Abteilungen behindern derzeit eine breitere Einf\u00fchrung."
+    },
+    "28": {
+      "text": "Foundational Competency -  Core team members possess foundational AI skills, and structured upskilling programs are underway to prepare the broader workforce.",
+      "de": "Grundlegende Kompetenz \u2013 Die Mitglieder des Kernteams verf\u00fcgen \u00fcber grundlegende KI-F\u00e4higkeiten, und es sind strukturierte Weiterbildungsprogramme im Gange, um die breitere Belegschaft vorzubereiten."
+    },
+    "29": {
+      "text": "Advanced Operational Capability - Advanced AI practitioners are integrated into multiple roles, supported by continuous training that keeps pace with industry trends.",
+      "de": "Erweiterte betriebliche F\u00e4higkeiten \u2013 Fortgeschrittene KI-Praktiker sind in mehrere Rollen integriert und werden durch kontinuierliche Schulungen unterst\u00fctzt, die mit den Branchentrends Schritt halten."
+    },
+    "30": {
+      "text": "Strategic Expert Leadership - AI expertise is a core competency company-wide; internal specialists lead R&D, mentor staff, and drive industry-leading innovation.",
+      "de": "Strategische Expertenf\u00fchrung \u2013 KI-Expertise ist unternehmensweit eine Kernkompetenz; Interne Spezialisten leiten Forschung und Entwicklung, betreuen Mitarbeiter und treiben branchenf\u00fchrende Innovationen voran."
+    },
+    "31": {
+      "text": "Never / None",
+      "de": "Nie/Keine"
+    },
+    "32": {
+      "text": "Occasional webinars",
+      "de": "Gelegentliche Webinare"
+    },
+    "33": {
+      "text": "Irregular workshops",
+      "de": "Unregelm\u00e4\u00dfige Workshops"
+    },
+    "34": {
+      "text": "Planned curriculums",
+      "de": "Geplante Lehrpl\u00e4ne"
+    },
+    "35": {
+      "text": "Continuous learning",
+      "de": "Kontinuierliches Lernen"
+    },
+    "36": {
+      "text": "Failure is punished",
+      "de": "Versagen wird bestraft"
+    },
+    "37": {
+      "text": "Blame culture",
+      "de": "Schuldkultur"
+    },
+    "38": {
+      "text": "Failure is tolerated",
+      "de": "Scheitern wird toleriert"
+    },
+    "39": {
+      "text": "Learning from errors",
+      "de": "Aus Fehlern lernen"
+    },
+    "40": {
+      "text": "Fail-fast encouraged",
+      "de": "Fail-Fast wird gef\u00f6rdert"
+    },
+    "41": {
+      "text": "Sales and transaction data",
+      "de": "Verkaufs- und Transaktionsdaten"
+    },
+    "42": {
+      "text": "Customer interactions (emails, chats, calls)",
+      "de": "Kundeninteraktionen (E-Mails, Chats, Anrufe)"
+    },
+    "43": {
+      "text": "Website/app usage analytics",
+      "de": "Analyse der Website-/App-Nutzung"
+    },
+    "44": {
+      "text": "Customer feedback and reviews",
+      "de": "Kundenfeedback und Bewertungen"
+    },
+    "45": {
+      "text": "Product data",
+      "de": "Produktdaten"
+    },
+    "46": {
+      "text": "Financial and operational metrics",
+      "de": "Finanzielle und betriebliche Kennzahlen"
+    },
+    "47": {
+      "text": "Employee/HR data",
+      "de": "Mitarbeiter-/HR-Daten"
+    },
+    "48": {
+      "text": "Limited data collection (Exclusive option)",
+      "de": "Begrenzte Datenerfassung (exklusive Option)"
+    },
+    "49": {
+      "text": "Internal (on-premise) servers",
+      "de": "Interne (vor Ort befindliche) Server"
+    },
+    "50": {
+      "text": "Cloud platforms (AWS, Azure, Google Cloud)",
+      "de": "Cloud-Plattformen (AWS, Azure, Google Cloud)"
+    },
+    "51": {
+      "text": "CRM systems (Salesforce, HubSpot, etc.)",
+      "de": "CRM-Systeme (Salesforce, HubSpot usw.)"
+    },
+    "53": {
+      "text": "E-commerce platforms (Shopify, WooCommerce, etc.)",
+      "de": "E-Commerce-Plattformen (Shopify, WooCommerce usw.)"
+    },
+    "54": {
+      "text": "Business intelligence tools (Tableau, Power BI, etc.)",
+      "de": "Business-Intelligence-Tools (Tableau, Power BI usw.)"
+    },
+    "55": {
+      "text": "API integrations between systems",
+      "de": "API-Integrationen zwischen Systemen"
+    },
+    "56": {
+      "text": "None of the above (Exclusive option)?",
+      "de": "Keines der oben genannten (exklusive Option)?"
+    },
+    "57": {
+      "text": "Messy / Siloed",
+      "de": "Unordentlich / isoliert"
+    },
+    "58": {
+      "text": "Basic digital records",
+      "de": "Grundlegende digitale Aufzeichnungen"
+    },
+    "59": {
+      "text": "Partially cleaned",
+      "de": "Teilweise gereinigt"
+    },
+    "60": {
+      "text": "Standardized formats",
+      "de": "Standardisierte Formate"
+    },
+    "61": {
+      "text": "High-quality/Auto-sync",
+      "de": "Hohe Qualit\u00e4t/Automatische Synchronisierung"
+    },
+    "62": {
+      "text": "Struggling / No skill",
+      "de": "Probleme/Keine F\u00e4higkeiten"
+    },
+    "63": {
+      "text": "Basic tool awareness",
+      "de": "Grundlegendes Werkzeugbewusstsein"
+    },
+    "64": {
+      "text": "Comfortable with KPIs",
+      "de": "Sicher im Umgang mit KPIs"
+    },
+    "65": {
+      "text": "Analytical mindsets",
+      "de": "Analytische Denkweisen"
+    },
+    "66": {
+      "text": "Data-driven experts",
+      "de": "Datengesteuerte Experten"
+    },
+    "72": {
+      "text": "Not started ",
+      "de": "Nicht gestartet"
+    },
+    "73": {
+      "text": "Theory / Brainstorm",
+      "de": "Theorie / Brainstorming"
+    },
+    "74": {
+      "text": "1-2 Active Pilots",
+      "de": "1-2 aktive Piloten"
+    },
+    "75": {
+      "text": "Multiple live apps",
+      "de": "Mehrere Live-Apps"
+    },
+    "76": {
+      "text": "AI embedded in product",
+      "de": "KI im Produkt eingebettet"
+    },
+    "77": {
+      "text": "No tracking",
+      "de": "Keine Nachverfolgung"
+    },
+    "78": {
+      "text": "Cost tracking only",
+      "de": "Nur Kostenverfolgung"
+    },
+    "79": {
+      "text": "Qualitative impact",
+      "de": "Qualitative Wirkung"
+    },
+    "80": {
+      "text": "Defined KPI tracking",
+      "de": "Definiertes KPI-Tracking"
+    },
+    "81": {
+      "text": "Strict Financial ROI",
+      "de": "Strikter finanzieller ROI"
+    },
+    "82": {
+      "text": "AI initiatives are mostly exploratory and disconnected from core business bottlenecks.\n\n",
+      "de": "KI-Initiativen sind meist explorativ und haben keinen Bezug zu Kerngesch\u00e4ftsengp\u00e4ssen."
+    },
+    "83": {
+      "text": "Some AI use cases touch core processes, but they are not focused on the most critical constraints.",
+      "de": "Einige KI-Anwendungsf\u00e4lle ber\u00fchren Kernprozesse, konzentrieren sich jedoch nicht auf die kritischsten Einschr\u00e4nkungen."
+    },
+    "84": {
+      "text": "AI is applied to known bottlenecks in the core business, with mixed or unproven impact.",
+      "de": "KI wird bei bekannten Engp\u00e4ssen im Kerngesch\u00e4ft eingesetzt, mit gemischten oder unbewiesenen Auswirkungen."
+    },
+    "85": {
+      "text": "AI systematically targets high-impact bottlenecks in core business operations and delivers measurable improvements.",
+      "de": "KI bek\u00e4mpft systematisch schwerwiegende Engp\u00e4sse im Kerngesch\u00e4ft und sorgt f\u00fcr messbare Verbesserungen."
+    },
+    "86": {
+      "text": "AI is a strategic lever to remove or redefine core business bottlenecks and shapes how the business competes.",
+      "de": "KI ist ein strategischer Hebel zur Beseitigung oder Neudefinition von Engp\u00e4ssen im Kerngesch\u00e4ft und pr\u00e4gt die Wettbewerbsf\u00e4higkeit des Unternehmens."
+    },
+    "87": {
+      "text": "Knowledge in heads",
+      "de": "Wissen im Kopf"
+    },
+    "88": {
+      "text": "Rough checklists",
+      "de": "Grobe Checklisten"
+    },
+    "89": {
+      "text": "Partially documented",
+      "de": "Teilweise dokumentiert"
+    },
+    "90": {
+      "text": "Standard SOPs",
+      "de": "Standard-SOPs"
+    },
+    "91": {
+      "text": "Fully digital workflows",
+      "de": "Vollst\u00e4ndig digitale Arbeitsabl\u00e4ufe"
+    },
+    "97": {
+      "text": "> 1 Year",
+      "de": "> 1 Jahr"
+    },
+    "98": {
+      "text": "7 - 12 Months",
+      "de": "7 - 12 Monate"
+    },
+    "99": {
+      "text": "3 - 6 Months",
+      "de": "3 - 6 Monate"
+    },
+    "100": {
+      "text": "1 - 2 Months",
+      "de": "1 - 2 Monate"
+    },
+    "101": {
+      "text": "< 4 Weeks",
+      "de": "< 4 Wochen"
+    },
+    "102": {
+      "text": "No plan",
+      "de": "Kein Plan"
+    },
+    "103": {
+      "text": "Theoretical idea",
+      "de": "Theoretische Idee"
+    },
+    "104": {
+      "text": "Case-by-case choice",
+      "de": "Einzelfallauswahl"
+    },
+    "105": {
+      "text": "Defined scaling path",
+      "de": "Definierter Skalierungspfad"
+    },
+    "106": {
+      "text": "Automated deployment",
+      "de": "Automatisierte Bereitstellung"
+    },
+    "107": {
+      "text": "None",
+      "de": "Keiner"
+    },
+    "108": {
+      "text": "Informal rules",
+      "de": "Informelle Regeln"
+    },
+    "109": {
+      "text": "In progress / Draft",
+      "de": "In Bearbeitung / Entwurf"
+    },
+    "110": {
+      "text": "Implemented policy",
+      "de": "Umgesetzte Richtlinie"
+    },
+    "111": {
+      "text": "Audited Governance",
+      "de": "Gepr\u00fcfte Governance"
+    },
+    "112": {
+      "text": "High Risk / Unknown",
+      "de": "Hohes Risiko / Unbekannt"
+    },
+    "113": {
+      "text": "Minimal compliance",
+      "de": "Minimale Compliance"
+    },
+    "114": {
+      "text": "Basic GDPR active",
+      "de": "Grundlegende DSGVO aktiv"
+    },
+    "115": {
+      "text": "Privacy-by-design",
+      "de": "Datenschutz durch Design"
+    },
+    "116": {
+      "text": "Full sovereignty",
+      "de": "Volle Souver\u00e4nit\u00e4t"
+    },
+    "117": {
+      "text": "No one responsible",
+      "de": "Niemand ist verantwortlich"
+    },
+    "118": {
+      "text": "Vague / individual assignments",
+      "de": "Vage / individuelle Aufgaben"
+    },
+    "119": {
+      "text": "Shared responsibility",
+      "de": "Geteilte Verantwortung"
+    },
+    "120": {
+      "text": "Clear Dept. lead",
+      "de": "Klare Abteilungsleitung"
+    },
+    "121": {
+      "text": "Dedicated AI Officer",
+      "de": "Engagierter KI-Offizier"
+    },
+    "122": {
+      "text": "Unknown\n",
+      "de": "Unbekannt"
+    },
+    "123": {
+      "text": "Defined by Partners",
+      "de": "Von Partnern definiert"
+    },
+    "124": {
+      "text": "Minimal",
+      "de": "Minimal"
+    },
+    "125": {
+      "text": "Medium",
+      "de": "Medium"
+    },
+    "126": {
+      "text": "High Disclosure",
+      "de": "Hohe Offenlegung"
+    },
+    "127": {
+      "text": "Fully On-Premise",
+      "de": "Vollst\u00e4ndig vor Ort"
+    },
+    "128": {
+      "text": "Modernized On-Prem",
+      "de": "Modernisiertes On-Prem"
+    },
+    "129": {
+      "text": "Hybrid Cloud setup",
+      "de": "Hybrid-Cloud-Setup"
+    },
+    "130": {
+      "text": "Cloud-first approach",
+      "de": "Cloud-First-Ansatz"
+    },
+    "131": {
+      "text": "Cloud-Native",
+      "de": "Cloud-nativ"
+    },
+    "132": {
+      "text": "No AI development tools are currently available (Exclusive option)?",
+      "de": "Derzeit sind keine KI-Entwicklungstools verf\u00fcgbar (exklusive Option)?"
+    },
+    "133": {
+      "text": "Pre-built AI tools or platforms (e.g., analytics, chatbots, automation tools)?",
+      "de": "Vorgefertigte KI-Tools oder Plattformen (z. B. Analysen, Chatbots, Automatisierungstools)?"
+    },
+    "134": {
+      "text": "Custom AI or machine learning development tools?",
+      "de": "Benutzerdefinierte Entwicklungstools f\u00fcr KI oder maschinelles Lernen?"
+    },
+    "135": {
+      "text": "Cloud-based AI services (e.g., managed AI/ML platforms)?",
+      "de": "Cloudbasierte KI-Dienste (z. B. verwaltete KI/ML-Plattformen)?"
+    },
+    "136": {
+      "text": "A combination of pre-built and custom AI tools?",
+      "de": "Eine Kombination aus vorgefertigten und benutzerdefinierten KI-Tools?"
+    },
+    "137": {
+      "text": "Not sure",
+      "de": "Nicht sicher"
+    },
+    "138": {
+      "text": "Manual/Painful",
+      "de": "Manuell/schmerzhaft"
+    },
+    "139": {
+      "text": "Labor intensive",
+      "de": "Arbeitsintensiv"
+    },
+    "140": {
+      "text": "Standard IT process",
+      "de": "Standard-IT-Prozess"
+    },
+    "141": {
+      "text": "Modular & easy",
+      "de": "Modular und einfach"
+    },
+    "142": {
+      "text": "Instant/Auto-scaling",
+      "de": "Sofortige/automatische Skalierung"
+    },
+    "148": {
+      "text": "Improving customer service efficiency",
+      "de": "Verbesserung der Effizienz des Kundenservice"
+    },
+    "149": {
+      "text": "Automating repetitive tasks",
+      "de": "Wiederkehrende Aufgaben automatisieren"
+    },
+    "150": {
+      "text": "Better data analysis and insights",
+      "de": "Bessere Datenanalyse und Erkenntnisse"
+    },
+    "151": {
+      "text": "Enhancing search/recommendation capabilities",
+      "de": "Verbesserung der Such-/Empfehlungsfunktionen"
+    },
+    "152": {
+      "text": "Streamlining document processing",
+      "de": "Optimierte Dokumentenverarbeitung"
+    },
+    "153": {
+      "text": "Personalizing customer experiences",
+      "de": "Kundenerlebnisse personalisieren"
+    },
+    "154": {
+      "text": "Reducing operational costs",
+      "de": "Reduzierung der Betriebskosten"
+    },
+    "155": {
+      "text": "Other",
+      "de": "Andere"
+    },
+    "161": {
+      "text": "Executive Leadership / Board ",
+      "de": "Gesch\u00e4ftsf\u00fchrung / Vorstand"
+    },
+    "162": {
+      "text": "IT / Technology Department ",
+      "de": "Abteilung IT/Technologie"
+    },
+    "163": {
+      "text": "Digital Transformation / Innovation Team ",
+      "de": "Digitale Transformation / Innovationsteam"
+    },
+    "164": {
+      "text": "Sales & Marketing",
+      "de": "Vertrieb und Marketing"
+    },
+    "165": {
+      "text": "Operations & Supply Chain ",
+      "de": "Betrieb und Lieferkette"
+    },
+    "166": {
+      "text": "Data Science / Analytics Specialists ",
+      "de": "Spezialisten f\u00fcr Datenwissenschaft/Analyse"
+    },
+    "167": {
+      "text": "Individual Employees / Early Adopters ",
+      "de": "Einzelne Mitarbeiter / Early Adopters"
+    },
+    "168": {
+      "text": "External Partners / Consultants",
+      "de": "Externe Partner / Berater"
+    },
+    "169": {
+      "text": "No Clear Internal Driver ",
+      "de": "Kein klarer interner Treiber"
+    },
+    "170": {
+      "text": "No",
+      "de": "NEIN"
+    },
+    "171": {
+      "text": "Sometimes",
+      "de": "Manchmal"
+    },
+    "172": {
+      "text": "Yes",
+      "de": "Ja"
+    },
+    "173": {
+      "text": "Executive / C-level",
+      "de": "F\u00fchrungskraft/C-Level"
+    },
+    "174": {
+      "text": "Senior Management",
+      "de": "Gesch\u00e4ftsleitung"
+    },
+    "175": {
+      "text": "Product / Process Owner",
+      "de": "Produkt-/Prozesseigent\u00fcmer"
+    },
+    "176": {
+      "text": "IT / Technology Management",
+      "de": "IT-/Technologiemanagement"
+    },
+    "177": {
+      "text": "Data / AI Specialist",
+      "de": "Daten-/KI-Spezialist"
+    },
+    "178": {
+      "text": "Business Analyst / Strategy / Innovation role",
+      "de": "Rolle als Business Analyst/Strategie/Innovation"
+    },
+    "179": {
+      "text": "Operational Staff / Domain Expert",
+      "de": "Betriebspersonal/Dom\u00e4nenexperte"
+    },
+    "180": {
+      "text": "Project / Program Manager",
+      "de": "Projekt-/Programmmanager"
+    },
+    "181": {
+      "text": "External Consultant / Advisor",
+      "de": "Externer Berater / Berater"
+    },
+    "52": {
+      "text": "ERP System - ",
+      "de": "ERP-System -"
+    },
+    "67": {
+      "text": "Minimal / Unsure - We do not have a formal feasibility check; projects are often started based on excitement or intuition without verifying data or compliance requirements first.",
+      "de": "Minimal/Unsicher \u2013 Wir haben keine formelle Machbarkeitspr\u00fcfung; Projekte werden oft aus Begeisterung oder Intuition gestartet, ohne vorher Daten oder Compliance-Anforderungen zu \u00fcberpr\u00fcfen."
+    },
+    "68": {
+      "text": "Reactive Assessment - We perform basic checks only after a project has started, often leading to delays or \"stuck\" projects when data or legal issues unexpectedly emerge.",
+      "de": "Reaktive Bewertung \u2013 Wir f\u00fchren grundlegende Pr\u00fcfungen erst nach Projektbeginn durch, was oft zu Verz\u00f6gerungen oder \u201esteckengebliebenen\u201c Projekten f\u00fchrt, wenn unerwartet Daten- oder Rechtsprobleme auftauchen."
+    },
+    "69": {
+      "text": "Basic Due Diligence - We have an informal \"Pre-Check\" for major projects where we verify if the necessary data exists and if there are obvious legal hurdles.",
+      "de": "Grundlegende Due Diligence \u2013 Bei Gro\u00dfprojekten f\u00fchren wir einen informellen \u201ePre-Check\u201c durch, bei dem wir pr\u00fcfen, ob die erforderlichen Daten vorhanden sind und ob offensichtliche rechtliche H\u00fcrden bestehen."
+    },
+    "70": {
+      "text": "Structured Validation - We use a clear \"Go/No-Go\" process for every use case that validates data readiness, process alignment, and regulatory compliance before any budget is released.",
+      "de": "Strukturierte Validierung \u2013 Wir verwenden f\u00fcr jeden Anwendungsfall einen klaren \u201eGo/No-Go\u201c-Prozess, der die Datenbereitschaft, die Prozessausrichtung und die Einhaltung gesetzlicher Vorschriften validiert, bevor ein Budget freigegeben wird."
+    },
+    "71": {
+      "text": "Optimized Strategic Filtering - We use a standardized, data-driven validation engine that ensures every initiative is perfectly aligned with business goals, technical capabilities, and compliance standards from the start.",
+      "de": "Optimierte strategische Filterung \u2013 Wir verwenden eine standardisierte, datengesteuerte Validierungs-Engine, die sicherstellt, dass jede Initiative von Anfang an perfekt auf die Gesch\u00e4ftsziele, technischen F\u00e4higkeiten und Compliance-Standards abgestimmt ist."
+    },
+    "92": {
+      "text": "Undefined / Ad-hoc - We do not have a set process for AI projects; tasks are handled as they arise without formal planning or clear ownership.",
+      "de": "Undefiniert/Ad-hoc \u2013 Wir haben keinen festgelegten Prozess f\u00fcr KI-Projekte; Aufgaben werden so bearbeitet, wie sie anfallen, ohne formelle Planung oder klare Verantwortlichkeit."
+    },
+    "93": {
+      "text": "Individual Initiative - Project delivery depends on the effort of specific individuals; while some projects succeed, we lack a repeatable \"playbook\" for the whole team.",
+      "de": "Individuelle Initiative \u2013 Die Projektabwicklung h\u00e4ngt vom Einsatz bestimmter Personen ab. W\u00e4hrend einige Projekte erfolgreich sind, fehlt uns ein wiederholbares \u201ePlaybook\u201c f\u00fcr das gesamte Team."
+    },
+    "94": {
+      "text": "Basic Standardization - We use a consistent workflow (e.g., simple task tracking or weekly sprints) that allows us to manage AI projects with predictable timelines.",
+      "de": "Grundlegende Standardisierung \u2013 Wir verwenden einen konsistenten Workflow (z. B. einfache Aufgabenverfolgung oder w\u00f6chentliche Sprints), der es uns erm\u00f6glicht, KI-Projekte mit vorhersehbaren Zeitpl\u00e4nen zu verwalten."
+    },
+    "95": {
+      "text": "Targeted & Results-Oriented - We use a process specifically adapted for AI (e.g., early prototyping and data-readiness checks), ensuring we don't waste resources on unfeasible ideas.",
+      "de": "Gezielt und ergebnisorientiert \u2013 Wir verwenden einen speziell f\u00fcr KI angepassten Prozess (z. B. fr\u00fches Prototyping und Datenbereitschaftspr\u00fcfungen), um sicherzustellen, dass wir keine Ressourcen f\u00fcr nicht umsetzbare Ideen verschwenden."
+    },
+    "96": {
+      "text": "High-Velocity Delivery - Our implementation engine is highly efficient; we can rapidly move from a \"Proof of Concept\" to a live tool with minimal friction and clear ROI tracking.",
+      "de": "Hochgeschwindigkeitslieferung \u2013 Unsere Implementierungs-Engine ist hocheffizient; Wir k\u00f6nnen mit minimaler Reibung und klarer ROI-Verfolgung schnell von einem \u201eProof of Concept\u201c zu einem Live-Tool \u00fcbergehen."
+    },
+    "143": {
+      "text": "External Pressure - We are responding to external hype or competitor moves without a clear internal goal.",
+      "de": "Externer Druck \u2013 Wir reagieren auf externe Hypes oder Ma\u00dfnahmen von Mitbewerbern ohne ein klares internes Ziel."
+    },
+    "144": {
+      "text": "Resource Optimization - We want to identify where AI can reduce costs or automate repetitive manual tasks.",
+      "de": "Ressourcenoptimierung \u2013 Wir m\u00f6chten herausfinden, wo KI Kosten senken oder sich wiederholende manuelle Aufgaben automatisieren kann."
+    },
+    "145": {
+      "text": "Strategic Clarity - We need a professional roadmap to align AI initiatives with our core business objectives.",
+      "de": "Strategische Klarheit \u2013 Wir brauchen eine professionelle Roadmap, um KI-Initiativen mit unseren Kerngesch\u00e4ftszielen in Einklang zu bringen."
+    },
+    "146": {
+      "text": " Readiness Check - We aim to evaluate our technical infrastructure and workforce skills for upcoming scaling.",
+      "de": "Readiness Check \u2013 Unser Ziel ist es, unsere technische Infrastruktur und die F\u00e4higkeiten unserer Arbeitskr\u00e4fte f\u00fcr die bevorstehende Skalierung zu bewerten."
+    },
+    "147": {
+      "text": "Competitive Advantage - We are seeking to define a market-leading position through high-impact AI innovation.",
+      "de": "Wettbewerbsvorteil \u2013 Wir streben eine marktf\u00fchrende Position durch wirkungsvolle KI-Innovationen an."
+    },
+    "156": {
+      "text": "No Impact - We have not assessed AI trends and have no documented strategy regarding them.",
+      "de": "Keine Auswirkung \u2013 Wir haben KI-Trends nicht bewertet und haben keine dokumentierte Strategie diesbez\u00fcglich."
+    },
+    "157": {
+      "text": "Reactive - We acknowledge the trend but only respond to external pressures on an ad-hoc basis.",
+      "de": "Reaktiv \u2013 Wir erkennen den Trend, reagieren aber nur ad hoc auf externen Druck."
+    },
+    "158": {
+      "text": "Exploratory - We monitor trends and have initiated pilot projects to address specific needs.",
+      "de": "Explorativ \u2013 Wir beobachten Trends und haben Pilotprojekte initiiert, um auf spezifische Bed\u00fcrfnisse einzugehen."
+    },
+    "159": {
+      "text": "Strategic - AI is a key planning driver with a formal roadmap for systematic integration.",
+      "de": "Strategisch \u2013 KI ist ein wichtiger Planungstreiber mit einem formellen Fahrplan f\u00fcr die systematische Integration."
+    },
+    "160": {
+      "text": "Innovative - We leverage AI to redefine our business model and set industry standards.",
+      "de": "Innovativ \u2013 Wir nutzen KI, um unser Gesch\u00e4ftsmodell neu zu definieren und Branchenstandards zu setzen."
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { PageBackground } from '@/components/ui/PageBackground';
 import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
 import { ShieldCheck, Database, Cpu, BarChart3, Binary, Network, Lock, Fingerprint } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 
 const TechCard = ({ icon: Icon, title, subtitle, children }) => (
     <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
@@ -23,9 +24,11 @@ const TechCard = ({ icon: Icon, title, subtitle, children }) => (
 );
 
 export default function MethodologyPage() {
+    const { t } = useTranslation();
+
     useEffect(() => {
-        document.title = "Methodology | AI Compass";
-    }, []);
+        document.title = `${t('pages.methodology.title')} | AI Compass`;
+    }, [t]);
 
     return (
         <div className="min-h-screen flex flex-col relative overflow-hidden bg-slate-50">
@@ -37,8 +40,8 @@ export default function MethodologyPage() {
                 {/* Header Section */}
                 {/* Header Section */}
                 <PageHeader
-                    title="Technical Methodology & AI Architecture"
-                    subtitle="DOCUMENTATION FOR TECHNICAL STAKEHOLDERS"
+                    title={t('pages.methodology.title')}
+                    subtitle={t('pages.methodology.subtitle')}
                 />
 
                 {/* Main Grid */}
@@ -47,56 +50,72 @@ export default function MethodologyPage() {
                     {/* 1. Data Normalization */}
                     <TechCard
                         icon={Binary}
-                        title="Data Standardization"
-                        subtitle="Preprocessing Loop"
+                        title={t('pages.methodology.cards.1.title')}
+                        subtitle={t('pages.methodology.cards.1.subtitle')}
                     >
                         <p>
-                            Raw assessment data is ingested via our ETL pipeline and normalized using <strong>Z-Score Standardization</strong> (StandardScaler).
+                            <Trans i18nKey="pages.methodology.cards.1.p1">
+                                Raw assessment data is ingested via our ETL pipeline and normalized using <strong>Z-Score Standardization</strong> (StandardScaler).
+                            </Trans>
                         </p>
                         <p>
-                            This transforms all dimension scores into a standard normal distribution (μ=0, σ=1), ensuring that outliers don't skew the clustering distance metrics and allowing for fair comparison across diverse industries.
+                            <Trans i18nKey="pages.methodology.cards.1.p2">
+                                This transforms all dimension scores into a standard normal distribution (μ=0, σ=1), ensuring that outliers don't skew the clustering distance metrics and allowing for fair comparison across diverse industries.
+                            </Trans>
                         </p>
                     </TechCard>
 
                     {/* 2. Unsupervised Learning */}
                     <TechCard
                         icon={Network}
-                        title="Archetype Clustering"
-                        subtitle="Unsupervised Learning"
+                        title={t('pages.methodology.cards.2.title')}
+                        subtitle={t('pages.methodology.cards.2.subtitle')}
                     >
                         <p>
-                            We utilize <strong>K-Means Clustering</strong> (k=5) to categorize organizations into distinct maturity archetypes.
+                            <Trans i18nKey="pages.methodology.cards.2.p1">
+                                We utilize <strong>K-Means Clustering</strong> (k=5) to categorize organizations into distinct maturity archetypes.
+                            </Trans>
                         </p>
                         <p>
-                            The model is trained on our proprietary dataset of 500+ profiles. Your organization is assigned to a cluster based on the Euclidean distance to the nearest centroid, providing an objective classification from "Traditionalist" to "AI-Driven Leader".
+                            <Trans i18nKey="pages.methodology.cards.2.p2">
+                                The model is trained on our proprietary dataset of 500+ profiles. Your organization is assigned to a cluster based on the Euclidean distance to the nearest centroid, providing an objective classification from "Traditionalist" to "AI-Driven Leader".
+                            </Trans>
                         </p>
                     </TechCard>
 
                     {/* 3. Predictive Roadmapping */}
                     <TechCard
                         icon={Cpu}
-                        title="Predictive Roadmapping"
-                        subtitle="k-Nearest Neighbors (k-NN)"
+                        title={t('pages.methodology.cards.3.title')}
+                        subtitle={t('pages.methodology.cards.3.subtitle')}
                     >
                         <p>
-                            Our recommendation engine uses a <strong>k-Nearest Neighbors</strong> algorithm with <strong>Cosine Similarity</strong> to identify your "Next-Level Peers".
+                            <Trans i18nKey="pages.methodology.cards.3.p1">
+                                Our recommendation engine uses a <strong>k-Nearest Neighbors</strong> algorithm with <strong>Cosine Similarity</strong> to identify your "Next-Level Peers".
+                            </Trans>
                         </p>
                         <p>
-                            By locating organizations that are statistically similar to you but 15-30% more mature, we reverse-engineer their capabilities to generate a high-probability roadmap for your specific growth path.
+                            <Trans i18nKey="pages.methodology.cards.3.p2">
+                                By locating organizations that are statistically similar to you but 15-30% more mature, we reverse-engineer their capabilities to generate a high-probability roadmap for your specific growth path.
+                            </Trans>
                         </p>
                     </TechCard>
 
                     {/* 4. Anomaly Detection */}
                     <TechCard
                         icon={ShieldCheck}
-                        title="Strategic Risk Analysis"
-                        subtitle="Statistical Anomaly Detection"
+                        title={t('pages.methodology.cards.4.title')}
+                        subtitle={t('pages.methodology.cards.4.subtitle')}
                     >
                         <p>
-                            The <strong>Strategic Gap Analyzer</strong> scans for structural imbalances across 7 dimensions using a Z-Score threshold (&gt; 1.5σ).
+                            <Trans i18nKey="pages.methodology.cards.4.p1">
+                                The <strong>Strategic Gap Analyzer</strong> scans for structural imbalances across 7 dimensions using a Z-Score threshold (&gt; 1.5σ).
+                            </Trans>
                         </p>
                         <p>
-                            We explicitly detect decoupling between "Strategy" and "Execution" (e.g., high Tech score but low People score), flagging these as critical risks that could lead to project failure or "shelf-ware".
+                            <Trans i18nKey="pages.methodology.cards.4.p2">
+                                We explicitly detect decoupling between "Strategy" and "Execution" (e.g., high Tech score but low People score), flagging these as critical risks that could lead to project failure or "shelf-ware".
+                            </Trans>
                         </p>
                     </TechCard>
 
@@ -107,10 +126,10 @@ export default function MethodologyPage() {
                     <div className="flex flex-wrap items-center justify-between gap-6">
                         <div>
                             <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-1">
-                                Core Technology Stack
+                                {t('pages.methodology.tech.title')}
                             </h3>
                             <p className="text-xs text-gray-500">
-                                Built for security, scalability, and interpretability.
+                                {t('pages.methodology.tech.desc')}
                             </p>
                         </div>
 
@@ -126,9 +145,9 @@ export default function MethodologyPage() {
                 <div className="mt-8 bg-blue-50 border border-blue-100 rounded-lg p-4 flex items-start gap-3">
                     <Lock className="w-5 h-5 text-blue-600 mt-0.5" />
                     <div>
-                        <h4 className="text-sm font-bold text-blue-900">Data Privacy & Security</h4>
+                        <h4 className="text-sm font-bold text-blue-900">{t('pages.methodology.security.title')}</h4>
                         <p className="text-xs text-blue-800 mt-1">
-                            All assessment data is processed in-memory for inference. We strictly adhere to GDPR principles and do not use customer data for training public LLMs. Your unique IP remains yours.
+                            {t('pages.methodology.security.desc')}
                         </p>
                     </div>
                 </div>

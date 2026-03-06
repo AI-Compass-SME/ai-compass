@@ -73,31 +73,42 @@ export const api = {
      * Complete the assessment
      * @param {number} responseId 
      * @param {Object} companyDetails 
+     * @param {string} lang
      */
-    completeAssessment: async (responseId, companyDetails) => {
+    completeAssessment: async (responseId, companyDetails, lang = 'en') => {
         const response = await fetch(`${API_BASE_URL}/responses/${responseId}/complete`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ company_details: companyDetails }),
+            body: JSON.stringify({ company_details: companyDetails, lang: lang }),
         });
         return handleResponse(response);
     },
 
     /**
      * Get results
-     * @param {number} responseId 
+     * @param {string} responseId 
      */
-    getResults: async (responseId) => {
-        const response = await fetch(`${API_BASE_URL}/responses/${responseId}/results`);
+    getResults: async (responseId, lang = 'en') => {
+        const response = await fetch(`${API_BASE_URL}/responses/${responseId}/results?lang=${lang}`);
+        return handleResponse(response);
+    },
+
+    /**
+     * Verify User Email via Token
+     * @param {string} token 
+     */
+    verifyEmail: async (token) => {
+        const response = await fetch(`${API_BASE_URL}/responses/verify?token=${token}`);
         return handleResponse(response);
     },
 
     /**
      * Download PDF Report
      * @param {number} responseId
+     * @param {string} lang
      */
-    downloadPDF: async (responseId) => {
-        const response = await fetch(`${API_BASE_URL}/responses/${responseId}/pdf`);
+    downloadPDF: async (responseId, lang = 'en') => {
+        const response = await fetch(`${API_BASE_URL}/responses/${responseId}/pdf?lang=${lang}`);
         if (!response.ok) throw new Error("PDF Generation Failed");
         return response.blob();
     },

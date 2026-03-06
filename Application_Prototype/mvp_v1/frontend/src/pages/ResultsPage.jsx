@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PageBackground } from '@/components/ui/PageBackground';
 import { useParams, Link } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -17,6 +18,7 @@ import { DownloadCTA } from '../components/results/DownloadCTA';
 
 export default function ResultsPage() {
     const { responseId } = useParams();
+    const { t, i18n } = useTranslation();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -24,31 +26,31 @@ export default function ResultsPage() {
     useEffect(() => {
         async function fetchResults() {
             try {
-                const result = await api.getResults(responseId);
+                const result = await api.getResults(responseId, i18n.language);
                 setData(result);
             } catch (err) {
                 console.error("Failed to load results", err);
-                setError(err.message || "Failed to generate analysis.");
-                toast.error("Analysis failed.");
+                setError(err.message || t('results.toasts.fetchError', "Failed to generate analysis."));
+                toast.error(t('results.toasts.fetchError', "Analysis failed."));
             } finally {
                 setLoading(false);
             }
         }
         fetchResults();
-    }, [responseId]);
+    }, [responseId, i18n.language]);
 
     // Set page title
     useEffect(() => {
-        document.title = "AI Compass: Executive Results";
-    }, []);
+        document.title = t('results.pageTitle', "AI Compass: Executive Results");
+    }, [t]);
 
     if (loading) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
                 <PageBackground />
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mb-4 z-10"></div>
-                <h2 className="text-xl font-semibold text-slate-800 z-10">Finalizing your strategic AI roadmap...</h2>
-                <p className="text-slate-600 z-10">Verifying your industry benchmarks</p>
+                <h2 className="text-xl font-semibold text-slate-800 z-10">{t('results.loading.title', "Finalizing your strategic AI roadmap...")}</h2>
+                <p className="text-slate-600 z-10">{t('results.loading.subtitle', "Verifying your industry benchmarks")}</p>
             </div>
         );
     }
@@ -59,12 +61,12 @@ export default function ResultsPage() {
                 <PageBackground />
                 <Card className="w-full max-w-md shadow-xl border-red-100 z-10 glass">
                     <CardHeader className="text-center">
-                        <CardTitle className="text-red-600">Analysis Error</CardTitle>
-                        <CardDescription>{error || "No data available"}</CardDescription>
+                        <CardTitle className="text-red-600">{t('results.error.title', "Analysis Error")}</CardTitle>
+                        <CardDescription>{error || t('results.error.noData', "No data available")}</CardDescription>
                     </CardHeader>
                     <CardContent className="flex justify-center">
                         <Button asChild variant="outline">
-                            <Link to="/">Return Home</Link>
+                            <Link to="/">{t('results.error.returnHome', "Return Home")}</Link>
                         </Button>
                     </CardContent>
                 </Card>
