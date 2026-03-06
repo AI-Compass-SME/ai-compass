@@ -1,0 +1,1269 @@
+[
+    {
+        "answer_id": 1,
+        "question_id": 1,
+        "answer_text": "Not a topic / Ignored",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 2,
+        "question_id": 1,
+        "answer_text": "Rare mention in meetings",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 3,
+        "question_id": 1,
+        "answer_text": "Occasional discussion",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 4,
+        "question_id": 1,
+        "answer_text": "Regular agenda item",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 5,
+        "question_id": 1,
+        "answer_text": "Core strategic pillar",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 6,
+        "question_id": 2,
+        "answer_text": "None / No plan",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 7,
+        "question_id": 2,
+        "answer_text": "Rough ideas shared",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 8,
+        "question_id": 2,
+        "answer_text": "High-level draft exists",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 9,
+        "question_id": 2,
+        "answer_text": "Formalized document",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 10,
+        "question_id": 2,
+        "answer_text": "Approved & detailed",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 11,
+        "question_id": 3,
+        "answer_text": "No budget available",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 12,
+        "question_id": 3,
+        "answer_text": "Case-by-case funding",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 13,
+        "question_id": 3,
+        "answer_text": "Ad-hoc project funds",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 14,
+        "question_id": 3,
+        "answer_text": "Dedicated Dept. budget",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 15,
+        "question_id": 3,
+        "answer_text": "Fixed annual AI budget",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 16,
+        "question_id": 4,
+        "answer_text": "Avoidance / Refusal",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 17,
+        "question_id": 4,
+        "answer_text": "Late adopter",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 18,
+        "question_id": 4,
+        "answer_text": "Fast Follower",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 19,
+        "question_id": 4,
+        "answer_text": "Proactive innovator",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 20,
+        "question_id": 4,
+        "answer_text": "Market Leader",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 21,
+        "question_id": 5,
+        "answer_text": "Fear / Resistance",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 22,
+        "question_id": 5,
+        "answer_text": "Skeptical / Passive",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 23,
+        "question_id": 5,
+        "answer_text": "Neutral / Cautious",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 24,
+        "question_id": 5,
+        "answer_text": "Interested / Open",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 25,
+        "question_id": 5,
+        "answer_text": "Proactive excitement",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 26,
+        "question_id": 6,
+        "answer_text": "Unaware / Non-Existent - We lack clarity on our current AI proficiency, and there are no identifiable AI skills or initiatives within the workforce.",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 27,
+        "question_id": 6,
+        "answer_text": "Isolated Proficiency - AI knowledge is siloed within a few individuals; significant skill gaps across most departments currently hinder broader adoption.",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 28,
+        "question_id": 6,
+        "answer_text": "Foundational Competency -  Core team members possess foundational AI skills, and structured upskilling programs are underway to prepare the broader workforce.",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 29,
+        "question_id": 6,
+        "answer_text": "Advanced Operational Capability - Advanced AI practitioners are integrated into multiple roles, supported by continuous training that keeps pace with industry trends.",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 30,
+        "question_id": 6,
+        "answer_text": "Strategic Expert Leadership - AI expertise is a core competency company-wide; internal specialists lead R&D, mentor staff, and drive industry-leading innovation.",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 31,
+        "question_id": 7,
+        "answer_text": "Never / None",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 32,
+        "question_id": 7,
+        "answer_text": "Occasional webinars",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 33,
+        "question_id": 7,
+        "answer_text": "Irregular workshops",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 34,
+        "question_id": 7,
+        "answer_text": "Planned curriculums",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 35,
+        "question_id": 7,
+        "answer_text": "Continuous learning",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 36,
+        "question_id": 8,
+        "answer_text": "Failure is punished",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 37,
+        "question_id": 8,
+        "answer_text": "Blame culture",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 38,
+        "question_id": 8,
+        "answer_text": "Failure is tolerated",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 39,
+        "question_id": 8,
+        "answer_text": "Learning from errors",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 40,
+        "question_id": 8,
+        "answer_text": "Fail-fast encouraged",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 41,
+        "question_id": 9,
+        "answer_text": "Sales and transaction data",
+        "answer_level": 1,
+        "answer_weight": 25.0
+    },
+    {
+        "answer_id": 42,
+        "question_id": 9,
+        "answer_text": "Customer interactions (emails, chats, calls)",
+        "answer_level": 2,
+        "answer_weight": 10.0
+    },
+    {
+        "answer_id": 43,
+        "question_id": 9,
+        "answer_text": "Website/app usage analytics",
+        "answer_level": 3,
+        "answer_weight": 15.0
+    },
+    {
+        "answer_id": 44,
+        "question_id": 9,
+        "answer_text": "Customer feedback and reviews",
+        "answer_level": 4,
+        "answer_weight": 15.0
+    },
+    {
+        "answer_id": 45,
+        "question_id": 9,
+        "answer_text": "Product data",
+        "answer_level": 5,
+        "answer_weight": 20.0
+    },
+    {
+        "answer_id": 46,
+        "question_id": 9,
+        "answer_text": "Financial and operational metrics",
+        "answer_level": 6,
+        "answer_weight": 10.0
+    },
+    {
+        "answer_id": 47,
+        "question_id": 9,
+        "answer_text": "Employee/HR data",
+        "answer_level": 7,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 48,
+        "question_id": 9,
+        "answer_text": "Limited data collection (Exclusive option)",
+        "answer_level": 8,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 49,
+        "question_id": 10,
+        "answer_text": "Internal (on-premise) servers",
+        "answer_level": 1,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 50,
+        "question_id": 10,
+        "answer_text": "Cloud platforms (AWS, Azure, Google Cloud)",
+        "answer_level": 2,
+        "answer_weight": 25.0
+    },
+    {
+        "answer_id": 51,
+        "question_id": 10,
+        "answer_text": "CRM systems (Salesforce, HubSpot, etc.)",
+        "answer_level": 3,
+        "answer_weight": 11.0
+    },
+    {
+        "answer_id": 53,
+        "question_id": 10,
+        "answer_text": "E-commerce platforms (Shopify, WooCommerce, etc.)",
+        "answer_level": 5,
+        "answer_weight": 10.0
+    },
+    {
+        "answer_id": 54,
+        "question_id": 10,
+        "answer_text": "Business intelligence tools (Tableau, Power BI, etc.)",
+        "answer_level": 6,
+        "answer_weight": 18.0
+    },
+    {
+        "answer_id": 55,
+        "question_id": 10,
+        "answer_text": "API integrations between systems",
+        "answer_level": 7,
+        "answer_weight": 20.0
+    },
+    {
+        "answer_id": 56,
+        "question_id": 10,
+        "answer_text": "None of the above (Exclusive option)?",
+        "answer_level": 8,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 57,
+        "question_id": 11,
+        "answer_text": "Messy / Siloed",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 58,
+        "question_id": 11,
+        "answer_text": "Basic digital records",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 59,
+        "question_id": 11,
+        "answer_text": "Partially cleaned",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 60,
+        "question_id": 11,
+        "answer_text": "Standardized formats",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 61,
+        "question_id": 11,
+        "answer_text": "High-quality/Auto-sync",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 62,
+        "question_id": 12,
+        "answer_text": "Struggling / No skill",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 63,
+        "question_id": 12,
+        "answer_text": "Basic tool awareness",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 64,
+        "question_id": 12,
+        "answer_text": "Comfortable with KPIs",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 65,
+        "question_id": 12,
+        "answer_text": "Analytical mindsets",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 66,
+        "question_id": 12,
+        "answer_text": "Data-driven experts",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 72,
+        "question_id": 14,
+        "answer_text": "Not started ",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 73,
+        "question_id": 14,
+        "answer_text": "Theory / Brainstorm",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 74,
+        "question_id": 14,
+        "answer_text": "1-2 Active Pilots",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 75,
+        "question_id": 14,
+        "answer_text": "Multiple live apps",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 76,
+        "question_id": 14,
+        "answer_text": "AI embedded in product",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 77,
+        "question_id": 15,
+        "answer_text": "No tracking",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 78,
+        "question_id": 15,
+        "answer_text": "Cost tracking only",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 79,
+        "question_id": 15,
+        "answer_text": "Qualitative impact",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 80,
+        "question_id": 15,
+        "answer_text": "Defined KPI tracking",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 81,
+        "question_id": 15,
+        "answer_text": "Strict Financial ROI",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 82,
+        "question_id": 16,
+        "answer_text": "AI initiatives are mostly exploratory and disconnected from core business bottlenecks.\n\n",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 83,
+        "question_id": 16,
+        "answer_text": "Some AI use cases touch core processes, but they are not focused on the most critical constraints.",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 84,
+        "question_id": 16,
+        "answer_text": "AI is applied to known bottlenecks in the core business, with mixed or unproven impact.",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 85,
+        "question_id": 16,
+        "answer_text": "AI systematically targets high-impact bottlenecks in core business operations and delivers measurable improvements.",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 86,
+        "question_id": 16,
+        "answer_text": "AI is a strategic lever to remove or redefine core business bottlenecks and shapes how the business competes.",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 87,
+        "question_id": 17,
+        "answer_text": "Knowledge in heads",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 88,
+        "question_id": 17,
+        "answer_text": "Rough checklists",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 89,
+        "question_id": 17,
+        "answer_text": "Partially documented",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 90,
+        "question_id": 17,
+        "answer_text": "Standard SOPs",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 91,
+        "question_id": 17,
+        "answer_text": "Fully digital workflows",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 97,
+        "question_id": 19,
+        "answer_text": "> 1 Year",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 98,
+        "question_id": 19,
+        "answer_text": "7 - 12 Months",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 99,
+        "question_id": 19,
+        "answer_text": "3 - 6 Months",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 100,
+        "question_id": 19,
+        "answer_text": "1 - 2 Months",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 101,
+        "question_id": 19,
+        "answer_text": "< 4 Weeks",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 102,
+        "question_id": 20,
+        "answer_text": "No plan",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 103,
+        "question_id": 20,
+        "answer_text": "Theoretical idea",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 104,
+        "question_id": 20,
+        "answer_text": "Case-by-case choice",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 105,
+        "question_id": 20,
+        "answer_text": "Defined scaling path",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 106,
+        "question_id": 20,
+        "answer_text": "Automated deployment",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 107,
+        "question_id": 21,
+        "answer_text": "None",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 108,
+        "question_id": 21,
+        "answer_text": "Informal rules",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 109,
+        "question_id": 21,
+        "answer_text": "In progress / Draft",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 110,
+        "question_id": 21,
+        "answer_text": "Implemented policy",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 111,
+        "question_id": 21,
+        "answer_text": "Audited Governance",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 112,
+        "question_id": 22,
+        "answer_text": "High Risk / Unknown",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 113,
+        "question_id": 22,
+        "answer_text": "Minimal compliance",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 114,
+        "question_id": 22,
+        "answer_text": "Basic GDPR active",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 115,
+        "question_id": 22,
+        "answer_text": "Privacy-by-design",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 116,
+        "question_id": 22,
+        "answer_text": "Full sovereignty",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 117,
+        "question_id": 23,
+        "answer_text": "No one responsible",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 118,
+        "question_id": 23,
+        "answer_text": "Vague / individual assignments",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 119,
+        "question_id": 23,
+        "answer_text": "Shared responsibility",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 120,
+        "question_id": 23,
+        "answer_text": "Clear Dept. lead",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 121,
+        "question_id": 23,
+        "answer_text": "Dedicated AI Officer",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 122,
+        "question_id": 24,
+        "answer_text": "Unknown\n",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 123,
+        "question_id": 24,
+        "answer_text": "Defined by Partners",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 124,
+        "question_id": 24,
+        "answer_text": "Minimal",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 125,
+        "question_id": 24,
+        "answer_text": "Medium",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 126,
+        "question_id": 24,
+        "answer_text": "High Disclosure",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 127,
+        "question_id": 25,
+        "answer_text": "Fully On-Premise",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 128,
+        "question_id": 25,
+        "answer_text": "Modernized On-Prem",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 129,
+        "question_id": 25,
+        "answer_text": "Hybrid Cloud setup",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 130,
+        "question_id": 25,
+        "answer_text": "Cloud-first approach",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 131,
+        "question_id": 25,
+        "answer_text": "Cloud-Native",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 132,
+        "question_id": 26,
+        "answer_text": "No AI development tools are currently available (Exclusive option)?",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 133,
+        "question_id": 26,
+        "answer_text": "Pre-built AI tools or platforms (e.g., analytics, chatbots, automation tools)?",
+        "answer_level": 2,
+        "answer_weight": 20.0
+    },
+    {
+        "answer_id": 134,
+        "question_id": 26,
+        "answer_text": "Custom AI or machine learning development tools?",
+        "answer_level": 3,
+        "answer_weight": 20.0
+    },
+    {
+        "answer_id": 135,
+        "question_id": 26,
+        "answer_text": "Cloud-based AI services (e.g., managed AI/ML platforms)?",
+        "answer_level": 4,
+        "answer_weight": 20.0
+    },
+    {
+        "answer_id": 136,
+        "question_id": 26,
+        "answer_text": "A combination of pre-built and custom AI tools?",
+        "answer_level": 5,
+        "answer_weight": 40.0
+    },
+    {
+        "answer_id": 137,
+        "question_id": 26,
+        "answer_text": "Not sure",
+        "answer_level": 6,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 138,
+        "question_id": 27,
+        "answer_text": "Manual/Painful",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 139,
+        "question_id": 27,
+        "answer_text": "Labor intensive",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 140,
+        "question_id": 27,
+        "answer_text": "Standard IT process",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 141,
+        "question_id": 27,
+        "answer_text": "Modular & easy",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 142,
+        "question_id": 27,
+        "answer_text": "Instant/Auto-scaling",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 148,
+        "question_id": 29,
+        "answer_text": "Improving customer service efficiency",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 149,
+        "question_id": 29,
+        "answer_text": "Automating repetitive tasks",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 150,
+        "question_id": 29,
+        "answer_text": "Better data analysis and insights",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 151,
+        "question_id": 29,
+        "answer_text": "Enhancing search/recommendation capabilities",
+        "answer_level": 4,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 152,
+        "question_id": 29,
+        "answer_text": "Streamlining document processing",
+        "answer_level": 5,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 153,
+        "question_id": 29,
+        "answer_text": "Personalizing customer experiences",
+        "answer_level": 6,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 154,
+        "question_id": 29,
+        "answer_text": "Reducing operational costs",
+        "answer_level": 7,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 155,
+        "question_id": 29,
+        "answer_text": "Other",
+        "answer_level": 8,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 161,
+        "question_id": 31,
+        "answer_text": "Executive Leadership / Board ",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 162,
+        "question_id": 31,
+        "answer_text": "IT / Technology Department ",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 163,
+        "question_id": 31,
+        "answer_text": "Digital Transformation / Innovation Team ",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 164,
+        "question_id": 31,
+        "answer_text": "Sales & Marketing",
+        "answer_level": 4,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 165,
+        "question_id": 31,
+        "answer_text": "Operations & Supply Chain ",
+        "answer_level": 5,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 166,
+        "question_id": 31,
+        "answer_text": "Data Science / Analytics Specialists ",
+        "answer_level": 6,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 167,
+        "question_id": 31,
+        "answer_text": "Individual Employees / Early Adopters ",
+        "answer_level": 7,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 168,
+        "question_id": 31,
+        "answer_text": "External Partners / Consultants",
+        "answer_level": 8,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 169,
+        "question_id": 31,
+        "answer_text": "No Clear Internal Driver ",
+        "answer_level": 9,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 170,
+        "question_id": 32,
+        "answer_text": "No",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 171,
+        "question_id": 32,
+        "answer_text": "Sometimes",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 172,
+        "question_id": 32,
+        "answer_text": "Yes",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 173,
+        "question_id": 33,
+        "answer_text": "Executive / C-level",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 174,
+        "question_id": 33,
+        "answer_text": "Senior Management",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 175,
+        "question_id": 33,
+        "answer_text": "Product / Process Owner",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 176,
+        "question_id": 33,
+        "answer_text": "IT / Technology Management",
+        "answer_level": 4,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 177,
+        "question_id": 33,
+        "answer_text": "Data / AI Specialist",
+        "answer_level": 5,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 178,
+        "question_id": 33,
+        "answer_text": "Business Analyst / Strategy / Innovation role",
+        "answer_level": 6,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 179,
+        "question_id": 33,
+        "answer_text": "Operational Staff / Domain Expert",
+        "answer_level": 7,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 180,
+        "question_id": 33,
+        "answer_text": "Project / Program Manager",
+        "answer_level": 8,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 181,
+        "question_id": 33,
+        "answer_text": "External Consultant / Advisor",
+        "answer_level": 9,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 52,
+        "question_id": 10,
+        "answer_text": "ERP System - ",
+        "answer_level": 4,
+        "answer_weight": 11.0
+    },
+    {
+        "answer_id": 67,
+        "question_id": 13,
+        "answer_text": "Minimal / Unsure - We do not have a formal feasibility check; projects are often started based on excitement or intuition without verifying data or compliance requirements first.",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 68,
+        "question_id": 13,
+        "answer_text": "Reactive Assessment - We perform basic checks only after a project has started, often leading to delays or \"stuck\" projects when data or legal issues unexpectedly emerge.",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 69,
+        "question_id": 13,
+        "answer_text": "Basic Due Diligence - We have an informal \"Pre-Check\" for major projects where we verify if the necessary data exists and if there are obvious legal hurdles.",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 70,
+        "question_id": 13,
+        "answer_text": "Structured Validation - We use a clear \"Go/No-Go\" process for every use case that validates data readiness, process alignment, and regulatory compliance before any budget is released.",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 71,
+        "question_id": 13,
+        "answer_text": "Optimized Strategic Filtering - We use a standardized, data-driven validation engine that ensures every initiative is perfectly aligned with business goals, technical capabilities, and compliance standards from the start.",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 92,
+        "question_id": 18,
+        "answer_text": "Undefined / Ad-hoc - We do not have a set process for AI projects; tasks are handled as they arise without formal planning or clear ownership.",
+        "answer_level": 1,
+        "answer_weight": 1.0
+    },
+    {
+        "answer_id": 93,
+        "question_id": 18,
+        "answer_text": "Individual Initiative - Project delivery depends on the effort of specific individuals; while some projects succeed, we lack a repeatable \"playbook\" for the whole team.",
+        "answer_level": 2,
+        "answer_weight": 2.0
+    },
+    {
+        "answer_id": 94,
+        "question_id": 18,
+        "answer_text": "Basic Standardization - We use a consistent workflow (e.g., simple task tracking or weekly sprints) that allows us to manage AI projects with predictable timelines.",
+        "answer_level": 3,
+        "answer_weight": 3.0
+    },
+    {
+        "answer_id": 95,
+        "question_id": 18,
+        "answer_text": "Targeted & Results-Oriented - We use a process specifically adapted for AI (e.g., early prototyping and data-readiness checks), ensuring we don't waste resources on unfeasible ideas.",
+        "answer_level": 4,
+        "answer_weight": 4.0
+    },
+    {
+        "answer_id": 96,
+        "question_id": 18,
+        "answer_text": "High-Velocity Delivery - Our implementation engine is highly efficient; we can rapidly move from a \"Proof of Concept\" to a live tool with minimal friction and clear ROI tracking.",
+        "answer_level": 5,
+        "answer_weight": 5.0
+    },
+    {
+        "answer_id": 143,
+        "question_id": 28,
+        "answer_text": "External Pressure - We are responding to external hype or competitor moves without a clear internal goal.",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 144,
+        "question_id": 28,
+        "answer_text": "Resource Optimization - We want to identify where AI can reduce costs or automate repetitive manual tasks.",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 145,
+        "question_id": 28,
+        "answer_text": "Strategic Clarity - We need a professional roadmap to align AI initiatives with our core business objectives.",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 146,
+        "question_id": 28,
+        "answer_text": " Readiness Check - We aim to evaluate our technical infrastructure and workforce skills for upcoming scaling.",
+        "answer_level": 4,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 147,
+        "question_id": 28,
+        "answer_text": "Competitive Advantage - We are seeking to define a market-leading position through high-impact AI innovation.",
+        "answer_level": 5,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 156,
+        "question_id": 30,
+        "answer_text": "No Impact - We have not assessed AI trends and have no documented strategy regarding them.",
+        "answer_level": 1,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 157,
+        "question_id": 30,
+        "answer_text": "Reactive - We acknowledge the trend but only respond to external pressures on an ad-hoc basis.",
+        "answer_level": 2,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 158,
+        "question_id": 30,
+        "answer_text": "Exploratory - We monitor trends and have initiated pilot projects to address specific needs.",
+        "answer_level": 3,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 159,
+        "question_id": 30,
+        "answer_text": "Strategic - AI is a key planning driver with a formal roadmap for systematic integration.",
+        "answer_level": 4,
+        "answer_weight": 0.0
+    },
+    {
+        "answer_id": 160,
+        "question_id": 30,
+        "answer_text": "Innovative - We leverage AI to redefine our business model and set industry standards.",
+        "answer_level": 5,
+        "answer_weight": 0.0
+    }
+]

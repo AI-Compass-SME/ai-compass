@@ -1,0 +1,488 @@
+{
+    "nav": {
+        "product": "Product",
+        "methodology": "Methodology",
+        "about": "About",
+        "contact": "Contact",
+        "getStarted": "Start Free Assessment",
+        "starting": "Starting...",
+        "generatingPdf": "Generating...",
+        "downloadReport": "Download Report"
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "imprint": "Imprint",
+        "privacy": "Privacy Policy",
+        "company": "Company",
+        "howItWorks": "How it works",
+        "description": "Navigate the AI Evolution with confidence. Professional AI maturity assessment for modern organizations.",
+        "trustedBy": "Trusted by 500+ Organizations",
+        "status": "System Online",
+        "disclaimer": {
+            "title": "AI Transparency & Liability:",
+            "text": "The AI Compass assessment utilizes K-Means Clustering and Generative AI to generate insights. All results and recommendations are probabilistic and should be independently verified. Use of this platform does not create a professional client relationship or constitute legal advice."
+        }
+    },
+    "landing": {
+        "hero": {
+            "title": "Navigate Your AI Evolution with the AI Compass.",
+            "subtitle": "Stop guessing. Gain strategic clarity in 10-15 minutes. Benchmark your Organization against 500+ peers and receive a data-driven roadmap to AI maturity. No costs attached, just your valuable time.",
+            "startBtn": "Start Free Assessment",
+            "starting": "Starting...",
+            "time": "Takes 10-15 mins",
+            "gdpr": "GDPR Compliant",
+            "framework": "Professional Framework"
+        },
+        "value": {
+            "title": "The Value Proposition",
+            "subtitle": "AI is not a tool you buy; it is a capability you build. The AI Compass is a professional consulting tool designed to provide the diagnostic clarity needed to ensure your investment leads to growth, not just expense.",
+            "cards": {
+                "1": {
+                    "title": "Assess Your Current AI Maturity Level",
+                    "what": "A comprehensive multi-dimensional audit that evaluates your organization across 7 core pillars: Strategy, People, Data, Use Cases, Processes, Compliance, and Tech Infrastructure.",
+                    "why": "You cannot improve what you do not measure. By establishing an objective baseline, you move away from guesswork and gain a scientific understanding of your organization's actual readiness."
+                },
+                "2": {
+                    "title": "Benchmarking Beyond the Hype",
+                    "what": "A comparative analysis that measures your digital capabilities against a verified database of 500+ peer companies and industry leaders.",
+                    "why": "Strategic positioning is relative. Benchmarking tells you if you are truly leading your industry or if competitors are gaining a technological advantage that will be difficult to close later."
+                },
+                "3": {
+                    "title": "Bridging the Human-Tech Divide",
+                    "what": "An evaluation of organizational culture, employee mindset, and internal AI literacy levels.",
+                    "why": "Technology only scales as fast as your people. Identifying psychological resistance or skill gaps early ensures your culture supports your technical transformation instead of blocking it."
+                },
+                "4": {
+                    "title": "Risk & Compliance Safeguard",
+                    "what": "A proactive audit of your alignment with emerging standards, such as the EU AI Act, and internal data ethics protocols.",
+                    "why": "Moving fast is important, but moving safely is vital. This safeguard protects your company's reputation and future-proofs your operations against shifting legal landscapes."
+                },
+                "5": {
+                    "title": "Identify Gaps and Opportunities",
+                    "what": "A precise gap-analysis tool that reveals hidden weaknesses in your digital foundation while highlighting untapped areas for innovation.",
+                    "why": "To reach the next maturity level, you must know exactly what is holding you back. Pinpointing these \"friction points\" allows you to fix the foundation while simultaneously seizing \"low-hanging fruit.\""
+                },
+                "6": {
+                    "title": "Prioritized Strategic Advisory",
+                    "what": "A structured advisory module that translates your maturity gaps into a prioritized sequence of strategic topics and focus areas (e.g., \"Data Foundation\" before \"Customer-facing AI\").",
+                    "why": "SMEs often suffer from \"pilot fatigue\" by trying to do everything at once. This advisory ensures that you tackle the right topics in the right order, focusing resources on the thematic areas that will resolve your specific business bottlenecks most effectively."
+                }
+            }
+        },
+        "process": {
+            "mainTitle": "The Process",
+            "subtitle": "Three simple steps to your AI roadmap",
+            "steps": {
+                "1": {
+                    "title": "Guided Assessment",
+                    "desc": "27 questions covering 7 key dimensions (Strategy, People, Data, Use Cases, Processes, Compliance, and Tech Infrastructure)."
+                },
+                "2": {
+                    "title": "Instant Analysis",
+                    "desc": "Our AI supported algorithm identifies your unique Company Cluster Profile and your current potential."
+                },
+                "3": {
+                    "title": "Growth Roadmap",
+                    "desc": "Receive custom recommendations to move from your current level to the next."
+                }
+            }
+        },
+        "outcome": {
+            "title": "The Outcome Preview",
+            "subtitle": "Your results page will include:",
+            "radarTitle": "Your AI Maturity Radar",
+            "radarLabel": "AI Maturity",
+            "subjects": {
+                "strategy": "Strategy",
+                "people": "People",
+                "data": "Data",
+                "useCases": "Use Cases",
+                "processes": "Processes",
+                "compliance": "Compliance",
+                "tech": "Tech"
+            },
+            "items": {
+                "1": {
+                    "title": "Maturity Score",
+                    "desc": "An overall index from 1 to 5."
+                },
+                "2": {
+                    "title": "Cluster Badge",
+                    "desc": "Are you a Curious Experimenter or an AI-Enabled Leader?"
+                },
+                "3": {
+                    "title": "Gap Analysis",
+                    "desc": "Deep dive into which dimension is holding you back."
+                },
+                "4": {
+                    "title": "Roadmap",
+                    "desc": "Immediate 'Low-Hanging Fruit' vs. Long-term strategic shifts."
+                }
+            }
+        },
+        "cta": {
+            "title": "Ready to discover your AI Maturity?",
+            "subtitle": "Join 500+ organizations that have already mapped their AI journey",
+            "startBtn": "Start Now"
+        }
+    },
+    "pages": {
+        "about": {
+            "title": "About Us",
+            "subtitle": "TEAM & MISSION",
+            "accountability": {
+                "title": "Accountability Behind the Algorithm",
+                "text": "The AI Compass isn't a \"Black Box.\" It is a tool built by experts to bring transparency and structure to AI transformation."
+            },
+            "partners": {
+                "title": "Your Partners in AI Transformation"
+            },
+            "cm": {
+                "role": "Product Owner & Strategist",
+                "p1Heading": "Leadership meets Strategy and Execution",
+                "p1": "With over 14 years of leadership experience, I have built a career on a proven track record of fostering strong professional relationships, leading complex projects, and driving sustainable business growth. My expertise sits at the intersection of strategic consulting, project management, and high-level client relations.",
+                "p2": "I am deeply passionate about digital transformation and the evolution of Artificial Intelligence. Driven by a desire to create long-term value, I thrive on collaborating with diverse teams to solve problems through effective communication and strategic insight.",
+                "p3Heading": "The Architect of the AI Compass",
+                "p3": "I conceived the AI Compass because I recognized a critical gap in the market. While AI is evolving rapidly, its relevance to the German Mittelstand is often lost in technical complexity.",
+                "p4": "As the Product Owner, I see my role as a bridge-builder: translating complex AI capabilities into actionable business logic. My goal is to serve businesses with the clarity and precision needed to master the AI landscape, ensuring every technological milestone is anchored in measurable, ROI-driven business value."
+            },
+            "hl": {
+                "role": "Lead Data Scientist & ML Engineer",
+                "p1Heading": "Architecture meets Intelligence and Explainability",
+                "p1": "With over 8 years of experience across enterprise systems and AI-driven product development, I have built my career at the intersection of structured engineering, statistical modeling, and scalable SaaS architecture. My expertise lies in transforming complex business challenges into robust data systems that are transparent, measurable, and production-ready.",
+                "p2": "I approach the evolution of AI not as abstract experimentation, but as a disciplined engineering practice. My work focuses on building ML systems that balance predictive intelligence with deterministic logic, ensuring every algorithmic output is grounded in statistical rigor.",
+                "p3Heading": "The Intelligence Architect Behind AI Compass",
+                "p3": "I built the ML v5 engine powering AI Compass. Unlike generic scoring tools, I engineered a system combining deterministic models with advanced clustering to create structured, explainable roadmaps.",
+                "p4": "My goal is simple: building AI systems that leaders can trust. By aligning statistical modeling with clean architecture, I transform machine learning from a black-box into a strategic instrument for measurable progress, ensuring that every insight is backed by robust performance and long-term engineering reliability."
+            },
+            "team": {
+                "linkedin": "Connect on LinkedIn",
+                "portfolio": "Digital Portfolio"
+            },
+            "location": {
+                "title": "Location & Roots",
+                "l1": "Based in the heart of Berlin's tech ecosystem.",
+                "l2": "Görschstrasse 10A, 13187 Berlin, Germany"
+            }
+        },
+        "contact": {
+            "title": "Contact the AI Compass Team",
+            "subtitle": "DIRECT SUPPORT FOR YOUR AI TRANSFORMATION",
+            "intro": "We prioritize personal exchange. If you have questions regarding the AI Maturity Assessment, our Clustering Methodology, or bespoke consulting, please reach out to us directly.",
+            "phone": {
+                "title": "Phone",
+                "main": "Main Line",
+                "val": "+49 tbd",
+                "time": "Available Monday – Friday, 09:00 – 18:00 (CET)"
+            },
+            "email": {
+                "title": "E-Mail",
+                "main": "Contact",
+                "val": "info@the-ai-compass.de",
+                "time": "We typically respond to all inquiries within one business day."
+            },
+            "office": {
+                "title": "Office Location"
+            },
+            "legal": {
+                "title": "Legal & Privacy",
+                "privacy": "Privacy",
+                "privacyText": "By contacting us, you acknowledge that your data will be processed for the purpose of handling your inquiry in accordance with our ",
+                "imprint": "Imprint",
+                "imprintText": "For formal legal disclosures, please visit our "
+            }
+        },
+        "methodology": {
+            "title": "Technical Methodology & AI Architecture",
+            "subtitle": "DOCUMENTATION FOR TECHNICAL STAKEHOLDERS",
+            "cards": {
+                "1": {
+                    "title": "Data Standardization",
+                    "subtitle": "Preprocessing Loop",
+                    "p1": "Raw assessment data is ingested via our ETL pipeline and normalized using <1>Z-Score Standardization</1> (StandardScaler).",
+                    "p2": "This transforms all dimension scores into a standard normal distribution (μ=0, σ=1), ensuring that outliers don't skew the clustering distance metrics and allowing for fair comparison across diverse industries."
+                },
+                "2": {
+                    "title": "Archetype Clustering",
+                    "subtitle": "Unsupervised Learning",
+                    "p1": "We utilize <1>K-Means Clustering</1> (k=5) to categorize organizations into distinct maturity archetypes.",
+                    "p2": "The model is trained on our proprietary dataset of 500+ profiles. Your organization is assigned to a cluster based on the Euclidean distance to the nearest centroid, providing an objective classification from \"Traditionalist\" to \"AI-Driven Leader\"."
+                },
+                "3": {
+                    "title": "Predictive Roadmapping",
+                    "subtitle": "k-Nearest Neighbors (k-NN)",
+                    "p1": "Our recommendation engine uses a <1>k-Nearest Neighbors</1> algorithm with <3>Cosine Similarity</3> to identify your \"Next-Level Peers\".",
+                    "p2": "By locating organizations that are statistically similar to you but 15-30% more mature, we reverse-engineer their capabilities to generate a high-probability roadmap for your specific growth path."
+                },
+                "4": {
+                    "title": "Strategic Risk Analysis",
+                    "subtitle": "Statistical Anomaly Detection",
+                    "p1": "The <1>Strategic Gap Analyzer</1> scans for structural imbalances across 7 dimensions using a Z-Score threshold (> 1.5σ).",
+                    "p2": "We explicitly detect decoupling between \"Strategy\" and \"Execution\" (e.g., high Tech score but low People score), flagging these as critical risks that could lead to project failure or \"shelf-ware\"."
+                }
+            },
+            "tech": {
+                "title": "Core Technology Stack",
+                "desc": "Built for security, scalability, and interpretability."
+            },
+            "security": {
+                "title": "Data Privacy & Security",
+                "desc": "All assessment data is processed in-memory for inference. We strictly adhere to GDPR principles and do not use customer data for training public LLMs. Your unique IP remains yours."
+            }
+        },
+        "privacy": {
+            "title": "Privacy Policy",
+            "subtitle": "LAST UPDATED: FEBRUARY 2026 | COMPLIANT WITH EU GDPR",
+            "s1": {
+                "title": "1. Responsible Party (Controller)",
+                "p1": "The responsible party for data processing on this website is:"
+            },
+            "s2": {
+                "title": "2. No Tracking or User Profiling",
+                "p1": "We respect your privacy. This website does <1>not</1> use tracking cookies, Google Analytics, or any other third-party user tracking services. We only utilize strictly necessary, functional cookies required for the interface to operate (e.g., sidebar status)."
+            },
+            "s3": {
+                "title": "3. Hosting & Server Logs",
+                "p1": "We host this website on <1>ISO 27001-certified servers located within the European Union</1>. The provider automatically collects and stores information in server log files (Browser, OS, Referrer URL, IP Address, Time) for the purpose of ensuring technical stability and security (Art. 6 Para. 1 lit. f GDPR)."
+            },
+            "s4": {
+                "title": "4. AI Compass Assessment Processing",
+                "p1": "<0>Input Data:</0> When you use the AI Compass, we process the answers you provide in the assessment across 7 business dimensions (Strategy, Data Readiness, etc.) to calculate your maturity level.",
+                "p2": "<0>Automated Processing (Machine Learning):</0>",
+                "l1": "<0>Clustering (K-Means):</0> Assigns your profile to one of 5 maturity archetypes.",
+                "l2": "<0>Benchmarking (k-NN):</0> Compares your data against anonymized peer entries to identify strategic gaps.",
+                "note": "*Note: This processing generates advisory insights and does not constitute \"automated decision-making\" with legal effects under Art. 22 GDPR.",
+                "p3": "<0>Lead Data:</0> If you request a full report, we store your Name, Company, Industry, and Email Address based on your consent (Art. 6 Para. 1 lit. a GDPR) or for contract performance."
+            },
+            "s5": {
+                "title": "5. Email Delivery (Brevo)",
+                "p1": "For the reliable delivery of your assessment report, we use <1>Brevo</1> (formerly Sendinblue), a GDPR-compliant provider based in Berlin/Paris.",
+                "p2": "Your Email address and Name are transferred to Brevo solely for the purpose of sending the requested report. We have concluded a Data Processing Agreement (AVV) with the provider to ensure the security of your data."
+            },
+            "s6": {
+                "title": "6. Data Security & Technical Measures",
+                "l1": "<0>Encryption in Transit:</0> All communication is protected by TLS 1.2/1.3 encryption (HTTPS).",
+                "l2": "<0>Secure Infrastructure:</0> Data is stored on secure, access-controlled servers with strict firewall rules.",
+                "l3": "<0>Data Minimization:</0> We only collect the specific data points required for the K-Means clustering algorithm.",
+                "l4": "<0>No Public LLM Training:</0> We strictly do <1>not</1> use your customer data to train public Large Language Models (like GPT-4). Your intellectual property remains yours.",
+                "l5": "<0>Local Fonts:</0> We host all fonts locally. No connection is made to Google Fonts servers."
+            },
+            "s7": {
+                "title": "7. Your Rights",
+                "p1": "You have the right to request access to, rectification of, or deletion of your personal data at any time. You may also withdraw your consent for future processing. To exercise these rights, please contact the responsible party listed in Section 1."
+            }
+        },
+        "imprint": {
+            "title": "Imprint",
+            "subtitle": "LEGAL INFORMATION",
+            "info": "Information according to § 5 DDG",
+            "contact": "Contact",
+            "responsible": "Responsible for content (§ 18 MStV)",
+            "eu": "EU Dispute Resolution",
+            "euText": "The European Commission provides a platform for online dispute resolution (ODR): ",
+            "consumer": "Consumer dispute resolution",
+            "consumerText": "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+            "disclaimer": "Disclaimer for AI-Generated Content",
+            "disclaimerText": "The \"AI Compass\" uses automated machine learning models (specifically K-Means Clustering and k-Nearest Neighbors) to analyze data. The results, maturity scores, and roadmaps provided are for informational and orientation purposes only. They do not constitute professional business, legal, or strategic consulting. The operator assumes no liability for business decisions made based on the generated output."
+        },
+        "howItWorks": {
+            "title": "How It Works",
+            "subtitle": "THE AI COMPASS PROCESS",
+            "processTitle": "The Evaluation Process",
+            "steps": {
+                "1": {
+                    "title": "Assess",
+                    "desc": "Answer a structured questionnaire covering 7 key dimensions of AI maturity. Our framework evaluates your capabilities across strategy, data, and technology."
+                },
+                "2": {
+                    "title": "Analyze",
+                    "desc": "Our ML engine compares your data against industry benchmarks. We identify your 'Cluster Profile' using our proprietary maturity model."
+                },
+                "3": {
+                    "title": "Act",
+                    "desc": "Receive a comprehensive strategic roadmap. Get concrete, actionable steps to move from your current state to the next maturity level."
+                }
+            },
+            "frameworkTitle": "The 7-Dimension Framework",
+            "frameworkDesc": "We don't just look at technology. True AI maturity requires a holistic approach across your entire organization. Our assessment evaluates:",
+            "dimensions": {
+                "1": "Strategy & Leadership",
+                "2": "Use Cases & Value",
+                "3": "Data & Infrastructure",
+                "4": "Talent & Culture",
+                "5": "Governance & Ethics",
+                "6": "Technology & Tools",
+                "7": "Partnerships & Ecosystem"
+            },
+            "startBtn": "Start Your Assessment"
+        }
+    },
+    "results": {
+        "hero": {
+            "title": "AI Compass: Executive Results Report",
+            "subtitle": "This is your strategic Blueprint — a verified baseline of where you stand today, detailing your organizational maturity, competitive standing, and the strategic path forward to scaling measurable AI value.",
+            "score": "Score",
+            "overallMaturity": "Overall AI Maturity",
+            "cluster": "Cluster",
+            "archetype": "Organizational Archetype",
+            "percentile": "Percentile",
+            "top": "Top",
+            "vsPeers": "vs. {{industry}} Peers"
+        },
+        "cluster": {
+            "title": "Your Cluster Profile",
+            "description": "Based on your assessment, your organization aligns most closely with the <strong>{{clusterName}}</strong> archetype. Our K-Means model categorizes companies across 5 stages of maturity based on verified patterns in strategy, personnel, and technological readiness.",
+            "valueGrowth": "Value Growth",
+            "aiMaturity": "AI Maturity",
+            "youAreHere": "You are here",
+            "definitions": {
+                "1": {
+                    "name": "The Traditionalist",
+                    "description": "AI is not yet a topic of discussion. Operations are predominantly manual, data is siloed or analog, and there is often significant cultural skepticism."
+                },
+                "2": {
+                    "name": "The Experimental Explorer",
+                    "description": "The organization has started \"playing\" with AI through isolated tools like ChatGPT. There is curiosity but no formal strategy or oversight."
+                },
+                "3": {
+                    "name": "The Structured Builder",
+                    "description": "A solid technical and strategic foundation is being laid. High-level roadmaps and cloud infrastructure are in place, but scaling remains difficult."
+                },
+                "4": {
+                    "name": "The Operational Scaler",
+                    "description": "AI is delivering measurable ROI. Leadership is aligned, and the organization is moving multiple use cases into production."
+                },
+                "5": {
+                    "name": "The AI-Driven Leader",
+                    "description": "AI is a core strategic pillar. The workforce is highly literate, data flows are automated, and the company sets industry standards."
+                }
+            }
+        },
+        "maturity": {
+            "title": "The Multi-Dimensional Maturity Profile",
+            "subtitle": "Your AI capability is not a single number. This profile breaks down your maturity across the 7 critical pillars required for scaling AI value.",
+            "yourCompany": "Your Company",
+            "benchmark": "Industry Benchmark",
+            "dimensions": {
+                "strategy": "Strategy & Leadership",
+                "useCases": "Use Cases & Value",
+                "data": "Data & Infrastructure",
+                "talent": "Talent & Culture",
+                "governance": "Governance & Ethics",
+                "technology": "Technology & Tools",
+                "partnerships": "Partnerships & Ecosystem",
+                "execution": "Execution & Scale",
+                "processes": "Processes & Scaling"
+            }
+        },
+        "gaps": {
+            "title": "Strategic Gap Analysis",
+            "subtitle": "A concise synthesis of your strategic position and high-priority risks.",
+            "structuralRisk": "Structural Imbalance",
+            "criticalWeakness": "Critical Weakness",
+            "impactScore": "Impact Score",
+            "strategicImplication": "Strategic Implication",
+            "affects": "Affects",
+            "generalCapability": "General Capability",
+            "noGaps": "No Critical Gaps Detected",
+            "noGapsDesc": "Your detailed analysis shows a balanced maturity profile with no immediate red flags."
+        },
+        "briefing": {
+            "title": "Executive Briefing",
+            "teamLabel": "AI-Compass Analysis Team"
+        },
+        "roadmap": {
+            "title": "Strategic Roadmap & Recommendations",
+            "subtitle": "Prioritized initiatives to accelerate your AI maturity based on your cluster profile.",
+            "impact": "Impact",
+            "effort": "Effort",
+            "timeframe": "Timeframe",
+            "months": "months",
+            "high": "High",
+            "medium": "Medium",
+            "low": "Low",
+            "short": "Short",
+            "mediumTime": "Medium",
+            "long": "Long",
+            "noRoadmap": "Your roadmap is being generated. Please check back later.",
+            "whyTitle": "Why this roadmap?",
+            "whyDesc": "This plan is dynamically generated by comparing your profile against industry peer benchmarks. Phase 1 focuses on closing structural gaps blocking scalability, while Phases 2 & 3 target differentiation and leadership capabilities.",
+            "actionLabel": "Action",
+            "scoreLabel": "Score:",
+            "analysisLabel": "Analysis:",
+            "noActions": "No critical actions identified for this phase.",
+            "phases": {
+                "foundation": {
+                    "title": "Foundation",
+                    "desc": "Focus on Foundation activities to build momentum and establish core capabilities."
+                },
+                "implementation": {
+                    "title": "Implementation",
+                    "desc": "Focus on Implementation activities to build momentum and establish core capabilities."
+                },
+                "scaleGovernance": {
+                    "title": "Scale & Governance",
+                    "desc": "Focus on Scale & Governance activities to build momentum and establish core capabilities."
+                }
+            }
+        },
+        "consultation": {
+            "title": "Expert Consultation & Next Steps",
+            "subtitle": "Transition from digital analysis to human-led transformation.",
+            "cta": {
+                "title": "Get in Touch for a Strategy Deep-Dive",
+                "desc": "Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'."
+            },
+            "contact": {
+                "email": "Email",
+                "phone": "Phone"
+            },
+            "features": [
+                "30-minute expert session",
+                "Industry-specific benchmarks",
+                "Roadmap validation",
+                "Budget ROI modeling"
+            ]
+        },
+        "download": {
+            "title": "Download Full PDF Report",
+            "btnGenerating": "Generating PDF...",
+            "btnDownload": "Download Full PDF Report",
+            "desc": "Your PDF contains your detailed maturity profile, benchmark data, and prioritized roadmap. Perfect for your next board or management meeting.",
+            "features": {
+                "technical": "Full Technical Analysis",
+                "executive": "Executive Summary",
+                "charts": "High-Resolution Charts",
+                "licensing": "Team Licensing Included"
+            },
+            "instantly": "Generated instantly • PDF",
+            "toastGenerating": "Generating PDF Report...",
+            "toastSuccess": "Report downloaded successfully.",
+            "toastError": "Failed to generate PDF. Please try again later."
+        },
+        "wizard": {
+            "loading": "Loading assessment...",
+            "loadingSaving": "Saving...",
+            "noQuestions": "No questions found.",
+            "dragToSelect": "Drag to select",
+            "question": "Question",
+            "selectAllThatApply": "(Select all that apply)",
+            "back": "Back",
+            "skipSection": "Skip Section",
+            "next": "Next",
+            "finish": "Finish",
+            "progress": {
+                "title": "Your Progress"
+            },
+            "toasts": {
+                "loadError": "Failed to load questionnaire.",
+                "selectWarning": "Please select an answer to continue.",
+                "sessionExpired": "Session expired. Please start over.",
+                "saveError": "Failed to save answer.",
+                "skipInfo": "Skipped remaining Dimension 8 questions.",
+                "skipError": "Failed to skip dimension.",
+                "completeSuccess": "Questions complete! Just one last step."
+            }
+        }
+    }
+}

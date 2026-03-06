@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { ArrowRight, Star, TrendingUp, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation, Trans } from 'react-i18next';
 
 // Phase Definitions from ML v5 Spec
 // Phase Definitions from ML v5 Spec
@@ -10,8 +11,8 @@ const PHASES = [
     {
         key: "phase_1",
         step: "01",
-        title: "Foundation",
-        timeframe: "0-3 Months",
+        titleKey: "foundation",
+        timeframeKey: "0-3 Months",
         color: "bg-blue-50/50 border-blue-100",
         headerColor: "text-blue-700 bg-blue-100/50",
         stepStyle: "bg-blue-100 text-blue-700 ring-blue-50",
@@ -22,8 +23,8 @@ const PHASES = [
     {
         key: "phase_2",
         step: "02",
-        title: "Implementation",
-        timeframe: "3-9 Months",
+        titleKey: "implementation",
+        timeframeKey: "3-9 Months",
         color: "bg-indigo-50/50 border-indigo-100",
         headerColor: "text-indigo-700 bg-indigo-100/50",
         stepStyle: "bg-indigo-100 text-indigo-700 ring-indigo-50",
@@ -34,8 +35,8 @@ const PHASES = [
     {
         key: "phase_3",
         step: "03",
-        title: "Scale & Governance",
-        timeframe: "9+ Months",
+        titleKey: "scaleGovernance",
+        timeframeKey: "9+ Months",
         color: "bg-purple-50/50 border-purple-100",
         headerColor: "text-purple-700 bg-purple-100/50",
         stepStyle: "bg-purple-100 text-purple-700 ring-purple-50",
@@ -46,19 +47,20 @@ const PHASES = [
 ];
 
 // Helper to determine badge type
-const getRecommendationType = (rec) => {
+const getRecommendationType = (rec, t) => {
     const source = (rec.source || "").toLowerCase();
     const impact = rec.impact_score || 0;
 
     if (source.includes("strategic gap") && impact > 10) {
-        return { label: "Must-Win Battle", variant: "destructive", icon: AlertCircle };
+        return { label: t('results.roadmap.mustWinBattle', "Must-Win Battle"), variant: "destructive", icon: AlertCircle };
     } else if (source.includes("growth") || source.includes("peer")) {
-        return { label: "Peer Opportunity", variant: "secondary", icon: TrendingUp };
+        return { label: t('results.roadmap.peerOpportunity', "Peer Opportunity"), variant: "secondary", icon: TrendingUp };
     }
-    return { label: "Tactical Step", variant: "outline", icon: Star, className: "bg-amber-50/50 text-amber-700 border-amber-200 hover:bg-amber-100/50" };
+    return { label: t('results.roadmap.tacticalStep', "Tactical Step"), variant: "outline", icon: Star, className: "bg-amber-50/50 text-amber-700 border-amber-200 hover:bg-amber-100/50" };
 };
 
 export function Roadmap({ data }) {
+    const { t } = useTranslation();
     if (!data || (!data.roadmap && !data.phases)) return null;
 
     // Normalize data structure
@@ -72,8 +74,8 @@ export function Roadmap({ data }) {
     return (
         <section className="space-y-12">
             <div className="space-y-2 text-center max-w-3xl mx-auto">
-                <h2 className="text-3xl font-bold tracking-tight text-black">"Next Best Action" Roadmap</h2>
-                <p className="text-muted-foreground text-lg">Your personalized 3-phase transformation pathway.</p>
+                <h2 className="text-3xl font-bold tracking-tight text-black">{t('results.roadmap.title')}</h2>
+                <p className="text-muted-foreground text-lg">{t('results.roadmap.subtitle')}</p>
             </div>
 
             {/* Timeline Container */}
@@ -104,11 +106,11 @@ export function Roadmap({ data }) {
                                         )} />
 
                                         <h3 className={cn("text-2xl font-bold tracking-tight mb-2 relative z-10", phaseDef.titleStyle)}>
-                                            {phaseDef.title}
+                                            {t(`results.roadmap.phases.${phaseDef.titleKey}.title`, phaseDef.titleKey)}
                                         </h3>
 
                                         <p className="text-slate-600 leading-relaxed md:ml-auto font-medium relative z-10">
-                                            Focus on {phaseDef.title.toLowerCase()} activities to build momentum and establish core capabilities.
+                                            {t(`results.roadmap.phases.${phaseDef.titleKey}.desc`, `Focus on ${phaseDef.titleKey} activities to build momentum and establish core capabilities.`)}
                                         </p>
                                     </div>
                                 </div>
@@ -127,7 +129,7 @@ export function Roadmap({ data }) {
                                 <div className="space-y-4">
                                     {recommendations.length > 0 ? (
                                         recommendations.map((rec, rIdx) => {
-                                            const type = getRecommendationType(rec);
+                                            const type = getRecommendationType(rec, t);
                                             const Icon = type.icon;
 
                                             return (
@@ -135,8 +137,8 @@ export function Roadmap({ data }) {
                                                     <CardHeader className="pb-3 p-5">
                                                         <div className="flex justify-between items-start gap-2 mb-3">
                                                             <Badge variant={type.variant} className={cn("text-[10px] px-2 py-0.5 h-5",
-                                                                type.label === 'Must-Win Battle' ? "bg-red-100 text-red-700 hover:bg-red-200 border-red-200" :
-                                                                    type.label === 'Peer Opportunity' ? "bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200" : "",
+                                                                type.label === t('results.roadmap.mustWinBattle', "Must-Win Battle") ? "bg-red-100 text-red-700 hover:bg-red-200 border-red-200" :
+                                                                    type.label === t('results.roadmap.peerOpportunity', "Peer Opportunity") ? "bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200" : "",
                                                                 type.className // Apply custom class from helper
                                                             )}>
                                                                 <div className="flex items-center gap-1.5">
@@ -146,7 +148,7 @@ export function Roadmap({ data }) {
                                                             </Badge>
                                                             {rec.impact_score && (
                                                                 <span className="text-[10px] font-mono font-medium text-slate-400 bg-slate-50 px-1.5 py-0.5 rounded">
-                                                                    Score: {rec.impact_score.toFixed(1)}
+                                                                    {t('results.roadmap.scoreLabel', "Score:")} {rec.impact_score.toFixed(1)}
                                                                 </span>
                                                             )}
                                                         </div>
@@ -175,7 +177,7 @@ export function Roadmap({ data }) {
                                                                 <div className="space-y-4">
                                                                     {/* Analysis Section */}
                                                                     <div className="text-sm text-slate-600 leading-relaxed">
-                                                                        <span className="font-semibold text-slate-800">Analysis: </span>
+                                                                        <span className="font-semibold text-slate-800">{t('results.roadmap.analysisLabel', "Analysis:")} </span>
                                                                         {analysisText.replace(/^Analysis:\s*/i, '')}
                                                                     </div>
 
@@ -197,7 +199,7 @@ export function Roadmap({ data }) {
                                                                                         </div>
                                                                                         <div className="text-sm text-slate-700">
                                                                                             <span className="font-semibold text-slate-900 text-xs uppercase tracking-wide mr-2">
-                                                                                                Action {i + 1}:
+                                                                                                {t('results.roadmap.actionLabel', "Action")} {i + 1}:
                                                                                             </span>
                                                                                             {cleanAction.replace(/^Action \d+:\s*/i, '')}
                                                                                         </div>
@@ -215,7 +217,7 @@ export function Roadmap({ data }) {
                                         })
                                     ) : (
                                         <div className="p-8 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50 text-center">
-                                            <p className="text-slate-400 text-sm italic">No critical actions identified for this phase.</p>
+                                            <p className="text-slate-400 text-sm italic">{t('results.roadmap.noActions', "No critical actions identified for this phase.")}</p>
                                         </div>
                                     )}
                                 </div>
@@ -231,21 +233,13 @@ export function Roadmap({ data }) {
                     <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
-                    <h4 className="text-base text-slate-900">Why this roadmap?</h4>
+                    <h4 className="text-base text-slate-900">{t('results.roadmap.whyTitle', "Why this roadmap?")}</h4>
                     <p className="text-sm text-slate-600 mt-1 leading-relaxed">
-                        This plan is dynamically generated by comparing your profile against industry peer benchmarks. Phase 1 focuses on closing structural gaps blocking scalability, while Phases 2 & 3 target differentiation and leadership capabilities.
+                        {t('results.roadmap.whyDesc', "This plan is dynamically generated by comparing your profile against industry peer benchmarks. Phase 1 focuses on closing structural gaps blocking scalability, while Phases 2 & 3 target differentiation and leadership capabilities.")}
                     </p>
                 </div>
             </div>
 
-            <div className="mt-8 flex justify-center pb-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-xs text-slate-500 shadow-sm">
-                    <AlertCircle className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <p>
-                        <strong>AI Transparency & Liability:</strong> This automated assessment utilizes K-Means Clustering and Generative AI to generate insights. Results are probabilistic and should be verified. Use of this tool does not create a professional client relationship or constitute legal advice.
-                    </p>
-                </div>
-            </div>
         </section>
     );
 }

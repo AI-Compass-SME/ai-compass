@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Shield, Clock, Award, Loader2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ImageWithFallback } from './ImageWithFallback';
+import { useTranslation } from 'react-i18next';
 
 export function HeroSection({ onStart, isStarting }) {
+    const { t } = useTranslation();
     return (
         <section className="pt-24 pb-12 px-6">
             <div className="max-w-[80rem] mx-auto">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <div>
                         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
-                            Navigate Your AI Evolution with the AI Compass.
+                            {t('landing.hero.title')}
                         </h1>
                         <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            Stop guessing. Gain strategic clarity in 10-15 minutes. Benchmark your Organization against 500+ peers and receive a data-driven roadmap to AI maturity. No costs attached, just your valuable time.
+                            {t('landing.hero.subtitle')}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -26,11 +28,11 @@ export function HeroSection({ onStart, isStarting }) {
                                 {isStarting ? (
                                     <>
                                         <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                        Starting...
+                                        {t('landing.hero.starting', 'Starting...')}
                                     </>
                                 ) : (
                                     <>
-                                        Start Free Assessment
+                                        {t('landing.hero.startBtn')}
                                         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                     </>
                                 )}
@@ -40,15 +42,15 @@ export function HeroSection({ onStart, isStarting }) {
                         <div className="flex items-center gap-6 mt-8 text-sm text-gray-600 flex-wrap">
                             <div className="flex items-center gap-2">
                                 <Clock className="w-4 h-4" />
-                                <span>Takes 10-15 mins</span>
+                                <span>{t('landing.hero.time')}</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Shield className="w-4 h-4" />
-                                <span>GDPR Compliant</span>
+                                <span>{t('landing.hero.gdpr')}</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Award className="w-4 h-4" />
-                                <span>Professional Framework</span>
+                                <span>{t('landing.hero.framework')}</span>
                             </div>
                         </div>
                     </div>

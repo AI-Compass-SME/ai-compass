@@ -1,0 +1,962 @@
+{
+  "dimensions": {
+    "1": {
+      "name": "Strategy & Business Vision",
+      "de": ""
+    },
+    "2": {
+      "name": "People & Culture",
+      "de": ""
+    },
+    "3": {
+      "name": "Data Readiness & Literacy",
+      "de": ""
+    },
+    "4": {
+      "name": "Use Cases & Business Value",
+      "de": ""
+    },
+    "5": {
+      "name": "Processes & Scaling",
+      "de": ""
+    },
+    "6": {
+      "name": "Governance & Compliance",
+      "de": ""
+    },
+    "7": {
+      "name": "Tech Infrastructure",
+      "de": ""
+    },
+    "8": {
+      "name": "General Psychology",
+      "de": ""
+    }
+  },
+  "questions": {
+    "1": {
+      "header": "Leadership Alignment",
+      "text": "How is AI prioritized in management meetings?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "2": {
+      "header": "Clarity",
+      "text": "Does a documented AI strategy or roadmap exist?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "3": {
+      "header": "Budget Allocation",
+      "text": "How is AI funding and investment handled?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "4": {
+      "header": "Competitive Ambition",
+      "text": "What is your goal regarding AI vs. competitors?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "5": {
+      "header": "AI Mindset",
+      "text": "How do employees generally react to the topic of AI?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "6": {
+      "header": "AI Competencies",
+      "text": "To what extent are AI capabilities and technical literacy established across your workforce? E.g. expertise in machine learning and NLP, as well as general AI literacy for non-technical staff.",
+      "header_de": "",
+      "text_de": ""
+    },
+    "7": {
+      "header": "Training Program",
+      "text": "How often do employees receive AI training?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "8": {
+      "header": "Psychological Safety",
+      "text": "Is it \"okay\" to fail with an AI pilot project?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "9": {
+      "header": "Data types",
+      "text": "What types of business data do you actively collect? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    },
+    "10": {
+      "header": "Data Centralization",
+      "text": "Do you currently use any of these technologies? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    },
+    "11": {
+      "header": "Data Quality",
+      "text": "Describe the \"cleanliness\" of your business data.",
+      "header_de": "",
+      "text_de": ""
+    },
+    "12": {
+      "header": "Staff Proficiency",
+      "text": "How comfortable is your team with data insights?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "13": {
+      "header": "AI Feasibility",
+      "text": "How rigorously does your organization validate the technical and regulatory feasibility of an AI use case before committing resources?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "14": {
+      "header": "Current Activity",
+      "text": "How many AI use cases are currently active?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "15": {
+      "header": "ROI Tracking",
+      "text": "Do you measure the financial impact of AI projects?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "16": {
+      "header": "Strategic Priority",
+      "text": "To what extent does AI address concrete bottlenecks in your core business operations rather than experimental topics?\n",
+      "header_de": "",
+      "text_de": ""
+    },
+    "17": {
+      "header": "Standardization",
+      "text": "Are core processes documented and repeatable?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "18": {
+      "header": "Execution Maturity",
+      "text": "How structured is your approach to planning, implementing, and delivering AI-related projects?\n",
+      "header_de": "",
+      "text_de": ""
+    },
+    "19": {
+      "header": "Execution Speed",
+      "text": "How long to implement a new digital tool?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "20": {
+      "header": "Scaling Capability",
+      "text": "Is there a defined path to move AI idea to production?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "21": {
+      "header": "Guidelines",
+      "text": "Do you have an internal \"AI Code of Conduct\"?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "22": {
+      "header": "Data Privacy",
+      "text": "How strictly is data handled according to the EU AI Act?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "23": {
+      "header": "Accountability",
+      "text": "Who is responsible for AI outcomes and errors?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "24": {
+      "header": "Transparency",
+      "text": "What disclosure requirements exist for external partners?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "25": {
+      "header": "Cloud Readiness",
+      "text": "To what extent do you use Cloud infrastructure?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "26": {
+      "header": "AI Tooling Stack",
+      "text": "What types of AI development tools are currently available in your organization? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    },
+    "27": {
+      "header": "IT Scalability",
+      "text": "How easily can you scale new software company-wide?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "28": {
+      "header": "Motivation",
+      "text": "Why are you doing this AI assessment?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "29": {
+      "header": "Business Priorities",
+      "text": "Which business challenge is your top priority? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    },
+    "30": {
+      "header": "Strategic Impact",
+      "text": "How is AI influencing your organization\ufffds strategy?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "31": {
+      "header": "AI Ownership",
+      "text": "Who is the primary driver of AI  within your organization? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    },
+    "32": {
+      "header": "Responsibility",
+      "text": "Are you in charge of AI initiatives?",
+      "header_de": "",
+      "text_de": ""
+    },
+    "33": {
+      "header": "Role & Seniority",
+      "text": "Which option best describes your position and decision authority? (Select all that apply)",
+      "header_de": "",
+      "text_de": ""
+    }
+  },
+  "answers": {
+    "1": {
+      "text": "Not a topic / Ignored",
+      "de": ""
+    },
+    "2": {
+      "text": "Rare mention in meetings",
+      "de": ""
+    },
+    "3": {
+      "text": "Occasional discussion",
+      "de": ""
+    },
+    "4": {
+      "text": "Regular agenda item",
+      "de": ""
+    },
+    "5": {
+      "text": "Core strategic pillar",
+      "de": ""
+    },
+    "6": {
+      "text": "None / No plan",
+      "de": ""
+    },
+    "7": {
+      "text": "Rough ideas shared",
+      "de": ""
+    },
+    "8": {
+      "text": "High-level draft exists",
+      "de": ""
+    },
+    "9": {
+      "text": "Formalized document",
+      "de": ""
+    },
+    "10": {
+      "text": "Approved & detailed",
+      "de": ""
+    },
+    "11": {
+      "text": "No budget available",
+      "de": ""
+    },
+    "12": {
+      "text": "Case-by-case funding",
+      "de": ""
+    },
+    "13": {
+      "text": "Ad-hoc project funds",
+      "de": ""
+    },
+    "14": {
+      "text": "Dedicated Dept. budget",
+      "de": ""
+    },
+    "15": {
+      "text": "Fixed annual AI budget",
+      "de": ""
+    },
+    "16": {
+      "text": "Avoidance / Refusal",
+      "de": ""
+    },
+    "17": {
+      "text": "Late adopter",
+      "de": ""
+    },
+    "18": {
+      "text": "Fast Follower",
+      "de": ""
+    },
+    "19": {
+      "text": "Proactive innovator",
+      "de": ""
+    },
+    "20": {
+      "text": "Market Leader",
+      "de": ""
+    },
+    "21": {
+      "text": "Fear / Resistance",
+      "de": ""
+    },
+    "22": {
+      "text": "Skeptical / Passive",
+      "de": ""
+    },
+    "23": {
+      "text": "Neutral / Cautious",
+      "de": ""
+    },
+    "24": {
+      "text": "Interested / Open",
+      "de": ""
+    },
+    "25": {
+      "text": "Proactive excitement",
+      "de": ""
+    },
+    "26": {
+      "text": "Unaware / Non-Existent - We lack clarity on our current AI proficiency, and there are no identifiable AI skills or initiatives within the workforce.",
+      "de": ""
+    },
+    "27": {
+      "text": "Isolated Proficiency - AI knowledge is siloed within a few individuals; significant skill gaps across most departments currently hinder broader adoption.",
+      "de": ""
+    },
+    "28": {
+      "text": "Foundational Competency -  Core team members possess foundational AI skills, and structured upskilling programs are underway to prepare the broader workforce.",
+      "de": ""
+    },
+    "29": {
+      "text": "Advanced Operational Capability - Advanced AI practitioners are integrated into multiple roles, supported by continuous training that keeps pace with industry trends.",
+      "de": ""
+    },
+    "30": {
+      "text": "Strategic Expert Leadership - AI expertise is a core competency company-wide; internal specialists lead R&D, mentor staff, and drive industry-leading innovation.",
+      "de": ""
+    },
+    "31": {
+      "text": "Never / None",
+      "de": ""
+    },
+    "32": {
+      "text": "Occasional webinars",
+      "de": ""
+    },
+    "33": {
+      "text": "Irregular workshops",
+      "de": ""
+    },
+    "34": {
+      "text": "Planned curriculums",
+      "de": ""
+    },
+    "35": {
+      "text": "Continuous learning",
+      "de": ""
+    },
+    "36": {
+      "text": "Failure is punished",
+      "de": ""
+    },
+    "37": {
+      "text": "Blame culture",
+      "de": ""
+    },
+    "38": {
+      "text": "Failure is tolerated",
+      "de": ""
+    },
+    "39": {
+      "text": "Learning from errors",
+      "de": ""
+    },
+    "40": {
+      "text": "Fail-fast encouraged",
+      "de": ""
+    },
+    "41": {
+      "text": "Sales and transaction data",
+      "de": ""
+    },
+    "42": {
+      "text": "Customer interactions (emails, chats, calls)",
+      "de": ""
+    },
+    "43": {
+      "text": "Website/app usage analytics",
+      "de": ""
+    },
+    "44": {
+      "text": "Customer feedback and reviews",
+      "de": ""
+    },
+    "45": {
+      "text": "Product data",
+      "de": ""
+    },
+    "46": {
+      "text": "Financial and operational metrics",
+      "de": ""
+    },
+    "47": {
+      "text": "Employee/HR data",
+      "de": ""
+    },
+    "48": {
+      "text": "Limited data collection (Exclusive option)",
+      "de": ""
+    },
+    "49": {
+      "text": "Internal (on-premise) servers",
+      "de": ""
+    },
+    "50": {
+      "text": "Cloud platforms (AWS, Azure, Google Cloud)",
+      "de": ""
+    },
+    "51": {
+      "text": "CRM systems (Salesforce, HubSpot, etc.)",
+      "de": ""
+    },
+    "53": {
+      "text": "E-commerce platforms (Shopify, WooCommerce, etc.)",
+      "de": ""
+    },
+    "54": {
+      "text": "Business intelligence tools (Tableau, Power BI, etc.)",
+      "de": ""
+    },
+    "55": {
+      "text": "API integrations between systems",
+      "de": ""
+    },
+    "56": {
+      "text": "None of the above (Exclusive option)?",
+      "de": ""
+    },
+    "57": {
+      "text": "Messy / Siloed",
+      "de": ""
+    },
+    "58": {
+      "text": "Basic digital records",
+      "de": ""
+    },
+    "59": {
+      "text": "Partially cleaned",
+      "de": ""
+    },
+    "60": {
+      "text": "Standardized formats",
+      "de": ""
+    },
+    "61": {
+      "text": "High-quality/Auto-sync",
+      "de": ""
+    },
+    "62": {
+      "text": "Struggling / No skill",
+      "de": ""
+    },
+    "63": {
+      "text": "Basic tool awareness",
+      "de": ""
+    },
+    "64": {
+      "text": "Comfortable with KPIs",
+      "de": ""
+    },
+    "65": {
+      "text": "Analytical mindsets",
+      "de": ""
+    },
+    "66": {
+      "text": "Data-driven experts",
+      "de": ""
+    },
+    "72": {
+      "text": "Not started ",
+      "de": ""
+    },
+    "73": {
+      "text": "Theory / Brainstorm",
+      "de": ""
+    },
+    "74": {
+      "text": "1-2 Active Pilots",
+      "de": ""
+    },
+    "75": {
+      "text": "Multiple live apps",
+      "de": ""
+    },
+    "76": {
+      "text": "AI embedded in product",
+      "de": ""
+    },
+    "77": {
+      "text": "No tracking",
+      "de": ""
+    },
+    "78": {
+      "text": "Cost tracking only",
+      "de": ""
+    },
+    "79": {
+      "text": "Qualitative impact",
+      "de": ""
+    },
+    "80": {
+      "text": "Defined KPI tracking",
+      "de": ""
+    },
+    "81": {
+      "text": "Strict Financial ROI",
+      "de": ""
+    },
+    "82": {
+      "text": "AI initiatives are mostly exploratory and disconnected from core business bottlenecks.\n\n",
+      "de": ""
+    },
+    "83": {
+      "text": "Some AI use cases touch core processes, but they are not focused on the most critical constraints.",
+      "de": ""
+    },
+    "84": {
+      "text": "AI is applied to known bottlenecks in the core business, with mixed or unproven impact.",
+      "de": ""
+    },
+    "85": {
+      "text": "AI systematically targets high-impact bottlenecks in core business operations and delivers measurable improvements.",
+      "de": ""
+    },
+    "86": {
+      "text": "AI is a strategic lever to remove or redefine core business bottlenecks and shapes how the business competes.",
+      "de": ""
+    },
+    "87": {
+      "text": "Knowledge in heads",
+      "de": ""
+    },
+    "88": {
+      "text": "Rough checklists",
+      "de": ""
+    },
+    "89": {
+      "text": "Partially documented",
+      "de": ""
+    },
+    "90": {
+      "text": "Standard SOPs",
+      "de": ""
+    },
+    "91": {
+      "text": "Fully digital workflows",
+      "de": ""
+    },
+    "97": {
+      "text": "> 1 Year",
+      "de": ""
+    },
+    "98": {
+      "text": "7 - 12 Months",
+      "de": ""
+    },
+    "99": {
+      "text": "3 - 6 Months",
+      "de": ""
+    },
+    "100": {
+      "text": "1 - 2 Months",
+      "de": ""
+    },
+    "101": {
+      "text": "< 4 Weeks",
+      "de": ""
+    },
+    "102": {
+      "text": "No plan",
+      "de": ""
+    },
+    "103": {
+      "text": "Theoretical idea",
+      "de": ""
+    },
+    "104": {
+      "text": "Case-by-case choice",
+      "de": ""
+    },
+    "105": {
+      "text": "Defined scaling path",
+      "de": ""
+    },
+    "106": {
+      "text": "Automated deployment",
+      "de": ""
+    },
+    "107": {
+      "text": "None",
+      "de": ""
+    },
+    "108": {
+      "text": "Informal rules",
+      "de": ""
+    },
+    "109": {
+      "text": "In progress / Draft",
+      "de": ""
+    },
+    "110": {
+      "text": "Implemented policy",
+      "de": ""
+    },
+    "111": {
+      "text": "Audited Governance",
+      "de": ""
+    },
+    "112": {
+      "text": "High Risk / Unknown",
+      "de": ""
+    },
+    "113": {
+      "text": "Minimal compliance",
+      "de": ""
+    },
+    "114": {
+      "text": "Basic GDPR active",
+      "de": ""
+    },
+    "115": {
+      "text": "Privacy-by-design",
+      "de": ""
+    },
+    "116": {
+      "text": "Full sovereignty",
+      "de": ""
+    },
+    "117": {
+      "text": "No one responsible",
+      "de": ""
+    },
+    "118": {
+      "text": "Vague / individual assignments",
+      "de": ""
+    },
+    "119": {
+      "text": "Shared responsibility",
+      "de": ""
+    },
+    "120": {
+      "text": "Clear Dept. lead",
+      "de": ""
+    },
+    "121": {
+      "text": "Dedicated AI Officer",
+      "de": ""
+    },
+    "122": {
+      "text": "Unknown\n",
+      "de": ""
+    },
+    "123": {
+      "text": "Defined by Partners",
+      "de": ""
+    },
+    "124": {
+      "text": "Minimal",
+      "de": ""
+    },
+    "125": {
+      "text": "Medium",
+      "de": ""
+    },
+    "126": {
+      "text": "High Disclosure",
+      "de": ""
+    },
+    "127": {
+      "text": "Fully On-Premise",
+      "de": ""
+    },
+    "128": {
+      "text": "Modernized On-Prem",
+      "de": ""
+    },
+    "129": {
+      "text": "Hybrid Cloud setup",
+      "de": ""
+    },
+    "130": {
+      "text": "Cloud-first approach",
+      "de": ""
+    },
+    "131": {
+      "text": "Cloud-Native",
+      "de": ""
+    },
+    "132": {
+      "text": "No AI development tools are currently available (Exclusive option)?",
+      "de": ""
+    },
+    "133": {
+      "text": "Pre-built AI tools or platforms (e.g., analytics, chatbots, automation tools)?",
+      "de": ""
+    },
+    "134": {
+      "text": "Custom AI or machine learning development tools?",
+      "de": ""
+    },
+    "135": {
+      "text": "Cloud-based AI services (e.g., managed AI/ML platforms)?",
+      "de": ""
+    },
+    "136": {
+      "text": "A combination of pre-built and custom AI tools?",
+      "de": ""
+    },
+    "137": {
+      "text": "Not sure",
+      "de": ""
+    },
+    "138": {
+      "text": "Manual/Painful",
+      "de": ""
+    },
+    "139": {
+      "text": "Labor intensive",
+      "de": ""
+    },
+    "140": {
+      "text": "Standard IT process",
+      "de": ""
+    },
+    "141": {
+      "text": "Modular & easy",
+      "de": ""
+    },
+    "142": {
+      "text": "Instant/Auto-scaling",
+      "de": ""
+    },
+    "148": {
+      "text": "Improving customer service efficiency",
+      "de": ""
+    },
+    "149": {
+      "text": "Automating repetitive tasks",
+      "de": ""
+    },
+    "150": {
+      "text": "Better data analysis and insights",
+      "de": ""
+    },
+    "151": {
+      "text": "Enhancing search/recommendation capabilities",
+      "de": ""
+    },
+    "152": {
+      "text": "Streamlining document processing",
+      "de": ""
+    },
+    "153": {
+      "text": "Personalizing customer experiences",
+      "de": ""
+    },
+    "154": {
+      "text": "Reducing operational costs",
+      "de": ""
+    },
+    "155": {
+      "text": "Other",
+      "de": ""
+    },
+    "161": {
+      "text": "Executive Leadership / Board ",
+      "de": ""
+    },
+    "162": {
+      "text": "IT / Technology Department ",
+      "de": ""
+    },
+    "163": {
+      "text": "Digital Transformation / Innovation Team ",
+      "de": ""
+    },
+    "164": {
+      "text": "Sales & Marketing",
+      "de": ""
+    },
+    "165": {
+      "text": "Operations & Supply Chain ",
+      "de": ""
+    },
+    "166": {
+      "text": "Data Science / Analytics Specialists ",
+      "de": ""
+    },
+    "167": {
+      "text": "Individual Employees / Early Adopters ",
+      "de": ""
+    },
+    "168": {
+      "text": "External Partners / Consultants",
+      "de": ""
+    },
+    "169": {
+      "text": "No Clear Internal Driver ",
+      "de": ""
+    },
+    "170": {
+      "text": "No",
+      "de": ""
+    },
+    "171": {
+      "text": "Sometimes",
+      "de": ""
+    },
+    "172": {
+      "text": "Yes",
+      "de": ""
+    },
+    "173": {
+      "text": "Executive / C-level",
+      "de": ""
+    },
+    "174": {
+      "text": "Senior Management",
+      "de": ""
+    },
+    "175": {
+      "text": "Product / Process Owner",
+      "de": ""
+    },
+    "176": {
+      "text": "IT / Technology Management",
+      "de": ""
+    },
+    "177": {
+      "text": "Data / AI Specialist",
+      "de": ""
+    },
+    "178": {
+      "text": "Business Analyst / Strategy / Innovation role",
+      "de": ""
+    },
+    "179": {
+      "text": "Operational Staff / Domain Expert",
+      "de": ""
+    },
+    "180": {
+      "text": "Project / Program Manager",
+      "de": ""
+    },
+    "181": {
+      "text": "External Consultant / Advisor",
+      "de": ""
+    },
+    "52": {
+      "text": "ERP System - ",
+      "de": ""
+    },
+    "67": {
+      "text": "Minimal / Unsure - We do not have a formal feasibility check; projects are often started based on excitement or intuition without verifying data or compliance requirements first.",
+      "de": ""
+    },
+    "68": {
+      "text": "Reactive Assessment - We perform basic checks only after a project has started, often leading to delays or \"stuck\" projects when data or legal issues unexpectedly emerge.",
+      "de": ""
+    },
+    "69": {
+      "text": "Basic Due Diligence - We have an informal \"Pre-Check\" for major projects where we verify if the necessary data exists and if there are obvious legal hurdles.",
+      "de": ""
+    },
+    "70": {
+      "text": "Structured Validation - We use a clear \"Go/No-Go\" process for every use case that validates data readiness, process alignment, and regulatory compliance before any budget is released.",
+      "de": ""
+    },
+    "71": {
+      "text": "Optimized Strategic Filtering - We use a standardized, data-driven validation engine that ensures every initiative is perfectly aligned with business goals, technical capabilities, and compliance standards from the start.",
+      "de": ""
+    },
+    "92": {
+      "text": "Undefined / Ad-hoc - We do not have a set process for AI projects; tasks are handled as they arise without formal planning or clear ownership.",
+      "de": ""
+    },
+    "93": {
+      "text": "Individual Initiative - Project delivery depends on the effort of specific individuals; while some projects succeed, we lack a repeatable \"playbook\" for the whole team.",
+      "de": ""
+    },
+    "94": {
+      "text": "Basic Standardization - We use a consistent workflow (e.g., simple task tracking or weekly sprints) that allows us to manage AI projects with predictable timelines.",
+      "de": ""
+    },
+    "95": {
+      "text": "Targeted & Results-Oriented - We use a process specifically adapted for AI (e.g., early prototyping and data-readiness checks), ensuring we don't waste resources on unfeasible ideas.",
+      "de": ""
+    },
+    "96": {
+      "text": "High-Velocity Delivery - Our implementation engine is highly efficient; we can rapidly move from a \"Proof of Concept\" to a live tool with minimal friction and clear ROI tracking.",
+      "de": ""
+    },
+    "143": {
+      "text": "External Pressure - We are responding to external hype or competitor moves without a clear internal goal.",
+      "de": ""
+    },
+    "144": {
+      "text": "Resource Optimization - We want to identify where AI can reduce costs or automate repetitive manual tasks.",
+      "de": ""
+    },
+    "145": {
+      "text": "Strategic Clarity - We need a professional roadmap to align AI initiatives with our core business objectives.",
+      "de": ""
+    },
+    "146": {
+      "text": " Readiness Check - We aim to evaluate our technical infrastructure and workforce skills for upcoming scaling.",
+      "de": ""
+    },
+    "147": {
+      "text": "Competitive Advantage - We are seeking to define a market-leading position through high-impact AI innovation.",
+      "de": ""
+    },
+    "156": {
+      "text": "No Impact - We have not assessed AI trends and have no documented strategy regarding them.",
+      "de": ""
+    },
+    "157": {
+      "text": "Reactive - We acknowledge the trend but only respond to external pressures on an ad-hoc basis.",
+      "de": ""
+    },
+    "158": {
+      "text": "Exploratory - We monitor trends and have initiated pilot projects to address specific needs.",
+      "de": ""
+    },
+    "159": {
+      "text": "Strategic - AI is a key planning driver with a formal roadmap for systematic integration.",
+      "de": ""
+    },
+    "160": {
+      "text": "Innovative - We leverage AI to redefine our business model and set industry standards.",
+      "de": ""
+    }
+  }
+}

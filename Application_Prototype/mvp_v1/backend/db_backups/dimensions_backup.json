@@ -1,0 +1,42 @@
+[
+    {
+        "dimension_id": 1,
+        "dimension_name": "Strategy & Business Vision",
+        "dimension_weight": 25.0
+    },
+    {
+        "dimension_id": 2,
+        "dimension_name": "People & Culture",
+        "dimension_weight": 15.5
+    },
+    {
+        "dimension_id": 3,
+        "dimension_name": "Data Readiness & Literacy",
+        "dimension_weight": 18.5
+    },
+    {
+        "dimension_id": 4,
+        "dimension_name": "Use Cases & Business Value",
+        "dimension_weight": 15.5
+    },
+    {
+        "dimension_id": 5,
+        "dimension_name": "Processes & Scaling",
+        "dimension_weight": 16.0
+    },
+    {
+        "dimension_id": 6,
+        "dimension_name": "Governance & Compliance",
+        "dimension_weight": 15.5
+    },
+    {
+        "dimension_id": 7,
+        "dimension_name": "Tech Infrastructure",
+        "dimension_weight": 9.5
+    },
+    {
+        "dimension_id": 8,
+        "dimension_name": "General Psychology",
+        "dimension_weight": 0.0
+    }
+]

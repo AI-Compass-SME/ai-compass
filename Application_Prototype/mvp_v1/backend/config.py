@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     # Dev (relative to backend): ../../../benchmarking_ai/ml_v5
     ML_MODELS_PATH: str = "modules/benchmarking_ai/ml_v5/model_artifacts/v5"
 
+    # Email
+    BREVO_API_KEY: str = ""
+    FRONTEND_URL: str = "https://the-ai-compass.de"
+
     @field_validator("ML_MODELS_PATH", mode="before")
     @classmethod
     def set_models_path(cls, v: Any) -> str:

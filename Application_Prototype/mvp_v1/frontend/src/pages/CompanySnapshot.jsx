@@ -18,11 +18,13 @@ import {
 import { toast } from "sonner";
 import { Building2, Globe, Users, MapPin, Mail, ArrowRight, Loader2, Lock } from 'lucide-react';
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const MIN_LOADING_TIME_MS = 3000;
 
 export default function CompanySnapshot() {
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
     const [formData, setFormData] = useState({
         company_name: '',
         industry: '',
@@ -32,18 +34,19 @@ export default function CompanySnapshot() {
         email: ''
     });
     const [agreedToGDPR, setAgreedToGDPR] = useState(false);
-    const [status, setStatus] = useState('idle'); // idle, analyzing, complete
+    const [status, setStatus] = useState('idle'); // idle, analyzing, verify_email
+    const [userEmail, setUserEmail] = useState('');
 
     // Load session
     useEffect(() => {
         const session = getSession();
         if (!session.responseId) {
             // If no session, redirect to landing
-            toast.error("No active assessment found.");
+            toast.error(t('snapshot.toasts.noActiveAssessment', "No active assessment found."));
             navigate('/');
         }
-        document.title = "AI Compass: Company Profile";
-    }, [navigate]);
+        document.title = t('snapshot.pageTitle', "AI Compass: Company Profile");
+    }, [navigate, t]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,7 +60,7 @@ export default function CompanySnapshot() {
         e.preventDefault();
 
         if (!agreedToGDPR) {
-            toast.error("Please agree to the privacy policy to continue.");
+            toast.error(t('snapshot.toasts.agreePrivacy', "Please agree to the privacy policy to continue."));
             return;
         }
 
@@ -69,21 +72,20 @@ export default function CompanySnapshot() {
 
         try {
             // 1. Trigger Backend Completion
-            await api.completeAssessment(parseInt(session.responseId), formData);
+            const { result_hash } = await api.completeAssessment(parseInt(session.responseId), formData, i18n.language);
 
             // 2. Ensure Minimum Loading Time
             const elapsed = Date.now() - startTime;
             const remaining = Math.max(0, MIN_LOADING_TIME_MS - elapsed);
 
             setTimeout(() => {
-                setStatus('complete');
-                toast.success("Analysis complete!");
-                navigate(`/results/${session.responseId}`);
+                setStatus('verify_email');
+                setUserEmail(formData.email);
             }, remaining);
 
         } catch (error) {
             console.error('Error completing assessment:', error);
-            toast.error(`Failed to complete assessment: ${error.message}`);
+            toast.error(t('snapshot.toasts.submitError', `Failed to complete assessment: ${error.message}`));
             setStatus('idle');
         }
     };
@@ -110,6 +112,42 @@ export default function CompanySnapshot() {
                         Verifying your industry benchmarks and generating actionable insights.
                     </p>
                 </div>
+            </div>
+        );
+    }
+
+    if (status === 'verify_email') {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen p-4 relative overflow-hidden font-sans">
+                <PageBackground />
+                <Card className="w-full max-w-lg glass-premium shadow-2xl relative z-10 border-white/60 text-center">
+                    <CardHeader className="space-y-4 pb-6 border-b border-white/20 bg-white/30">
+                        <div className="mx-auto w-16 h-16 bg-gradient-to-br from-indigo-500 to-emerald-500 rounded-full flex items-center justify-center mb-2 shadow-lg ring-4 ring-white">
+                            <Mail className="w-8 h-8 text-white" />
+                        </div>
+                        <CardTitle className="text-2xl font-bold text-slate-900 font-heading">
+                            Please Verify Your Email
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-8 px-6 text-slate-600">
+                        <p className="mb-4 text-base">
+                            We've sent a secure verification link to:<br />
+                            <strong className="text-slate-900">{userEmail}</strong>
+                        </p>
+                        <p className="text-sm">
+                            Click the link in the email to instantly access your <strong>results page</strong> and receive your comprehensive <strong>PDF report</strong>.
+                        </p>
+                        <div className="mt-8">
+                            <Button
+                                variant="outline"
+                                onClick={() => window.location.href = '/'}
+                                className="w-full bg-white/50 border-slate-200"
+                            >
+                                Return to Homepage
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
         );
     }

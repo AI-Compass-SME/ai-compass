@@ -12,6 +12,8 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import ComingSoonPage from './pages/ComingSoonPage';
+import VerifyPage from './pages/VerifyPage';
+import ScrollToTop from './components/ScrollToTop';
 
 import { Toaster } from "@/components/ui/sonner"
 
@@ -26,9 +28,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/snapshot" element={<CompanySnapshot />} />
+        <Route path="/verify" element={<VerifyPage />} />
         <Route path="/assessment/:responseId" element={<QuestionnaireWizard />} />
         <Route path="/results/:responseId" element={<ResultsPage />} />
         <Route path="/imprint" element={<ImprintPage />} />

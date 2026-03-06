@@ -2,38 +2,40 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import { Award, TrendingUp, Target, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function OutcomePreview() {
+    const { t } = useTranslation();
     const radarData = [
-        { subject: 'Strategy', value: 4, fullMark: 5 },
-        { subject: 'People', value: 3, fullMark: 5 },
-        { subject: 'Data', value: 3.5, fullMark: 5 },
-        { subject: 'Use Cases', value: 4.5, fullMark: 5 },
-        { subject: 'Processes', value: 2.5, fullMark: 5 },
-        { subject: 'Compliance', value: 3, fullMark: 5 },
-        { subject: 'Tech', value: 4, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.strategy'), value: 4, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.people'), value: 3, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.data'), value: 3.5, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.useCases'), value: 4.5, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.processes'), value: 2.5, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.compliance'), value: 3, fullMark: 5 },
+        { subject: t('landing.outcome.subjects.tech'), value: 4, fullMark: 5 },
     ];
 
     const outcomes = [
         {
             icon: Award,
-            title: 'Maturity Score',
-            description: 'An overall index from 1 to 5.',
+            title: t('landing.outcome.items.1.title'),
+            description: t('landing.outcome.items.1.desc'),
         },
         {
             icon: TrendingUp,
-            title: 'Cluster Badge',
-            description: 'Are you a Curious Experimenter or an AI-Enabled Leader?',
+            title: t('landing.outcome.items.2.title'),
+            description: t('landing.outcome.items.2.desc'),
         },
         {
             icon: Target,
-            title: 'Gap Analysis',
-            description: 'Deep dive into which dimension is holding you back.',
+            title: t('landing.outcome.items.3.title'),
+            description: t('landing.outcome.items.3.desc'),
         },
         {
             icon: Zap,
-            title: 'Roadmap',
-            description: 'Immediate \'Low-Hanging Fruit\' vs. Long-term strategic shifts.',
+            title: t('landing.outcome.items.4.title'),
+            description: t('landing.outcome.items.4.desc'),
         },
     ];
 
@@ -41,8 +43,8 @@ export function OutcomePreview() {
         <section className="py-10 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
             <div className="max-w-[80rem] mx-auto">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Outcome Preview</h2>
-                    <p className="text-lg text-gray-600">Your results page will include:</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{t('landing.outcome.title')}</h2>
+                    <p className="text-lg text-gray-600">{t('landing.outcome.subtitle')}</p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -54,7 +56,7 @@ export function OutcomePreview() {
                         className="bg-white rounded-2xl shadow-xl p-6"
                     >
                         <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-                            Your AI Maturity Radar
+                            {t('landing.outcome.radarTitle')}
                         </h3>
                         <div className="h-[260px] w-full">
                             <ResponsiveContainer width="100%" height="100%">
@@ -63,7 +65,7 @@ export function OutcomePreview() {
                                     <PolarAngleAxis dataKey="subject" tick={{ fill: '#6b7280', fontSize: 13 }} />
                                     <PolarRadiusAxis angle={90} domain={[0, 5]} tick={{ fill: '#9ca3af', fontSize: 11 }} />
                                     <Radar
-                                        name="AI Maturity"
+                                        name={t('landing.outcome.radarLabel')}
                                         dataKey="value"
                                         stroke="#3b82f6"
                                         fill="#3b82f6"

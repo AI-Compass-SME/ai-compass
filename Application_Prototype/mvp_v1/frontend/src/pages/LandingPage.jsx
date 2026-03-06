@@ -12,7 +12,10 @@ import { Footer } from '@/components/Footer';
 import { Navigation } from '@/components/Navigation';
 import { PageBackground } from '@/components/ui/PageBackground';
 
+import { useTranslation } from 'react-i18next';
+
 export default function LandingPage() {
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
     const [isStarting, setIsStarting] = useState(false);
 
@@ -51,11 +54,11 @@ export default function LandingPage() {
     const handleStartAssessment = async () => {
         try {
             setIsStarting(true);
-            const session = await initializeVisitorSession();
-            toast.success("Assessment started!");
+            const session = await initializeVisitorSession(i18n.language);
+            toast.success(t('landing.hero.success', "Assessment started!"));
             navigate(`/assessment/${session.responseId}`);
         } catch (error) {
-            toast.error("Failed to start assessment. Please try again.");
+            toast.error(t('landing.hero.error', "Failed to start assessment. Please try again."));
             console.error(error);
             setIsStarting(false);
         }
