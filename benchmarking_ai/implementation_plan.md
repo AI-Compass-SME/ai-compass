@@ -1,62 +1,82 @@
-# Action Plan: AI-Compass Intelligence Upgrade
+# Implementation Plan: 🚀 Project Status & Hard Launch Roadmap
 
-## Goal
-Transform the current static scoring system into an intelligent, data-driven platform capable of **Advanced Benchmarking**, **AI-driven Segmentation**, and **Personalized Recommendations**.
+This document outlines the current state of the AI Compass deployment and the remaining tasks required to transition from the "Coming Soon" phase to the live public launch.
 
-## User Review Required
+## 🟩 Phase 1 & 2: Infrastructure & Deployment (Complete)
+
+We have successfully implemented the "Dual-Repo Strategy" separating development from production.
+
+*   **Backend (Render):** FastAPI containerized and running. Environment (`CORS`, `sys.path` for ML modules) stabilized.
+*   **Frontend (Vercel):** React/Vite built and deployed. Custom domain (`the-ai-compass.de`) configured and verified.
+*   **Database:** Connected to production Supabase instance.
+*   **CI/CD:** GitHub Actions Auto-Sync pipeline is fully active.
+*   **Pre-Launch Protection:** Deployed the `ComingSoonPage` interceptor. Production URLs are blocked, while `localhost` remains fully accessible.
+
+---
+
+## 🟧 Phase 3: Legal & Compliance Requirements (Pending)
 > [!IMPORTANT]
-> This is a multi-phase execution plan. Approval of this document authorizes the creation of the entire `benchmarking_ai` Python package and associated data pipelines.
+> These steps are legally required before opening the platform to the public, especially in the EU region (GDPR/DDG).
 
-## Proposed Architecture
+### 1. Imprint (Impressum) - Private Individuals
+*   Since this is launched by individuals (not a registered company), the requirements are simpler. Update `ImprintPage.jsx` to ensure accurate details for the responsible person(s):
+    *   Full Name (Christian Miething as primary contact)
+    *   Full Residential/Contact Address
+    *   Contact Information (Email)
+    *   *Note: VAT ID and Commercial Register entries are NOT required for private individuals.*
 
-All new logic will reside in `benchmarking_ai/`.
+### 2. Privacy Policy (Datenschutzerklärung)
+*   The current `PrivacyPage.jsx` is mostly accurate but needs a final review:
+    *   **No Tracking:** Explicitly state that no tracking cookies, Google Analytics, or third-party analytics are used.
+    *   **Data Handling:** Confirm the explanation of how Supabase stores assessment inputs (company data, scores) is accurate.
 
-### Phase 1: Data Engineering (DataProcessor)
-**Goal**: Convert raw SQL tables into ML-ready Feature Matrices.
-*   **Feature 1**: `QuestionMatrix` (Rows=Companies, Cols=Questions, Val=Weights).
-*   **Feature 2**: `DimensionMatrix` (Rows=Companies, Cols=Dimensions, Val=Aggregated Scores).
-*   **Metadata**: Industry, Size, Region attached as filtering tags.
+### 3. Secure Results Access (UUID Implementation)
+*   Currently, `response_id` uses predictable sequential integers (e.g., `.../results/14`). This allows malicious users to guess URLs and view others' results.
+*   **Database Update:** Add a new `result_hash` column to the `responses` table (e.g., PostgreSQL `varchar(32)` or `UUID` using `gen_random_uuid()`).
+*   **Backend Update:** Update the `/{response_id}/results` and `/{response_id}/pdf` endpoints to query by `result_hash` instead of integer ID.
+*   **Frontend Check:** Ensure the browser router `Route path="/results/:hash"` matches the new secure format.
 
-### Phase 2: Benchmarking Engine (Descriptive)
-**Goal**: "Where do I stand?"
-*   **Dynamic Peer Groups**: Filter dataset by `Industry` and `Size` on the fly.
-*   **Percentile Scoring**: Calculate `scipy.stats.percentileofscore` for every company against their peer group.
-*   **Gap Analysis**: Identify dimensions where `Company_Score < Peer_Average`.
+### 4. Email Verification Workflow (Brevo)
+*   **Pre-Results Block:** When a user completes the snapshot, they are blocked from immediately viewing results.
+*   **Email Dispatch:** Backend generates a one-time verification token linked to the response and triggers an email via Brevo containing a magic link: `https://the-ai-compass.de/verify?token=XYZ`.
+*   **Verification Endpoint:** The `/verify` route confirms the token, sets a verified flag on the response, and automatically redirects the user to their permanent `.../results/<UUID>` page.
+*   **Attachment Delivery:** The backend pre-generates the PDF report and instructs Brevo to attach it to a "Welcome/Here are your results" confirmation email post-verification.
 
-### Phase 3: AI Clustering & Validator (Unsupervised)
-**Goal**: "Who am I really?" & A/B Testing.
-*   **Model**: K-Means Clustering on `DimensionMatrix` (k=3 to 5).
-    *   *Why*: To find organic "Behavioral Archetypes" (e.g., "Tech-Heavy but Strategy-Poor").
-*   **A/B Test Validator**:
-    *   Compare `RuleBased_Cluster` vs `ML_Cluster`.
-    *   Compute Confusion Matrix and Similarity Score.
-    *   **Deliverable**: A report highlighting "Misclassified" companies where the AI sees something the Rules missed.
-*   **Visualization**: PCA 2D Scatter Plot showing the landscape of all companies.
+---
 
-### Phase 4: Recommendation Engine (Prescriptive)
-**Goal**: "What should I do?"
-*   **Logic**: If `Dimension_Score` is in Bottom Quartile -> Recommend specific action items linked to that dimension.
+## 🟦 Phase 4: Final Polish & "Hard Launch" (Pending)
 
-## Implementation Steps
+### 1. Language Switch (i18n) Feature & DB Translation Support
+*   Integrate a localization library (e.g., `react-i18next`).
+*   Extract all hardcoded static text from components into English (`en`) JSON translation files.
+*   Create a German (`de`) translation file for all terminology.
+*   Add a Language Toggle UI in the navigation bar to allow users to switch between English and Deutsch.
+*   **Dynamic DB Translations for Questionnaire:** Since question data is retrieved from the backend, JSON map translations are brittle and unmaintainable if questions are altered later. Therefore, the architectural approach needs to shift to a pure DB-driven i18n structure:
+    *   **Database Backup (SQL Dump):** Before making any schema changes, we will generate a complete structural and data copy of the production database using standard SQL output (e.g., `pg_dump` or Supabase Export producing a `.sql` file). This ensures it can be instantly uploaded to Supabase or executed in PostgreSQL to perfectly restore tables and data.
+    *   **Database Schema Migration:** Add new columns to the live database (`dimension_name_de` in `dimensions`, `header_de` & `question_text_de` in `questions`, `answer_text_de` in `answers`).
+    *   **Data Population Script:** Create a standalone Python database script (e.g., `migrate_translations.py`) using SQLAlchemy to directly `UPDATE` the newly created `_de` columns with the German translated strings based on their IDs, leaving the original CSV seed workflow completely untouched.
+    *   **Frontend Logic:** Modify `QuestionnaireWizard.jsx` to conditionally render `{i18n.language === 'de' ? q.question_text_de : q.question_text}` and apply the same conditional rendering to dimension names and answers.
+    *   **Sidebar Updates:** Add `Imprint` and `Privacy Policy` links to the bottom of the left sidebar in `QuestionnaireWizard.jsx` and make the AI Compass Logo clickable, taking the user back to the homepage.
+    *   **Results Page Implications (Post-Generation Switching):** The `ResultsPage.jsx` relies on your ML model (`benchmarking_ai/ml_v5`) to dynamically generate narratives and roadmap actions using a K-Means/k-NN approach, *not an LLM*.
+        *   **Dynamic Re-fetching:** We will update `ResultsPage.jsx` to listen to the `i18n.language` toggle. If the user swaps languages while viewing their results, the frontend will automatically re-call the backend API (`/api/{hash}/results?lang=de`).
+        *   **Backend Translation Routing:** The backend API will intercept the `lang` parameter. When `lang=de`, it will pull the German `_de` columns from the database (so the ML model uses German question text and themes for the roadmap).
+        *   **Template Localization:** We will update the hardcoded English string templates (e.g., `"Strategic Focus: {theme}"`, `"**Analysis**: ..."`) located inside `benchmarking_ai/ml_v5/models.py` and `utils.py` to also have German equivalents based on the active requested language.
 
-#### 1. [NEW] `benchmarking_ai/data_pipeline.py`
-*   `fetch_data()`: SQL -> DataFrame.
-*   `create_feature_matrix()`: Pivot/One-hot encoding.
+### 2. Content & UX Review
+*   Conduct a final pass over all text content, question phrasing, and dimension explanations in the frontend.
+*   Ensure all `mailto:` links or external portfolio links resolve correctly in production.
 
-#### 2. [NEW] `benchmarking_ai/models.py`
-*   `class BenchmarkEngine`: Handles percentiles and peer masking.
-*   `class ClusterEngine`: Handles K-Means, PCA, and prediction.
+### 3. The Hard Launch Sequence
+*   Verify SSL propagation and domain health across all DNS registrars.
+*   **Action:** Modify `App.jsx` to remove the `isLocalhost` blocker.
+*   Push commit to trigger the final deployment, opening the application to the public.
 
-#### 3. [NEW] `benchmarking_ai/main_analysis.py`
-*   The orchestrator script that runs the pipeline, trains models, performs the comparisons, and generates the final report/plots.
+---
 
 ## Verification Plan
 
-### Automated Checks
-1.  **Data Integrity**: Assert Feature Matrix shape (N_companies, M_features) is correct.
-2.  **Model Quality**: Calculate Silhouette Score for K-Means (Target > 0.4).
-3.  **A/B Comparison**: Print percentage overlap between Rule-Based and ML assignments.
-
-### Deliverables
-*   **Report**: `AI_Upgrade_Results.md` (Auto-generated findings).
-*   **Plots**: `cluster_pca.png`, `benchmark_radar.png`.
+### Manual Verification
+Before executing Phase 4, the following steps must pass:
+1.  **Legal Sign-off:** User confirms the Imprint and Privacy pages meet local regulations.
+2.  **End-to-End Test:** Submitting a test assessment on `localhost` successfully populates the production Supabase database.
+3.  **Visual Check:** The Coming Soon page displays correctly on mobile and desktop without layout breaks.

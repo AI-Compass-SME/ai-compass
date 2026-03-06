@@ -3,8 +3,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { AlertTriangle, AlertOctagon, TrendingDown, ArrowRight, Zap, Target, Quote } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { useTranslation } from 'react-i18next';
 
 export function GapAnalysis({ data }) {
+    const { t } = useTranslation();
     if (!data || !data.strategic_gaps) return null;
 
     const gaps = data.strategic_gaps;
@@ -35,7 +37,7 @@ export function GapAnalysis({ data }) {
                 colorClass: "text-amber-600",
                 bgClass: "bg-amber-50 border-amber-200",
                 gradient: "from-amber-500/10 to-transparent",
-                label: "Structural Imbalance"
+                label: t('results.gaps.structuralRisk')
             };
         } else {
             return {
@@ -43,7 +45,7 @@ export function GapAnalysis({ data }) {
                 colorClass: "text-red-600",
                 bgClass: "bg-red-50 border-red-200",
                 gradient: "from-red-500/10 to-transparent",
-                label: "Critical Weakness"
+                label: t('results.gaps.criticalWeakness')
             };
         }
     };
@@ -52,8 +54,8 @@ export function GapAnalysis({ data }) {
         <section className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tight text-black">Strategic Gap Analysis</h2>
-                    <p className="text-muted-foreground text-lg">A concise synthesis of your strategic position and high-priority risks.</p>
+                    <h2 className="text-3xl font-bold tracking-tight text-black">{t('results.gaps.title')}</h2>
+                    <p className="text-muted-foreground text-lg">{t('results.gaps.subtitle')}</p>
                 </div>
             </div>
 
@@ -73,7 +75,7 @@ export function GapAnalysis({ data }) {
                                 </div>
 
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">Executive Briefing</h3>
+                                    <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">{t('results.briefing.title')}</h3>
                                     <div
                                         className="text-slate-600 leading-relaxed text-lg font-medium"
                                         dangerouslySetInnerHTML={{ __html: formatBriefing(briefing) }}
@@ -81,7 +83,7 @@ export function GapAnalysis({ data }) {
 
                                     {/* Decorative line */}
                                     <div className="mt-8 pt-8 border-t border-slate-100 flex items-center justify-between">
-                                        <span className="text-xs font-bold uppercase tracking-widest text-slate-400">AI-Compass Analysis Team</span>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('results.briefing.teamLabel')}</span>
                                         <div className="flex gap-1">
                                             {[1, 2, 3].map(i => (
                                                 <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary/20" />
@@ -125,7 +127,7 @@ export function GapAnalysis({ data }) {
                                             {gap.score ? gap.score.toFixed(1) : "N/A"}
                                         </div>
                                         <span className="text-[10px] items-center text-muted-foreground uppercase tracking-wider font-semibold">
-                                            Impact Score
+                                            {t('results.gaps.impactScore')}
                                         </span>
                                     </div>
                                 </div>
@@ -142,7 +144,7 @@ export function GapAnalysis({ data }) {
                                     <div className="bg-slate-50 rounded-lg p-4 border border-slate-100 relative group-hover:border-slate-200 transition-colors">
                                         <div className="flex items-center gap-2 mb-2 text-slate-800">
                                             <Zap className="w-4 h-4 text-amber-500 fill-amber-500" />
-                                            <h4 className="text-sm font-bold uppercase tracking-wide">Strategic Implication</h4>
+                                            <h4 className="text-sm font-bold uppercase tracking-wide">{t('results.gaps.strategicImplication')}</h4>
                                         </div>
                                         <p className="text-sm text-slate-600 leading-relaxed italic">
                                             "{gap.strategic_risk}"
@@ -153,7 +155,7 @@ export function GapAnalysis({ data }) {
                                 {/* Bottom Meta Data */}
                                 <div className="flex items-center gap-2 pt-2 text-xs font-medium text-slate-400">
                                     <Target className="w-3.5 h-3.5" />
-                                    <span>Affects: {gap.dimension_name || gap.source_dim || "General Capability"}</span>
+                                    <span>{t('results.gaps.affects')}: {gap.dimension_name || gap.source_dim || t('results.gaps.generalCapability')}</span>
                                 </div>
                             </CardContent>
                         </Card>
@@ -165,8 +167,8 @@ export function GapAnalysis({ data }) {
                         <div className="p-4 bg-white rounded-full w-fit mx-auto shadow-sm mb-4">
                             <AlertTriangle className="w-8 h-8 text-slate-300" />
                         </div>
-                        <h3 className="text-lg font-semibold text-slate-600">No Critical Gaps Detected</h3>
-                        <p className="text-slate-400 max-w-sm mx-auto mt-1">Your detailed analysis shows a balanced maturity profile with no immediate red flags.</p>
+                        <h3 className="text-lg font-semibold text-slate-600">{t('results.gaps.noGaps')}</h3>
+                        <p className="text-slate-400 max-w-sm mx-auto mt-1">{t('results.gaps.noGapsDesc')}</p>
                     </div>
                 )}
             </div>

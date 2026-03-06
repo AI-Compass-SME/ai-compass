@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PageBackground } from '@/components/ui/PageBackground';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ import { ChevronLeft, ChevronRight, SkipForward, ArrowRight, CheckCircle2, Circl
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function QuestionnaireWizard() {
+    const { t, i18n } = useTranslation();
     const { responseId } = useParams();
     const navigate = useNavigate();
     const [questions, setQuestions] = useState([]);
@@ -66,7 +68,7 @@ export default function QuestionnaireWizard() {
             try {
                 // 1. Try Cache
                 // 1. Try Cache
-                const cached = sessionStorage.getItem('cached_questionnaire_data_v3');
+                const cached = sessionStorage.getItem('cached_questionnaire_data_v4');
                 if (cached) {
                     console.log("Found cached data in sessionStorage");
                     try {
@@ -92,11 +94,11 @@ export default function QuestionnaireWizard() {
                 if (data && data.questions) {
                     setQuestions(data.questions);
                     // Update cache for persistence on refresh
-                    sessionStorage.setItem('cached_questionnaire_data_v3', JSON.stringify(data));
+                    sessionStorage.setItem('cached_questionnaire_data_v4', JSON.stringify(data));
                 }
             } catch (error) {
                 console.error("Failed to load questions", error);
-                toast.error("Failed to load questionnaire.");
+                toast.error(t('wizard.toasts.loadError', "Failed to load questionnaire."));
             } finally {
                 setLoading(false);
             }
@@ -116,8 +118,9 @@ export default function QuestionnaireWizard() {
 
         // 2. Fallback: Pre-select slider default if applicable and no previous answer
         if ((currentQ.type || 'choice').toLowerCase() === 'slider' && currentQ.answers?.length > 0) {
-            // Default to the first option (or middle/semantic default if we had one)
-            setSelectedAnswers([currentQ.answers[0].answer_id]);
+            // Default to the answer with the lowest answer_level (first in sorted order)
+            const sortedAnswers = [...currentQ.answers].sort((a, b) => a.answer_level - b.answer_level);
+            setSelectedAnswers([sortedAnswers[0].answer_id]);
         } else {
             setSelectedAnswers([]);
         }
@@ -130,10 +133,11 @@ export default function QuestionnaireWizard() {
         const groups = {};
         questions.forEach(q => {
             const dId = q.dimension_id || 0;
+            const dName = i18n.language === 'de' && q.dimension_name_de ? q.dimension_name_de : q.dimension_name;
             if (!groups[dId]) {
                 groups[dId] = {
                     id: dId,
-                    name: q.dimension_name || `Dimension ${dId}`,
+                    name: dName || `Dimension ${dId}`,
                     questions: [],
                     total: 0,
                     answered: 0
@@ -148,7 +152,7 @@ export default function QuestionnaireWizard() {
 
         // Convert to array and sort by ID
         return Object.values(groups).sort((a, b) => a.id - b.id);
-    }, [questions, answeredMap]);
+    }, [questions, answeredMap, i18n.language]);
 
     const handleNext = async () => {
         // Validation skip for slider is implicit if we pre-select, but good safety check
@@ -157,7 +161,7 @@ export default function QuestionnaireWizard() {
             if ((currentQ.type || 'choice').toLowerCase() === 'slider') {
                 // Should be pre-selected, but just in case
             } else {
-                toast.warning("Please select an answer to continue.");
+                toast.warning(t('wizard.toasts.selectWarning', "Please select an answer to continue."));
                 return;
             }
         }
@@ -180,17 +184,17 @@ export default function QuestionnaireWizard() {
                 setCurrentIndex(prev => prev + 1);
             } else {
                 // Do NOT complete assessment yet. Navigate to Company Snapshot for details.
-                toast.success("Questions complete! Just one last step.");
+                toast.success(t('wizard.toasts.completeSuccess', "Questions complete! Just one last step."));
                 navigate('/snapshot');
             }
         } catch (error) {
             console.error("Failed to save answer", error);
             if (error.message && (error.message.includes("404") || error.message.toLowerCase().includes("not found"))) {
-                toast.error("Session expired. Please start over.");
+                toast.error(t('wizard.toasts.sessionExpired', "Session expired. Please start over."));
                 navigate('/');
                 return;
             }
-            toast.error(error.message || "Failed to save answer.");
+            toast.error(error.message || t('wizard.toasts.saveError', "Failed to save answer."));
         } finally {
             setSaving(false);
         }
@@ -211,8 +215,10 @@ export default function QuestionnaireWizard() {
 
     const handleSliderChange = (val) => {
         const index = val[0];
-        if (questions[currentIndex].answers[index]) {
-            setSelectedAnswers([questions[currentIndex].answers[index].answer_id]);
+        // Use the sorted answers array (same order as displayed slider)
+        const sortedAnswers = [...(questions[currentIndex].answers || [])].sort((a, b) => a.answer_level - b.answer_level);
+        if (sortedAnswers[index]) {
+            setSelectedAnswers([sortedAnswers[index].answer_id]);
         }
     };
 
@@ -242,20 +248,20 @@ export default function QuestionnaireWizard() {
 
             if (nextIndex !== -1) {
                 setCurrentIndex(nextIndex);
-                toast.info("Skipped remaining Dimension 8 questions.");
+                toast.info(t('wizard.toasts.skipInfo', "Skipped remaining Dimension 8 questions."));
             } else {
                 // Do NOT complete assessment yet. Navigate to Company Snapshot.
-                toast.success("Questions complete! Just one last step.");
+                toast.success(t('wizard.toasts.completeSuccess', "Questions complete! Just one last step."));
                 navigate('/snapshot');
             }
         } catch (error) {
             console.error("Skip failed", error);
             if (error.message && (error.message.includes("404") || error.message.toLowerCase().includes("not found"))) {
-                toast.error("Session expired. Please start over.");
+                toast.error(t('wizard.toasts.sessionExpired', "Session expired. Please start over."));
                 navigate('/');
                 return;
             }
-            toast.error(error.message || "Failed to skip dimension.");
+            toast.error(error.message || t('wizard.toasts.skipError', "Failed to skip dimension."));
         } finally {
             setSaving(false);
         }
@@ -263,13 +269,13 @@ export default function QuestionnaireWizard() {
 
     if (loading) return (
         <div className="flex justify-center items-center h-screen bg-slate-50 text-slate-500 font-medium animate-pulse">
-            Loading assessment...
+            {t('wizard.loading', "Loading assessment...")}
         </div>
     );
 
     if (!questions.length) return (
         <div className="flex justify-center items-center h-screen bg-slate-50 text-slate-500">
-            No questions found.
+            {t('wizard.noQuestions', "No questions found.")}
         </div>
     );
 
@@ -277,7 +283,7 @@ export default function QuestionnaireWizard() {
     const currentDimensionId = currentQuestion.dimension_id || 0;
 
     const renderAnswers = () => {
-        const answers = currentQuestion.answers || [];
+        const answers = [...(currentQuestion.answers || [])].sort((a, b) => a.answer_level - b.answer_level);
         const type = (currentQuestion.type || 'choice').toLowerCase();
 
         if (type === 'slider') {
@@ -295,7 +301,7 @@ export default function QuestionnaireWizard() {
                             animate={{ opacity: 1, y: 0 }}
                             className="inline-block px-6 py-2 rounded-2xl bg-blue-50 text-blue-700 text-xl font-bold border border-blue-100 shadow-sm"
                         >
-                            {answers[safeIndex]?.answer_text || "Drag to select"}
+                            {answers[safeIndex] ? (i18n.language === 'de' && answers[safeIndex].answer_text_de ? answers[safeIndex].answer_text_de : answers[safeIndex].answer_text) : (i18n.language === 'de' ? 'Ziehen zum Auswählen' : 'Drag to select')}
                         </motion.div>
                     </div>
                     <Slider
@@ -306,8 +312,8 @@ export default function QuestionnaireWizard() {
                         className="w-full cursor-pointer py-4"
                     />
                     <div className="flex justify-between mt-8 text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                        <span>{answers[0]?.answer_text}</span>
-                        <span>{answers[maxIndex]?.answer_text}</span>
+                        <span>{answers[0] ? (i18n.language === 'de' && answers[0].answer_text_de ? answers[0].answer_text_de : answers[0].answer_text) : ''}</span>
+                        <span>{answers[maxIndex] ? (i18n.language === 'de' && answers[maxIndex].answer_text_de ? answers[maxIndex].answer_text_de : answers[maxIndex].answer_text) : ''}</span>
                     </div>
                 </div>
             );
@@ -339,7 +345,7 @@ export default function QuestionnaireWizard() {
                                 htmlFor={`ans-${ans.answer_id}`}
                                 className="text-[13px] font-medium leading-snug cursor-pointer flex-1 select-none text-slate-700"
                             >
-                                {ans.answer_text}
+                                {i18n.language === 'de' && ans.answer_text_de ? ans.answer_text_de : ans.answer_text}
                             </Label>
                         </motion.div>
                     ))}
@@ -384,7 +390,7 @@ export default function QuestionnaireWizard() {
                             htmlFor={`ans-${ans.answer_id}`}
                             className="text-[13px] font-medium leading-snug flex-1 cursor-pointer select-none text-slate-700"
                         >
-                            {ans.answer_text}
+                            {i18n.language === 'de' && ans.answer_text_de ? ans.answer_text_de : ans.answer_text}
                         </Label>
                         {selectedAnswers.includes(ans.answer_id) && (
                             <CheckCircle2 className="w-4 h-4 text-blue-600 animate-in zoom-in spin-in-90 duration-300 shrink-0" />
@@ -396,9 +402,9 @@ export default function QuestionnaireWizard() {
     };
 
     const DimensionList = () => (
-        <div className="space-y-2 py-1 w-full px-3">
+        <div className="space-y-2 py-1 w-full px-3 flex-1">
             <div className="px-4 mb-3">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest bg-white/30 w-fit px-2 py-1 rounded-md backdrop-blur-sm">Your Progress</h3>
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest bg-white/30 w-fit px-2 py-1 rounded-md backdrop-blur-sm">{i18n.language === 'de' ? 'Ihr Fortschritt' : 'Your Progress'}</h3>
             </div>
             {dimensions.filter(d => d.id !== 8).map((dim, idx) => {
                 const isActive = dim.id === currentDimensionId;
@@ -464,18 +470,26 @@ export default function QuestionnaireWizard() {
             {/* Desktop Sidebar */}
             <aside className="hidden lg:flex flex-col w-96 bg-white/10 backdrop-blur-3xl border-r border-white/20 z-20 h-full overflow-y-auto custom-scrollbar shadow-[20px_0_40px_rgba(0,0,0,0.02)]">
                 <div className="p-6 pb-2">
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20 ring-2 ring-white/10">
+                    <Link to="/" className="flex items-center gap-3 mb-2 hover:opacity-80 transition-opacity group">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20 ring-2 ring-white/10 group-hover:shadow-blue-500/40 transition-shadow">
                             <Compass className="w-6 h-6 text-white" />
                         </div>
                         <div className="flex flex-col justify-center">
-                            <div className="text-xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent font-heading tracking-tight leading-none">
+                            <span className="text-xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent font-heading tracking-tight leading-none">
                                 AI Compass
-                            </div>
+                            </span>
                         </div>
-                    </div>
+                    </Link>
                 </div>
                 <DimensionList />
+
+                {/* Sidebar Footer Links */}
+                <div className="p-6 mt-auto border-t border-white/20">
+                    <div className="flex flex-row gap-4 text-xs font-medium text-slate-500">
+                        <Link to="/imprint" className="hover:text-slate-800 transition-colors w-fit">{i18n.language === 'de' ? 'Impressum' : 'Imprint'}</Link>
+                        <Link to="/privacy" className="hover:text-slate-800 transition-colors w-fit">{i18n.language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}</Link>
+                    </div>
+                </div>
             </aside>
 
             {/* Mobile Header with Drawer */}
@@ -519,19 +533,25 @@ export default function QuestionnaireWizard() {
                                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                                                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-600"></span>
                                             </span>
-                                            Question {currentIndex + 1} / {questions.length}
+                                            {i18n.language === 'de' ? 'Frage' : 'Question'} {currentIndex + 1} / {questions.length}
                                         </div>
                                     </div>
 
                                     <CardTitle className="text-[15px] font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
                                         {(() => {
-                                            const text = currentQuestion.question_text;
-                                            const parts = text.split('(Select all that apply)');
+                                            const text = i18n.language === 'de' && currentQuestion.question_text_de ? currentQuestion.question_text_de : currentQuestion.question_text;
+                                            const applyText = t('wizard.selectAllThatApply', "(Select all that apply)");
+
+                                            // Handle potential English or German apply string split
+                                            let parts = text.split('(Select all that apply)');
+                                            if (parts.length === 1) {
+                                                parts = text.split('(Mehrfachauswahl möglich)');
+                                            }
                                             if (parts.length > 1) {
                                                 return (
                                                     <>
                                                         {parts[0]}
-                                                        <span className="font-normal text-slate-500">(Select all that apply)</span>
+                                                        <span className="font-normal text-slate-500">{applyText}</span>
                                                         {parts[1]}
                                                     </>
                                                 );
@@ -559,7 +579,7 @@ export default function QuestionnaireWizard() {
                                                 className="border-slate-300 text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 px-3 h-9 text-xs rounded-lg transition-all hover:border-slate-400"
                                             >
                                                 <ChevronLeft className="w-3 h-3 mr-1" />
-                                                Back
+                                                {t('wizard.back', "Back")}
                                             </Button>
                                             {currentQuestion.dimension_id === 8 && (
                                                 <Button
@@ -569,13 +589,13 @@ export default function QuestionnaireWizard() {
                                                     className="border-amber-200 text-amber-700 hover:text-amber-800 hover:bg-amber-50 px-3 h-9 text-xs rounded-lg transition-all hover:border-amber-300"
                                                 >
                                                     <SkipForward className="w-3 h-3 mr-2" />
-                                                    Skip Section
+                                                    {t('wizard.skipSection', "Skip Section")}
                                                 </Button>
                                             )}
                                         </div>
 
                                         <div className="flex items-center gap-6">
-                                            {saving && <span className="text-xs font-medium text-indigo-600 animate-pulse hidden sm:inline-block">Saving...</span>}
+                                            {saving && <span className="text-xs font-medium text-indigo-600 animate-pulse hidden sm:inline-block">{t('wizard.loadingSaving', "Saving...")}</span>}
                                             <Button
                                                 size="lg"
                                                 onClick={handleNext}
@@ -586,7 +606,7 @@ export default function QuestionnaireWizard() {
                                                 <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
 
                                                 <span className="relative z-20 flex items-center font-bold tracking-wide">
-                                                    {currentIndex === questions.length - 1 ? 'Finish' : 'Next'}
+                                                    {currentIndex === questions.length - 1 ? t('wizard.finish', "Finish") : t('wizard.next', "Next")}
                                                     {!saving && (currentIndex === questions.length - 1 ? <CheckCircle2 className="w-4 h-4 ml-2" /> : <ArrowRight className="w-4 h-4 ml-2" />)}
                                                 </span>
                                             </Button>

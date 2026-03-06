@@ -1,0 +1,25 @@
+
+# Antigravity Agent Rules: AI Compass
+
+These rules govern all AI agent interactions within the AI-Compass project.
+
+### 1. Architectural Integrity (Dual-Repo)
+*   **Dev Repo:** `AI-Compass-SME/ai-compass` (Where all changes happen).
+*   **Prod Repo:** `AI-Compass-SME/the-ai-compass.de` (Read-only for agents, populated via GitHub Actions).
+*   **Sync Logic:** All code must be structured in `Application_Prototype/mvp_v1` and `benchmarking_ai/ml_v5` to be correctly picked up by the `.github/workflows/deploy-prod.yml` sync script.
+
+### 2. Core Constraints
+*   **Concept Preservation:** Never deviate from the SME-focused Strategic AI Maturity Assessment model.
+*   **Dependency Management:** The backend relies heavily on `benchmarking_ai/ml_v5`. Maintain relative import paths compatible with the production sync structure (`backend/modules/benchmarking_ai`).
+*   **Aesthetics:** All frontend changes must adhere to a premium, modern design language.
+
+### 3. Documentation Protocol
+*   **README Updates:** Update the root `README.md` **ONLY** if there are new features, structural changes, or significant project milestones that provide value to a human reader. Avoid per-run updates.
+*   **Internal Guides:** Reference `doc/` for deployment and sync workflows before proposing infrastructure changes.
+
+### 4. Project Identity
+*   **Stack:** FastAPI, React (Vite), Supabase, Scikit-learn (ml_v5).
+*   **Status:** Implementing Automated Deployment & Sync.
+
+### 5. Mandatory First Step
+Before starting any task, read `AGENT_GUIDELINES.md` for full context.

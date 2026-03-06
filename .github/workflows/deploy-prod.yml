@@ -1,0 +1,73 @@
+name: Sync to Production Repository
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development Repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Production Repo
+        uses: actions/checkout@v4
+        with:
+          repository: AI-Compass-SME/the-ai-compass.de
+          token: ${{ secrets.PROD_REPO_TOKEN }}
+          path: prod-repo
+
+      - name: Restructure and Sync
+        run: |
+          echo "Starting sync..."
+          
+          # 1. Clean existing folders in production repo copy
+          rm -rf prod-repo/backend prod-repo/frontend
+          
+          # 2. Re-create production folder structure
+          mkdir -p prod-repo/backend/modules/benchmarking_ai/ml_v5
+          mkdir -p prod-repo/frontend
+          
+          # 3. Sync Content (Using /. to copy contents including hidden files)
+          echo "Copying Backend..."
+          cp -r Application_Prototype/mvp_v1/backend/. prod-repo/backend/
+          
+          echo "Copying Frontend..."
+          cp -r Application_Prototype/mvp_v1/frontend/. prod-repo/frontend/
+          
+          echo "Copying ML logic..."
+          cp -r benchmarking_ai/ml_v5/. prod-repo/backend/modules/benchmarking_ai/ml_v5/
+          
+          # 4. Final Cleanup of unneeded production files
+          rm -rf prod-repo/backend/venv
+          rm -rf prod-repo/backend/__pycache__
+
+          # 5. Force Change (Timestamp) to ensure git always detects a commit
+          echo "$(date)" > prod-repo/deployment_timestamp.txt
+          
+          echo "Sync completed successfully."
+
+      - name: Commit and Push
+        working-directory: prod-repo
+        run: |
+          git config user.name "GitHub Action [Bot]"
+          git config user.email "actions@github.com"
+          git add .
+          # This check prevents "nothing to commit" from failing the build
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Deploy: ${{ github.event.head_commit.message }}"
+            git push origin main
+          else
+            echo "No changes detect, skipping commit."
+          fi
+
+      - name: Trigger Render Deploy
+        if: success()
+        run: |
+          # Only run if the secret is set
+          if [ -n "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+            echo "Triggering Render Deploy..."
+            curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+          else
+             echo "RENDER_DEPLOY_HOOK not set. Skipping auto-deploy trigger."
+          fi

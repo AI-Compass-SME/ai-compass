@@ -1,25 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardList, Sparkles, Map } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function ProcessSection() {
+    const { t } = useTranslation();
     const steps = [
         {
             number: '01',
-            title: 'Guided Assessment',
-            description: '27 questions covering 7 key dimensions (Strategy, People, Data, Use Cases, Processes, Compliance, and Tech Infrastructure).',
+            title: t('landing.process.steps.1.title'),
+            description: t('landing.process.steps.1.desc'),
             icon: ClipboardList,
         },
         {
             number: '02',
-            title: 'Instant Analysis',
-            description: 'Our AI supported algorithm identifies your unique Company Cluster Profile and your current potential.',
+            title: t('landing.process.steps.2.title'),
+            description: t('landing.process.steps.2.desc'),
             icon: Sparkles,
         },
         {
             number: '03',
-            title: 'Growth Roadmap',
-            description: 'Receive custom recommendations to move from your current level to the next.',
+            title: t('landing.process.steps.3.title'),
+            description: t('landing.process.steps.3.desc'),
             icon: Map,
         },
     ];
@@ -28,8 +30,8 @@ export function ProcessSection() {
         <section id="how-it-works" className="py-10 px-6 bg-white">
             <div className="max-w-[80rem] mx-auto">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The Process</h2>
-                    <p className="text-xl text-gray-600">Three simple steps to your AI roadmap</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('landing.process.mainTitle')}</h2>
+                    <p className="text-xl text-gray-600">{t('landing.process.subtitle')}</p>
                 </div>
 
                 <div className="relative">

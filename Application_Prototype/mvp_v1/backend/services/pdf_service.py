@@ -15,10 +15,26 @@ class PDFService:
     def __init__(self):
         pass
 
-    def _header_footer(self, canvas, doc):
+    def _header_footer(self, canvas, doc, lang='en'):
         """
         Draws the header and footer on every page (except cover).
         """
+        t = {
+            'en': {
+                'header_title': "AI EVOLUTION BLUEPRINT",
+                'confidential': "CONFIDENTIAL",
+                'footer_text': "© 2024 AI-Compass Intelligence",
+                'page': "Page"
+            },
+            'de': {
+                'header_title': "KI EVOLUTIONS-BLUEPRINT",
+                'confidential': "VERTRAULICH",
+                'footer_text': "© 2024 AI-Compass Intelligence",
+                'page': "Seite"
+            }
+        }
+        active_t = t.get(lang, t['en'])
+        
         canvas.saveState()
         
         # Only draw header/footer if not page 1
@@ -32,10 +48,10 @@ class PDFService:
             # Header Text
             canvas.setFont('Helvetica-Bold', 8)
             canvas.setFillColor(colors.HexColor('#94a3b8'))
-            canvas.drawString(1.5*cm, A4[1] - 1.2*cm, "AI EVOLUTION BLUEPRINT")
+            canvas.drawString(1.5*cm, A4[1] - 1.2*cm, active_t['header_title'])
             
             canvas.setFont('Helvetica', 8)
-            canvas.drawRightString(A4[0] - 1.5*cm, A4[1] - 1.2*cm, "CONFIDENTIAL")
+            canvas.drawRightString(A4[0] - 1.5*cm, A4[1] - 1.2*cm, active_t['confidential'])
             
             # Footer Line
             canvas.line(1.5*cm, 1.5*cm, A4[0] - 1.5*cm, 1.5*cm)
@@ -43,9 +59,9 @@ class PDFService:
             # Footer Text
             canvas.setFont('Helvetica', 8)
             canvas.setFillColor(colors.HexColor('#94a3b8'))
-            canvas.drawString(1.5*cm, 1.0*cm, "© 2024 AI-Compass Intelligence")
+            canvas.drawString(1.5*cm, 1.0*cm, active_t['footer_text'])
             
-            canvas.drawRightString(A4[0] - 1.5*cm, 1.0*cm, f"Page {page_num}")
+            canvas.drawRightString(A4[0] - 1.5*cm, 1.0*cm, f"{active_t['page']} {page_num}")
         
         canvas.restoreState()
 
@@ -77,12 +93,67 @@ class PDFService:
         
         return text
 
-    def generate_pdf(self, data):
+    def generate_pdf(self, data, lang='en'):
         """
         Generates PDF bytes using ReportLab Platypus with Luxury Design.
         """
         import datetime
         import re
+        from functools import partial
+        
+        t = {
+            'en': {
+                'doc_title': "AI-Compass Maturity Report",
+                'cover_title': "Executive Results Report",
+                'cover_sub': "STRATEGIC MATURITY ASSESSMENT",
+                'prepared_for': "PREPARED FOR:",
+                'confidential_co': "Confidential Company",
+                'overall_maturity': "OVERALL MATURITY",
+                'industry_benchmark': "INDUSTRY BENCHMARK",
+                'top_pct': "Top {pct}%",
+                'vs_peers': "vs {peer_group} Peers",
+                'cluster_profile': "CLUSTER PROFILE",
+                'your_cluster': "Your Cluster Profile:",
+                'multi_dim_profile': "The Multi-Dimensional Maturity Profile",
+                'strategic_gap_analysis': "Strategic Gap Analysis",
+                'exec_briefing': "Executive Briefing",
+                'key_insights': "KEY INSIGHTS",
+                'critical_findings': "Critical Findings",
+                'structural_imbalance': "STRUCTURAL IMBALANCE",
+                'critical_weakness': "CRITICAL WEAKNESS",
+                'strategic_implication': "STRATEGIC IMPLICATION",
+                'no_critical_gaps': "No critical gaps detected.",
+                'next_best_action': "\"Next Best Action\" Roadmap",
+                'action_prefix': "ACTION",
+                'no_immediate_actions': "No immediate actions."
+            },
+            'de': {
+                'doc_title': "KI-Kompass Reifegradbericht",
+                'cover_title': "Executive Ergebnisbericht",
+                'cover_sub': "STRATEGISCHE REIFEGRADBEWERTUNG",
+                'prepared_for': "ERSTELLT FÜR:",
+                'confidential_co': "Vertrauliches Unternehmen",
+                'overall_maturity': "GESAMTREIFEGRAD",
+                'industry_benchmark': "BRANCHEN-BENCHMARK",
+                'top_pct': "Top {pct}%",
+                'vs_peers': "vs {peer_group} Unternehmen",
+                'cluster_profile': "CLUSTER-PROFIL",
+                'your_cluster': "Ihr Cluster-Profil:",
+                'multi_dim_profile': "Das mehrdimensionale Reifegradprofil",
+                'strategic_gap_analysis': "Strategische Lückenanalyse",
+                'exec_briefing': "Executive Briefing",
+                'key_insights': "WICHTIGE ERKENNTNISSE",
+                'critical_findings': "Kritische Erkenntnisse",
+                'structural_imbalance': "STRUKTURELLES UNGLEICHGEWICHT",
+                'critical_weakness': "KRITISCHE SCHWÄCHE",
+                'strategic_implication': "STRATEGISCHE AUSWIRKUNG",
+                'no_critical_gaps': "Keine kritischen Lücken erkannt.",
+                'next_best_action': "\"Next Best Action\" Roadmap",
+                'action_prefix': "AKTION",
+                'no_immediate_actions': "Keine sofortigen Aktionen."
+            }
+        }
+        active_t = t.get(lang, t['en'])
         
         buffer = BytesIO()
         doc = SimpleDocTemplate(
@@ -90,8 +161,11 @@ class PDFService:
             pagesize=A4,
             rightMargin=1.5*cm, leftMargin=1.5*cm,
             topMargin=2.5*cm, bottomMargin=2.5*cm,
-            title="AI-Compass Maturity Report"
+            title=active_t['doc_title']
         )
+        
+        # We need a partial function to pass 'lang' to the header/footer maker
+        header_footer_with_lang = partial(self._header_footer, lang=lang)
         
         story = []
         styles = getSampleStyleSheet()
@@ -128,7 +202,51 @@ class PDFService:
         percentile_rank = pct_data.get("percentage", "N/A") if isinstance(pct_data, dict) else "N/A"
         peer_group = pct_data.get("industry", "Global") if isinstance(pct_data, dict) else "Global"
         cluster = data.get("cluster", {})
-        cluster_name = str(cluster.get("cluster_name") or "Unknown").replace(" - ", ": ")
+        raw_cluster_name = str(cluster.get("cluster_name") or "Unknown")
+        
+        if lang == 'de':
+            raw_cluster_name = raw_cluster_name.replace("The Traditionalist", "Der Traditionalist") \
+                                               .replace("The Experimental Explorer", "Der Experimentelle Entdecker") \
+                                               .replace("The Structured Builder", "Der Strukturierte Gestalter") \
+                                               .replace("The Operational Scaler", "Der Operative Skalierer") \
+                                               .replace("The AI-Driven Leader", "Der KI-getriebene Marktführer")
+            dim_map_fuzzy = {
+                'strateg': 'Strategie & Führung',
+                'case': 'Anwendungsfälle & Wert',
+                'wert': 'Anwendungsfälle & Wert',
+                'value': 'Anwendungsfälle & Wert',
+                'data': 'Daten & Infrastruktur',
+                'daten': 'Daten & Infrastruktur',
+                'talent': 'Talent & Kultur',
+                'cultur': 'Talent & Kultur',
+                'kultur': 'Talent & Kultur',
+                'people': 'Talent & Kultur',
+                'govern': 'Governance & Ethik',
+                'ethic': 'Governance & Ethik',
+                'ethik': 'Governance & Ethik',
+                'tech': 'Technologie & Tools',
+                'tool': 'Technologie & Tools',
+                'partner': 'Partnerschaften & Ökosystem',
+                'ecosystem': 'Partnerschaften & Ökosystem',
+                'ökosystem': 'Partnerschaften & Ökosystem',
+                'exec': 'Ausführung & Skalierung',
+                'scale': 'Ausführung & Skalierung',
+                'ausführung': 'Ausführung & Skalierung',
+                'process': 'Prozesse & Skalierung',
+                'prozess': 'Prozesse & Skalierung'
+            }
+            new_dim_scores = {}
+            for k, v in data.get("dimension_scores", {}).items():
+                k_lower = str(k).lower()
+                matched_de = k
+                for fuzzy_str, de_str in dim_map_fuzzy.items():
+                    if fuzzy_str in k_lower:
+                        matched_de = de_str
+                        break
+                new_dim_scores[matched_de] = v
+            data["dimension_scores"] = new_dim_scores
+            
+        cluster_name = raw_cluster_name.replace(" - ", ": ")
         
         # ====================
         # PAGE 1: COVER PAGE
@@ -186,14 +304,14 @@ class PDFService:
             story.append(logo_table)
         
         story.append(Spacer(1, 2*cm))
-        story.append(Paragraph("Executive Results Report", style_cover_title))
-        story.append(Paragraph("STRATEGIC MATURITY ASSESSMENT", style_cover_sub))
+        story.append(Paragraph(active_t['cover_title'], style_cover_title))
+        story.append(Paragraph(active_t['cover_sub'], style_cover_sub))
         
         story.append(Spacer(1, 2.5*cm))
         
         cover_info = [
-            [Paragraph(f"PREPARED FOR:", ParagraphStyle('C1', parent=style_score_label, alignment=TA_CENTER))],
-            [Paragraph(f"<b>{company.get('name', 'Confidential Company')}</b>", ParagraphStyle('C2', parent=style_normal, fontSize=14, alignment=TA_CENTER))],
+            [Paragraph(active_t['prepared_for'], ParagraphStyle('C1', parent=style_score_label, alignment=TA_CENTER))],
+            [Paragraph(f"<b>{company.get('name', active_t['confidential_co'])}</b>", ParagraphStyle('C2', parent=style_normal, fontSize=14, alignment=TA_CENTER))],
             [Spacer(1, 10)],
             [Paragraph(f"{date_str}", ParagraphStyle('C3', parent=style_normal, fontSize=11, textColor=col_subtext, alignment=TA_CENTER))]
         ]
@@ -208,7 +326,7 @@ class PDFService:
         
         # 1. Hero Score Block
         left_score_block = [
-            [Paragraph("OVERALL MATURITY", style_score_label)],
+            [Paragraph(active_t['overall_maturity'], style_score_label)],
             [Paragraph(f"{overall_score}", style_score_val)],
             [Paragraph("/ 5.0", ParagraphStyle('tiny', parent=style_score_label, fontSize=10))],
         ]
@@ -217,11 +335,11 @@ class PDFService:
         clean_cluster_name = re.sub(r'^\d+\s*[-:]\s*', '', cluster_name)
         
         right_metrics_block = [
-            [Paragraph("INDUSTRY BENCHMARK", style_score_label)],
-            [Paragraph(f"Top <b>{percentile_rank}%</b>", style_score_sub)],
-            [Paragraph(f"vs {peer_group} Peers", ParagraphStyle('tiny', parent=style_score_label, textTransform='none'))],
+            [Paragraph(active_t['industry_benchmark'], style_score_label)],
+            [Paragraph(active_t['top_pct'].replace('{pct}', str(percentile_rank)), style_score_sub)],
+            [Paragraph(active_t['vs_peers'].replace('{peer_group}', str(peer_group)), ParagraphStyle('tiny', parent=style_score_label, textTransform='none'))],
             [Spacer(1, 15)],
-            [Paragraph("CLUSTER PROFILE", style_score_label)],
+            [Paragraph(active_t['cluster_profile'], style_score_label)],
             [Paragraph(f"<b>{clean_cluster_name}</b>", style_score_sub)],
         ]
         
@@ -241,15 +359,24 @@ class PDFService:
         # 2. Cluster Profile
         kp_analysis = []
         display_cluster_name = re.sub(r'^\d+\s*[-:]\s*', '', cluster_name)
-        kp_analysis.append(Paragraph(f"Your Cluster Profile: <b>{display_cluster_name}</b>", style_h1))
+        kp_analysis.append(Paragraph(f"{active_t['your_cluster']} <b>{display_cluster_name}</b>", style_h1))
         
-        clusters_def = [
-            {"id": 1, "name": "Traditionalist", "h": 0.2},
-            {"id": 2, "name": "Explorer", "h": 0.4},
-            {"id": 3, "name": "Builder", "h": 0.6},
-            {"id": 4, "name": "Scaler", "h": 0.8},
-            {"id": 5, "name": "Leader", "h": 1.0},
-        ]
+        if lang == 'de':
+            clusters_def = [
+                {"id": 1, "name": "Traditionalist", "h": 0.2},
+                {"id": 2, "name": "Entdecker", "h": 0.4},
+                {"id": 3, "name": "Gestalter", "h": 0.6},
+                {"id": 4, "name": "Skalierer", "h": 0.8},
+                {"id": 5, "name": "Marktführer", "h": 1.0},
+            ]
+        else:
+            clusters_def = [
+                {"id": 1, "name": "Traditionalist", "h": 0.2},
+                {"id": 2, "name": "Explorer", "h": 0.4},
+                {"id": 3, "name": "Builder", "h": 0.6},
+                {"id": 4, "name": "Scaler", "h": 0.8},
+                {"id": 5, "name": "Leader", "h": 1.0},
+            ]
         active_id = 1
         c_name_raw = cluster.get("cluster_name")
         if c_name_raw:
@@ -274,14 +401,14 @@ class PDFService:
         kp_analysis.append(vg_drawing)
         # Remove cluster description to save space
         
-        story.append(Paragraph(f"Your Cluster Profile: <b>{display_cluster_name}</b>", style_h1))
+        story.append(Paragraph(f"{active_t['your_cluster']} <b>{display_cluster_name}</b>", style_h1))
         story.append(vg_drawing)
         story.append(Spacer(1, 0.35*cm))
 
         # 3. Dimension Profile (Same Page as Cluster)
         # ====================
         
-        story.append(Paragraph("The Multi-Dimensional Maturity Profile", style_h1))
+        story.append(Paragraph(active_t['multi_dim_profile'], style_h1))
         
         dim_scores = data.get("dimension_scores", {})
         if dim_scores:
@@ -316,12 +443,12 @@ class PDFService:
         # ====================
         
         # Main heading: Strategic Gap Analysis
-        story.append(Paragraph("Strategic Gap Analysis", style_h1))
+        story.append(Paragraph(active_t['strategic_gap_analysis'], style_h1))
         story.append(Spacer(1, 0.4*cm))
         
         # 1. Executive Briefing (as subheading)
         kp_briefing = []
-        kp_briefing.append(Paragraph("Executive Briefing", style_h2))
+        kp_briefing.append(Paragraph(active_t['exec_briefing'], style_h2))
         briefing = data.get("executive_briefing", "No detailed briefing available.")
         
         # Card-style design with icon and label
@@ -330,7 +457,7 @@ class PDFService:
         # Header with icon and label
         briefing_header = Table([[
             Paragraph("<font color='#4f46e5' size=16><b>📋</b></font>", style_normal),
-            Paragraph("<font color='#4f46e5'><b>KEY INSIGHTS</b></font>", ParagraphStyle('BriefingLabel', parent=style_normal, fontSize=9, textTransform='uppercase'))
+            Paragraph(f"<font color='#4f46e5'><b>{active_t['key_insights']}</b></font>", ParagraphStyle('BriefingLabel', parent=style_normal, fontSize=9, textTransform='uppercase'))
         ]], colWidths=[1*cm, 14.5*cm])
         briefing_header.setStyle(TableStyle([
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
@@ -362,7 +489,7 @@ class PDFService:
 
         # 2. Strategic Gaps (no heading - already set above)
         kp_gaps = []
-        kp_gaps.append(Paragraph("Critical Findings", style_h2))
+        kp_gaps.append(Paragraph(active_t['critical_findings'], style_h2))
         gaps = data.get("strategic_gaps", []) or []
 
         if gaps:
@@ -373,13 +500,13 @@ class PDFService:
                     card_border = colors.HexColor('#fed7aa')
                     icon_char = "!"
                     icon_color = col_amber_text
-                    badge_text = "STRUCTURAL IMBALANCE"
+                    badge_text = active_t['structural_imbalance']
                 else:
                     card_bg = col_red_bg
                     card_border = colors.HexColor('#fecaca')
                     icon_char = "▼"
                     icon_color = col_red_text
-                    badge_text = "CRITICAL WEAKNESS"
+                    badge_text = active_t['critical_weakness']
                 
                 header_row = [
                     Paragraph(f"<font color='{icon_color.hexval()}' size=14><b>{icon_char}</b></font>", style_normal),
@@ -394,7 +521,7 @@ class PDFService:
 
                 risk_rows = []
                 if gap.get("strategic_risk"):
-                    risk_content = Paragraph(f"<b>STRATEGIC IMPLICATION:</b> <i>{gap.get('strategic_risk')}</i>", ParagraphStyle('Risk', parent=style_normal, fontSize=9, leading=10, textColor=colors.HexColor('#475569')))
+                    risk_content = Paragraph(f"<b>{active_t['strategic_implication']}:</b> <i>{gap.get('strategic_risk')}</i>", ParagraphStyle('Risk', parent=style_normal, fontSize=9, leading=10, textColor=colors.HexColor('#475569')))
                     risk_rows.append([risk_content])
 
                 t_head = Table([[header_row[0], header_row[1], header_row[2], header_row[3]]], colWidths=[0.8*cm, 3.2*cm, 9.5*cm, 1.5*cm])
@@ -427,7 +554,7 @@ class PDFService:
                 kp_gaps.append(Spacer(1, 0.4*cm))
 
         else:
-            kp_gaps.append(Paragraph("No critical gaps detected.", style_normal))
+            kp_gaps.append(Paragraph(active_t['no_critical_gaps'], style_normal))
 
         story.append(KeepTogether(kp_gaps))
         story.append(PageBreak())
@@ -436,7 +563,7 @@ class PDFService:
         # PAGE 4: TRANSFORMATION ROADMAP
         # ====================
         
-        story.append(Paragraph("\"Next Best Action\" Roadmap", style_h1))
+        story.append(Paragraph(active_t['next_best_action'], style_h1))
         roadmap = data.get("roadmap", {}) or {}
         
         for i, (phase, items) in enumerate(roadmap.items()):
@@ -473,7 +600,7 @@ class PDFService:
                         for idx, action_text in enumerate(actions):
                             act_row = [
                                 Paragraph("→", ParagraphStyle('Arrow', parent=style_normal, textColor=col_primary, fontSize=10, alignment=TA_CENTER)),
-                                Paragraph(f"<b>ACTION {idx+1}</b>: <font color='#64748b'>{action_text}</font>", ParagraphStyle('ActTxt', parent=style_normal, fontSize=9, leading=10))
+                                Paragraph(f"<b>{active_t['action_prefix']} {idx+1}</b>: <font color='#64748b'>{action_text}</font>", ParagraphStyle('ActTxt', parent=style_normal, fontSize=9, leading=10))
                             ]
                             content_stack.append(Table([act_row], colWidths=[0.6*cm, 12*cm]))
                             content_stack.append(Spacer(1, 1))
@@ -488,14 +615,14 @@ class PDFService:
                 card_table.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), colors.white), ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor('#cbd5e1')), ('PADDING', (0,0), (-1,-1), 10)]))
                 kp_phase.append(card_table)
             else:
-                 kp_phase.append(Paragraph("No immediate actions.", style_normal))
+                 kp_phase.append(Paragraph(active_t['no_immediate_actions'], style_normal))
             
             story.append(KeepTogether(kp_phase))
             story.append(Spacer(1, 0.6*cm))
 
         # Build
         frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id='normal', showBoundary=0)
-        template = PageTemplate(id='StandardParams', frames=frame, onPage=self._header_footer)
+        template = PageTemplate(id='StandardParams', frames=frame, onPage=header_footer_with_lang)
         doc.addPageTemplates([template])
         doc.build(story)
         

@@ -168,12 +168,13 @@ class StrategicGapAnalyzer:
                     'std': float(gap_vals.std())
                 }
 
-    def analyze(self, company_dim_series, company_question_df):
+    def analyze(self, company_dim_series, company_question_df, lang="en"):
         """
         Analyzes a single company for Strategic Gaps.
         company_dim_series: Series of dimension scores.
         company_question_df: DataFrame with ('question_id', 'question_text', 'question_weight', 'score_1to5', 'question_type')
                              filtered for THIS company.
+        lang: str, 'en' or 'de' for localization.
         """
         findings = []
         
@@ -185,13 +186,29 @@ class StrategicGapAnalyzer:
                 z = (gap - stat['mean']) / (stat['std'] + 1e-9)
                 
                 if z > 1.5:
+                    dim_de_map = {
+                        "Strategy & Business Vision": "Strategie & Vision",
+                        "People & Culture": "Menschen & Kultur",
+                        "Data Readiness & Literacy": "Datenkompetenz",
+                        "Use Cases & Business Value": "Anwendungsfälle & Geschäftswert",
+                        "Processes & Scaling": "Prozesse & Skalierbarkeit",
+                        "Governance & Compliance": "Governance & Compliance",
+                        "Tech Infrastructure": "Technologie & Infrastruktur",
+                    }
+                    
+                    p1_out = dim_de_map.get(p1, p1) if lang == 'de' else p1
+                    p2_out = dim_de_map.get(p2, p2) if lang == 'de' else p2
+                    
+                    title = f"Structural Imbalance: {p1_out} vs {p2_out}" if lang == 'en' else f"Strukturelles Ungleichgewicht: {p1_out} vs {p2_out}"
+                    context = f"Gap of {gap:.1f} points (Z={z:.1f}). Disconnect between {p1_out} ({company_dim_series[p1]:.1f}) and {p2_out} ({company_dim_series[p2]:.1f})." if lang == 'en' else f"Lücke von {gap:.1f} Punkten (Z={z:.1f}). Unstimmigkeit zwischen {p1_out} ({company_dim_series[p1]:.1f}) und {p2_out} ({company_dim_series[p2]:.1f})."
+
                     findings.append({
                         "type": "Anomaly",
-                        "title": f"Structural Imbalance: {p1} vs {p2}",
+                        "title": title,
                         "score": z, # Use Z as severity
-                        "context": f"Gap of {gap:.1f} points (Z={z:.1f}). Disconnect between {p1} ({company_dim_series[p1]:.1f}) and {p2} ({company_dim_series[p2]:.1f}).",
+                        "context": context,
                         "source_dim": p1 if company_dim_series[p1] < company_dim_series[p2] else p2, # The lower one is the bottleneck usually, but anomaly is the relationship
-                        "strategic_risk": self._get_strategic_risk("Structural Imbalance", z, f"{p1} vs {p2}")
+                        "strategic_risk": self._get_strategic_risk("Structural Imbalance", z, f"{p1} vs {p2}", lang)
                     })
 
         # --- Stage 2: Weighted Impact Gaps ---
@@ -215,17 +232,25 @@ class StrategicGapAnalyzer:
                     impact = w * (5.0 - s)
                 
                 if impact > 0:
-                    theme = row.get('tactical_theme', 'Unknown Theme')
-                    dim_name = row.get('dimension_name')
+                    theme_en = row.get('tactical_theme', 'Unknown Theme')
+                    theme_de = row.get('tactical_theme_de', theme_en)
+                    dim_name_en = row.get('dimension_name')
+                    dim_name_de = row.get('dimension_name_de', dim_name_en)
+                    
+                    title = f"Critical Gap: {theme_en}" if lang == 'en' else f"Kritische Lücke: {theme_de}"
+                    context = f"High Strategic Impact ({w}). Current Maturity: {s:.1f}. Theme: {theme_en}." if lang == 'en' else f"Hohe strategische Relevanz ({w}). Aktuelle Reife: {s:.1f}. Thema: {theme_de}."
+                    
                     impact_candidates.append({
                         "type": "Weakness",
-                        "title": f"Critical Gap: {theme}",
+                        "title": title,
                         "score": impact,
-                        "context": f"High Strategic Impact ({w}). Current Maturity: {s:.1f}. Theme: {theme}.",
-                        "dimension_name": dim_name,
-                        "tactical_theme": theme,
+                        "context": context,
+                        "dimension_name": dim_name_en, # Kept for internal matching
+                        "dimension_name_out": dim_name_en if lang == 'en' else dim_name_de,
+                        "tactical_theme": theme_en, # Kept for deduplication
+                        "tactical_theme_out": theme_en if lang == 'en' else theme_de,
                         "question_id": row.get('question_id'),
-                        "strategic_risk": self._get_strategic_risk(theme, impact, dim_name)
+                        "strategic_risk": self._get_strategic_risk(theme_en, impact, dim_name_en, lang)
                     })
         
         # Sort by Impact
@@ -245,67 +270,104 @@ class StrategicGapAnalyzer:
                 
         return final_findings
     
-    def _get_strategic_risk(self, theme, score, dimension):
+    def _get_strategic_risk(self, theme, score, dimension, lang="en"):
         """
         Returns theme-specific strategic risk text.
         """
         if not theme:
+            if lang == "de":
+                return f"Diese Lücke in {dimension} birgt potenzielle Skalierbarkeitsrisiken."
             return f"This gap in {dimension} creates potential liabilities in scalability."
             
         theme_lower = theme.lower()
         
         # Structural Imbalance logic
         if "structural imbalance" in theme_lower:
+            if lang == "de":
+                return f"Die Diskrepanz in {dimension} erzeugt organisatorische Reibungsverluste, die die Geschwindigkeit der KI-Einführung verlangsamen."
             return f"The disconnect between {dimension} creates organizational friction that will slow down AI adoption velocity."
             
         # Specific Themes
         if 'staff' in theme_lower or 'proficiency' in theme_lower:
+            if lang == "de":
+                return "Ohne gezielte Weiterbildung der Belegschaft fehlt spezifischen technischen Tools die nötige Akzeptanz für einen ROI, was zu ungenutzten Systemen und Fehlinvestitionen führt."
             return "Without addressing workforce upskilling, specific technical tools will lack the adoption needed for ROI, leading to 'shelf-ware' and wasted investment."
             
         if 'leadership' in theme_lower or 'alignment' in theme_lower:
+            if lang == "de":
+                return "Die Diskrepanz zwischen technischen Fähigkeiten und der Vision der Geschäftsführung schafft 'stategische Schulden' und riskiert den Projektabbruch mangels klarem Geschäftswert."
             return "The disconnect between technical capabilities and executive vision creates 'Strategic Debt', risking project cancellation due to lack of clear business value."
             
         if 'budget' in theme_lower or 'allocation' in theme_lower:
+             if lang == "de":
+                 return "Unzureichende oder falsch zugewiesene Budgets für KI-Initiativen verhindern, dass das Unternehmen über die Pilotphase hinauskommt."
              return "Insufficient or misaligned funding for AI initiatives will stall progress, preventing the organization from moving beyond pilot phases to production-grade deployment."
              
         if 'data' in theme_lower and ('privacy' in theme_lower or 'governance' in theme_lower):
+            if lang == "de":
+                return "Mangelhafte Data Governance birgt kritische rechtliche und Reputationsrisiken, insbesondere im Hinblick auf kommende Regulierungen wie den EU AI Act."
             return "Lack of robust data governance poses critical legal and reputational risks, especially with upcoming regulations like the EU AI Act."
             
         if 'standardization' in theme_lower or 'scaling' in theme_lower:
+            if lang == "de":
+                return "Ad-hoc-Prozesse ohne Standardisierung führen zu technischen Schulden und mangelnder Skalierbarkeit, was die Wartung von KI exponentiell verteuert."
             return "Ad-hoc processes without standardization will result in technical debt and inability to scale, making AI maintenance exponentially expensive."
             
         if 'infrastructure' in theme_lower or 'tooling' in theme_lower:
+            if lang == "de":
+                return "Unzureichende Infrastruktur schafft Leistungsengpässe, die die Komplexität und Geschwindigkeit der einsetzbaren KI-Modelle einschränken."
             return "Inadequate infrastructure creates performance bottlenecks that limit the complexity and speed of AI models you can deploy effectively."
             
         if 'adoption' in theme_lower or 'culture' in theme_lower:
+            if lang == "de":
+                return "Eine Unternehmenskultur, die sich gegen KI sträubt, untergräbt die technische Umsetzung, da Anwender den neuen Systemen nicht vertrauen."
             return "A culture resistant to AI adoption will undermine technical implementation, as users fail to trust or integrate new systems into their daily workflows."
 
         if 'strategy' in theme_lower or 'vision' in theme_lower:
+            if lang == "de":
+                return "Ein Vorgehen ohne klare KI-Strategie riskiert fragmentierte Bemühungen, die nicht zu den übergeordneten Geschäftszielen beitragen."
             return "Proceeding without a clear AI strategy risks fragmented efforts that fail to contribute to overarching business goals."
 
         if 'use case' in theme_lower or 'business value' in theme_lower:
+            if lang == "de":
+                return "Eine Fokussierung rein auf die Technologie statt auf den Mehrwert birgt das Risiko, dass Lösungen für die falschen Probleme entwickelt werden (geringer ROI)."
             return "Focusing on technology over business value risks deploying solutions that solve the wrong problems, leading to low impact and poor ROI."
 
         # Default fallback
+        if lang == "de":
+            return f"Diese Lücke in {dimension} führt zu potenziellen Risiken bezüglich Skalierbarkeit und langfristiger Wertschöpfung."
         return f"This gap in {dimension} creates potential liabilities in scalability and long-term value realization."
 
-    def synthesize_narrative(self, findings, company_scores):
+    def synthesize_narrative(self, findings, company_scores, lang="en"):
         """
         Generates the consultant narrative.
         """
-        header = "### 🎖️ AI-Compass Strategic Briefing"
+        header = "### 🎖️ AI-Compass Strategic Briefing" if lang == 'en' else "### 🎖️ AI-Compass Strategisches Briefing"
         narrative = f"{header}\n\n"
+        
         if len(findings) >= 2:
              f1_name = findings[0]['title']
              f2_name = findings[1]['title']
-             narrative += f"Our analysis of your current AI maturity profile identifies **{f1_name}** and **{f2_name}** as primary structural risks that require immediate executive attention.\n\n"
+             if lang == 'de':
+                 narrative += f"Unsere Analyse Ihres aktuellen KI-Reifegrads identifiziert **{f1_name}** und **{f2_name}** als strukturelle Hauptrisiken, die sofortige Aufmerksamkeit des Managements erfordern.\n\n"
+             else:
+                 narrative += f"Our analysis of your current AI maturity profile identifies **{f1_name}** and **{f2_name}** as primary structural risks that require immediate executive attention.\n\n"
         elif len(findings) == 1:
              f1_name = findings[0]['title']
-             narrative += f"Our analysis of your current AI maturity profile identifies **{f1_name}** as a primary structural risk that requires immediate executive attention.\n\n"
+             if lang == 'de':
+                  narrative += f"Unsere Analyse Ihres aktuellen KI-Reifegrads identifiziert **{f1_name}** als ein strukturelles Hauptrisiko, das sofortige Aufmerksamkeit des Managements erfordert.\n\n"
+             else:
+                  narrative += f"Our analysis of your current AI maturity profile identifies **{f1_name}** as a primary structural risk that requires immediate executive attention.\n\n"
         else:
-             narrative += "Our analysis of your current AI maturity profile shows a balanced structure, though optimization opportunities exist.\n\n"
+             if lang == 'de':
+                  narrative += "Unsere Analyse Ihres aktuellen KI-Reifegrads zeigt eine ausgewogene Struktur, auch wenn Optimierungsmöglichkeiten bestehen.\n\n"
+             else:
+                  narrative += "Our analysis of your current AI maturity profile shows a balanced structure, though optimization opportunities exist.\n\n"
         
-        narrative += "**Strategic Verdict**: Your profile shows high potential but is currently decoupled. Prioritizing these two areas over the next 3 months will transform your AI initiatives from experimental to scalable."
+        if lang == 'de':
+            narrative += "**Strategisches Fazit**: Ihr Profil zeigt hohes Potenzial, ist aber derzeit entkoppelt. Eine Priorisierung dieser beiden Bereiche in den nächsten 3 Monaten wird Ihre KI-Initiativen von der experimentellen Phase zur Skalierbarkeit führen."
+        else:
+            narrative += "**Strategic Verdict**: Your profile shows high potential but is currently decoupled. Prioritizing these two areas over the next 3 months will transform your AI initiatives from experimental to scalable."
         return narrative
 
     def save_model(self, path_prefix):
@@ -347,24 +409,37 @@ class RoadmapGenerator:
         self.knn = NearestNeighbors(n_neighbors=15, metric='cosine')
         self.knn.fit(X)
 
-    def _generate_explanation(self, theme, dimension, source, company_dim_series, impact_score):
+    def _generate_explanation(self, theme, theme_out, dimension, source, company_dim_series, impact_score, lang="en"):
         """
         Generates a business-focused explanation for a roadmap recommendation.
         Format: Brief analysis (1 bullet) + Detailed recommendations (2 bullets)
         
         Args:
-            theme: The tactical theme (e.g., "Staff Proficiency")
-            dimension: The dimension name
+            theme: The tactical theme (e.g., "Staff Proficiency") used for logic matching
+            theme_out: Localized theme for output reading
+            dimension: The localized dimension name
             source: "Strategic Gap (Critical)" or "Growth Opportunity"
             company_dim_series: Current company dimension scores
             impact_score: The calculated impact score
-        
-        Returns:
-            String explanation with bullet points
+            lang: Language parameter
         """
         # Get company's current score for this dimension
-        company_score = company_dim_series.get(dimension, 0)
-        peer_avg = self.peer_dim_averages.get(dimension, company_score)
+        # Note: mapping back to English dimension for score lookup if dimension is German
+        dim_key = dimension
+        if lang == 'de':
+             dim_de_map_rev = {
+                  "Strategie & Vision": "Strategy & Business Vision",
+                  "Menschen & Kultur": "People & Culture",
+                  "Datenkompetenz": "Data Readiness & Literacy",
+                  "Anwendungsfälle & Geschäftswert": "Use Cases & Business Value",
+                  "Prozesse & Skalierbarkeit": "Processes & Scaling",
+                  "Governance & Compliance": "Governance & Compliance",
+                  "Technologie & Infrastruktur": "Tech Infrastructure"
+             }
+             dim_key = dim_de_map_rev.get(dimension, dimension)
+             
+        company_score = company_dim_series.get(dim_key, 0)
+        peer_avg = self.peer_dim_averages.get(dim_key, company_score)
         
         # Calculate gap
         gap_pct = 0
@@ -372,23 +447,37 @@ class RoadmapGenerator:
             gap_pct = ((peer_avg - company_score) / company_score) * 100
         
         # Theme-specific recommendations
-        theme_actions = self._get_theme_specific_actions(theme, source, gap_pct)
+        theme_actions = self._get_theme_specific_actions(theme, source, gap_pct, lang)
         
         # Generate analysis
         if source == "Strategic Gap (Critical)":
             if gap_pct > 10:
-                analysis = f"**Analysis**: Your {theme} capability (score: {company_score:.1f}) is {gap_pct:.0f}% below industry average ({peer_avg:.1f}), creating a critical bottleneck."
+                if lang == 'de':
+                    analysis = f"**Analyse**: Ihre Kompetenz bezüglich {theme_out} (Score: {company_score:.1f}) liegt {gap_pct:.0f}% unter dem Branchendurchschnitt ({peer_avg:.1f}) und stellt einen kritischen Engpass dar."
+                else:
+                    analysis = f"**Analysis**: Your {theme_out} capability (score: {company_score:.1f}) is {gap_pct:.0f}% below industry average ({peer_avg:.1f}), creating a critical bottleneck."
             else:
-                analysis = f"**Analysis**: While {theme} shows moderate performance (score: {company_score:.1f}), strategic analysis identifies this as a high-impact priority."
+                if lang == 'de':
+                     analysis = f"**Analyse**: Obwohl {theme_out} eine moderate Leistung zeigt (Score: {company_score:.1f}), wird dies als hochprioritäres handlungsfeld identifiziert."
+                else:
+                     analysis = f"**Analysis**: While {theme_out} shows moderate performance (score: {company_score:.1f}), strategic analysis identifies this as a high-impact priority."
         else:  # Growth Opportunity
             if gap_pct > 15:
-                analysis = f"**Analysis**: Top performers excel in {theme} (peer average: {peer_avg:.1f} vs your {company_score:.1f}), representing a {gap_pct:.0f}% opportunity gap."
+                if lang == 'de':
+                    analysis = f"**Analyse**: Top-Performer glänzen in {theme_out} (Vergleichswert: {peer_avg:.1f} vs. Ihr {company_score:.1f}), was eine Chance von {gap_pct:.0f}% bedeutet."
+                else:
+                    analysis = f"**Analysis**: Top performers excel in {theme_out} (peer average: {peer_avg:.1f} vs your {company_score:.1f}), representing a {gap_pct:.0f}% opportunity gap."
             else:
-                analysis = f"**Analysis**: Your {theme} performance (score: {company_score:.1f}) is competitive, but targeted improvements will differentiate your AI maturity."
+                if lang == 'de':
+                     analysis = f"**Analyse**: Ihre Leistung in {theme_out} (Score: {company_score:.1f}) ist wettbewerbsfähig, aber gezielte Verbesserungen werden Ihren KI-Reifegrad differenzieren."
+                else:
+                     analysis = f"**Analysis**: Your {theme_out} performance (score: {company_score:.1f}) is competitive, but targeted improvements will differentiate your AI maturity."
         
-        return f"{analysis}\n\n**Action 1:** {theme_actions['action1']}\n\n**Action 2:** {theme_actions['action2']}"
+        action1_label = "**Aktion 1:**" if lang == 'de' else "**Action 1:**"
+        action2_label = "**Aktion 2:**" if lang == 'de' else "**Action 2:**"
+        return f"{analysis}\n\n{action1_label} {theme_actions['action1']}\n\n{action2_label} {theme_actions['action2']}"
     
-    def _get_theme_specific_actions(self, theme, source, gap_pct):
+    def _get_theme_specific_actions(self, theme, source, gap_pct, lang="en"):
         """
         Generate theme-specific actionable recommendations.
         
@@ -503,13 +592,14 @@ class RoadmapGenerator:
             print(f"Peer Benchmark Calc Error: {e}")
             return {}
 
-    def generate(self, company_id, company_dim_series, company_question_df, strategic_gaps):
+    def generate(self, company_id, company_dim_series, company_question_df, strategic_gaps, lang='en'):
         """
         Generates 3-Phase Roadmap.
         company_id: ID for reference (if needed for exclusionary logic, though we use vector lookup)
         company_dim_series: Current scores.
         company_question_df: Current question details (for "Growth Opps").
         strategic_gaps: Input from GapAnalyzer.
+        lang: Language code ('en' or 'de').
         """
         
         # 1. Identify Peers (Strategy A: 15-30% better)
@@ -541,13 +631,17 @@ class RoadmapGenerator:
                 peer_q_avg = self.question_data_train.loc[valid_pids].mean()
 
         # 2. Initialize Roadmap
+        phase1_key = 'Phase 1: Foundation' if lang == 'en' else 'Phase 1: Fundament'
+        phase2_key = 'Phase 2: Implementation' if lang == 'en' else 'Phase 2: Implementierung'
+        phase3_key = 'Phase 3: Scale & Governance' if lang == 'en' else 'Phase 3: Skalierung & Governance'
+        
         roadmap = {
-            'Phase 1: Foundation': [],
-            'Phase 2: Implementation': [],
-            'Phase 3: Scale & Governance': []
+            phase1_key: [],
+            phase2_key: [],
+            phase3_key: []
         }
         
-        # Helps check for duplication
+        # Helps check for duplication (use English themes for dupes)
         added_themes = set()
         
         # 3. Add Mandatory Strategic Gaps
@@ -555,35 +649,37 @@ class RoadmapGenerator:
             # If gap has explicit theme/dim, map it
             d_name = gap.get('dimension_name')
             # If anomaly, it might have 'source_dim' or just title.
-            # Parse from title if needed, or use 'source_dim' added in Analyze
             if not d_name and 'source_dim' in gap:
                 d_name = gap['source_dim']
             
-            # If still None (e.g. pure text anomaly?), try to infer or Default to P1
             if not d_name: 
-                 # Try parse title
                  if ":" in gap['title']:
-                     maybe_dim = gap['title'].split(":")[-1].split("vs")[0].strip() # rough heuristic
+                     maybe_dim = gap['title'].split(":")[-1].split("vs")[0].strip()
                      d_name = maybe_dim
             
-            phase = PHASE_MAPPING.get(d_name, 'Phase 1: Foundation')
+            # Map standard English dimension to Phase
+            eng_phase = PHASE_MAPPING.get(d_name, 'Phase 1: Foundation')
+            phase = phase1_key if 'Phase 1' in eng_phase else (phase2_key if 'Phase 2' in eng_phase else phase3_key)
             
             # Construct item
             item_theme = gap.get('tactical_theme', f"Fix {d_name} Gaps")
+            item_theme_out = gap.get('tactical_theme_out', item_theme)
             
             if item_theme not in added_themes:
                 explanation = self._generate_explanation(
                     theme=item_theme,
-                    dimension=d_name,
+                    theme_out=item_theme_out,
+                    dimension=gap.get('dimension_name_out', d_name),
                     source="Strategic Gap (Critical)",
                     company_dim_series=company_dim_series,
-                    impact_score=gap['score']
+                    impact_score=gap['score'],
+                    lang=lang
                 )
                 roadmap[phase].append({
-                    "theme": item_theme,
-                    "source": "Strategic Gap (Critical)",
+                    "theme": item_theme_out,
+                    "source": "Strategic Gap (Critical)" if lang == 'en' else "Strategische Lücke (Kritisch)",
                     "impact": gap['score'],
-                    "dimension": d_name,
+                    "dimension": gap.get('dimension_name_out', d_name),
                     "explanation": explanation
                 })
                 added_themes.add(item_theme)
@@ -596,6 +692,7 @@ class RoadmapGenerator:
         if not company_question_df.empty:
             for _, row in company_question_df.iterrows():
                 theme = row.get('tactical_theme')
+                theme_de = row.get('tactical_theme_de', theme)
                 if theme in added_themes: continue
                 
                 qid = row.get('question_id')
@@ -614,7 +711,9 @@ class RoadmapGenerator:
                 
                 candidates.append({
                     "theme": theme,
+                    "theme_out": theme if lang == 'en' else theme_de,
                     "dimension": row.get('dimension_name'),
+                    "dimension_out": row.get('dimension_name') if lang == 'en' else row.get('dimension_name_de', row.get('dimension_name')),
                     "impact": base_impact * peer_bonus,
                     "final_score": base_impact * peer_bonus
                 })
@@ -622,32 +721,35 @@ class RoadmapGenerator:
         # Sort candidates
         candidates.sort(key=lambda x: x['final_score'], reverse=True)
         
-        # Fill logic
-        phases = ['Phase 1: Foundation', 'Phase 2: Implementation', 'Phase 3: Scale & Governance']
+        # Fill logic — iterate over the localized phase keys
+        phases = [phase1_key, phase2_key, phase3_key]
+        en_phases = ['Phase 1: Foundation', 'Phase 2: Implementation', 'Phase 3: Scale & Governance']
         
-        for phase in phases:
+        for phase, en_phase in zip(phases, en_phases):
             if not roadmap[phase]:
                 # Find best candidate for this phase
                 found = None
                 for c in candidates:
                     c_phase = PHASE_MAPPING.get(c['dimension'], 'Phase 1: Foundation')
-                    if c_phase == phase and c['theme'] not in added_themes:
+                    if c_phase == en_phase and c['theme'] not in added_themes:
                         found = c
                         break
                 
                 if found:
                     explanation = self._generate_explanation(
                         theme=found['theme'],
-                        dimension=found['dimension'],
+                        theme_out=found['theme_out'],
+                        dimension=found['dimension_out'],
                         source="Growth Opportunity",
                         company_dim_series=company_dim_series,
-                        impact_score=found['final_score']
+                        impact_score=found['final_score'],
+                        lang=lang
                     )
                     roadmap[phase].append({
-                        "theme": found['theme'],
-                        "source": "Growth Opportunity",
+                        "theme": found['theme_out'],
+                        "source": "Growth Opportunity" if lang == 'en' else "Wachstumschance",
                         "impact": found['final_score'],
-                        "dimension": found['dimension'],
+                        "dimension": found['dimension_out'],
                         "explanation": explanation
                     })
                     added_themes.add(found['theme'])
@@ -659,16 +761,18 @@ class RoadmapGenerator:
                         if c['theme'] not in added_themes:
                             explanation = self._generate_explanation(
                                 theme=c['theme'],
-                                dimension=c['dimension'],
+                                theme_out=c['theme_out'],
+                                dimension=c['dimension_out'],
                                 source="Growth Opportunity",
                                 company_dim_series=company_dim_series,
-                                impact_score=c['final_score']
+                                impact_score=c['final_score'],
+                                lang=lang
                             )
                             roadmap[phase].append({
-                                "theme": c['theme'],
-                                "source": "Accelerated Growth",
+                                "theme": c['theme_out'],
+                                "source": "Accelerated Growth" if lang == 'en' else "Beschleunigtes Wachstum",
                                 "impact": c['final_score'],
-                                "dimension": c['dimension'],
+                                "dimension": c['dimension_out'],
                                 "explanation": explanation
                             })
                             added_themes.add(c['theme'])
@@ -676,19 +780,41 @@ class RoadmapGenerator:
 
         return roadmap
 
-    def synthesize_briefing(self, roadmap):
+    def synthesize_briefing(self, roadmap, lang="en"):
         """
         Synthesizes the textual 3-phase roadmap.
         """
-        p1 = [i['theme'] for i in roadmap['Phase 1: Foundation']]
-        p2 = [i['theme'] for i in roadmap['Phase 2: Implementation']]
-        p3 = [i['theme'] for i in roadmap['Phase 3: Scale & Governance']]
+        phase1_key = 'Phase 1: Foundation' if lang == 'en' else 'Phase 1: Fundament'
+        phase2_key = 'Phase 2: Implementation' if lang == 'en' else 'Phase 2: Implementierung'
+        phase3_key = 'Phase 3: Scale & Governance' if lang == 'en' else 'Phase 3: Skalierung & Governance'
         
-        p1_text = ", ".join(p1) if p1 else "Foundation"
-        p2_text = ", ".join(p2) if p2 else "Implementation"
-        p3_text = ", ".join(p3) if p3 else "Optimization"
+        p1 = [i['theme'] for i in roadmap[phase1_key]]
+        p2 = [i['theme'] for i in roadmap[phase2_key]]
+        p3 = [i['theme'] for i in roadmap[phase3_key]]
         
-        briefing = f"""
+        p1_text = ", ".join(p1) if p1 else ("Foundation" if lang == 'en' else "Fundament")
+        p2_text = ", ".join(p2) if p2 else ("Implementation" if lang == 'en' else "Implementierung")
+        p3_text = ", ".join(p3) if p3 else ("Optimization" if lang == 'en' else "Optimierung")
+        
+        if lang == 'de':
+             briefing = f"""
+### 🗺️ AI-Compass: Ihre 3-Phasen Transformations-Roadmap
+
+Um eine nachhaltige und ROI-starke Reise in die KI zu gewährleisten, empfehlen wir einen phasenweisen Ansatz, der die grundlegende Stabilität vor komplexer technischer Skalierung priorisiert.
+
+**Phase 1: Fundament legen**
+Ihre oberste Priorität ist **{p1_text}**. Mit dem Fokus auf diesen Bereich stellen wir sicher, dass Ihre organisatorischen Daten und Ihre Kultur robust genug sind, um Automatisierung ohne Reibungsverluste zu unterstützen.
+
+**Phase 2: Gezielte Implementierung**
+Sobald das Fundament gesichert ist, gehen wir über zu **{p2_text}**. Diese Bereiche wurden als Ihre stärksten Hebel identifiziert, um die Lücke zwischen Ihrem aktuellen Status und der Leistung von Branchenführern direkt zu schließen.
+
+**Phase 3: Strategische Skalierung**
+Die letzte Phase konzentriert sich auf **{p3_text}**. Hier vollziehen wir den Übergang von isolierten Anwendungsfällen zu einem KI-gesteuerten Betriebsmodell und gewährleisten langfristige Resilienz und Governance.
+
+**Erfolgsmetrik**: Die Umsetzung dieser Roadmap wird Ihre Gesamtreife vom aktuellen Niveau in die oberen 20 % Ihrer Branchenvergleichsgruppe heben.
+"""
+        else:
+             briefing = f"""
 ### 🗺️ AI-Compass: Your 3-Phase Transformation Roadmap
 
 To ensure a sustainable and high-ROI journey into AI, we recommend a phased approach that prioritizes foundational stability before complex technical scaling.

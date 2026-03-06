@@ -6,6 +6,7 @@ from models.company import Company
 from models.response import Response
 from sqlalchemy import func
 import logging
+import uuid
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
@@ -68,7 +69,8 @@ class SessionStore:
             "company_id": response.company_id,
             "total_score": None,
             "created_at": datetime.utcnow(), 
-            "cluster_id": None
+            "cluster_id": None,
+            "result_hash": str(uuid.uuid4())
         }
         self.responses[self.response_counter] = new_response
         return new_response

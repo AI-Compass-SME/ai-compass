@@ -6,41 +6,44 @@ import { Footer } from '../components/Footer';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, BarChart3, FileText, Lightbulb, Workflow, Network, Fingerprint, Hexagon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function HowItWorksPage() {
+    const { t } = useTranslation();
+
     useEffect(() => {
-        document.title = "How It Works | AI Compass";
-    }, []);
+        document.title = `${t('pages.howItWorks.title')} | AI Compass`;
+    }, [t]);
 
     const steps = [
         {
             id: 1,
-            title: "Assess",
-            description: "Answer a structured questionnaire covering 7 key dimensions of AI maturity. Our framework evaluates your capabilities across strategy, data, and technology.",
+            title: t('pages.howItWorks.steps.1.title'),
+            description: t('pages.howItWorks.steps.1.desc'),
             icon: <FileText className="w-6 h-6 text-blue-600" />
         },
         {
             id: 2,
-            title: "Analyze",
-            description: "Our ML engine compares your data against industry benchmarks. We identify your 'Cluster Profile' using our proprietary maturity model.",
+            title: t('pages.howItWorks.steps.2.title'),
+            description: t('pages.howItWorks.steps.2.desc'),
             icon: <BarChart3 className="w-6 h-6 text-indigo-600" />
         },
         {
             id: 3,
-            title: "Act",
-            description: "Receive a comprehensive strategic roadmap. Get concrete, actionable steps to move from your current state to the next maturity level.",
+            title: t('pages.howItWorks.steps.3.title'),
+            description: t('pages.howItWorks.steps.3.desc'),
             icon: <Lightbulb className="w-6 h-6 text-violet-600" />
         }
     ];
 
     const dimensions = [
-        "Strategy & Leadership",
-        "Use Cases & Value",
-        "Data & Infrastructure",
-        "Talent & Culture",
-        "Governance & Ethics",
-        "Technology & Tools",
-        "Partnerships & Ecosystem"
+        t('pages.howItWorks.dimensions.1'),
+        t('pages.howItWorks.dimensions.2'),
+        t('pages.howItWorks.dimensions.3'),
+        t('pages.howItWorks.dimensions.4'),
+        t('pages.howItWorks.dimensions.5'),
+        t('pages.howItWorks.dimensions.6'),
+        t('pages.howItWorks.dimensions.7')
     ];
 
     return (
@@ -51,8 +54,8 @@ export default function HowItWorksPage() {
             <main className="flex-grow w-full max-w-[80rem] mx-auto px-6 pt-28 pb-16 relative z-10">
                 {/* Standardized Header */}
                 <PageHeader
-                    title="How It Works"
-                    subtitle="THE AI COMPASS PROCESS"
+                    title={t('pages.howItWorks.title')}
+                    subtitle={t('pages.howItWorks.subtitle')}
                 />
 
                 {/* Content Card */}
@@ -64,7 +67,7 @@ export default function HowItWorksPage() {
                             <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 border border-blue-200 shadow-sm">
                                 <Workflow className="w-5 h-5" />
                             </div>
-                            The Evaluation Process
+                            {t('pages.howItWorks.processTitle')}
                         </h2>
                         <div className="grid md:grid-cols-3 gap-8">
                             {steps.map((step) => (
@@ -89,10 +92,10 @@ export default function HowItWorksPage() {
                             <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 border border-indigo-200 shadow-sm">
                                 <Network className="w-5 h-5" />
                             </div>
-                            The 7-Dimension Framework
+                            {t('pages.howItWorks.frameworkTitle')}
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            We don't just look at technology. True AI maturity requires a holistic approach across your entire organization. Our assessment evaluates:
+                            {t('pages.howItWorks.frameworkDesc')}
                         </p>
                         <div className="grid sm:grid-cols-2 gap-4">
                             {dimensions.map((dim, idx) => (
@@ -110,7 +113,7 @@ export default function HowItWorksPage() {
                     <div className="flex justify-center pt-8">
                         <Button asChild size="lg" className="px-8 h-12 text-base font-bold rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-lg hover:scene-pop transition-all">
                             <Link to="/snapshot" className="flex items-center gap-2">
-                                Start Your Assessment
+                                {t('pages.howItWorks.startBtn')}
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
                         </Button>

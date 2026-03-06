@@ -9,8 +9,20 @@ from models import Response, ResponseItem, Company, Question, Answer, Dimension,
 from sqlalchemy import func
 
 # Add project root to sys.path to allow importing from benchmarking_ai
-# results.py is in backend/routers/ -> ../../../ is Application_Prototype -> ../../../../ is ai-compass (Root)
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
+# PROD: backend/modules/benchmarking_ai -> Add ../modules to path
+# DEV: benchmarking_ai (sibling of backend) -> Add ../../../.. to path
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+prod_module_path = os.path.join(current_dir, "../modules")
+
+if os.path.exists(prod_module_path):
+    sys.path.append(prod_module_path)
+    print(f"Added PROD path to sys.path: {prod_module_path}")
+else:
+    # Fallback to Dev
+    dev_path = os.path.abspath(os.path.join(current_dir, "../../../../"))
+    sys.path.append(dev_path)
+    print(f"Added DEV path to sys.path: {dev_path}")
 
 try:
     from benchmarking_ai.ml_v5.inference import InferenceEngine
@@ -24,8 +36,8 @@ except ImportError as e:
 
 router = APIRouter()
 
-@router.get("/{response_id}/results")
-def get_results(response_id: int, db: Session = Depends(get_db)):
+@router.get("/{result_hash}/results")
+def get_results(result_hash: str, lang: str = "en", db: Session = Depends(get_db)):
     """
     Retrieve full analysis results.
     1. Fetch Session Data
@@ -38,10 +50,14 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
              raise HTTPException(status_code=503, detail="AI Analysis Engine is unavailable.")
 
         # 1. Fetch Data
-        response = db.query(Response).filter(Response.response_id == response_id).first()
+        response = db.query(Response).filter(Response.result_hash == result_hash).first()
         if not response:
             raise HTTPException(status_code=404, detail="Response not found")
+            
+        if not response.is_verified:
+            raise HTTPException(status_code=403, detail="Email verification required to access results. Please check your inbox.")
         
+        response_id = response.response_id
         company = db.query(Company).filter(Company.company_id == response.company_id).first()
         
         items = db.query(ResponseItem).filter(ResponseItem.response_id == response_id).all()
@@ -57,11 +73,11 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
         rows_items = [{"question_id": i.question_id, "answers": i.answers} for i in items]
         df_items = pd.DataFrame(rows_items)
         
-        # Include tactical_theme (header)
-        rows_questions = [{"question_id": q.question_id, "dimension_id": q.dimension_id, "question_weight": q.weight, "question_type": q.type, "question_text": q.question_text, "tactical_theme": q.header} for q in questions_all]
+        # Include tactical_theme (header) and german variants
+        rows_questions = [{"question_id": q.question_id, "dimension_id": q.dimension_id, "question_weight": q.weight, "question_type": q.type, "question_text": q.question_text, "question_text_de": q.question_text_de, "tactical_theme": q.header, "tactical_theme_de": q.header_de} for q in questions_all]
         df_questions = pd.DataFrame(rows_questions)
 
-        rows_dims = [{"dimension_id": d.dimension_id, "dimension_name": d.dimension_name} for d in dimensions_all]
+        rows_dims = [{"dimension_id": d.dimension_id, "dimension_name": d.dimension_name, "dimension_name_de": d.dimension_name_de} for d in dimensions_all]
         df_dims = pd.DataFrame(rows_dims)
 
         rows_answers = [{"answer_id": a.answer_id, "question_id": a.question_id, "answer_weight": a.answer_weight} for a in answers_all]
@@ -90,15 +106,18 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
         # SANITIZATION: Fill missing metadata BEFORE groupby to prevent rows from being dropped due to NaNs
         full_df.fillna({
             'dimension_name': 'Unknown Dimension',
+            'dimension_name_de': 'Unbekannte Dimension',
             'question_text': 'Unknown Question',
+            'question_text_de': 'Unbekannte Frage',
             'tactical_theme': 'General',
+            'tactical_theme_de': 'Allgemein',
             'question_type': 'Slider',
             'question_weight': 1.0
         }, inplace=True)
 
         grouped_q = full_df.groupby([
-            'question_id', 'dimension_name', 'question_weight', 'question_type', 
-            'total_possible_weight', 'max_possible_weight', 'question_text', 'tactical_theme'
+            'question_id', 'dimension_name', 'dimension_name_de', 'question_weight', 'question_type', 
+            'total_possible_weight', 'max_possible_weight', 'question_text', 'question_text_de', 'tactical_theme', 'tactical_theme_de'
         ])['answer_weight'].sum().reset_index().rename(columns={'answer_weight': 'sum_selected_weight'})
 
         def calculate_question_score(row):
@@ -136,7 +155,9 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
         
         # SANITIZATION
         grouped_q['tactical_theme'] = grouped_q['tactical_theme'].fillna("")
+        grouped_q['tactical_theme_de'] = grouped_q['tactical_theme_de'].fillna("")
         grouped_q['question_text'] = grouped_q['question_text'].fillna("")
+        grouped_q['question_text_de'] = grouped_q['question_text_de'].fillna("")
         grouped_q['question_type'] = grouped_q['question_type'].fillna("")
 
         # Filter out General Psychology questions from the granular analysis dataframe
@@ -144,7 +165,7 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
         grouped_q = grouped_q[grouped_q['dimension_name'] != 'General Psychology']
 
         # 5. Run Inference
-        analysis = inference_engine.run_analysis(dim_results, grouped_q, company_industry=company.industry)
+        analysis = inference_engine.run_analysis(dim_results, grouped_q, company_industry=company.industry, lang=lang)
 
         if "error" in analysis:
              raise HTTPException(status_code=500, detail=analysis["error"])
@@ -178,8 +199,8 @@ def get_results(response_id: int, db: Session = Depends(get_db)):
 from fastapi import Response as FastAPIResponse
 from services.pdf_service import PDFService
 
-@router.get("/{response_id}/pdf")
-def generate_pdf(response_id: int, db: Session = Depends(get_db)):
+@router.get("/{result_hash}/pdf")
+def generate_pdf(result_hash: str, lang: str = "en", db: Session = Depends(get_db)):
     """
     Generate and download PDF report.
     """
@@ -187,7 +208,7 @@ def generate_pdf(response_id: int, db: Session = Depends(get_db)):
         # Reuse the results logic to get the data
         # In a larger app, we'd refactor `get_results` to separate data fetching from the API response
         # For now, we call it directly as it returns a dict (mostly)
-        results_data = get_results(response_id, db)
+        results_data = get_results(result_hash, lang, db)
         
         # Check if it returned an error response (JSONResponse)
         if hasattr(results_data, 'status_code') and results_data.status_code >= 400:
@@ -195,12 +216,12 @@ def generate_pdf(response_id: int, db: Session = Depends(get_db)):
 
         # Generate PDF
         pdf_service = PDFService()
-        pdf_bytes = pdf_service.generate_pdf(results_data)
+        pdf_bytes = pdf_service.generate_pdf(results_data, lang=lang)
         
         return FastAPIResponse(
             content=pdf_bytes, 
             media_type="application/pdf", 
-            headers={"Content-Disposition": f"attachment; filename=ai_maturity_report_{response_id}.pdf"}
+            headers={"Content-Disposition": f"attachment; filename=ai_maturity_report_{result_hash[:8]}.pdf"}
         )
     except Exception as e:
         print(f"PDF Gen Error: {e}")
