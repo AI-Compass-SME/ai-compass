@@ -4,18 +4,18 @@
         "methodology": "Methodik",
         "about": "Über Uns",
         "contact": "Kontakt",
-        "getStarted": "Kostenlos Assessment Starten",
+        "getStarted": "Analyse starten",
         "starting": "Startet...",
         "generatingPdf": "Wird generiert...",
-        "downloadReport": "Bericht herunterladen"
+        "downloadReport": "Analyse sichern"
     },
     "footer": {
         "rights": "Alle Rechte vorbehalten.",
         "imprint": "Impressum",
         "privacy": "Datenschutz",
         "company": "Unternehmen",
-        "howItWorks": "Wie es funktioniert",
-        "description": "Navigieren Sie mit Zuversicht durch die KI-Evolution. Professionelle KI-Reifegradbewertung für moderne Organisationen.",
+        "howItWorks": "Ablauf",
+        "description": "Klarheit. Sicherheit. Vorsprung.\nIhr AI Compass für die strategische KI-Transformation.",
         "trustedBy": "Vertrauen von über 500 Organisationen",
         "status": "System aktiv",
         "disclaimer": {
@@ -25,47 +25,49 @@
     },
     "landing": {
         "hero": {
-            "title": "Navigieren Sie Ihre KI-Evolution mit dem AI Compass.",
-            "subtitle": "Hören Sie auf zu raten. Gewinnen Sie in 10-15 Minuten strategische Klarheit. Vergleichen Sie Ihr Unternehmen mit über 500 Mitbewerbern und erhalten Sie eine datengesteuerte Roadmap zur KI-Reife. Keine Kosten, nur Ihre wertvolle Zeit.",
-            "startBtn": "Kostenlos Assessment Starten",
+            "title": "Strategische Orientierung in der KI-Transformation: Der AI Compass",
+            "subtitle": "Fakten statt Bauchgefühl: Erfahren Sie in 10–15 Minuten, wo Ihr Unternehmen in der KI-Transformation wirklich steht. Sichern Sie sich Ihre maßgeschneiderte Analyse und strategische Roadmap für belastbare Entscheidungen und einen nachhaltigen Wettbewerbsvorteil – fundiert, direkt und kostenfrei.",
+            "startBtn": "Kostenfreie Analyse starten",
             "starting": "Startet...",
             "time": "Dauert 10-15 Minuten",
             "gdpr": "DSGVO-konform",
             "framework": "Professionelles Framework"
         },
         "value": {
-            "title": "Das Wertversprechen",
-            "subtitle": "KI ist kein Tool, das Sie kaufen; es ist eine Fähigkeit, die Sie aufbauen. Der AI Compass ist ein professionelles Beratungswerkzeug, das die nötige diagnostische Klarheit bietet, um sicherzustellen, dass Ihre Investitionen zu Wachstum und nicht nur zu Kosten führen.",
+            "title": "Unser Wertversprechen",
+            "subtitle": "Künstliche Intelligenz ist keine isolierte Technologieentscheidung, sondern eine strategische Kernkompetenz, die es nachhaltig im Unternehmen zu verankern gilt. Der AI Compass schafft die nötige Transparenz, um Ihre KI-Investitionen in messbare Wertschöpfung zu verwandeln – statt lediglich Kosten zu verursachen.",
+            "whatLabel": "Analyse-Umfang",
+            "whyLabel": "Ihr Mehrwert",
             "cards": {
                 "1": {
                     "title": "Bewerten Sie Ihren aktuellen KI-Reifegrad",
-                    "what": "Ein umfassendes, mehrdimensionales Audit, das Ihr Unternehmen in 7 Kernbereichen bewertet: Strategie, Menschen, Daten, Use Cases, Prozesse, Compliance und Tech-Infrastruktur.",
-                    "why": "Man kann nicht verbessern, was man nicht misst. Durch die Etablierung einer objektiven Basislinie lösen Sie sich von Vermutungen und gewinnen ein wissenschaftliches Verständnis der tatsächlichen Bereitschaft Ihres Unternehmens."
+                    "what": "Ein mehrdimensionales Audit Ihres Unternehmens in sieben Kernbereichen: Strategie, Mensch & Kultur, Daten, Use Cases, Prozesse, Compliance und Tech-Infrastruktur.",
+                    "why": "Nur was messbar ist, lässt sich gezielt steuern. Durch eine objektive Ausgangsbasis ersetzen Sie Annahmen durch eine fundierte Analyse Ihres tatsächlichen KI-Reifegrades."
                 },
                 "2": {
-                    "title": "Benchmarking jenseits des Hypes",
-                    "what": "Eine vergleichende Analyse, die Ihre digitalen Fähigkeiten mit einer verifizierten Datenbank von über 500 Peer-Unternehmen und Branchenführern misst.",
-                    "why": "Strategische Positionierung ist relativ. Benchmarking zeigt Ihnen, ob Sie in Ihrer Branche wirklich führend sind oder ob Konkurrenten einen technologischen Vorsprung erlangen, der später schwer aufzuholen sein wird."
+                    "title": "KI-Benchmarking: Datengestützte Marktpositionierung",
+                    "what": "Eine vergleichende Analyse Ihrer digitalen Kompetenzen auf Basis einer validierten Datenbank von über 500 Referenzunternehmen und Branchenführern.",
+                    "why": "Vermeiden Sie strategische Nachteile: Unser Benchmarking präzisiert Ihre Marktposition und deckt technologische Lücken im Vergleich zum Wettbewerb frühzeitig auf."
                 },
                 "3": {
-                    "title": "Die Kluft zwischen Mensch und Technik überbrücken",
-                    "what": "Eine Bewertung der Organisationskultur, der Einstellung der Mitarbeiter und des internen KI-Wissens.",
-                    "why": "Technologie skaliert nur so schnell wie Ihre Mitarbeiter. Das frühzeitige Erkennen von psychologischen Widerständen oder Kompetenzlücken stellt sicher, dass Ihre Kultur Ihre technische Transformation unterstützt und nicht blockiert."
+                    "title": "Der Faktor Mensch in der KI-Transformation",
+                    "what": "Evaluation der Unternehmenskultur, der Akzeptanz innerhalb der Belegschaft sowie des vorhandenen KI-Fachwissens.",
+                    "why": "Innovation braucht Akzeptanz: Identifizieren Sie Vorbehalte und Qualifizierungsbedarfe frühzeitig, um Reibungsverluste zu vermeiden und den digitalen Wandel kulturell zu verankern."
                 },
                 "4": {
-                    "title": "Risiko- & Compliance-Schutz",
-                    "what": "Ein proaktives Audit Ihrer Ausrichtung auf aufkommende Standards (wie das KI-Gesetz der EU) und interne Datenethikprotokolle.",
-                    "why": "Schnell zu handeln ist wichtig, aber sicher zu handeln ist unerlässlich. Dieser Schutz bewahrt den Ruf Ihres Unternehmens und rüstet Ihre Abläufe für sich ändernde rechtliche Rahmenbedingungen ab."
+                    "title": "Compliance & Risikomanagement",
+                    "what": "Prüfung der Konformität mit regulatorischen Standards (z. B. EU AI Act) sowie Evaluation interner Datenethik-Richtlinien.",
+                    "why": "Rechtssicherheit minimiert Haftungs- und Reputationsrisiken. Sie stellen sicher, dass Ihre Prozesse auch bei künftigen Gesetzesänderungen belastbar und rechtssicher aufgestellt sind."
                 },
                 "5": {
-                    "title": "Lücken und Chancen erkennen",
-                    "what": "Ein präzises Gap-Analyse-Tool, das verborgene Schwächen in Ihrem digitalen Fundament aufdeckt und gleichzeitig ungenutzte Innovationsbereiche hervorhebt.",
-                    "why": "Um den nächsten Reifegrad zu erreichen, müssen Sie genau wissen, was Sie zurückhält. Das Identifizieren dieser \"Reibungspunkte\" ermöglicht es Ihnen, das Fundament zu reparieren und gleichzeitig \"tief hängende Früchte\" zu ernten."
+                    "title": "Gap-Analyse: Status-Check & Potenziale",
+                    "what": "Präzise Analyse struktureller Defizite in Ihrem digitalen Fundament sowie Identifikation ungenutzter Innovationspotenziale.",
+                    "why": "Durch den gezielten Abbau von Barrieren stärken Sie Ihre technologische Basis. Gleichzeitig nutzen Sie kurzfristige Optimierungspotenziale (Quick Wins) für eine unmittelbare Wertschöpfung."
                 },
                 "6": {
-                    "title": "Priorisierte strategische Beratung",
-                    "what": "Ein strukturiertes Beratungsmodul, das Ihre Reifegradlücken in eine priorisierte Reihenfolge strategischer Themen übersetzt (z. B. \"Datenfundament\" vor \"Kundenorientierter KI\").",
-                    "why": "KMUs leiden oft unter \"Pilotmüdigkeit\", weil sie versuchen, alles auf einmal zu erledigen. Diese Beratung stellt sicher, dass Sie die richtigen Themen in der richtigen Reihenfolge angehen."
+                    "title": "Strategische Priorisierung & Roadmap",
+                    "what": "Ableitung einer priorisierten Roadmap aus Ihren spezifischen Handlungsfeldern und strategischen Schwerpunkten.",
+                    "why": "Fokus statt Verzettelung: Gehen Sie Projekte in der logisch richtigen Reihenfolge an und setzen Sie Ressourcen gezielt dort ein, wo sie Ihre größten Engpässe auflösen und die größten Potenziale heben."
                 }
             }
         },
@@ -75,22 +77,22 @@
             "steps": {
                 "1": {
                     "title": "Geführtes Assessment",
-                    "desc": "27 Fragen zu 7 Schlüsseldimensionen (Strategie, Menschen, Daten, Use Cases, Prozesse, Compliance und Tech-Infrastruktur)."
+                    "desc": "27 Fragen zu 7 Schlüsseldimensionen: Strategie, Mensch & Kultur, Daten, Use Cases, Prozesse, Compliance und Tech-Infrastruktur."
                 },
                 "2": {
                     "title": "Sofortige Analyse",
                     "desc": "Unser KI-gestützter Algorithmus identifiziert Ihr einzigartiges Unternehmens-Cluster-Profil und Ihr aktuelles Potenzial."
                 },
                 "3": {
-                    "title": "Wachstums-Roadmap",
-                    "desc": "Erhalten Sie individuelle Empfehlungen, um sich von Ihrem aktuellen Level auf das nächste zu entwickeln."
+                    "title": "Strategische Roadmap",
+                    "desc": "Profitieren Sie von maßgeschneiderten Handlungsempfehlungen, um Ihre KI-Transformation zielgerichtet voranzutreiben."
                 }
             }
         },
         "outcome": {
-            "title": "Die Ergebnisvorschau",
-            "subtitle": "Ihre Ergebnisseite enthält:",
-            "radarTitle": "Ihr KI-Reifegrad-Radar",
+            "title": "Vorschau Ihrer Analyse-Ergebnisse",
+            "subtitle": "Ihre individuelle Auswertung umfasst:",
+            "radarTitle": "Multidimensionales Reifegrad-Radar",
             "radarLabel": "KI-Reife",
             "subjects": {
                 "strategy": "Strategie",
@@ -108,22 +110,22 @@
                 },
                 "2": {
                     "title": "Cluster-Abzeichen",
-                    "desc": "Sind Sie ein neugieriger Experimentator oder ein KI-affiner Marktführer?"
+                    "desc": "Bestimmen Sie Ihr KI Profil: Vom abwartenden Beobachter bis zum strategischen Innovator."
                 },
                 "3": {
-                    "title": "Lückenanalyse",
-                    "desc": "Tiefer Einblick, welche Dimension Sie zurückhält."
+                    "title": "Gap-Analyse",
+                    "desc": "Identifikation der Faktoren, die Ihre Weiterentwicklung derzeit limitieren."
                 },
                 "4": {
-                    "title": "Roadmap",
-                    "desc": "Sofortige Quick-Wins vs. Langfristige strategische Veränderungen."
+                    "title": "Strategische Roadmap",
+                    "desc": "Unmittelbare Quick-Wins und nachhaltige Weichenstellungen für Ihre KI-Transformation."
                 }
             }
         },
         "cta": {
-            "title": "Bereit, Ihren KI-Reifegrad zu entdecken?",
-            "subtitle": "Schließen Sie sich über 500 Unternehmen an, die ihre KI-Reise bereits geplant haben",
-            "startBtn": "Jetzt Starten"
+            "title": "Ihre KI-Transformation beginnt mit Klarheit.",
+            "subtitle": "Identifizieren Sie strukturelle Handlungsbedarfe und nutzen Sie den AI Compass für eine zielgerichtete strategische Aufstellung.",
+            "startBtn": "Jetzt Analyse starten"
         }
     },
     "pages": {
@@ -139,21 +141,21 @@
             },
             "cm": {
                 "role": "Product Owner & Strategist",
-                "p1Heading": "Führung trifft auf Strategie und Ausführung",
-                "p1": "Mit mehr als 14 Jahren Führungserfahrung habe ich eine Karriere aufgebaut, die sich durch den Aufbau starker beruflicher Beziehungen, die Leitung komplexer Projekte und die Förderung nachhaltigen Unternehmenswachstums auszeichnet. Meine Expertise liegt an der Schnittstelle von strategischer Beratung, Projektmanagement und anspruchsvollen Kundenbeziehungen.",
-                "p2": "Die digitale Transformation und die Entwicklung der Künstlichen Intelligenz sind meine große Leidenschaft. Angetrieben von dem Wunsch, langfristige Werte zu schaffen, arbeite ich gerne mit vielfältigen Teams zusammen, um Probleme durch effektive Kommunikation und strategischen Weitblick zu lösen.",
+                "p1Heading": "Strategie, Führung & die Logik der Transformation",
+                "p1": "Über 14 Jahre Führungserfahrung bilden das Fundament meiner Arbeit. Meine Expertise liegt an der Schnittstelle von strategischer Beratung, präzisem Projektmanagement und dem Aufbau belastbarer Partnerschaften. Ich verstehe es, komplexe Herausforderungen in nachhaltiges Unternehmenswachstum zu übersetzen.",
+                "p2": "Die digitale Transformation und das Potenzial Künstlicher Intelligenz sind dabei meine zentrale Triebfeder. Mich treibt der Anspruch an, technologische Innovationen nicht als Selbstzweck zu sehen, sondern sie als Werkzeuge für langfristige Werte und echte Wettbewerbsvorteile zu nutzen. Ich glaube fest daran, dass die besten Lösungen durch strategischen Weitblick und eine klare, verbindliche Kommunikation in vielfältigen Teams entstehen.",
                 "p3Heading": "Der Architekt des AI Compass",
-                "p3": "Ich habe den AI Compass konzipiert, weil ich eine kritische Lücke auf dem Markt erkannt habe. Während sich KI rasant entwickelt, geht ihre Relevanz für den deutschen Mittelstand oft in technischer Komplexität verloren.",
-                "p4": "Als Product Owner verstehe ich meine Rolle als Brückenbauer: Ich übersetze komplexe KI-Fähigkeiten in umsetzbare Geschäftslogik. Mein Ziel ist es, Unternehmen mit der nötigen Klarheit und Präzision zu unterstützen, um die KI-Landschaft zu meistern und sicherzustellen, dass jeder technologische Meilenstein in messbarem, ROI-getriebenem Geschäftswert verankert ist."
+                "p3": "Ich habe den AI Compass konzipiert, um eine kritische Marktlücke zu schließen: Während sich KI rasant entwickelt, bleibt ihr konkreter Nutzen für den deutschen Mittelstand oft hinter technischer Komplexität verborgen.",
+                "p4": "In meiner hybriden Rolle als Stratege und Product Owner sehe ich mich als Brückenbauer. Ich übersetze hochkomplexe KI-Fähigkeiten in eine klare, umsetzbare Geschäftslogik. Mein Ziel ist es, Unternehmen die Präzision und Orientierung zu geben, die sie benötigen, um die KI-Landschaft souverän zu navigieren. Ich stelle sicher, dass jeder technologische Meilenstein in einem messbaren, ROI-getriebenen Geschäftswert verankert ist."
             },
             "hl": {
                 "role": "Lead Data Scientist & ML Engineer",
-                "p1Heading": "Architektur trifft auf Intelligenz und Erklärbarkeit",
-                "p1": "Mit über 8 Jahren Erfahrung in den Bereichen Enterprise-Systeme und KI-gesteuerte Produktentwicklung habe ich meine Karriere an der Schnittstelle von strukturiertem Engineering, statistischer Modellierung und skalierbarer SaaS-Architektur aufgebaut. Meine Expertise liegt in der Transformation komplexer geschäftlicher Herausforderungen in robuste Datensysteme, die transparent, messbar und produktionsbereit sind.",
-                "p2": "Ich betrachte die Entwicklung der KI nicht als abstrakte Experimentiererei, sondern als disziplinierte ingenieursmäßige Praxis. Meine Arbeit konzentriert sich auf den Aufbau von ML-Systemen, die prädiktive Intelligenz mit deterministischer Logik ausbalancieren, um sicherzustellen, dass jede algorithmische Ausgabe auf statistischer Strenge basiert.",
-                "p3Heading": "Der Intelligenzarchitekt hinter dem AI Compass",
-                "p3": "Ich habe die ML-v5-Engine entwickelt, die den AI Compass antreibt. Im Gegensatz zu generischen Scoring-Tools habe ich ein System entworfen, das deterministische Modelle mit fortschrittlichem Clustering kombiniert, um strukturierte, nachvollziehbare Roadmaps zu erstellen.",
-                "p4": "Mein Ziel ist einfach: KI-Systeme zu bauen, denen Führungskräfte vertrauen können. Indem ich statistische Modellierung mit sauberer Architektur in Einklang bringe, verwandle ich maschinelles Lernen von einer Blackbox in ein strategisches Instrument für messbaren Fortschritt und sorge dafür, dass jede Erkenntnis auf belastbarer Leistung und langfristiger technischer Zuverlässigkeit beruht."
+                "p1Heading": "Präzision in der Architektur: Intelligenz trifft Erklärbarkeit",
+                "p1": "Über 8 Jahre Erfahrung in Enterprise-Systemen und KI-gesteuerter Produktentwicklung bilden das Fundament meiner Arbeit. Mein Fokus liegt auf der Architektur robuster Datensysteme, die statistische Modellierung mit skalierbarem Software-Engineering vereinen. Ich transformiere komplexe geschäftliche Herausforderungen in transparente, messbare und produktionsbereite Lösungen.",
+                "p2": "Für mich ist die Entwicklung von KI keine abstrakte Experimentiererei, sondern eine disziplinierte ingenieursmäßige Praxis. Mein Schwerpunkt liegt auf dem Aufbau von ML-Systemen, die prädiktive Intelligenz präzise mit deterministischer Logik ausbalancieren. So stelle ich sicher, dass jede algorithmische Ausgabe auf statistischer Validität und technischer Stabilität basiert – weit über den Hype hinaus.",
+                "p3Heading": "Der technologische Kern des AI Compass",
+                "p3": "Ich habe die ML-v5-Engine entwickelt, die das analytische Herzstück des AI Compass bildet. Im Gegensatz zu herkömmlichen Scoring-Tools nutzt unser System fortgeschrittenes Clustering und deterministische Modelle, um strukturierte und vor allem nachvollziehbare Roadmaps zu generieren.",
+                "p4": "Mein Ziel ist es, KI-Systeme zu schaffen, denen Führungskräfte bedingungslos vertrauen können. Indem ich statistische Strenge mit einer sauberen Architektur in Einklang bringe, verwandle ich Machine Learning von einer „Blackbox“ in ein strategisches Präzisionsinstrument. Ich sorge dafür, dass jede Erkenntnis auf belastbarer Leistung und langfristiger technischer Zuverlässigkeit beruht."
             },
             "team": {
                 "linkedin": "Auf LinkedIn verbinden",
@@ -189,7 +191,7 @@
                 "privacy": "Datenschutz",
                 "privacyText": "Mit Ihrer Kontaktaufnahme erklären Sie sich damit einverstanden, dass Ihre Daten zur Bearbeitung Ihrer Anfrage in Übereinstimmung mit unserer ",
                 "imprint": "Impressum",
-                "imprintText": "Für formelle rechtliche Angaben besuchen Sie bitte unser "
+                "imprintText": "Detaillierte rechtliche Informationen entnehmen Sie bitte unserem "
             }
         },
         "methodology": {
@@ -198,27 +200,27 @@
             "cards": {
                 "1": {
                     "title": "Datenstandardisierung",
-                    "subtitle": "Preprocessing Loop",
-                    "p1": "Rohdaten aus Assessments werden über unsere ETL-Pipeline aufgenommen und mit Hilfe der <1>Z-Score-Standardisierung</1> (StandardScaler) normalisiert.",
-                    "p2": "Dadurch werden alle Dimensionsscores in eine Standardnormalverteilung (μ=0, σ=1) überführt. Dies stellt sicher, dass Ausreißer die Distanzmetriken beim Clustering nicht verzerren und ermöglicht einen fairen branchenübergreifenden Vergleich."
+                    "subtitle": "PREPROCESSING LOOP",
+                    "p1": "Die Rohdaten des Assessments werden über unsere ETL-Pipeline verarbeitet und mittels <1>Z-Score-Standardisierung</1> (StandardScaler) normalisiert.",
+                    "p2": "Dies transformiert alle Dimensionswerte in eine Standardnormalverteilung (μ=0, σ=1). So wird sichergestellt, dass Ausreißer die Distanzmetriken des Clusterings nicht verzerren und ein fairer Vergleich über verschiedene Branchen hinweg ermöglicht wird."
                 },
                 "2": {
-                    "title": "Archetypen-Clustering",
-                    "subtitle": "Unüberwachtes Lernen",
-                    "p1": "Wir nutzen <1>K-Means Clustering</1> (k=5), um Organisationen in bestimmte Reifegrad-Archetypen einzuordnen.",
-                    "p2": "Das Modell wurde mit unserem proprietären Datensatz von über 500 Profilen trainiert. Ihre Organisation wird basierend auf der euklidischen Distanz zum nächsten Zentroid in einen Cluster eingeordnet, was eine objektive Kategorisierung vom \"Traditionalist\" zum \"AI-Driven Leader\" bietet."
+                    "title": "KI-Profil Clustering",
+                    "subtitle": "UNSUPERVISED LEARNING",
+                    "p1": "Wir nutzen <1>K-Means-Clustering</1> (k=5), um Unternehmen in distinkte Reifegrad-Profile zu kategorisieren.",
+                    "p2": "Das Modell basiert auf unserem proprietären Datensatz von über 500 Profilen. Die Zuordnung Ihres Unternehmens erfolgt über die euklidische Distanz zum nächsten Zentroiden. Dies ermöglicht eine objektive Klassifizierung – vom „Traditionalisten“ bis zum „KI-Vorreiter“."
                 },
                 "3": {
-                    "title": "Prädiktives Roadmapping",
-                    "subtitle": "k-Nearest Neighbors (k-NN)",
-                    "p1": "Unsere Empfehlungs-Engine verwendet einen <1>k-Nearest Neighbors</1>-Algorithmus mit <3>Kosinusähnlichkeit</3>, um Ihre \"Peers der nächsten Stufe\" zu identifizieren.",
-                    "p2": "Indem wir Organisationen ausmachen, die Ihnen statistisch ähnlich sind, aber einen um 15-30 % höheren Reifegrad aufweisen, können wir deren Fähigkeiten rekonstruieren, um eine hochwahrscheinliche Roadmap für Ihren spezifischen Entwicklungspfad zu erstellen."
+                    "title": "Prädiktive Roadmap-Erstellung",
+                    "subtitle": "K-NEAREST NEIGHBORS (k-NN)",
+                    "p1": "Unsere Recommendation-Engine nutzt den <1>k-Nearest-Neighbors-Algorithmus (k-NN)</1> mit <3>Kosinus-Ähnlichkeit</3>, um Ihre „Next-Level Peers“ zu identifizieren.",
+                    "p2": "Durch die Lokalisierung statistisch ähnlicher Unternehmen, die jedoch einen um 15–30 % höheren Reifegrad aufweisen, leiten wir deren Erfolgsparameter ab (Reverse-Engineering). So generieren wir eine hochwahrscheinliche Roadmap für Ihren spezifischen Entwicklungspfad."
                 },
                 "4": {
                     "title": "Strategische Risikoanalyse",
-                    "subtitle": "Statistische Anomalie-Erkennung",
-                    "p1": "Der <1>Strategic Gap Analyzer</1> sucht nach strukturellen Ungleichgewichten über 7 Dimensionen hinweg und nutzt dabei einen Z-Score-Schwellenwert (> 1.5σ).",
-                    "p2": "Wir erkennen explizit Entkopplungen zwischen \"Strategie\" und \"Umsetzung\" (z. B. ein hoher Tech-Score bei gleichzeitig niedrigem People-Score) und markieren diese als kritische Risiken, die zu Projektfehlschlägen oder zu „Shelf-Ware“ (ungenutzten Systemen) führen könnten."
+                    "subtitle": "STATISTISCHE ANOMALIEERKENNUNG",
+                    "p1": "Der <1>Strategic Gap Analyzer</1> scannt mittels statistischer Anomalieerkennung nach strukturellen Ungleichgewichten über alle 7 Dimensionen hinweg (Z-Score-Schwellenwert > 1.5σ).",
+                    "p2": "Wir identifizieren gezielt Entkopplungen zwischen „Strategie“ und „Exekution“ (z. B. hoher Tech-Score bei geringem People-Score). Diese werden als kritische Risiken markiert, die zu Projektabbrüchen oder ungenutzten Investitionen („Shelf-ware“) führen könnten."
                 }
             },
             "tech": {
@@ -232,44 +234,69 @@
         },
         "privacy": {
             "title": "Datenschutzerklärung",
-            "subtitle": "ZULETZT AKTUALISIERT: FEBRUAR 2026 | KONFORM MIT DER EU-DSGVO",
+            "subtitle": "Stand: Februar 2026 | DSGVO-konform",
+            "intro": "Der Schutz Ihrer persönlichen Daten und das Vertrauen in unsere KI-Methodik haben für uns höchste Priorität. Diese Datenschutzerklärung informiert Sie darüber, wie wir Ihre Daten im Rahmen des AI Compass erheben, verarbeiten und schützen.",
             "s1": {
-                "title": "1. Verantwortliche Stelle (Verantwortlicher)",
-                "p1": "Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:"
+                "title": "1. Verantwortliche Stelle (Controller)",
+                "p1": "Verantwortlich für die Datenverarbeitung auf dieser Website ist:",
+                "address": "Christian Miething, Görschstraße 10A, 13187 Berlin, Germany"
             },
             "s2": {
-                "title": "2. Kein Tracking oder User Profiling",
-                "p1": "Wir respektieren Ihre Privatsphäre. Diese Website verwendet <1>keine</1> Tracking-Cookies, Google Analytics oder andere Tracking-Dienste von Drittanbietern zur Nutzererfassung. Wir setzen nur unbedingt erforderliche, funktionale Cookies ein, die für den Betrieb der Schnittstelle notwendig sind (z. B. der Status der Seitenleiste)."
+                "title": "2. Hosting und Server-Log-Dateien",
+                "p1": "Wir hosten unsere Website bei der Hetzner Online GmbH (oder vergleichbarem deutschen Anbieter). Alle Daten werden ausschließlich auf ISO 27001-zertifizierten Servern innerhalb der Bundesrepublik Deutschland / Europäischen Union verarbeitet. Wir haben mit diesem Anbieter einen Vertrag zur Auftragsverarbeitung (AVV) geschlossen.",
+                "p2": "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt:",
+                "l1": "Browsertyp und -version / Betriebssystem",
+                "l2": "Referrer URL / Hostname des zugreifenden Rechners",
+                "l3": "Uhrzeit der Serveranfrage / IP-Adresse",
+                "footer": "Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse) für die technisch fehlerfreie Darstellung und Sicherheit der Website."
             },
             "s3": {
-                "title": "3. Hosting & Server Logs",
-                "p1": "Wir hosten diese Website auf <1>ISO 27001-zertifizierten Servern innerhalb der Europäischen Union</1>. Der Provider sammelt und speichert automatisch Informationen in Server-Log-Dateien (Browser, Betriebssystem, Referrer URL, IP-Adresse, Uhrzeit), um die technische Stabilität und Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO)."
+                "title": "3. Das AI Compass Assessment & Lead-Generierung",
+                "h1": "A. Verarbeitung von Eingabedaten",
+                "p1": "Wenn Sie den AI Compass nutzen, erfassen wir die von Ihnen abgegebenen Bewertungen über 7 Geschäftsdimensionen hinweg.",
+                "purpose1": "Zweck: Berechnung Ihres KI-Reifegrades und Erstellung einer personalisierten Roadmap.",
+                "legal1": "Rechtsgrundlage: Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder die Anbahnung eines vertragsähnlichen Verhältnisses (Art. 6 Abs. 1 lit. b DSGVO).",
+                "h2": "B. Automatisierte Datenverarbeitung (Machine Learning)",
+                "p2": "Unser System nutzt automatisierte Algorithmen, um strategische Erkenntnisse zu liefern:",
+                "l1": "<0>Clustering (K-Means):</0> Ordnet Ihr Profil basierend auf mathematischer Proportionalität zu Peer-Gruppen einem von 5 Reifegrad-Archetypen zu.",
+                "l2": "<0>Benchmarking (k-NN):</0> Vergleicht Ihre Daten mit einem anonymisierten Datensatz, um strategische Lücken zu identifizieren.",
+                "note": "Hinweis zu Art. 22 DSGVO: Diese Verarbeitung stellt keine „automatisierte Entscheidungsfindung“ mit rechtlicher Wirkung dar. Die Ausgabe ist rein beratend. Das „Human-in-the-Loop“-Prinzip bleibt gewahrt, da die strategische Interpretation beim Nutzer liegt.",
+                "h3": "C. Lead-Daten (Kontaktformular)",
+                "p3": "Wenn Sie Ihren vollständigen Bericht anfordern, speichern wir Ihren Namen, Firmennamen, Branche und E-Mail-Adresse.",
+                "purpose3": "Zweck: Versand des Berichts und optionale Kontaktaufnahme für Beratungszwecke.",
+                "legal3": "Rechtsgrundlage: Art. 6 Abs. 1 lit. a (Einwilligung)."
             },
             "s4": {
-                "title": "4. AI Compass Assessment Verarbeitung",
-                "p1": "<0>Eingabedaten:</0> Wenn Sie den AI Compass nutzen, verarbeiten wir die Antworten, die Sie im Assessment zu 7 Geschäftsdimensionen (Strategie, Datenbereitschaft usw.) geben, um Ihren Reifegrad zu berechnen.",
-                "p2": "<0>Automatisierte Verarbeitung (Machine Learning):</0>",
-                "l1": "<0>Clustering (K-Means):</0> Ordnet Ihr Profil einem von 5 Reifegrad-Archetypen zu.",
-                "l2": "<0>Benchmarking (k-NN):</0> Vergleicht Ihre Daten mit anonymisierten Peer-Einträgen, um strategische Defizite zu identifizieren.",
-                "note": "*Hinweis: Diese Verarbeitung generiert beratende Erkenntnisse und stellt keine „automatisierte Entscheidungsfindung“ mit rechtlicher Wirkung gemäß Art. 22 DSGVO dar.",
-                "p3": "<0>Lead-Daten:</0> Wenn Sie einen vollständigen Bericht anfordern, speichern wir Ihren Namen, Ihr Unternehmen, die Branche und Ihre E-Mail-Adresse auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder zur Vertragserfüllung."
+                "title": "4. E-Mail-Versand (Brevo)",
+                "p1": "Für den Versand unserer Berichte nutzen wir Brevo (ehemals Sendinblue). Wir haben mit Brevo einen Auftragsverarbeitungsvertrag (AVV) geschlossen, um sicherzustellen, dass Ihre Daten ausschließlich nach unseren Anweisungen und unter DSGVO-Standards verarbeitet werden."
             },
             "s5": {
-                "title": "5. E-Mail-Zustellung (Brevo)",
-                "p1": "Für die zuverlässige Zustellung Ihres Assessment-Bulletins nutzen wir <1>Brevo</1> (früher Sendinblue), einen DSGVO-konformen Anbieter mit Sitz in Berlin/Paris.",
-                "p2": "Ihre E-Mail-Adresse und Ihr Name werden ausschließlich zum Zweck des Versands des angeforderten Berichts an Brevo übermittelt. Wir haben mit dem Anbieter einen Auftragsverarbeitungsvertrag (AVV) abgeschlossen, um die Sicherheit Ihrer Daten zu gewährleisten."
+                "title": "5. Datensicherheit und technische Maßnahmen",
+                "l1": "<0>Verschlüsselung:</0> Wir nutzen TLS 1.2/1.3 (HTTPS) für die Übertragung und AES-256-Verschlüsselung (\"at rest\") für alle Datenbankeinträge.",
+                "l2": "<0>Kein öffentliches LLM-Training:</0> Wir nutzen Ihre Assessment-Eingaben ausdrücklich nicht, um öffentliche Large Language Models (z. B. GPT-4) zu trainieren. Ihre Daten bleiben Ihr geistiges Eigentum.",
+                "l3": "<0>Lokale Schriftarten:</0> Alle Fonts werden lokal gehostet; es besteht keine Verbindung zu externen Servern (z. B. Google Fonts).",
+                "l4": "<0>Datenminimierung:</0> Wir erfassen nur Daten, die für die statistische Validität des Modells zwingend erforderlich sind."
             },
             "s6": {
-                "title": "6. Datensicherheit & Technische Maßnahmen",
-                "l1": "<0>Verschlüsselung bei der Übertragung:</0> Die gesamte Kommunikation wird durch eine TLS 1.2/1.3 Verschlüsselung (HTTPS) geschützt.",
-                "l2": "<0>Sichere Infrastruktur:</0> Die Daten werden auf sicheren, zugriffsgeschützten Servern mit strengen Firewall-Regeln gespeichert.",
-                "l3": "<0>Datenminimierung:</0> Wir erfassen nur jene spezifischen Datenpunkte, die für den K-Means-Clustering-Algorithmus erforderlich sind.",
-                "l4": "<0>Kein öffentliches LLM-Training:</0> Wir verwenden Ihre Kundendaten strikt <1>nicht</1>, um öffentliche Large Language Models (wie GPT-4) zu trainieren. Ihr geistiges Eigentum bleibt Ihnen erhalten.",
-                "l5": "<0>Lokale Schriften:</0> Wir hosten alle Schriftarten lokal. Eine Verbindung zu Google-Fonts-Servern wird nicht hergestellt."
+                "title": "6. Speicherdauer und Ihre Rechte",
+                "p1": "Wir speichern Ihre Daten nur so lange wie nötig oder bis Sie Ihre Einwilligung widerrufen. Sie haben folgende Rechte:",
+                "l1": "Auskunft, Berichtigung und Löschung (Art. 15, 16, 17 DSGVO).",
+                "l2": "Datenübertragbarkeit (Art. 20 DSGVO).",
+                "l3": "Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO).",
+                "l4": "Beschwerderecht (Art. 77 DSGVO) bei einer Aufsichtsbehörde (z. B. der Berliner Beauftragten für Datenschutz)."
             },
             "s7": {
-                "title": "7. Ihre Rechte",
-                "p1": "Sie haben jederzeit das Recht, Zugang, Berichtigung oder Löschung Ihrer persönlichen Daten zu verlangen. Sie können auch Ihre Einwilligung für die zukünftige Verarbeitung widerrufen. Um von diesen Rechten Gebrauch zu machen, wenden Sie sich bitte an die in Abschnitt 1 angegebene verantwortliche Stelle."
+                "title": "7. Analytics & Datensouveränität (Privacy by Design)",
+                "p1": "Diese Website verwendet eine DSGVO-konforme, cookiefreie Analyse-Lösung, die auf deutschen Servern gehostet wird. Wir tracken die Wirkung unserer Inhalte, nicht das Individuum.",
+                "l1": "Es werden keine persönlichen Daten auf Ihrem Gerät gespeichert.",
+                "l2": "Es werden keine dauerhaften Identifikatoren verwendet.",
+                "l3": "IP-Adressen werden vollständig anonymisiert.",
+                "l4": "Souveränität: Es findet kein Datentransfer in Drittländer (z. B. USA) statt.",
+                "footer": "Rechtsgrundlage: Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) zur technischen und inhaltlichen Optimierung unseres Angebots."
+            },
+            "s8": {
+                "title": "8. Hinweis für Unternehmenskunden (AVV)",
+                "p1": "Wir bieten Firmenkunden den Abschluss eines individuellen Auftragsverarbeitungsvertrages (AVV) gemäß Art. 28 DSGVO an, um die Einhaltung interner Compliance-Richtlinien zu unterstützen. Kontaktieren Sie uns hierfür unter den oben genannten Daten."
             }
         },
         "imprint": {
@@ -283,101 +310,111 @@
             "consumer": "Verbraucherstreitbeilegung",
             "consumerText": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
             "disclaimer": "Haftungsausschluss für KI-generierte Inhalte",
-            "disclaimerText": "Der \"AI Compass\" nutzt automatisierte Machine Learning Modelle (insbesondere K-Means Clustering und k-Nearest Neighbors) zur Analyse von Daten. Die bereitgestellten Ergebnisse, Reifegrad-Scores und Roadmaps dienen ausschließlich Informations- und Orientierungszwecken. Sie stellen keine professionelle geschäftliche, rechtliche oder strategische Beratung dar. Der Betreiber übernimmt keine Haftung für Geschäftsentscheidungen, die auf Basis der generierten Ausgabe getroffen werden."
+            "disclaimerText": "Der „AI Compass“ nutzt automatisierte Machine-Learning-Modelle (insbesondere K-Means-Clustering und k-Nearest-Neighbors) zur Analyse von Unternehmensdaten. Die bereitgestellten Ergebnisse, Reifegrad-Scores und Roadmaps dienen ausschließlich Informations- und Orientierungszwecken. Sie stellen keine professionelle geschäftliche, rechtliche oder strategische Beratung dar. Der Betreiber übernimmt keine Haftung für geschäftliche Entscheidungen, die auf Basis der generierten Ausgaben getroffen werden. Unabhängige Verifizierungen der Empfehlungen werden empfohlen."
         },
         "howItWorks": {
-            "title": "Wie es funktioniert",
+            "title": "So funktioniert es",
             "subtitle": "DER AI COMPASS PROZESS",
-            "processTitle": "Der Evaluierungsprozess",
+            "processTitle": "Der AI Compass Prozess",
             "steps": {
                 "1": {
-                    "title": "Bewerten",
-                    "desc": "Beantworten Sie einen strukturierten Fragebogen zu 7 Schlüsseldimensionen der KI-Reife. Unser Framework bewertet Ihre Fähigkeiten in den Bereichen Strategie, Daten und Technologie."
+                    "title": "01 Evaluieren",
+                    "desc": "Beantworten Sie einen strukturierten Fragebogen zu den 7 Kern-Dimensionen der KI-Reife. Unser Framework bewertet Ihre Kompetenzen in den Bereichen Strategie, Daten, Prozesse etc. tiefgreifend."
                 },
                 "2": {
-                    "title": "Analysieren",
-                    "desc": "Unsere ML-Engine vergleicht Ihre Daten mit Branchen-Benchmarks. Wir identifizieren Ihr 'Cluster-Profil' mithilfe unseres proprietären Reifegradmodells."
+                    "title": "02 Analysieren",
+                    "desc": "Unsere ML-Engine vergleicht Ihre Daten mit aktuellen Branchen-Benchmarks. Auf Basis unseres proprietären Reifegradmodells identifizieren wir Ihr spezifisches Cluster-Profil und erstellen eine Gap-Analyse."
                 },
                 "3": {
-                    "title": "Handeln",
-                    "desc": "Erhalten Sie eine umfassende strategische Roadmap. Bekommen Sie konkrete, umsetzbare Schritte, um von Ihrem aktuellen Status zum nächsten Reifegrad zu gelangen."
+                    "title": "03 Umsetzen",
+                    "desc": "Sie erhalten eine umfassende strategische Roadmap. Diese liefert Ihnen konkrete, handlungsorientierte Schritte, um Ihren Reifegrad systematisch auf das nächste Level zu heben."
                 }
             },
             "frameworkTitle": "Das 7-Dimensionen-Framework",
-            "frameworkDesc": "Wir betrachten nicht nur die Technologie. Wahre KI-Reife erfordert einen ganzheitlichen Ansatz für Ihr gesamtes Unternehmen. Unser Assessment bewertet:",
+            "frameworkDesc": "Echte KI-Reife ist keine rein technologische Frage, sondern erfordert einen ganzheitlichen Ansatz über die gesamte Organisation hinweg. Unser Assessment evaluiert Ihre Leistungsfähigkeit in diesen Dimensionen:",
             "dimensions": {
-                "1": "Strategie & Führung",
-                "2": "Anwendungsfälle & Wert",
-                "3": "Daten & Infrastruktur",
-                "4": "Talent & Kultur",
-                "5": "Governance & Ethik",
-                "6": "Technologie & Tools",
-                "7": "Partnerschaften & Ökosystem"
+                "1": "Strategie & Zielbild",
+                "2": "Mensch & Kultur",
+                "3": "Datenreife & Datenkompetenz",
+                "4": "Use Cases & Business Value",
+                "5": "Prozesse & Skalierung",
+                "6": "Governance & Compliance",
+                "7": "Technische Infrastruktur"
             },
-            "startBtn": "Assessment Starten"
+            "startBtn": "Jetzt Assessment starten"
         }
     },
     "results": {
         "hero": {
-            "title": "AI Compass: Executive Ergebnisse",
-            "subtitle": "Dies ist Ihr strategischer Blueprint — eine verifizierte Basislinie Ihrer aktuellen Position, die Ihren organisatorischen Reifegrad, Ihre Wettbewerbsposition und den strategischen Weg zur Skalierung messbaren KI-Werts detailliert darstellt.",
+            "title": "AI Compass: Ihre Strategische Auswertung",
+            "subtitle": "Dies ist Ihre maßgeschneiderte Analyse für die KI-Transformation. Sie liefert Ihnen die fundierte Grundlage für belastbare Entscheidungen und Ihren strategischen Fahrplan zu einem nachhaltigen Wettbewerbsvorteil.",
             "score": "Gesamtergebnis",
-            "overallMaturity": "KI-Reifegrad Gesamt",
+            "overallMaturity": "KI-Reifegrad",
             "cluster": "Cluster",
-            "archetype": "Organisatorischer Archetyp",
+            "archetype": "Ihr KI-Profil",
             "percentile": "Perzentile",
             "top": "Top",
-            "vsPeers": "vs. {{industry}} Peers"
+            "vsPeers": "im Branchenvergleich"
         },
         "cluster": {
-            "title": "Ihr Cluster-Profil",
-            "description": "Basierend auf Ihrem Assessment entspricht Ihr Unternehmen am ehesten dem Archetyp <strong>{{clusterName}}</strong>. Unser K-Means-Modell kategorisiert Unternehmen in 5 Reifegradstufen, basierend auf verifizierten Mustern in Strategie, Personal und technologischer Bereitschaft.",
+            "title": "Ihre Standortbestimmung: {{clusterName}}",
+            "description": "Sie haben das {{levelOrdinal}} von fünf Reifegrad-Leveln erreicht. Der AI Compass hat Ihre Angaben zu den 7 Dimensionen analysiert und Sie als {{clusterGrammar}} identifiziert.",
             "valueGrowth": "Wertsteigerung",
             "aiMaturity": "KI-Reife",
             "youAreHere": "Sie sind hier",
             "definitions": {
                 "1": {
-                    "name": "Der Traditionalist",
-                    "description": "KI ist noch kein Thema. Abläufe sind überwiegend manuell, Daten sind isoliert oder analog, und es gibt oft erhebliche kulturelle Skepsis."
+                    "name": "Abwartender Beobachter",
+                    "ordinal": "erste",
+                    "grammar": "Abwartenden Beobachter",
+                    "description": "KI spielt ope\u00adra\u00adtiv noch keine Rolle. Pro\u00adzes\u00adse sind weit\u00adge\u00adhend manuell, Daten liegen in Silos und es herrscht eine ab\u00adwar\u00adten\u00adde Haltung gegen\u00adüber tech\u00adno\u00adlo\u00adgi\u00adschen Ver\u00adän\u00adde\u00adrun\u00adgen."
                 },
                 "2": {
-                    "name": "Der Experimentelle Entdecker",
-                    "description": "Das Unternehmen hat begonnen, mit isolierten KI-Tools wie ChatGPT zu \"spielen\". Es gibt Neugier, aber keine formelle Strategie oder Aufsicht."
+                    "name": "Pragmatischer Anwender",
+                    "ordinal": "zweite",
+                    "grammar": "Pragmatischen Anwender",
+                    "description": "Erste punk\u00adtu\u00adel\u00adle Nutzung von KI-Tools (z. B. GenAI) findet statt. Es gibt Neugier und „Insel-Lösungen“, aber noch keine or\u00adga\u00adni\u00adsa\u00adto\u00adri\u00adsche Strategie oder zen\u00adtra\u00adle Steuerung."
                 },
                 "3": {
-                    "name": "Der Strukturierte Gestalter",
-                    "description": "Ein solides technisches und strategisches Fundament wird gelegt. Erste Roadmaps und Cloud-Infrastruktur sind vorhanden, aber die Skalierung bleibt schwierig."
+                    "name": "Systematischer Architekt",
+                    "ordinal": "dritte",
+                    "grammar": "Systematischen Architekten",
+                    "description": "Der stra\u00adte\u00adgi\u00adsche Wendepunkt: Ein solides Fun\u00adda\u00adment aus Governance, Daten-In\u00adfra\u00adstruk\u00adtur und Roadmaps wird aufgebaut. Struktur geht hier vor Ska\u00adlie\u00adrung."
                 },
                 "4": {
-                    "name": "Der Operative Skalierer",
-                    "description": "KI liefert messbaren ROI. Die Führungsebene ist abgestimmt und das Unternehmen bringt mehrere Anwendungsfälle in die Produktion."
+                    "name": "Operativer Multiplikator",
+                    "ordinal": "vierte",
+                    "grammar": "Operativen Multiplikator",
+                    "description": "KI ist im Live-Betrieb und liefert messbaren ROI. Die Tech\u00adno\u00adlo\u00adgie wirkt als Hebel auf die be\u00adste\u00adhen\u00adde Wert\u00adschöp\u00adfung und wird sys\u00adte\u00adma\u00adtisch über Ab\u00adtei\u00adlun\u00adgen hinweg skaliert."
                 },
                 "5": {
-                    "name": "Der KI-getriebene Marktführer",
-                    "description": "KI ist eine zentrale strategische Säule. Die Belegschaft ist hoch kompetent, Datenströme sind automatisiert und das Unternehmen setzt Branchenstandards."
+                    "name": "Strategischer Innovator",
+                    "ordinal": "fünfte",
+                    "grammar": "Strategischen Innovator",
+                    "description": "KI ist Kern\u00adbe\u00adstand\u00adteil des Ge\u00adschäfts\u00admo\u00addells. Datenflüsse sind au\u00adto\u00adma\u00adti\u00adsiert, die Belegschaft ist hochgradig KI-kompe\u00adtent und das Unternehmen definiert neue Bran\u00adchen\u00adstan\u00addards."
                 }
             }
         },
         "maturity": {
-            "title": "Das mehrdimensionale Reifegradprofil",
-            "subtitle": "Ihre KI-Fähigkeit ist keine einzelne Zahl. Dieses Profil schlüsselt Ihren Reifegrad über die 7 kritischen Säulen auf, die für die Skalierung von KI-Mehrwert erforderlich sind.",
+            "title": "Ihr differenziertes Reifegrad-Profil",
+            "subtitle": "Hinter Ihrem Gesamtergebnis steht ein komplexes Profil. Diese Analyse schlüsselt Ihre Reife detailliert in den 7 Dimensionen auf, die für eine skalierbare und messbare KI-Wertschöpfung entscheidend sind.",
             "yourCompany": "Ihr Unternehmen",
             "benchmark": "Branchen-Benchmark",
             "dimensions": {
-                "strategy": "Strategie & Führung",
-                "useCases": "Anwendungsfälle & Wert",
-                "data": "Daten & Infrastruktur",
-                "talent": "Talent & Kultur",
-                "governance": "Governance & Ethik",
-                "technology": "Technologie & Tools",
+                "strategy": "Strategie & Zielbild",
+                "useCases": "Use Cases & Business Value",
+                "data": "Datenreife & Datenkompetenz",
+                "talent": "Mensch & Kultur",
+                "governance": "Governance & Compliance",
+                "technology": "Technische Infrastruktur",
                 "partnerships": "Partnerschaften & Ökosystem",
                 "execution": "Ausführung & Skalierung",
                 "processes": "Prozesse & Skalierung"
             }
         },
         "gaps": {
-            "title": "Strategische Lückenanalyse",
-            "subtitle": "Eine präzise Synthese Ihrer strategischen Position und hochprioritären Risiken.",
+            "title": "Strategische Gap-Analyse",
+            "subtitle": "Die prägnante Einordnung Ihrer strategischen Position und Identifikation kritischer Risikofaktoren.",
             "structuralRisk": "Strukturelles Ungleichgewicht",
             "criticalWeakness": "Kritische Schwäche",
             "impactScore": "Auswirkungsgrad",
@@ -405,8 +442,8 @@
             "mediumTime": "Mittel",
             "long": "Lang",
             "noRoadmap": "Ihre Roadmap wird generiert. Bitte versuchen Sie es später erneut.",
-            "whyTitle": "Warum diese Roadmap?",
-            "whyDesc": "Dieser Plan wird dynamisch erstellt, indem Ihr Profil mit Branchen-Benchmarks verglichen wird. Phase 1 konzentriert sich auf die Schließung struktureller Lücken, während Phase 2 & 3 auf Differenzierung und Marktführerschaft abzielen.",
+            "whyTitle": "Die Logik hinter Ihrem Fahrplan",
+            "whyDesc": "Diese Roadmap basiert auf einer automatisierten Gap-Analyse zwischen Ihrem individuellen Profil und aktuellen Branchen-Benchmarks. Während Phase 1 die Schließung kritischer struktureller Lücken priorisiert, fokussieren die weiteren Phasen den systematischen Aufbau Ihrer internen KI-Kompetenzen, um Ihre Wettbewerbsfähigkeit und Marktpräsenz langfristig zu sichern.",
             "actionLabel": "Fokusfeld",
             "scoreLabel": "Impact Score:",
             "analysisLabel": "Analyse:",
@@ -427,35 +464,35 @@
             }
         },
         "consultation": {
-            "title": "Expertenberatung & Nächste Schritte",
-            "subtitle": "Von der digitalen Analyse zur menschengeführten Transformation.",
+            "title": "Strategischer Dialog & Umsetzung",
+            "subtitle": "Vom datenbasierten Insight zur wertschöpfenden Realisierung.",
             "cta": {
-                "title": "Kontaktieren Sie uns für ein Strategie-Deep-Dive",
-                "desc": "Jede KMU-Reise ist einzigartig. Kontaktieren Sie unseren AI Compass Strategen, um Ihre Roadmap zu validieren und branchenspezifische 'Quick Wins' zu identifizieren."
+                "title": "Kontaktieren Sie uns für Ihr persönliches Gespräch",
+                "desc": "Jede Unternehmenssituation erfordert individuelle Hebel. Validieren Sie Ihre Roadmap gemeinsam mit unseren KI-Experten und identifizieren Sie gezielte Quick Wins für Ihr Unternehmen."
             },
             "contact": {
                 "email": "E-Mail",
                 "phone": "Telefon"
             },
             "features": [
-                "30-minütige Expertensitzung",
-                "Branchenspezifische Benchmarks",
-                "Roadmap-Validierung",
-                "Budget-ROI-Modellierung"
+                "30-Minuten Strategie-Check",
+                "Exklusiver Branchenvergleich",
+                "Roadmap-Audit & Validierung",
+                "Erste ROI-Potenzialanalyse"
             ]
         },
         "download": {
-            "title": "Vollständigen PDF-Bericht herunterladen",
+            "title": "Vollständige Analyse und Roadmap sichern",
             "btnGenerating": "PDF wird generiert...",
-            "btnDownload": "Vollständiges PDF Profil herunterladen",
-            "desc": "Ihr PDF enthält Ihr detailliertes Reifegradprofil, Benchmark-Daten und eine priorisierte Roadmap. Perfekt für Ihr nächstes Vorstands- oder Management-Meeting.",
+            "btnDownload": "Vollständigen Bericht laden (PDF)",
+            "desc": "Ihr persönlicher Bericht dokumentiert Ihren detaillierten KI-Reifegrad, eine maßgeschneiderte Analyse und eine priorisierte Roadmap – die ideale Entscheidungsgrundlage für Ihre nächste Gremien-Sitzung.",
             "features": {
-                "technical": "Vollständige technische Analyse",
-                "executive": "Zusammenfassung für Führungskräfte",
-                "charts": "Hochauflösende Diagramme",
-                "licensing": "Team-Lizenz inbegriffen"
+                "technical": "Detaillierte Analyse",
+                "executive": "Executive Summary",
+                "charts": "Visualisierte Daten-Diagramme",
+                "licensing": "Bereit für interne Präsentationen"
             },
-            "instantly": "Sofort generiert • PDF",
+            "instantly": "Sofort generiert • 1,2 MB",
             "toastGenerating": "PDF-Bericht wird generiert...",
             "toastSuccess": "Bericht erfolgreich heruntergeladen.",
             "toastError": "Fehler bei der PDF-Generierung. Bitte versuchen Sie es später noch einmal."
@@ -469,7 +506,7 @@
         "question": "Frage",
         "selectAllThatApply": "(Mehrfachauswahl möglich)",
         "back": "Zurück",
-        "skipSection": "Bereich überspringen",
+        "skipSection": "Fragen überspringen",
         "next": "Weiter",
         "finish": "Abschließen",
         "progress": {

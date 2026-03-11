@@ -4,55 +4,62 @@ import { ArrowRight, Shield, Clock, Award, Loader2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { ImageWithFallback } from './ImageWithFallback';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 export function HeroSection({ onStart, isStarting }) {
     const { t } = useTranslation();
     return (
-        <section className="pt-24 pb-12 px-6">
+        <section className="pt-32 pb-16 px-6">
             <div className="max-w-[80rem] mx-auto">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16 items-center">
                     <div>
-                        <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
-                            {t('landing.hero.title')}
-                        </h1>
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            {t('landing.hero.subtitle')}
-                        </p>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 leading-tight tracking-tight">
+                                {t('landing.hero.title')}
+                            </h1>
+                            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                                {t('landing.hero.subtitle')}
+                            </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button
-                                onClick={onStart}
-                                disabled={isStarting}
-                                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-lg text-lg font-semibold hover:shadow-xl transition-all h-auto"
-                            >
-                                {isStarting ? (
-                                    <>
-                                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                        {t('landing.hero.starting', 'Starting...')}
-                                    </>
-                                ) : (
-                                    <>
-                                        {t('landing.hero.startBtn')}
-                                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </>
-                                )}
-                            </Button>
-                        </div>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Button
+                                    onClick={onStart}
+                                    disabled={isStarting}
+                                    className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-lg text-lg font-semibold hover:shadow-xl transition-all h-auto"
+                                >
+                                    {isStarting ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                            {t('landing.hero.starting', 'Starting...')}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {t('landing.hero.startBtn')}
+                                            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                        </>
+                                    )}
+                                </Button>
+                            </div>
 
-                        <div className="flex items-center gap-6 mt-8 text-sm text-gray-600 flex-wrap">
-                            <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                <span>{t('landing.hero.time')}</span>
+                            <div className="flex items-center gap-6 mt-8 text-sm text-gray-600 flex-wrap">
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-4 h-4" />
+                                    <span>{t('landing.hero.time')}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Shield className="w-4 h-4" />
+                                    <span>{t('landing.hero.gdpr')}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Award className="w-4 h-4" />
+                                    <span>{t('landing.hero.framework')}</span>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <Shield className="w-4 h-4" />
-                                <span>{t('landing.hero.gdpr')}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Award className="w-4 h-4" />
-                                <span>{t('landing.hero.framework')}</span>
-                            </div>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="relative flex justify-center lg:justify-end">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl blur-3xl transform scale-90"></div>
@@ -63,7 +70,7 @@ export function HeroSection({ onStart, isStarting }) {
                         />
                     </div>
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }

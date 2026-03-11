@@ -21,7 +21,7 @@ export function ExecutiveBriefing({ data }) {
             // Replace the main header if it matches the specific pattern
             .replace(/### (.*?)\n/g, '<h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">$1</h3>')
             // Handle bold text
-            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 font-bold">$1</strong>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-800 font-bold">$1</strong>')
             // Handle double newlines as paragraphs
             .split('\n\n')
             .map(para => {
@@ -58,9 +58,13 @@ export function ExecutiveBriefing({ data }) {
 
     return (
         <section className="space-y-6">
-            <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tight text-black">{t('results.gaps.title')}</h2>
-                <p className="text-muted-foreground text-lg">{t('results.gaps.subtitle')}</p>
+            <div className="space-y-4 text-center max-w-5xl mx-auto mb-6 md:mb-8 pt-16 md:pt-24">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800">
+                    {t('results.gaps.title')}
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t('results.gaps.subtitle')}
+                </p>
             </div>
 
             <Card className="glass-premium overflow-hidden border-none relative">
@@ -106,7 +110,7 @@ export function ExecutiveBriefing({ data }) {
                                                             <Badge variant="outline" className={cn("mb-2 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
                                                                 {visuals.label}
                                                             </Badge>
-                                                            <CardTitle className="text-xl font-bold text-slate-900 leading-snug">
+                                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug">
                                                                 {gap.title.replace(/^(Critical Gap|Structural Imbalance):\s*/i, '')}
                                                             </CardTitle>
                                                         </div>
@@ -157,6 +161,6 @@ export function ExecutiveBriefing({ data }) {
                     )}
                 </CardContent>
             </Card>
-        </section>
+        </section >
     );
 }

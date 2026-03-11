@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CornerDownRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function FlipCard({ title, icon: Icon, what, why, index }) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const { t } = useTranslation();
 
     return (
         <motion.div
@@ -11,7 +13,7 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="h-[175px]"
+            className="h-[220px]"
             style={{ perspective: '1000px' }}
         >
             <motion.div
@@ -29,10 +31,10 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
                     <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-3 rounded-full mb-3">
                         <Icon className="w-6 h-6 text-blue-600" />
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 leading-tight px-2">{title}</h3>
+                    <h3 className="text-[17px] font-bold text-slate-800 leading-tight px-2">{title}</h3>
 
-                    <div className="absolute bottom-2 right-2 text-gray-400 group-hover:text-blue-500 transition-colors">
-                        <CornerDownRight className="w-3 h-3" />
+                    <div className="absolute bottom-3 right-3 text-gray-400 group-hover:text-blue-500 transition-colors">
+                        <CornerDownRight className="w-5 h-5" />
                     </div>
                 </div>
 
@@ -45,14 +47,14 @@ export function FlipCard({ title, icon: Icon, what, why, index }) {
                         transform: 'rotateY(180deg)',
                     }}
                 >
-                    <div className="space-y-1.5">
+                    <div className="space-y-4">
                         <div>
-                            <h4 className="font-bold text-[9px] uppercase tracking-wider text-blue-200 mb-0.5">What it is</h4>
-                            <p className="text-xs leading-tight">{what}</p>
+                            <h4 className="font-bold text-sm uppercase tracking-wider text-white mb-0">{t('landing.value.whatLabel')}</h4>
+                            <p className="text-sm leading-snug">{what}</p>
                         </div>
                         <div>
-                            <h4 className="font-bold text-[9px] uppercase tracking-wider text-blue-200 mb-0.5">Why needed</h4>
-                            <p className="text-xs leading-tight">{why}</p>
+                            <h4 className="font-bold text-sm uppercase tracking-wider text-white mb-0">{t('landing.value.whyLabel')}</h4>
+                            <p className="text-sm leading-snug">{why}</p>
                         </div>
                     </div>
                 </div>

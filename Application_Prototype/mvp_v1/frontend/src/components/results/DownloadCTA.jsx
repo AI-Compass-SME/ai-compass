@@ -32,7 +32,7 @@ export function DownloadCTA({ responseId }) {
     };
 
     return (
-        <section className="py-12" id="download-cta">
+        <section className="mt-8 md:mt-12 mb-8 md:mb-12" id="download-cta">
             <div className="relative rounded-3xl overflow-hidden p-[1px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-2xl">
                 <div className="bg-white rounded-[23px] relative overflow-hidden">
                     <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-50" />
@@ -49,7 +49,7 @@ export function DownloadCTA({ responseId }) {
                         {/* Content Section */}
                         <div className="flex-1 space-y-6">
                             <div>
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{t('results.download.title')}</h2>
+                                <h2 className="text-3xl font-bold text-slate-800 tracking-tight">{t('results.download.title')}</h2>
                                 <p className="text-slate-600 text-lg mt-2">
                                     {t('results.download.desc')}
                                 </p>

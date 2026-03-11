@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
                         <p className="text-gray-600 mb-6">
                             {t('pages.howItWorks.frameworkDesc')}
                         </p>
-                        <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4 max-w-md mx-auto md:mx-0">
                             {dimensions.map((dim, idx) => (
                                 <div key={idx} className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-lg shadow-sm hover:border-indigo-100 transition-colors group">
                                     <div className="relative w-5 h-5 flex-shrink-0 flex items-center justify-center">

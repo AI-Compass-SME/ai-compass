@@ -55,7 +55,7 @@ export default function LandingPage() {
         try {
             setIsStarting(true);
             const session = await initializeVisitorSession(i18n.language);
-            toast.success(t('landing.hero.success', "Assessment started!"));
+            toast.success(t('landing.hero.success', "Assessment started!"), { duration: 1000 });
             navigate(`/assessment/${session.responseId}`);
         } catch (error) {
             toast.error(t('landing.hero.error', "Failed to start assessment. Please try again."));

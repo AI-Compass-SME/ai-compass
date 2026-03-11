@@ -23,17 +23,23 @@ export function ClusterProfile({ data }) {
         ? t(`results.cluster.definitions.${activeClusterId}.name`)
         : (data.cluster.cluster_name || "Unknown").replace(/^\d+\s*-\s*/, '');
 
+    const activeLevelOrdinal = activeClusterId > 0 && activeClusterId <= 5
+        ? t(`results.cluster.definitions.${activeClusterId}.ordinal`)
+        : "";
+
+    const activeClusterGrammar = activeClusterId > 0 && activeClusterId <= 5
+        ? t(`results.cluster.definitions.${activeClusterId}.grammar`)
+        : activeClusterName;
+
     return (
         <section className="space-y-8 relative">
             <div className="absolute inset-0 bg-slate-50/50 -skew-y-1 transform rounded-3xl -z-10" />
-            <div className="space-y-4 text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-                    {t('results.cluster.title')}
+            <div className="space-y-4 text-center max-w-5xl mx-auto mb-6 md:mb-8 pt-16 md:pt-24">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800">
+                    {t('results.cluster.title', { clusterName: activeClusterName })}
                 </h2>
-                <p className="text-slate-600 text-lg leading-relaxed">
-                    <Trans i18nKey="results.cluster.description" values={{ clusterName: activeClusterName }}>
-                        Based on your assessment, your organization aligns most closely with the <strong>{activeClusterName}</strong> archetype. Our K-Means model categorizes companies across 5 stages of maturity based on verified patterns in strategy, personnel, and technological readiness.
-                    </Trans>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t('results.cluster.description', { levelOrdinal: activeLevelOrdinal, clusterGrammar: activeClusterGrammar })}
                 </p>
             </div>
 
@@ -42,8 +48,17 @@ export function ClusterProfile({ data }) {
                     {/* Combined Visualization Area */}
                     <div className="relative">
                         {/* Y-Axis Label */}
-                        <div className="absolute left-0 top-0 bottom-32 -translate-x-full pr-4 flex items-center justify-center">
-                            <span className="text-xs font-bold text-slate-400 -rotate-90 whitespace-nowrap tracking-wider uppercase">{t('results.cluster.valueGrowth')}</span>
+                        <div className="absolute top-5 -left-8 md:-left-10 z-10 w-0 h-0">
+                            <div className="absolute top-0 right-0 origin-top-right -rotate-90 flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-slate-400 tracking-wider uppercase whitespace-nowrap">
+                                {t('results.cluster.valueGrowth')}
+                                <svg width="36" height="10" viewBox="0 0 64 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M58 4l6 4-6 4" /><path d="M0 8h64" /></svg>
+                            </div>
+                        </div>
+
+                        {/* X-Axis Label (Inside top left) */}
+                        <div className="absolute top-4 left-4 md:left-6 z-10 flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-slate-400 tracking-wider uppercase">
+                            {t('results.cluster.aiMaturity')}
+                            <svg width="48" height="12" viewBox="0 0 64 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M58 4l6 4-6 4" /><path d="M0 8h64" /></svg>
                         </div>
 
                         {/* Chart Grid */}
@@ -54,7 +69,7 @@ export function ClusterProfile({ data }) {
                                     <div key={cluster.id} className="flex flex-col items-center justify-end h-full gap-0 group relative">
                                         {isActive && (
                                             <div
-                                                className="absolute bg-slate-900 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-lg animate-bounce z-10 whitespace-nowrap"
+                                                className="absolute bg-slate-900 text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-lg z-10 whitespace-nowrap"
                                                 style={{ bottom: `calc(${cluster.height} + 16px)` }}
                                             >
                                                 {t('results.cluster.youAreHere')}
@@ -91,12 +106,12 @@ export function ClusterProfile({ data }) {
                                         )}
                                     >
                                         <h4 className={cn(
-                                            "font-bold mb-1 md:mb-2 text-[10px] md:text-xs leading-tight",
+                                            "font-bold mb-1 md:mb-2 text-[11px] md:text-sm leading-tight",
                                             isActive ? "text-indigo-700" : "text-slate-700"
                                         )}>
                                             {t(`results.cluster.definitions.${cluster.id}.name`)}
                                         </h4>
-                                        <p className="hidden md:block text-[10px] text-slate-500 leading-tight font-medium">
+                                        <p className="hidden md:block text-[11px] md:text-xs text-slate-600 leading-snug font-medium">
                                             {t(`results.cluster.definitions.${cluster.id}.description`)}
                                         </p>
                                     </div>
@@ -104,13 +119,10 @@ export function ClusterProfile({ data }) {
                             })}
                         </div>
 
-                        {/* X-Axis Label */}
-                        <div className="mt-6 text-center">
-                            <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">{t('results.cluster.aiMaturity')}</span>
-                        </div>
+                        {/* Old X-Axis Label removed */}
                     </div>
                 </CardContent>
             </Card>
-        </section>
+        </section >
     );
 }

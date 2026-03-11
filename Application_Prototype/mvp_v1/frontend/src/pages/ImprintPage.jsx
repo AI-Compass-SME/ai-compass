@@ -30,7 +30,7 @@ export default function ImprintPage() {
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.info')}</h2>
                             <p className="leading-relaxed">
                                 Christian Miething<br />
-                                Görschstrasse 10A<br />
+                                Görschstraße 10A<br />
                                 13187 Berlin, Germany
                             </p>
                         </section>
@@ -38,8 +38,8 @@ export default function ImprintPage() {
                         <section>
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.contact')}</h2>
                             <p className="leading-relaxed">
-                                Phone: TBD<br />
-                                Email: info@the-ai-compass.de<br />
+                                Telefon: {t('pages.contact.phone.val')}<br />
+                                E-Mail: info@the-ai-compass.de<br />
                                 Website: www.the-ai-compass.de
                             </p>
                         </section>
@@ -48,7 +48,7 @@ export default function ImprintPage() {
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.responsible')}</h2>
                             <p className="leading-relaxed">
                                 Christian Miething<br />
-                                Görschstrasse 10A<br />
+                                Görschstraße 10A<br />
                                 13187 Berlin, Germany
                             </p>
                         </section>
@@ -57,7 +57,7 @@ export default function ImprintPage() {
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.eu')}</h2>
                             <p className="leading-relaxed">
                                 {t('pages.imprint.euText')}{' '}
-                                <a href="https://consumer-redress.ec.europa.eu/index_de" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                                     ec.europa.eu/consumers/odr
                                 </a>.
                             </p>
