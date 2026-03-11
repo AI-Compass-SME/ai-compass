@@ -45,9 +45,13 @@ export function MaturityProfile({ data }) {
 
     return (
         <section className="space-y-4">
-            <div className="space-y-1">
-                <h2 className="text-3xl font-bold tracking-tight text-black">{t('results.maturity.title')}</h2>
-                <p className="text-muted-foreground text-lg">{t('results.maturity.subtitle')}</p>
+            <div className="space-y-4 text-center max-w-5xl mx-auto mb-6 md:mb-8 pt-16 md:pt-24">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800">
+                    {t('results.maturity.title')}
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t('results.maturity.subtitle')}
+                </p>
             </div>
 
             <Card className="glass-premium overflow-hidden border-none relative shadow-xl">
@@ -55,14 +59,14 @@ export function MaturityProfile({ data }) {
                 <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-50/40 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50/40 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none" />
 
-                <CardContent className="h-[400px] flex flex-col p-2 relative z-10">
+                <CardContent className="h-[450px] md:h-[500px] flex flex-col pt-8 pb-6 px-4 relative z-10">
                     <div className="flex-1 min-h-0 w-full max-w-5xl mx-auto flex items-center justify-center">
                         <ResponsiveContainer width="100%" height="100%">
-                            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+                            <RadarChart cx="50%" cy="50%" outerRadius="75%" data={radarData}>
                                 <PolarGrid stroke="#94a3b8" strokeDasharray="3 3" />
                                 <PolarAngleAxis
                                     dataKey="subject"
-                                    tick={{ fill: '#475569', fontSize: 13, fontWeight: 600, fontFamily: 'Inter, sans-serif' }}
+                                    tick={{ fill: '#475569', fontSize: 14.5, fontWeight: 600, fontFamily: 'Inter, sans-serif' }}
                                 />
                                 <PolarRadiusAxis
                                     angle={30}
@@ -110,6 +114,6 @@ export function MaturityProfile({ data }) {
                     </div>
                 </CardContent>
             </Card>
-        </section>
+        </section >
     );
 }

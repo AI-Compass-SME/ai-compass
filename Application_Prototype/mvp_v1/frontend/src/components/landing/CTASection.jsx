@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 export function CTASection({ onStart, isStarting }) {
     const { t } = useTranslation();
     return (
-        <section className="py-20 px-6 bg-gradient-to-r from-blue-600 to-purple-600">
+        <section className="py-32 px-6 bg-gradient-to-r from-blue-600 to-purple-600">
             <div className="max-w-4xl mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

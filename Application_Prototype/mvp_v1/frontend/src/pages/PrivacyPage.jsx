@@ -39,79 +39,108 @@ export default function PrivacyPage() {
                     subtitle={t('pages.privacy.subtitle')}
                 />
 
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-12 grid md:grid-cols-2 gap-x-12 gap-y-6">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-12 space-y-10">
 
-                    {/* 1. Controller */}
-                    <Section title={t('pages.privacy.s1.title')} icon={UserCheck}>
-                        <p>{t('pages.privacy.s1.p1')}</p>
-                        <p className="font-semibold text-gray-900">
-                            Christian Miething<br />
-                            Görschstrasse 10A<br />
-                            13187 Berlin, Germany<br />
-                            <a href="mailto:chris@the-ai-compass.de" className="text-blue-600 hover:underline">chris@the-ai-compass.de</a>
-                        </p>
-                    </Section>
+                    <p className="text-gray-600 text-sm italic border-l-4 border-blue-500 pl-4 py-1">
+                        {t('pages.privacy.intro')}
+                    </p>
 
-                    {/* 2. No Tracking */}
-                    <Section title={t('pages.privacy.s2.title')} icon={EyeOff}>
-                        <p>
-                            <Trans i18nKey="pages.privacy.s2.p1">We respect your privacy. This website does <strong>not</strong> use tracking cookies, Google Analytics, or any other third-party user tracking services. We only utilize strictly necessary, functional cookies required for the interface to operate (e.g., sidebar status).</Trans>
-                        </p>
-                    </Section>
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                        {/* 1. Controller */}
+                        <Section title={t('pages.privacy.s1.title')} icon={UserCheck}>
+                            <p>{t('pages.privacy.s1.p1')}</p>
+                            <p className="font-semibold text-gray-900">
+                                {t('pages.privacy.s1.address')}<br />
+                                <a href="mailto:chris@the-ai-compass.de" className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
+                                    <Mail className="w-3 h-3" /> chris@the-ai-compass.de
+                                </a>
+                            </p>
+                        </Section>
 
-                    {/* 3. Hosting & Server Logs */}
-                    <Section title={t('pages.privacy.s3.title')} icon={Server}>
-                        <p>
-                            <Trans i18nKey="pages.privacy.s3.p1">We host this website on <strong>ISO 27001-certified servers located within the European Union</strong>.
-                                The provider automatically collects and stores information in server log files (Browser, OS, Referrer URL, IP Address, Time)
-                                for the purpose of ensuring technical stability and security (Art. 6 Para. 1 lit. f GDPR).</Trans>
-                        </p>
-                    </Section>
+                        {/* 2. Hosting */}
+                        <Section title={t('pages.privacy.s2.title')} icon={Server}>
+                            <p>{t('pages.privacy.s2.p1')}</p>
+                            <p className="mt-2">{t('pages.privacy.s2.p2')}</p>
+                            <ul className="list-disc pl-5 space-y-1 mt-1">
+                                <li>{t('pages.privacy.s2.l1')}</li>
+                                <li>{t('pages.privacy.s2.l2')}</li>
+                                <li>{t('pages.privacy.s2.l3')}</li>
+                            </ul>
+                            <p className="text-xs text-gray-500 mt-2 italic">{t('pages.privacy.s2.footer')}</p>
+                        </Section>
 
-                    {/* 4. AI Assessment Logic */}
-                    <Section title={t('pages.privacy.s4.title')} icon={FileText}>
-                        <p><Trans i18nKey="pages.privacy.s4.p1"><strong>Input Data:</strong> When you use the AI Compass, we process the answers you provide in the assessment across 7 business dimensions (Strategy, Data Readiness, etc.) to calculate your maturity level.</Trans></p>
+                        {/* 3. Assessment & ML */}
+                        <Section title={t('pages.privacy.s3.title')} icon={FileText}>
+                            <div className="space-y-4">
+                                <div>
+                                    <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('pages.privacy.s3.h1')}</h3>
+                                    <p>{t('pages.privacy.s3.p1')}</p>
+                                    <p className="text-xs font-medium text-blue-700 mt-1">{t('pages.privacy.s3.purpose1')}</p>
+                                    <p className="text-[10px] text-gray-500 leading-tight">{t('pages.privacy.s3.legal1')}</p>
+                                </div>
 
-                        <p><Trans i18nKey="pages.privacy.s4.p2"><strong>Automated Processing (Machine Learning):</strong></Trans></p>
-                        <ul className="list-disc pl-5 space-y-1">
-                            <li><Trans i18nKey="pages.privacy.s4.l1"><strong>Clustering (K-Means):</strong> Assigns your profile to one of 5 maturity archetypes.</Trans></li>
-                            <li><Trans i18nKey="pages.privacy.s4.l2"><strong>Benchmarking (k-NN):</strong> Compares your data against anonymized peer entries to identify strategic gaps.</Trans></li>
-                        </ul>
-                        <p className="text-xs text-gray-500 mt-2">
-                            {t('pages.privacy.s4.note')}
-                        </p>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('pages.privacy.s3.h2')}</h3>
+                                    <p>{t('pages.privacy.s3.p2')}</p>
+                                    <ul className="list-disc pl-5 space-y-1 mt-1">
+                                        <li><Trans i18nKey="pages.privacy.s3.l1"><strong>Clustering (K-Means):</strong> Assigns your profile...</Trans></li>
+                                        <li><Trans i18nKey="pages.privacy.s3.l2"><strong>Benchmarking (k-NN):</strong> Compares your data...</Trans></li>
+                                    </ul>
+                                    <p className="text-[10px] text-gray-400 mt-2 leading-tight">{t('pages.privacy.s3.note')}</p>
+                                </div>
 
-                        <p className="mt-4"><Trans i18nKey="pages.privacy.s4.p3"><strong>Lead Data:</strong> If you request a full report, we store your Name, Company, Industry, and Email Address based on your consent (Art. 6 Para. 1 lit. a GDPR) or for contract performance.</Trans></p>
-                    </Section>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('pages.privacy.s3.h3')}</h3>
+                                    <p>{t('pages.privacy.s3.p3')}</p>
+                                    <p className="text-xs font-medium text-blue-700 mt-1">{t('pages.privacy.s3.purpose3')}</p>
+                                    <p className="text-[10px] text-gray-500 leading-tight">Rechtsgrundlage: {t('pages.privacy.s3.legal3')}</p>
+                                </div>
+                            </div>
+                        </Section>
 
-                    {/* 5. Processors (Brevo) */}
-                    <Section title={t('pages.privacy.s5.title')} icon={Mail}>
-                        <p>
-                            <Trans i18nKey="pages.privacy.s5.p1">For the reliable delivery of your assessment report, we use <strong>Brevo</strong> (formerly Sendinblue), a GDPR-compliant provider based in Berlin/Paris.</Trans>
-                        </p>
-                        <p>
-                            {t('pages.privacy.s5.p2')}
-                        </p>
-                    </Section>
+                        {/* 4. Brevo */}
+                        <Section title={t('pages.privacy.s4.title')} icon={Mail}>
+                            <p>{t('pages.privacy.s4.p1')}</p>
+                        </Section>
 
-                    {/* 6. Security */}
-                    <Section title={t('pages.privacy.s6.title')} icon={Lock}>
-                        <ul className="list-disc pl-5 space-y-2">
-                            <li><Trans i18nKey="pages.privacy.s6.l1"><strong>Encryption in Transit:</strong> All communication is protected by TLS 1.2/1.3 encryption (HTTPS).</Trans></li>
-                            <li><Trans i18nKey="pages.privacy.s6.l2"><strong>Secure Infrastructure:</strong> Data is stored on secure, access-controlled servers with strict firewall rules.</Trans></li>
-                            <li><Trans i18nKey="pages.privacy.s6.l3"><strong>Data Minimization:</strong> We only collect the specific data points required for the K-Means clustering algorithm.</Trans></li>
-                            <li><Trans i18nKey="pages.privacy.s6.l4"><strong>No Public LLM Training:</strong> We strictly do <strong>not</strong> use your customer data to train public Large Language Models (like GPT-4). Your intellectual property remains yours.</Trans></li>
-                            <li><Trans i18nKey="pages.privacy.s6.l5"><strong>Local Fonts:</strong> We host all fonts locally. No connection is made to Google Fonts servers.</Trans></li>
-                        </ul>
-                    </Section>
+                        {/* 5. Security */}
+                        <Section title={t('pages.privacy.s5.title')} icon={Lock}>
+                            <ul className="list-disc pl-5 space-y-2">
+                                <li><Trans i18nKey="pages.privacy.s5.l1"><strong>Verschlüsselung:</strong> ...</Trans></li>
+                                <li><Trans i18nKey="pages.privacy.s5.l2"><strong>Kein LLM-Training:</strong> ...</Trans></li>
+                                <li><Trans i18nKey="pages.privacy.s5.l3"><strong>Lokale Fonts:</strong> ...</Trans></li>
+                                <li><Trans i18nKey="pages.privacy.s5.l4"><strong>Datenminimierung:</strong> ...</Trans></li>
+                            </ul>
+                        </Section>
 
-                    {/* 7. User Rights */}
-                    <Section title={t('pages.privacy.s7.title')} icon={Shield}>
-                        <p>
-                            {t('pages.privacy.s7.p1')}
-                        </p>
-                    </Section>
+                        {/* 6. User Rights */}
+                        <Section title={t('pages.privacy.s6.title')} icon={Shield}>
+                            <p>{t('pages.privacy.s6.p1')}</p>
+                            <ul className="list-disc pl-5 space-y-1 mt-2">
+                                <li>{t('pages.privacy.s6.l1')}</li>
+                                <li>{t('pages.privacy.s6.l2')}</li>
+                                <li>{t('pages.privacy.s6.l3')}</li>
+                                <li>{t('pages.privacy.s6.l4')}</li>
+                            </ul>
+                        </Section>
 
+                        {/* 7. Analytics */}
+                        <Section title={t('pages.privacy.s7.title')} icon={EyeOff}>
+                            <p>{t('pages.privacy.s7.p1')}</p>
+                            <ul className="list-disc pl-5 space-y-1 mt-2">
+                                <li>{t('pages.privacy.s7.l1')}</li>
+                                <li>{t('pages.privacy.s7.l2')}</li>
+                                <li>{t('pages.privacy.s7.l3')}</li>
+                                <li>{t('pages.privacy.s7.l4')}</li>
+                            </ul>
+                            <p className="text-xs text-gray-500 mt-3 italic">{t('pages.privacy.s7.footer')}</p>
+                        </Section>
+
+                        {/* 8. AVV */}
+                        <Section title={t('pages.privacy.s8.title')} icon={Shield}>
+                            <p>{t('pages.privacy.s8.p1')}</p>
+                        </Section>
+                    </div>
                 </div>
 
             </main>

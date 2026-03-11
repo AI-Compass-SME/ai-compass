@@ -40,25 +40,25 @@ export function OutcomePreview() {
     ];
 
     return (
-        <section className="py-10 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section className="py-24 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
             <div className="max-w-[80rem] mx-auto">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{t('landing.outcome.title')}</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{t('landing.outcome.title')}</h2>
                     <p className="text-lg text-gray-600">{t('landing.outcome.subtitle')}</p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 items-stretch">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-2xl shadow-xl p-6"
+                        className="bg-white rounded-2xl shadow-xl p-6 md:p-8 flex flex-col h-full"
                     >
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center">
                             {t('landing.outcome.radarTitle')}
                         </h3>
-                        <div className="h-[260px] w-full">
+                        <div className="flex-1 min-h-[300px] w-full">
                             <ResponsiveContainer width="100%" height="100%">
                                 <RadarChart data={radarData}>
                                     <PolarGrid stroke="#e5e7eb" />
@@ -76,7 +76,7 @@ export function OutcomePreview() {
                         </div>
                     </motion.div>
 
-                    <div className="space-y-3">
+                    <div className="flex flex-col gap-3 h-full">
                         {outcomes.map((outcome, index) => (
                             <motion.div
                                 key={index}
@@ -84,16 +84,16 @@ export function OutcomePreview() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="flex gap-4 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow items-center"
+                                className="flex-1 flex gap-4 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow items-center min-h-0"
                             >
                                 <div className="flex-shrink-0">
                                     <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                                         <outcome.icon className="w-5 h-5 text-white" />
                                     </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{outcome.title}</h4>
-                                    <p className="text-gray-600 text-xs">{outcome.description}</p>
+                                <div className="min-w-0">
+                                    <h4 className="font-semibold text-gray-800 text-base mb-0.5">{outcome.title}</h4>
+                                    <p className="text-gray-600 text-sm leading-tight">{outcome.description}</p>
                                 </div>
                             </motion.div>
                         ))}

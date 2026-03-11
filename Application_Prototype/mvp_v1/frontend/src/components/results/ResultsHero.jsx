@@ -20,10 +20,10 @@ export function ResultsHero({ data }) {
     const formattedScore = Number(overall_score) % 1 === 0 ? Number(overall_score).toFixed(0) : Number(overall_score).toFixed(1);
 
     return (
-        <div className="section-container space-y-8">
+        <div className="section-container space-y-12 mb-12 md:mb-20">
             {/* Header Text */}
-            <div className="text-center max-w-4xl mx-auto space-y-4">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+            <div className="text-center max-w-4xl mx-auto space-y-6 pt-12 md:pt-16">
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-800">
                     {t('results.hero.title')}
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -48,7 +48,7 @@ export function ResultsHero({ data }) {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <h3 className="text-3xl font-bold text-slate-900 tracking-tight">
+                            <h3 className="text-3xl font-bold text-slate-800 tracking-tight">
                                 {formattedScore}<span className="text-lg text-slate-400 font-medium ml-1">/5</span>
                             </h3>
                             <p className="text-xs font-medium text-slate-500 mt-2">{t('results.hero.overallMaturity')}</p>
@@ -71,7 +71,7 @@ export function ResultsHero({ data }) {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <h3 className="text-xl font-bold text-slate-900 leading-tight line-clamp-2 min-h-[2rem]">
+                            <h3 className="text-xl font-bold text-slate-800 leading-tight line-clamp-2 min-h-[2rem]">
                                 {clusterName}
                             </h3>
                             <p className="text-xs font-medium text-slate-500 mt-2">{t('results.hero.archetype')}</p>
@@ -94,7 +94,7 @@ export function ResultsHero({ data }) {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+                            <h3 className="text-2xl font-bold text-slate-800 tracking-tight">
                                 {percentile !== "N/A" ? `${t('results.hero.top')} ${percentile.percentage}%` : `${t('results.hero.top')} 35%`}
                             </h3>
                             <p className="text-xs font-medium text-slate-500 mt-2">{t('results.hero.vsPeers', { industry })}</p>

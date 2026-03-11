@@ -49,7 +49,7 @@ export function Navigation() {
         try {
             setIsStarting(true);
             const session = await initializeVisitorSession(i18n.language);
-            toast.success(t('landing.hero.success', "Assignment started!"));
+            toast.success(t('landing.hero.success', "Assessment started!"), { duration: 1000 });
             navigate(`/assessment/${session.responseId}`);
         } catch (error) {
             toast.error(t('landing.hero.error', "Failed to start assessment."));
@@ -73,12 +73,11 @@ export function Navigation() {
                         <Button
                             size="sm"
                             disabled={isDownloading}
-                            className="relative px-6 h-10 text-sm font-bold rounded-xl transition-all shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)] active:scale-95 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white border-0 ring-1 ring-white/20 overflow-hidden group"
+                            className="relative px-6 h-10 text-sm font-semibold rounded-xl transition-colors bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm"
                             onClick={handleDownload}
                         >
-                            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
-                            <span className="relative z-20 flex items-center">
-                                {isDownloading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
+                            <span className="flex items-center">
+                                {isDownloading ? <Loader2 className="w-4 h-4 mr-2 animate-spin text-slate-400" /> : <Download className="w-4 h-4 mr-2 text-slate-400" />}
                                 {isDownloading ? t('nav.generatingPdf', "Generating...") : t('nav.downloadReport', "Download Report")}
                             </span>
                         </Button>
@@ -88,17 +87,17 @@ export function Navigation() {
                             onClick={handleStartAssessment}
                             disabled={isStarting}
                             size="sm"
-                            className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 h-10 rounded-xl font-bold hover:shadow-lg transition-all border-0 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.5)]"
+                            className="hidden md:inline-flex items-center justify-center relative px-6 h-10 text-sm font-semibold rounded-xl transition-colors bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm"
                         >
                             {isStarting ? (
                                 <>
-                                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                    <Loader2 className="w-4 h-4 mr-2 animate-spin text-slate-400" />
                                     {t('nav.starting', "Starting...")}
                                 </>
                             ) : (
                                 <>
                                     {t('nav.getStarted')}
-                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                    <ArrowRight className="w-4 h-4 ml-2 text-slate-400" />
                                 </>
                             )}
                         </Button>

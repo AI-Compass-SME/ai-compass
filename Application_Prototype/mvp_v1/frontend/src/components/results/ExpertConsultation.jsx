@@ -14,7 +14,7 @@ export function ExpertConsultation() {
     };
 
     return (
-        <section className="py-6 relative isolate overflow-hidden">
+        <section className="pt-6 pb-4 sm:pt-10 sm:pb-8 relative isolate overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 -z-10 bg-slate-900" />
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-900/50 via-slate-900 to-slate-900" />
@@ -22,24 +22,24 @@ export function ExpertConsultation() {
             <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] bg-blue-600/20 rounded-full blur-[100px] opacity-30" />
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl text-center mb-4">
+                <div className="mx-auto max-w-2xl text-center mb-4 sm:mb-6">
                     <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('results.consultation.title', 'Expert Consultation & Next Steps')}</h2>
-                    <p className="mt-2 text-base text-slate-300">
+                    <p className="mt-2 text-lg text-slate-300">
                         {t('results.consultation.subtitle', 'Transition from digital analysis to human-led transformation.')}
                     </p>
                 </div>
 
-                <div className="relative rounded-3xl bg-white/5 backdrop-blur-xl ring-1 ring-white/10 p-4 sm:p-6 overflow-hidden">
+                <div className="relative rounded-3xl bg-white/5 backdrop-blur-xl ring-1 ring-white/10 px-5 py-4 sm:px-6 sm:py-5 overflow-hidden">
                     <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl" />
 
                     <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
                         {/* Left Content */}
                         <div className="flex-1 space-y-3 text-center md:text-left">
-                            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                            <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
                                 {t('results.consultation.cta.title', 'Get in Touch for a Strategy Deep-Dive')}
                             </h3>
 
-                            <p className="text-base text-slate-300 leading-relaxed max-w-xl">
+                            <p className="text-lg text-slate-300 leading-relaxed max-w-xl">
                                 {t('results.consultation.cta.desc', "Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'.")}
                             </p>
 
@@ -54,8 +54,8 @@ export function ExpertConsultation() {
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-xs font-medium text-slate-400">{t('results.consultation.contact.email', 'Email')}</p>
-                                                <a href="mailto:contact@ai-compass.com" className="text-white text-sm font-semibold hover:text-indigo-300 transition-colors">
+                                                <p className="text-base font-medium text-slate-400">{t('results.consultation.contact.email', 'Email')}</p>
+                                                <a href="mailto:contact@ai-compass.com" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
                                                     contact@ai-compass.com
                                                 </a>
                                             </div>
@@ -68,8 +68,8 @@ export function ExpertConsultation() {
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
-                                                <p className="text-xs font-medium text-slate-400">{t('results.consultation.contact.phone', 'Phone')}</p>
-                                                <a href="tel:+1234567890" className="text-white text-sm font-semibold hover:text-indigo-300 transition-colors">
+                                                <p className="text-base font-medium text-slate-400">{t('results.consultation.contact.phone', 'Phone')}</p>
+                                                <a href="tel:+1234567890" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
                                                     +1 (234) 567-890
                                                 </a>
                                             </div>
@@ -89,7 +89,7 @@ export function ExpertConsultation() {
                                         t('results.consultation.features.2', 'Roadmap validation'),
                                         t('results.consultation.features.3', 'Budget ROI modeling')
                                     ].map((feature, i) => (
-                                        <li key={i} className="flex items-center gap-2.5 text-slate-200 text-sm">
+                                        <li key={i} className="flex items-center gap-2.5 text-slate-200 text-lg">
                                             <div className="flex-none p-0.5 rounded-full bg-emerald-500/20 text-emerald-400">
                                                 <CheckCircle className="w-4 h-4" />
                                             </div>

@@ -45,13 +45,13 @@ export function ValueProposition() {
     ];
 
     return (
-        <section id="benefits" className="py-8 px-4 bg-gray-50">
+        <section id="benefits" className="pt-16 pb-24 px-4 bg-gray-50">
             <div className="max-w-[80rem] mx-auto">
-                <div className="text-center mb-4">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                <div className="text-center mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
                         {t('landing.value.title')}
                     </h2>
-                    <p className="text-sm text-gray-600 max-w-4xl mx-auto">
+                    <p className="text-base md:text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
                         {t('landing.value.subtitle')}
                     </p>
                 </div>

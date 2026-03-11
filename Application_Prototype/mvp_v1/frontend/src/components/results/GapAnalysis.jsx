@@ -17,7 +17,7 @@ export function GapAnalysis({ data }) {
         if (!text) return "";
         let html = text
             .replace(/### (.*?)\n/g, '<h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">$1</h3>')
-            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 font-bold">$1</strong>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-800 font-bold">$1</strong>')
             .split('\n\n')
             .map(para => {
                 if (para.startsWith('<h3')) return para;
@@ -54,7 +54,7 @@ export function GapAnalysis({ data }) {
         <section className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tight text-black">{t('results.gaps.title')}</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-slate-800">{t('results.gaps.title')}</h2>
                     <p className="text-muted-foreground text-lg">{t('results.gaps.subtitle')}</p>
                 </div>
             </div>
@@ -115,7 +115,7 @@ export function GapAnalysis({ data }) {
                                             <Badge variant="outline" className={cn("mb-2 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
                                                 {visuals.label}
                                             </Badge>
-                                            <CardTitle className="text-xl font-bold text-slate-900 leading-snug">
+                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug">
                                                 {gap.title.replace(/^(Critical Gap|Structural Imbalance):\s*/i, '')}
                                             </CardTitle>
                                         </div>

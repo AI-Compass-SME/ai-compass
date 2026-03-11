@@ -16,6 +16,324 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, SkipForward, ArrowRight, CheckCircle2, Circle, Disc, Check, Menu, Compass } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+const getDimensionName = (q, lang) => {
+    let name = lang === 'de' && q.dimension_name_de ? q.dimension_name_de : q.dimension_name;
+    if (lang === 'de') {
+        if (name === 'Datenbereitschaft und -kompetenz') return 'Datenreife & Datenkompetenz';
+        if (name === 'Menschen & Kultur') return 'Mensch & Kultur';
+        if (name === 'Strategie und Geschäftsvision') return 'Strategie & Zielbild';
+        if (name === 'Anwendungsfälle und Geschäftswert') return 'Use Cases & Business Value';
+        if (name === 'Governance und Compliance') return 'Governance & Compliance';
+    }
+    return name;
+};
+
+const formatAnswerText = (ans, lang, currentQ) => {
+    let text = lang === 'de' && ans?.answer_text_de ? ans.answer_text_de : (ans?.answer_text || '');
+
+    // Override for question 1 answers
+    if (lang === 'de' && currentQ?.question_id === 1) {
+        if (ans.answer_level === 1) return 'Nicht thematisiert';
+        if (ans.answer_level === 2) return 'Reaktive Erwähnung (ad-hoc)';
+        if (ans.answer_level === 3) return 'Fallweise Abstimmung zu konkreten Initiativen';
+        if (ans.answer_level === 4) return 'Fester Bestandteil der Agenda';
+        if (ans.answer_level === 5) return 'Zentraler Strategie-Treiber';
+    }
+
+    // Override for question 2 answers
+    if (lang === 'de' && currentQ?.question_id === 2) {
+        if (ans.answer_level === 1) return 'Keine formale Planung vorhanden';
+        if (ans.answer_level === 2) return 'Informelle Ansätze und isolierte Einzelziele';
+        if (ans.answer_level === 3) return 'Strukturierter Rahmenentwurf (Draft)';
+        if (ans.answer_level === 4) return 'Verabschiedete Roadmap mit Meilensteinen';
+        if (ans.answer_level === 5) return 'Ganzheitliche Strategie inkl. Budgetierung';
+    }
+
+    // Override for question 3 answers
+    if (lang === 'de' && currentQ?.question_id === 3) {
+        if (ans.answer_level === 1) return 'Keine dedizierte Budgetierung';
+        if (ans.answer_level === 2) return 'Bedarfsorientierte Einzelfallprüfung';
+        if (ans.answer_level === 3) return 'Projektbezogene Budgetallokation';
+        if (ans.answer_level === 4) return 'Systematische Fachbereichs-Budgets';
+        if (ans.answer_level === 5) return 'Strategische Investitionsplanung & ROI-Steuerung';
+    }
+
+    // Override for question 4 answers
+    if (lang === 'de' && currentQ?.question_id === 4) {
+        if (ans.answer_level === 1) return 'Bewusste Zurückhaltung';
+        if (ans.answer_level === 2) return 'Gezielte Beobachtung bewährter Standards';
+        if (ans.answer_level === 3) return 'Zeitnahe Adaption erfolgreicher Benchmarks';
+        if (ans.answer_level === 4) return 'Frühzeitige Differenzierung durch Eigenentwicklung';
+        if (ans.answer_level === 5) return 'Technologische Branchen-Dominanz';
+    }
+
+    // Override for question 5 answers
+    if (lang === 'de' && currentQ?.question_id === 5) {
+        if (ans.answer_level === 1) return 'Aktive Ablehnung';
+        if (ans.answer_level === 2) return 'Abwartende Skepsis';
+        if (ans.answer_level === 3) return 'Passive Akzeptanz';
+        if (ans.answer_level === 4) return 'Aktive Mitwirkung';
+        if (ans.answer_level === 5) return 'Hohe Eigeninitiative';
+    }
+
+    // Override for question 7 answers
+    if (lang === 'de' && currentQ?.question_id === 7) {
+        if (ans.answer_level === 1) return 'Keine: Aktuell finden keine KI-spezifischen Schulungen statt.';
+        if (ans.answer_level === 2) return 'Ad-hoc: Punktuelle Angebote bei konkretem Bedarf (z. B. einzelne Webinare).';
+        if (ans.answer_level === 3) return 'Reaktiv: Regelmäßige, aber unkoordinierte Formate (z. B. Workshops in Fachabteilungen).';
+        if (ans.answer_level === 4) return 'Strukturiert: Geplante Weiterbildungsprogramme mit festen Lernpfaden.';
+        if (ans.answer_level === 5) return 'Strategisch: Fest verankerte Kultur des kontinuierlichen Lernens („Lifelong Learning“).';
+    }
+
+    // Override for question 9 answers
+    if (lang === 'de' && currentQ?.question_id === 9) {
+        if (ans.answer_level === 1) return 'Vertriebs- & Transaktionsdaten (z. B. Historische Verkäufe, POS-Daten)';
+        if (ans.answer_level === 2) return 'Kundeninteraktionsdaten (z. B. E-Mail-Verläufe, Chat-Logs, CRM-Notizen)';
+        if (ans.answer_level === 3) return 'Digitale Nutzungsdaten (z. B. Website-Tracking, App-Interaktionen)';
+        if (ans.answer_level === 4) return 'Kundenfeedback & Sentiment-Daten (z. B. Bewertungen, Umfragen, Rezensionen)';
+        if (ans.answer_level === 5) return 'Produkt- & Maschinendaten (z. B. IoT-Sensoren, Logistik-Daten, Qualitätsdaten)';
+        if (ans.answer_level === 6) return 'Finanz- & ERP-Stammdaten (z. B. Bestände, Kostenrechnung, Lieferantendaten)';
+        if (ans.answer_level === 7) return 'Personal- & Organisationsdaten (z. B. Skill-Matrix, Kapazitäten, HR-Stamm)';
+        if (ans.answer_level === 8) return 'Keine systematische Erfassung dieser Datentypen (Exklusive Option)';
+    }
+
+    // Override for question 10 answers
+    if (lang === 'de' && currentQ?.question_id === 10) {
+        if (ans.answer_level === 1) return 'On-Premise-Infrastruktur (Eigene Server vor Ort)';
+        if (ans.answer_level === 2) return 'Cloud-Plattformen (z. B. AWS, Azure, Google Cloud)';
+        if (ans.answer_level === 3) return 'CRM-Systeme (z. B. Salesforce, HubSpot, Microsoft Dynamics)';
+        if (ans.answer_level === 4) return 'ERP-Systeme (z. B. SAP, Microsoft Dynamics, Infor)';
+        if (ans.answer_level === 5) return 'E-Commerce- & Vertriebsplattformen (z. B. Shopify, Shopware)';
+        if (ans.answer_level === 6) return 'Business Intelligence & Analytics (z. B. Power BI, Tableau)';
+        if (ans.answer_level === 7) return 'Systemübergreifende Schnittstellen (APIs) zur Datenintegration';
+        if (ans.answer_level === 8) return 'Keine der oben genannten Lösungen';
+    }
+
+    // Override for question 11 answers
+    if (lang === 'de' && currentQ?.question_id === 11) {
+        if (ans.answer_level === 1) return 'Fragmentiert & Inkonsistent';
+        if (ans.answer_level === 2) return 'Digital, aber unstrukturiert';
+        if (ans.answer_level === 3) return 'Punktuell bereinigt';
+        if (ans.answer_level === 4) return 'Standardisiert & Systematisch';
+        if (ans.answer_level === 5) return 'Hochwertig & Echtzeit-verfügbar';
+    }
+
+    // Override for question 12 answers
+    if (lang === 'de' && currentQ?.question_id === 12) {
+        if (ans.answer_level === 1) return 'Erfahrungsbasiert: Entscheidungen basieren primär auf Intuition und langjähriger Erfahrung.';
+        if (ans.answer_level === 2) return 'Punktuelles Bewusstsein: Daten werden wahrgenommen, aber nur selten systematisch in Prozesse einbezogen.';
+        if (ans.answer_level === 3) return 'Sicherer Umgang mit Kennzahlen: Standard-KPIs werden verstanden und regelmäßig zur Kontrolle genutzt.';
+        if (ans.answer_level === 4) return 'Analytische Arbeitsweise: Das Team leitet eigenständig Erkenntnisse aus Daten ab, um Abläufe zu optimieren.';
+        if (ans.answer_level === 5) return 'Datengesteuerte Kultur: Daten sind die primäre Grundlage für strategische und operative Entscheidungen.';
+    }
+
+    // Override for question 13 answers
+    if (lang === 'de' && currentQ?.question_id === 13) {
+        if (ans.answer_level === 1) return 'Ad-hoc & Intuitionsbasiert: Projekte starten oft ohne formelle Vorabprüfung von Datenreife oder Compliance.';
+        if (ans.answer_level === 2) return 'Reaktive Bewertung: Fundierte Prüfungen erfolgen meist erst nach Projektstart, was oft zu Verzögerungen führt.';
+        if (ans.answer_level === 3) return 'Informelle Vorabprüfung: Große Initiativen durchlaufen einen Basis-Check der Datenlage und rechtlichen Hürden.';
+        if (ans.answer_level === 4) return 'Strukturierter Gate-Prozess: Jeder Use Case erfordert eine formelle Validierung (Daten, Recht, Business), bevor Budget fließt.';
+        if (ans.answer_level === 5) return 'Integriertes Framework: Ein standardisierter Prozess sichert die perfekte Abstimmung von Technik, Strategie und Regulierung ab Tag eins.';
+    }
+
+    // Override for question 14 answers
+    if (lang === 'de' && currentQ?.question_id === 14) {
+        if (ans.answer_level === 1) return 'Keine';
+        if (ans.answer_level === 2) return 'Konzeption (Ideen & Brainstorming)';
+        if (ans.answer_level === 3) return 'Pilotierung (1-2 Testprojekte)';
+        if (ans.answer_level === 4) return 'Produktiv (Mehrere im Einsatz)';
+        if (ans.answer_level === 5) return 'Skaliert (Voll integriert)';
+    }
+
+    // Override for question 15 answers
+    if (lang === 'de' && currentQ?.question_id === 15) {
+        if (ans.answer_level === 1) return 'Keine systematische Messung: Erfolg wird bisher nicht formal erfasst oder bewertet.';
+        if (ans.answer_level === 2) return 'Reines Kosten-Controlling: Die Überwachung beschränkt sich primär auf die Einhaltung der Projektbudgets.';
+        if (ans.answer_level === 3) return 'Qualitative Nutzenbewertung: Der Erfolg wird anhand von weichen Faktoren (z. B. Mitarbeiterfeedback, gefühlte Entlastung) bewertet.';
+        if (ans.answer_level === 4) return 'KPI-basiertes Tracking: Messung erfolgt über definierte operative Kennzahlen (z. B. Zeitersparnis, Fehlerrate).';
+        if (ans.answer_level === 5) return 'Quantitativer ROI: Der finanzielle Wertbeitrag wird präzise berechnet und gegen die Investitionskosten gestellt.';
+    }
+
+    // Override for question 16 answers
+    if (lang === 'de' && currentQ?.question_id === 16) {
+        if (ans.answer_level === 1) return 'Rein explorativ: Fokus liegt auf Experimenten und dem Kennenlernen der Technologie ohne direkten Geschäftsbezug.';
+        if (ans.answer_level === 2) return 'Randbereiche: KI berührt zwar Kernprozesse, löst aber noch keine kritischen oder strategischen Probleme.';
+        if (ans.answer_level === 3) return 'Punktuelle Entlastung: KI wird bei bekannten Engpässen eingesetzt, der messbare Erfolg ist jedoch noch nicht durchgängig belegt.';
+        if (ans.answer_level === 4) return 'Systematische Optimierung: KI behebt gezielt schwere Engpässe und sorgt für nachweisbare Produktivitätssteigerungen.';
+        if (ans.answer_level === 5) return 'Strategischer Hebel: KI definiert Prozesse neu, beseitigt strukturelle Barrieren und sichert langfristige Wettbewerbsvorteile.';
+    }
+
+    // Override for question 17 answers
+    if (lang === 'de' && currentQ?.question_id === 17) {
+        if (ans.answer_level === 1) return 'Informell: Prozesse sind kaum dokumentiert und hängen stark vom Wissen einzelner Mitarbeiter ab.';
+        if (ans.answer_level === 2) return 'Punktuell: Es existieren grobe Checklisten oder Leitfäden für wichtige Teilbereiche.';
+        if (ans.answer_level === 3) return 'Systematisch dokumentiert: Kernprozesse sind schriftlich fixiert und für das Team zugänglich.';
+        if (ans.answer_level === 4) return 'Standardisierte SOPs: Verbindliche Standard-Betriebsabläufe (SOPs) sind unternehmensweit etabliert.';
+        if (ans.answer_level === 5) return 'Digital & Automatisiert: Prozesse sind vollständig digital abgebildet und ermöglichen eine datengestützte Optimierung.';
+    }
+
+    // Override for question 18 answers
+    if (lang === 'de' && currentQ?.question_id === 18) {
+        if (ans.answer_level === 1) return 'Ad-hoc & Undefiniert: Projekte entstehen zufällig; es gibt keine festen Abläufe oder klaren Verantwortlichkeiten.';
+        if (ans.answer_level === 2) return 'Personenabhängig: Die Umsetzung hängt vom Engagement einzelner „KI-Treiber“ ab; ein einheitliches Playbook fehlt.';
+        if (ans.answer_level === 3) return 'Standardisierte Workflows: Wir nutzen konsistente Methoden (z. B. Task-Boards, Sprints), um Projekte planbar zu steuern.';
+        if (ans.answer_level === 4) return 'Spezifische KI-Methodik: Ein angepasster Prozess (inkl. Prototyping & Daten-Check) sichert die effiziente Ressourcennutzung.';
+        if (ans.answer_level === 5) return 'Agile Skalierung: Ein hocheffizienter Prozess ermöglicht den nahtlosen Übergang vom Pilotprojekt (PoC) in den produktiven Live-Betrieb.';
+    }
+
+    // Override for question 19 answers
+    if (lang === 'de' && currentQ?.question_id === 19) {
+        if (ans.answer_level === 1) return '> 12 Monate';
+        if (ans.answer_level === 2) return '7 – 12 Monate';
+        if (ans.answer_level === 3) return '3 – 6 Monate';
+        if (ans.answer_level === 4) return '1 – 2 Monate';
+        if (ans.answer_level === 5) return '< 4 Wochen';
+    }
+
+    // Override for question 20 answers
+    if (lang === 'de' && currentQ?.question_id === 20) {
+        if (ans.answer_level === 1) return 'Ad-hoc: Es existiert kein definierter Prozess; die Umsetzung erfolgt nach individueller Gelegenheit.';
+        if (ans.answer_level === 2) return 'Fallbasiert: Der Übergang erfolgt manuell und wird für jedes Projekt individuell neu organisiert.';
+        if (ans.answer_level === 3) return 'Standardisiert: Es gibt einen festen Leitfaden für die Entwicklung und den Go-Live von KI-Lösungen.';
+        if (ans.answer_level === 4) return 'Optimierter Skalierungspfad: Ein systematischer Prozess sichert Qualität und Effizienz beim Rollout ab.';
+        if (ans.answer_level === 5) return 'Vollautomatisierter Rollout: Ein integriertes System (z. B. MLOps) ermöglicht eine nahtlose und automatisierte Bereitstellung.';
+    }
+
+    // Override for question 21 answers
+    if (lang === 'de' && currentQ?.question_id === 21) {
+        if (ans.answer_level === 1) return 'Kein Regelwerk: Es gibt bisher keine schriftlichen Vorgaben oder Verbote für die Nutzung von KI-Tools.';
+        if (ans.answer_level === 2) return 'Informelle Absprachen: Es existieren mündliche oder unverbindliche Empfehlungen (z. B. „Keine Kundendaten in ChatGPT“).';
+        if (ans.answer_level === 3) return 'Konzeptioneller Entwurf: Ein offizielles Regelwerk (KI-Policy) ist in Arbeit oder liegt als Entwurf vor.';
+        if (ans.answer_level === 4) return 'Publizierte Richtlinie: Eine verbindliche KI-Leitlinie ist offiziell kommuniziert und für alle Mitarbeiter zugänglich.';
+        if (ans.answer_level === 5) return 'Gelebte Governance: Die Einhaltung der Richtlinien wird aktiv überwacht (Compliance-Checks) und regelmäßig an neue Gesetze (z. B. EU AI Act) angepasst.';
+    }
+
+    // Override for question 22 answers
+    if (lang === 'de' && currentQ?.question_id === 22) {
+        if (ans.answer_level === 1) return 'Ungeprüft (Hohes Risiko)';
+        if (ans.answer_level === 2) return 'Punktuell (Reaktive Prüfung)';
+        if (ans.answer_level === 3) return 'DSGVO-konform (Standard)';
+        if (ans.answer_level === 4) return 'Systematisch (Privacy by Design)';
+        if (ans.answer_level === 5) return 'Revisionssicher (Full Compliance)';
+    }
+
+    // Override for question 23 answers
+    if (lang === 'de' && currentQ?.question_id === 23) {
+        if (ans.answer_level === 1) return 'Undefiniert: Es gibt keine explizite Zuweisung von Verantwortlichkeiten für KI-Outputs.';
+        if (ans.answer_level === 2) return 'Individuell: Die Verantwortung liegt ad-hoc bei den jeweiligen Mitarbeitern, die ein Tool nutzen.';
+        if (ans.answer_level === 3) return 'Dezentral: Abteilungsleiter tragen die Verantwortung für die in ihrem Bereich eingesetzte KI.';
+        if (ans.answer_level === 4) return 'Zentralisiert: Ein benannter KI-Verantwortlicher (AI Lead) koordiniert die Strategie und Risiken.';
+        if (ans.answer_level === 5) return 'Institutionalisiert: Eine etablierte Governance-Struktur mit klaren Haftungs- und Überwachungsregeln ist aktiv.';
+    }
+
+    // Override for question 24 answers
+    if (lang === 'de' && currentQ?.question_id === 24) {
+        if (ans.answer_level === 1) return 'Keine Anforderungen: Wir verlassen uns auf die Standardangaben der Anbieter; es gibt keine spezifischen Prüfprozesse.';
+        if (ans.answer_level === 2) return 'Passive Akzeptanz: Wir fordern Standard-Zertifikate an, prüfen aber nicht die Details der KI-Modelle oder Datenherkunft.';
+        if (ans.answer_level === 3) return 'Grundlegende Transparenz: Partner müssen wesentliche Informationen (z. B. DSGVO-Konformität, Einsatzbereiche) vertraglich zusichern.';
+        if (ans.answer_level === 4) return 'Detaillierte Offenlegung: Wir fordern Einblick in Modell-Details, Trainingsdaten-Struktur und potenzielle Biases (Voreingenommenheiten).';
+        if (ans.answer_level === 5) return 'Strategische Partnerschaft: Volle Transparenz über den gesamten Lebenszyklus sowie regelmäßige Audits der KI-Systeme sind fest verankert.';
+    }
+
+    // Override for question 25 answers
+    if (lang === 'de' && currentQ?.question_id === 25) {
+        if (ans.answer_level === 1) return 'On-Premise (Lokal)';
+        if (ans.answer_level === 2) return 'Virtualisiert (On-Prem+)';
+        if (ans.answer_level === 3) return 'Hybrid (Mix)';
+        if (ans.answer_level === 4) return 'Cloud-First';
+        if (ans.answer_level === 5) return 'Cloud-Native';
+    }
+
+    // Override for question 26 answers
+    if (lang === 'de' && currentQ?.question_id === 26) {
+        if (ans.answer_level === 1) return 'Fertige KI-Anwendungen (SaaS): Direkte Nutzung von Tools wie ChatGPT (Team/Enterprise), Jasper oder DeepL.';
+        if (ans.answer_level === 2) return 'Integrierte KI-Assistenten: KI-Funktionen innerhalb bestehender Software (z. B. Microsoft Copilot, Salesforce Einstein, SAP AI).';
+        if (ans.answer_level === 3) return 'Low-Code / No-Code Plattformen: Tools zum Bau einfacher KI-Workflows ohne Programmierung (z. B. MS Power Platform, Make, Zapier).';
+        if (ans.answer_level === 4) return 'Frameworks für Eigenentwicklungen: Programmumgebungen für eigene Modelle (z. B. Python-Libraries, Jupyter Notebooks, PyTorch).';
+        if (ans.answer_level === 5) return 'Managed AI/ML Plattformen: Cloud-Umgebungen zur professionellen Entwicklung und Skalierung (z. B. Azure AI Studio, AWS SageMaker, Vertex AI).';
+        if (ans.answer_level === 6) return 'Keine spezifischen KI-Tools: Wir nutzen aktuell keine dedizierten KI-Anwendungen.';
+        if (ans.answer_level === 7) return 'Nicht sicher / Keine Angabe (Exklusive Option)';
+    }
+
+    // Override for question 27 answers
+    if (lang === 'de' && currentQ?.question_id === 27) {
+        if (ans.answer_level === 1) return 'Manuell (Hoher Aufwand)';
+        if (ans.answer_level === 2) return 'Komplex (Einzelfall-Lösung)';
+        if (ans.answer_level === 3) return 'Standardisiert (IT-Regelprozess)';
+        if (ans.answer_level === 4) return 'Modular (Plug & Play)';
+        if (ans.answer_level === 5) return 'Automatisiert (Skalierung per Klick)';
+    }
+
+    // Override for question 28 answers
+    if (lang === 'de' && currentQ?.question_id === 28) {
+        if (ans.answer_level === 1) return 'Marktanpassung: Orientierung an aktuellen Trends und Wettbewerbern.';
+        if (ans.answer_level === 2) return 'Effizienzsteigerung: Fokus auf Kostensenkung und Automatisierung.';
+        if (ans.answer_level === 3) return 'Strategische Planung: Erstellung einer fundierten Roadmap.';
+        if (ans.answer_level === 4) return 'Befähigungs-Check: Analyse von technischer und personeller Reife.';
+        if (ans.answer_level === 5) return 'Innovationsführerschaft: Ausbau von echten Wettbewerbsvorteilen.';
+    }
+
+    // Override for question 29 answers
+    if (lang === 'de' && currentQ?.question_id === 29) {
+        if (ans.answer_level === 1) return 'Exzellenz im Kundenservice: Effizienzsteigerung im Support (z. B. durch intelligente Chatbots/Assistenten).';
+        if (ans.answer_level === 2) return 'Operative Effizienz: Automatisierung repetitiver Aufgaben und Backoffice-Prozesse.';
+        if (ans.answer_level === 3) return 'Data-Driven Insights: Gewinnung tieferer Erkenntnisse aus vorhandenen Datenbeständen.';
+        if (ans.answer_level === 4) return 'Intelligente Suche & Knowledge Management: Schnelleres Auffinden von Informationen und Expertenwissen.';
+        if (ans.answer_level === 5) return 'Automatisierte Dokumentenanalyse: Intelligente Erfassung und Verarbeitung von Verträgen, Rechnungen etc.';
+        if (ans.answer_level === 6) return 'Hyper-Personalisierung: Individuelle Kundenansprache und maßgeschneiderte Angebote.';
+        if (ans.answer_level === 7) return 'Direkte Kostensenkung: Reduzierung der Betriebskosten durch Prozessoptimierung.';
+    }
+
+    // Override for question 30 answers
+    if (lang === 'de' && currentQ?.question_id === 30) {
+        if (ans.answer_level === 1) return 'Keine Verankerung: KI-Trends wurden bisher nicht systematisch bewertet; es existiert keine schriftliche Strategie.';
+        if (ans.answer_level === 2) return 'Marktgetriebene Reaktion: Wir reagieren punktuell auf Entwicklungen im Marktumfeld oder bei Mitbewerbern.';
+        if (ans.answer_level === 3) return 'Explorative Erprobung: Trends werden aktiv beobachtet und erste Pilotprojekte zur strategischen Validierung durchgeführt.';
+        if (ans.answer_level === 4) return 'Strategische Integration: Eine formelle KI-Roadmap mit klaren Zielen ist fester Bestandteil der Unternehmensplanung.';
+        if (ans.answer_level === 5) return 'Transformatorische Führung: KI definiert unser Geschäftsmodell neu und dient als primärer Treiber für Brancheninnovationen.';
+    }
+
+    // Override for question 31 answers
+    if (lang === 'de' && currentQ?.question_id === 31) {
+        if (ans.answer_level === 1) return 'Geschäftsführung / Vorstand (Top-Down): KI wird als strategische Priorität von der Unternehmensleitung forciert.';
+        if (ans.answer_level === 2) return 'IT- & Technologie-Abteilung: Die Initiative liegt primär in der Verantwortung der IT (technologiegetrieben).';
+        if (ans.answer_level === 3) return 'Digital Transformation / Innovation Team: Ein dediziertes Team steuert die KI-Initiativen abteilungsübergreifend.';
+        if (ans.answer_level === 4) return 'Operative Fachabteilungen (z. B. Marketing, Vertrieb, HR): Die Nachfrage nach KI kommt direkt aus dem Kerngeschäft.';
+        if (ans.answer_level === 5) return 'Operations & Supply Chain: Der Fokus liegt auf der Optimierung von Produktion, Logistik und Lieferketten.';
+        if (ans.answer_level === 6) return 'Data Science & Analytics Team: Spezialisten für Datenanalyse treiben die Entwicklung von KI-Modellen voran.';
+        if (ans.answer_level === 7) return 'Einzelne Early Adopter (Bottom-Up): Motivierte Mitarbeiter nutzen KI-Tools eigeninitiativ in ihrem Arbeitsalltag.';
+        if (ans.answer_level === 8) return 'Externe Partner & Berater: Die Impulse und die Umsetzung kommen maßgeblich von außen.';
+        if (ans.answer_level === 9) return 'Kein definierter interner Treiber: Es gibt aktuell keine klare Zuständigkeit oder treibende Kraft.';
+    }
+
+    // Override for question 32 answers
+    if (lang === 'de' && currentQ?.question_id === 32) {
+        if (ans.answer_level === 1) return 'Keine (Interessierter Beobachter)';
+        if (ans.answer_level === 2) return 'Operativ (Verantwortung auf Projekt- oder Teamebene)';
+        if (ans.answer_level === 3) return 'Strategisch (Gesamtverantwortung / Geschäftsführung)';
+    }
+
+    // Override for question 33 answers
+    if (lang === 'de' && currentQ?.question_id === 33) {
+        if (ans.answer_level === 1) return 'Unternehmensleitung / C-Level (Geschäftsführung, Vorstand, Inhaber)';
+        if (ans.answer_level === 2) return 'IT-Management / Technologie-Leitung (CIO, CTO, IT-Leiter)';
+        if (ans.answer_level === 3) return 'Fachbereichsleitung / Prozessverantwortung (z. B. Marketing, Vertrieb, Produktion)';
+        if (ans.answer_level === 4) return 'Strategie, Innovation & Business Analyse';
+        if (ans.answer_level === 5) return 'Data Science & KI-Spezialisierung';
+        if (ans.answer_level === 6) return 'Projekt- & Programmmanagement';
+        if (ans.answer_level === 7) return 'Fachexperte / Key User (Anwenderebene)';
+        if (ans.answer_level === 8) return 'Externer Berater';
+    }
+
+    // Anwenden auf "statement" Fragen
+    const isStatement = (currentQ?.type || '').toLowerCase() === 'statement';
+
+    if (isStatement && lang === 'de') {
+        return text.replace(/\s+[-–—]\s+/, ': ');
+    }
+    return text;
+};
+
 export default function QuestionnaireWizard() {
     const { t, i18n } = useTranslation();
     const { responseId } = useParams();
@@ -133,7 +451,7 @@ export default function QuestionnaireWizard() {
         const groups = {};
         questions.forEach(q => {
             const dId = q.dimension_id || 0;
-            const dName = i18n.language === 'de' && q.dimension_name_de ? q.dimension_name_de : q.dimension_name;
+            const dName = getDimensionName(q, i18n.language);
             if (!groups[dId]) {
                 groups[dId] = {
                     id: dId,
@@ -301,7 +619,7 @@ export default function QuestionnaireWizard() {
                             animate={{ opacity: 1, y: 0 }}
                             className="inline-block px-6 py-2 rounded-2xl bg-blue-50 text-blue-700 text-xl font-bold border border-blue-100 shadow-sm"
                         >
-                            {answers[safeIndex] ? (i18n.language === 'de' && answers[safeIndex].answer_text_de ? answers[safeIndex].answer_text_de : answers[safeIndex].answer_text) : (i18n.language === 'de' ? 'Ziehen zum Auswählen' : 'Drag to select')}
+                            {answers[safeIndex] ? formatAnswerText(answers[safeIndex], i18n.language, currentQuestion) : (i18n.language === 'de' ? 'Ziehen zum Auswählen' : 'Drag to select')}
                         </motion.div>
                     </div>
                     <Slider
@@ -312,8 +630,8 @@ export default function QuestionnaireWizard() {
                         className="w-full cursor-pointer py-4"
                     />
                     <div className="flex justify-between mt-8 text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                        <span>{answers[0] ? (i18n.language === 'de' && answers[0].answer_text_de ? answers[0].answer_text_de : answers[0].answer_text) : ''}</span>
-                        <span>{answers[maxIndex] ? (i18n.language === 'de' && answers[maxIndex].answer_text_de ? answers[maxIndex].answer_text_de : answers[maxIndex].answer_text) : ''}</span>
+                        <span className="text-left w-1/2 pe-4">{answers[0] ? formatAnswerText(answers[0], i18n.language, currentQuestion) : ''}</span>
+                        <span className="text-right w-1/2 ps-4">{answers[maxIndex] ? formatAnswerText(answers[maxIndex], i18n.language, currentQuestion) : ''}</span>
                     </div>
                 </div>
             );
@@ -321,7 +639,7 @@ export default function QuestionnaireWizard() {
 
         if (type === 'checklist') {
             return (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="flex flex-col gap-2 w-full">
                     {answers.map(ans => (
                         <motion.div
                             key={ans.answer_id}
@@ -345,7 +663,7 @@ export default function QuestionnaireWizard() {
                                 htmlFor={`ans-${ans.answer_id}`}
                                 className="text-[13px] font-medium leading-snug cursor-pointer flex-1 select-none text-slate-700"
                             >
-                                {i18n.language === 'de' && ans.answer_text_de ? ans.answer_text_de : ans.answer_text}
+                                {formatAnswerText(ans, i18n.language, currentQuestion)}
                             </Label>
                         </motion.div>
                     ))}
@@ -360,12 +678,7 @@ export default function QuestionnaireWizard() {
             <RadioGroup
                 value={selectedAnswers[0]?.toString()}
                 onValueChange={handleRadioChange}
-                className={cn(
-                    "w-full gap-1.5",
-                    isShortText
-                        ? "flex flex-col w-full"
-                        : "grid grid-cols-1 md:grid-cols-2"
-                )}
+                className="w-full gap-1.5 flex flex-col"
             >
                 {answers.map(ans => (
                     <motion.div
@@ -390,7 +703,7 @@ export default function QuestionnaireWizard() {
                             htmlFor={`ans-${ans.answer_id}`}
                             className="text-[13px] font-medium leading-snug flex-1 cursor-pointer select-none text-slate-700"
                         >
-                            {i18n.language === 'de' && ans.answer_text_de ? ans.answer_text_de : ans.answer_text}
+                            {formatAnswerText(ans, i18n.language, currentQuestion)}
                         </Label>
                         {selectedAnswers.includes(ans.answer_id) && (
                             <CheckCircle2 className="w-4 h-4 text-blue-600 animate-in zoom-in spin-in-90 duration-300 shrink-0" />
@@ -495,7 +808,7 @@ export default function QuestionnaireWizard() {
             {/* Mobile Header with Drawer */}
             <div className="lg:hidden absolute top-0 left-0 w-full glass-premium z-30 flex justify-between items-center px-4 py-3">
                 <div className="font-bold text-slate-800 truncate max-w-[200px]">
-                    {currentQuestion.dimension_name}
+                    {getDimensionName(currentQuestion, i18n.language)}
                 </div>
                 <Sheet>
                     <SheetTrigger asChild>
@@ -527,36 +840,138 @@ export default function QuestionnaireWizard() {
                             <Card className="flex flex-col glass-premium rounded-[1.5rem] overflow-hidden w-full h-full max-h-full border-white/50 ring-1 ring-white/60">
                                 {/* Question Header */}
                                 <CardHeader className="flex-none border-b border-white/20 bg-white/20 pb-0 pt-3 px-4 md:px-6 backdrop-blur-md">
-                                    <div className="flex items-center justify-between mb-0.5">
+                                    <div className="flex items-center justify-between mb-3 md:mb-4">
                                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-white/60 shadow-sm text-indigo-900 text-[10px] font-bold uppercase tracking-widest backdrop-blur-sm">
                                             <span className="relative flex h-1.5 w-1.5 mr-0.5">
                                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                                                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-600"></span>
                                             </span>
-                                            {i18n.language === 'de' ? 'Frage' : 'Question'} {currentIndex + 1} / {questions.length}
+                                            {i18n.language === 'de' ? 'Frage' : 'Question'} {currentIndex + 1} / {currentQuestion.dimension_id === 8 ? 33 : 27}
                                         </div>
                                     </div>
 
-                                    <CardTitle className="text-[15px] font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
+                                    <CardTitle className="text-lg md:text-xl font-black text-slate-800 tracking-tight font-heading leading-tight mb-1">
                                         {(() => {
-                                            const text = i18n.language === 'de' && currentQuestion.question_text_de ? currentQuestion.question_text_de : currentQuestion.question_text;
+                                            let text = i18n.language === 'de' && currentQuestion.question_text_de ? currentQuestion.question_text_de : currentQuestion.question_text;
+                                            if (i18n.language === 'de' && text.includes('Inwieweit sind KI-Fähigkeiten und technische Kompetenz in Ihrer Belegschaft etabliert?')) {
+                                                text = text.replace('Kompetenz', 'Kompetenzen');
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 1) {
+                                                text = 'Welchen strategischen Stellenwert nimmt KI in Ihren Gremien-Sitzungen ein?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 2) {
+                                                text = 'Wie weit ist Ihre KI-Strategie dokumentiert und im Unternehmen verankert?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 3) {
+                                                text = 'Nach welcher Logik erfolgt die Budgetierung Ihrer KI-Investitionen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 4) {
+                                                text = 'Welche wettbewerbsstrategische Positionierung streben Sie im Bereich KI an?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 5) {
+                                                text = 'Wie bewerten Sie die aktuelle Akzeptanz und kulturelle Bereitschaft Ihrer Belegschaft gegenüber KI?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 7) {
+                                                text = 'Wie systematisch ist die KI-Weiterbildung in Ihrem Unternehmen verankert?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 9) {
+                                                text = 'Welche Datenbestände liegen in Ihrem Unternehmen digital und verwertbar vor? (Alles Zutreffende auswählen)';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 10) {
+                                                text = 'Welche Bausteine bilden das Fundament Ihrer aktuellen IT-Landschaft? (Alles Zutreffende auswählen)';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 11) {
+                                                text = 'Wie bewerten Sie die Qualität und Konsistenz Ihrer Geschäftsdaten?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 12) {
+                                                text = 'Wie sicher ist Ihr Team darin, Daten für tägliche Entscheidungen zu nutzen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 13) {
+                                                text = 'Wie systematisch prüfen Sie die Machbarkeit von KI-Projekten vor dem Start?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 14) {
+                                                text = 'In welchem Stadium befinden sich Ihre KI-Initiativen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 15) {
+                                                text = 'Wie messen Sie den Erfolg und Wertbeitrag Ihrer KI-Projekte?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 16) {
+                                                text = 'Wie stark ist der Fokus Ihrer KI-Projekte auf die Lösung kritischer Engpässe im Kerngeschäft?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 17) {
+                                                text = 'Wie hoch ist der Standardisierungsgrad Ihrer Kernprozesse?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 18) {
+                                                text = 'Wie strukturiert ist Ihr Prozess für die Planung und Umsetzung von KI-Projekten?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 20) {
+                                                text = 'Wie strukturiert erfolgt der Übergang von der KI-Idee in den produktiven Live-Betrieb?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 21) {
+                                                text = 'Wie verbindlich ist der regulatorische Rahmen für den KI-Einsatz in Ihrem Unternehmen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 22) {
+                                                text = 'Wie konform und sicher ist Ihre Datenverarbeitung im Kontext des EU AI Acts?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 23) {
+                                                text = 'Wie klar ist die Verantwortung für die Ergebnisse und Risiken von KI-Anwendungen geregelt?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 24) {
+                                                text = 'Wie transparent müssen externe Partner den Einsatz und die Funktionsweise ihrer KI-Lösungen gegenüber Ihrem Unternehmen offenlegen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 26) {
+                                                text = 'Welche Tools und Plattformen stehen Ihren Teams für die Arbeit mit KI zur Verfügung? (Alles Zutreffende auswählen)';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 28) {
+                                                text = 'Welches Hauptziel verfolgen Sie mit dieser KI-Bewertung?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 29) {
+                                                text = 'In welchen Bereichen sehen Sie das größte Potenzial für eine KI-gestützte Optimierung? (Wählen Sie bis zu 3 Schwerpunkte)';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 30) {
+                                                text = 'Inwieweit ist KI bereits fest in Ihre Unternehmensstrategie integriert?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 31) {
+                                                text = 'Wer sind die treibenden Kräfte hinter der KI-Adaption in Ihrem Unternehmen? (Alles Zutreffende auswählen)';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 32) {
+                                                text = 'In welchem Umfang steuern oder verantworten Sie KI-Initiativen?';
+                                            }
+                                            if (i18n.language === 'de' && currentQuestion.question_id === 33) {
+                                                text = 'Welche Rolle beschreibt Ihre Position und Entscheidungsbefugnis am besten? (Alles Zutreffende auswählen)';
+                                            }
                                             const applyText = t('wizard.selectAllThatApply', "(Select all that apply)");
 
-                                            // Handle potential English or German apply string split
                                             let parts = text.split('(Select all that apply)');
                                             if (parts.length === 1) {
                                                 parts = text.split('(Mehrfachauswahl möglich)');
                                             }
+
+                                            const renderText = (str) => {
+                                                const qMarkIndex = str.indexOf('?');
+                                                if (qMarkIndex !== -1 && qMarkIndex < str.trim().length - 1) {
+                                                    const mainQuestion = str.substring(0, qMarkIndex + 1);
+                                                    const explanation = str.substring(qMarkIndex + 1);
+                                                    return (
+                                                        <>
+                                                            <span>{mainQuestion}</span>
+                                                            <span className="font-normal text-sm md:text-base text-slate-600 block mt-1.5 leading-snug">{explanation}</span>
+                                                        </>
+                                                    );
+                                                }
+                                                return <span>{str}</span>;
+                                            };
+
                                             if (parts.length > 1) {
                                                 return (
                                                     <>
-                                                        {parts[0]}
-                                                        <span className="font-normal text-slate-500">{applyText}</span>
-                                                        {parts[1]}
+                                                        {renderText(parts[0])}
+                                                        <span className="font-normal text-sm text-slate-500 block mt-1">{applyText}</span>
+                                                        {parts[1] && <span className="font-normal text-sm md:text-base text-slate-600 block mt-1.5 leading-snug">{parts[1]}</span>}
                                                     </>
                                                 );
                                             }
-                                            return text;
+                                            return renderText(text);
                                         })()}
                                     </CardTitle>
                                 </CardHeader>
@@ -581,21 +996,21 @@ export default function QuestionnaireWizard() {
                                                 <ChevronLeft className="w-3 h-3 mr-1" />
                                                 {t('wizard.back', "Back")}
                                             </Button>
+                                        </div>
+
+                                        <div className="flex items-center gap-3">
+                                            {saving && <span className="text-xs font-medium text-indigo-600 animate-pulse hidden sm:inline-block">{t('wizard.loadingSaving', "Saving...")}</span>}
                                             {currentQuestion.dimension_id === 8 && (
                                                 <Button
                                                     variant="outline"
                                                     onClick={handleSkipDimension}
                                                     disabled={saving}
-                                                    className="border-amber-200 text-amber-700 hover:text-amber-800 hover:bg-amber-50 px-3 h-9 text-xs rounded-lg transition-all hover:border-amber-300"
+                                                    className="border-amber-300 bg-amber-50 text-amber-700 hover:text-amber-800 hover:bg-amber-100 px-4 h-10 text-sm font-semibold rounded-xl transition-all hover:border-amber-400 shadow-sm"
                                                 >
-                                                    <SkipForward className="w-3 h-3 mr-2" />
+                                                    <SkipForward className="w-4 h-4 mr-2" />
                                                     {t('wizard.skipSection', "Skip Section")}
                                                 </Button>
                                             )}
-                                        </div>
-
-                                        <div className="flex items-center gap-6">
-                                            {saving && <span className="text-xs font-medium text-indigo-600 animate-pulse hidden sm:inline-block">{t('wizard.loadingSaving', "Saving...")}</span>}
                                             <Button
                                                 size="lg"
                                                 onClick={handleNext}

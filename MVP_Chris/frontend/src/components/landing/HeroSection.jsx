@@ -11,15 +11,15 @@ export function HeroSection() {
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                            Navigate the AI Evolution with the AI Compass.
+                            Strategische Orientierung in der KI-Transformation: Der AI Compass
                         </h1>
                         <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                            Stop guessing. Gain strategic clarity in 10-15 minutes. Benchmark your Organization against 500+ peers and receive a data-driven roadmap to AI maturity. No costs attached, just your valuable time.
+                            Ersetzen Sie Annahmen durch fundierte Erkenntnisse. Erlangen Sie innerhalb von 10–15 Minuten strategische Klarheit über Ihren Status quo. Durch ein Benchmarking mit über 500 Vergleichsunternehmen erhalten Sie eine datenbasierte Roadmap zur Steigerung Ihres KI-Reifegrades. Diese fundierte Selbstanalyse ist für Sie kostenfrei.
                         </p>
 
                         <Button asChild className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-lg text-lg font-semibold hover:shadow-xl transition-all h-auto">
                             <Link to="/snapshot" className="flex items-center gap-2">
-                                Start Free Assessment
+                                Kostenlose Analyse starten
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </Button>

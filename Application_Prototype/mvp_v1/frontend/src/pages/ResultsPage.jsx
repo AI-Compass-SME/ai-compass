@@ -85,7 +85,7 @@ export default function ResultsPage() {
                 <MaturityProfile data={data} />
                 <ExecutiveBriefing data={data} />
                 <Roadmap data={data} />
-                <div className="space-y-5 md:space-y-7">
+                <div className="space-y-16 md:space-y-28 pt-16 md:pt-24">
                     <ExpertConsultation />
                     <DownloadCTA responseId={responseId} />
                 </div>
