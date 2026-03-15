@@ -1,4 +1,77 @@
 {
+    "snapshot": {
+        "pageTitle": "AI Compass: Unternehmensprofil",
+        "toasts": {
+            "noActiveAssessment": "Keine aktive Bewertung gefunden.",
+            "agreePrivacy": "Bitte stimmen Sie der Datenschutzerklärung zu, um fortzufahren.",
+            "submitError": "Fehler beim Abschluss der Bewertung: {{error}}"
+        },
+        "analyzing": {
+            "title": "Ihr strategischer KI-Fahrplan wird finalisiert...",
+            "desc": "Wir verifizieren Ihre Branchen-Benchmarks und generieren umsetzbare Erkenntnisse."
+        },
+        "verify": {
+            "title": "Bitte überprüfen Sie Ihre E-Mail",
+            "p1": "Wir haben einen sicheren Verifizierungslink gesendet an:",
+            "p2": "Klicken Sie auf den Link in der E-Mail, um sofort auf Ihre <strong>Ergebnisseite</strong> zuzugreifen und Ihren umfassenden <strong>PDF-Report</strong> zu erhalten.",
+            "returnHome": "Zurück zur Startseite"
+        },
+        "form": {
+            "title": "Letzter Schritt: Unternehmensprofil",
+            "subtitle": "Norden Sie Ihren KI-Kompass: Nur noch diese Details trennen Sie von Ihrem glasklaren Fahrplan für die Umsetzung.",
+            "companyName": "Unternehmensname",
+            "companyNamePlaceholder": "z.B. Muster GmbH",
+            "industry": "Branche",
+            "industryPlaceholder": "Branche wählen",
+            "size": "Unternehmensgröße",
+            "sizePlaceholder": "Größe wählen",
+            "website": "Website",
+            "websitePlaceholder": "https://ihre-firma.de",
+            "city": "Hauptsitz",
+            "cityPlaceholder": "z.B. Hamburg",
+            "email": "Geschäftliche E-Mail",
+            "emailPlaceholder": "name@unternehmen.de",
+            "optional": "Optional",
+            "consent": "Ich willige in die Verarbeitung meiner Daten zur Erstellung meiner individuellen KI-Potenzialanalyse ein.",
+            "privacyPrefix": "Wir nehmen Datenschutz ernst: Ihre Daten werden ausschließlich für das Benchmarking und die Erstellung Ihres individuellen Reports verwendet. Details finden Sie in unserer ",
+            "privacyLink": "Datenschutzerklärung",
+            "transparencyTitle": "KI-Transparenz & Methodik:",
+            "transparencyText": "Der AI Compass kombiniert statistische Verfahren (K-Means-Clustering) mit generativer KI, um präzise Muster in Ihrer Unternehmensstruktur zu identifizieren. Alle Analyseergebnisse basieren auf modellbasierten Wahrscheinlichkeiten und dienen als strategische Orientierungshilfe; sie ersetzen keine individuelle Expertenprüfung. Die Nutzung dieser Plattform stellt keine Rechtsberatung dar und begründet kein formales Beratungsmandat.",
+            "submitBtn": "Meinen persönlichen Report erstellen",
+            "industries": {
+                "Industrie & Produktion": "Industrie & Produktion",
+                "Handwerk & Baugewerbe": "Handwerk & Baugewerbe",
+                "Handel & E-Commerce": "Handel & E-Commerce",
+                "Dienstleistungen & Beratung": "Dienstleistungen & Beratung",
+                "IT & Software": "IT & Software",
+                "Gesundheits- & Sozialwesen": "Gesundheits- & Sozialwesen",
+                "Logistik & Transport": "Logistik & Transport",
+                "Sonstige": "Sonstige"
+            },
+            "sizes": {
+                "1": "Selbstständig / 1 Mitarbeiter",
+                "2-10": "2 – 10 Mitarbeiter",
+                "11-50": "11 – 50 Mitarbeiter",
+                "51-250": "51 – 250 Mitarbeiter",
+                "250+": "Über 250 Mitarbeiter"
+            }
+        }
+    },
+    "verifyPage": {
+        "verifying": {
+            "title": "E-Mail wird verifiziert...",
+            "desc": "Bitte warten Sie, während wir Ihre E-Mail-Adresse verifizieren. Sie werden in Kürze weitergeleitet."
+        },
+        "success": {
+            "title": "E-Mail Verifiziert",
+            "sent": "Wir haben Ihren PDF-Bericht in Ihr Postfach gesendet.",
+            "redirecting": "Sie werden zu Ihrem interaktiven Dashboard weitergeleitet..."
+        },
+        "error": {
+            "title": "Verifizierung Fehlgeschlagen",
+            "returnHome": "Zurück zur Startseite"
+        }
+    },
     "nav": {
         "product": "Produkt",
         "methodology": "Methodik",
@@ -234,7 +307,7 @@
         },
         "privacy": {
             "title": "Datenschutzerklärung",
-            "subtitle": "Stand: Februar 2026 | DSGVO-konform",
+            "subtitle": "Stand: März 2026 | DSGVO-konform",
             "intro": "Der Schutz Ihrer persönlichen Daten und das Vertrauen in unsere KI-Methodik haben für uns höchste Priorität. Diese Datenschutzerklärung informiert Sie darüber, wie wir Ihre Daten im Rahmen des AI Compass erheben, verarbeiten und schützen.",
             "s1": {
                 "title": "1. Verantwortliche Stelle (Controller)",
@@ -242,12 +315,12 @@
                 "address": "Christian Miething, Görschstraße 10A, 13187 Berlin, Germany"
             },
             "s2": {
-                "title": "2. Hosting und Server-Log-Dateien",
-                "p1": "Wir hosten unsere Website bei der Hetzner Online GmbH (oder vergleichbarem deutschen Anbieter). Alle Daten werden ausschließlich auf ISO 27001-zertifizierten Servern innerhalb der Bundesrepublik Deutschland / Europäischen Union verarbeitet. Wir haben mit diesem Anbieter einen Vertrag zur Auftragsverarbeitung (AVV) geschlossen.",
+                "title": "4. Hosting und Server-Log-Dateien",
+                "p1": "Der AI Compass wird über folgende Cloud-Infrastruktur betrieben: Das Backend-API läuft auf Render.com, das Frontend wird über Vercel bereitgestellt und alle Assessment-Daten werden in Supabase (PostgreSQL) gespeichert. Wir nutzen derzeit die kostenlosen Tarife dieser Dienste. Jeder Anbieter unterliegt einer eigenen DSGVO-konformen Datenschutzerklärung und Nutzungsbedingungen, die die serverseitige Datenverarbeitung regeln.",
                 "p2": "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt:",
-                "l1": "Browsertyp und -version / Betriebssystem",
-                "l2": "Referrer URL / Hostname des zugreifenden Rechners",
-                "l3": "Uhrzeit der Serveranfrage / IP-Adresse",
+                "l1": "Browsertyp und -version / Betriebssystem (via HTTP User-Agent-Header)",
+                "l2": "HTTP-Anfragemethode, URL-Pfad und Antwortstatuscode",
+                "l3": "Zeitpunkt der Serveranfrage und IP-Adresse des Clients",
                 "footer": "Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse) für die technisch fehlerfreie Darstellung und Sicherheit der Website."
             },
             "s3": {
@@ -267,8 +340,8 @@
                 "legal3": "Rechtsgrundlage: Art. 6 Abs. 1 lit. a (Einwilligung)."
             },
             "s4": {
-                "title": "4. E-Mail-Versand (Brevo)",
-                "p1": "Für den Versand unserer Berichte nutzen wir Brevo (ehemals Sendinblue). Wir haben mit Brevo einen Auftragsverarbeitungsvertrag (AVV) geschlossen, um sicherzustellen, dass Ihre Daten ausschließlich nach unseren Anweisungen und unter DSGVO-Standards verarbeitet werden."
+                "title": "2. E-Mail-Versand (Brevo)",
+                "p1": "Für den zuverlässigen Versand unserer Berichte und Verifikations-E-Mails nutzen wir Brevo (ehemals Sendinblue). Gemäß Art. 28 DSGVO wird ein Auftragsverarbeitungsvertrag (AVV) zwischen Ihrer Organisation und Brevo automatisch bei der Registrierung eines Brevo-Kontos oder bei der Nutzung der Brevo-Plattform abgeschlossen. Dieser AVV ist Bestandteil der Allgemeinen Geschäftsbedingungen von Brevo und regelt die standardmäßige Verarbeitung personenbezogener Daten auf ihrer Plattform."
             },
             "s5": {
                 "title": "5. Datensicherheit und technische Maßnahmen",
@@ -287,16 +360,16 @@
             },
             "s7": {
                 "title": "7. Analytics & Datensouveränität (Privacy by Design)",
-                "p1": "Diese Website verwendet eine DSGVO-konforme, cookiefreie Analyse-Lösung, die auf deutschen Servern gehostet wird. Wir tracken die Wirkung unserer Inhalte, nicht das Individuum.",
-                "l1": "Es werden keine persönlichen Daten auf Ihrem Gerät gespeichert.",
-                "l2": "Es werden keine dauerhaften Identifikatoren verwendet.",
-                "l3": "IP-Adressen werden vollständig anonymisiert.",
-                "l4": "Souveränität: Es findet kein Datentransfer in Drittländer (z. B. USA) statt.",
-                "footer": "Rechtsgrundlage: Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) zur technischen und inhaltlichen Optimierung unseres Angebots."
+                "p1": "Diese Website verwendet keine externen Analyse- oder Tracking-Tools. Wir setzen keine Tracking-Cookies ein und erheben keine verhaltensbezogenen Daten über einzelne Nutzer.",
+                "l1": "Es werden keine Analytics-Cookies oder Tracking-Skripte geladen.",
+                "l2": "Es werden keine persönlichen Daten zu Marketingzwecken auf Ihrem Gerät gespeichert.",
+                "l3": "Es werden keine dauerhaften Identifikatoren oder Fingerprinting-Techniken verwendet.",
+                "l4": "Souveränität: Es findet kein Datentransfer in Drittländer zu Analysezwecken statt.",
+                "footer": "Dieser Ansatz spiegelt unser Engagement für Privacy by Design (Art. 25 DSGVO) wider."
             },
             "s8": {
                 "title": "8. Hinweis für Unternehmenskunden (AVV)",
-                "p1": "Wir bieten Firmenkunden den Abschluss eines individuellen Auftragsverarbeitungsvertrages (AVV) gemäß Art. 28 DSGVO an, um die Einhaltung interner Compliance-Richtlinien zu unterstützen. Kontaktieren Sie uns hierfür unter den oben genannten Daten."
+                "p1": "Wir bieten Firmenkunden den Abschluss eines individuellen Auftragsverarbeitungsvertrages (AVV) gemäß Art. 28 DSGVO an, um die Einhaltung interner Compliance-Richtlinien zu unterstützen. Kontaktieren Sie uns hierfür unter: info@the-ai-compass.de"
             }
         },
         "imprint": {
@@ -345,6 +418,19 @@
         }
     },
     "results": {
+        "pageTitle": "KI Kompass: Executive Results",
+        "loading": {
+            "title": "Ihre strategische KI-Roadmap wird finalisiert...",
+            "subtitle": "Ihre Branchen-Benchmarks werden verifiziert"
+        },
+        "error": {
+            "title": "Analysefehler",
+            "noData": "Keine Daten verfügbar",
+            "returnHome": "Zurück zur Startseite"
+        },
+        "toasts": {
+            "fetchError": "Analyse konnte nicht generiert werden."
+        },
         "hero": {
             "title": "AI Compass: Ihre Strategische Auswertung",
             "subtitle": "Dies ist Ihre maßgeschneiderte Analyse für die KI-Transformation. Sie liefert Ihnen die fundierte Grundlage für belastbare Entscheidungen und Ihren strategischen Fahrplan zu einem nachhaltigen Wettbewerbsvorteil.",
@@ -444,10 +530,12 @@
             "noRoadmap": "Ihre Roadmap wird generiert. Bitte versuchen Sie es später erneut.",
             "whyTitle": "Die Logik hinter Ihrem Fahrplan",
             "whyDesc": "Diese Roadmap basiert auf einer automatisierten Gap-Analyse zwischen Ihrem individuellen Profil und aktuellen Branchen-Benchmarks. Während Phase 1 die Schließung kritischer struktureller Lücken priorisiert, fokussieren die weiteren Phasen den systematischen Aufbau Ihrer internen KI-Kompetenzen, um Ihre Wettbewerbsfähigkeit und Marktpräsenz langfristig zu sichern.",
-            "actionLabel": "Fokusfeld",
-            "scoreLabel": "Impact Score:",
+            "actionLabel": "Aktion",
             "analysisLabel": "Analyse:",
             "noActions": "Für diese Phase wurden keine kritischen Aktionen identifiziert.",
+            "mustWinBattle": "Must-Win Initiative",
+            "tacticalStep": "Taktischer Schritt",
+            "peerOpportunity": "Wettbewerbschance",
             "phases": {
                 "foundation": {
                     "title": "Fundament",

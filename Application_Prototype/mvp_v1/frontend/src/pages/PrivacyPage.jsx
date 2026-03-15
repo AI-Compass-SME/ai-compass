@@ -3,7 +3,7 @@ import { Navigation } from '../components/Navigation';
 import { PageBackground } from '@/components/ui/PageBackground';
 import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
-import { Shield, Lock, Server, Mail, FileText, UserCheck, EyeOff } from 'lucide-react';
+import { Shield, Lock, Server, Mail, FileText, UserCheck, EyeOff, Building2 } from 'lucide-react';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Section = ({ title, icon: Icon, children }) => (
@@ -51,22 +51,15 @@ export default function PrivacyPage() {
                             <p>{t('pages.privacy.s1.p1')}</p>
                             <p className="font-semibold text-gray-900">
                                 {t('pages.privacy.s1.address')}<br />
-                                <a href="mailto:chris@the-ai-compass.de" className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
-                                    <Mail className="w-3 h-3" /> chris@the-ai-compass.de
+                                <a href="mailto:info@the-ai-compass.de" className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
+                                    <Mail className="w-3 h-3" /> info@the-ai-compass.de
                                 </a>
                             </p>
                         </Section>
 
-                        {/* 2. Hosting */}
-                        <Section title={t('pages.privacy.s2.title')} icon={Server}>
-                            <p>{t('pages.privacy.s2.p1')}</p>
-                            <p className="mt-2">{t('pages.privacy.s2.p2')}</p>
-                            <ul className="list-disc pl-5 space-y-1 mt-1">
-                                <li>{t('pages.privacy.s2.l1')}</li>
-                                <li>{t('pages.privacy.s2.l2')}</li>
-                                <li>{t('pages.privacy.s2.l3')}</li>
-                            </ul>
-                            <p className="text-xs text-gray-500 mt-2 italic">{t('pages.privacy.s2.footer')}</p>
+                        {/* 2. Brevo (now in position 2) */}
+                        <Section title={t('pages.privacy.s4.title')} icon={Mail}>
+                            <p>{t('pages.privacy.s4.p1')}</p>
                         </Section>
 
                         {/* 3. Assessment & ML */}
@@ -93,14 +86,21 @@ export default function PrivacyPage() {
                                     <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('pages.privacy.s3.h3')}</h3>
                                     <p>{t('pages.privacy.s3.p3')}</p>
                                     <p className="text-xs font-medium text-blue-700 mt-1">{t('pages.privacy.s3.purpose3')}</p>
-                                    <p className="text-[10px] text-gray-500 leading-tight">Rechtsgrundlage: {t('pages.privacy.s3.legal3')}</p>
+                                    <p className="text-[10px] text-gray-500 leading-tight">{t('pages.privacy.s3.legal3')}</p>
                                 </div>
                             </div>
                         </Section>
 
-                        {/* 4. Brevo */}
-                        <Section title={t('pages.privacy.s4.title')} icon={Mail}>
-                            <p>{t('pages.privacy.s4.p1')}</p>
+                        {/* 4. Hosting (now in position 4) */}
+                        <Section title={t('pages.privacy.s2.title')} icon={Server}>
+                            <p>{t('pages.privacy.s2.p1')}</p>
+                            <p className="mt-2">{t('pages.privacy.s2.p2')}</p>
+                            <ul className="list-disc pl-5 space-y-1 mt-1">
+                                <li>{t('pages.privacy.s2.l1')}</li>
+                                <li>{t('pages.privacy.s2.l2')}</li>
+                                <li>{t('pages.privacy.s2.l3')}</li>
+                            </ul>
+                            <p className="text-xs text-gray-500 mt-2 italic">{t('pages.privacy.s2.footer')}</p>
                         </Section>
 
                         {/* 5. Security */}
@@ -137,7 +137,7 @@ export default function PrivacyPage() {
                         </Section>
 
                         {/* 8. AVV */}
-                        <Section title={t('pages.privacy.s8.title')} icon={Shield}>
+                        <Section title={t('pages.privacy.s8.title')} icon={Building2}>
                             <p>{t('pages.privacy.s8.p1')}</p>
                         </Section>
                     </div>

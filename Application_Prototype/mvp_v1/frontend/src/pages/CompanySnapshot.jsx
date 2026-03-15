@@ -106,10 +106,10 @@ export default function CompanySnapshot() {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-2xl font-bold text-slate-900 mb-2 font-heading"
                     >
-                        Finalizing your strategic AI roadmap...
+                        {t('snapshot.analyzing.title')}
                     </motion.h2>
                     <p className="text-slate-500 max-w-md">
-                        Verifying your industry benchmarks and generating actionable insights.
+                        {t('snapshot.analyzing.desc')}
                     </p>
                 </div>
             </div>
@@ -126,24 +126,22 @@ export default function CompanySnapshot() {
                             <Mail className="w-8 h-8 text-white" />
                         </div>
                         <CardTitle className="text-2xl font-bold text-slate-900 font-heading">
-                            Please Verify Your Email
+                            {t('snapshot.verify.title')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-8 px-6 text-slate-600">
                         <p className="mb-4 text-base">
-                            We've sent a secure verification link to:<br />
+                            {t('snapshot.verify.p1')}<br />
                             <strong className="text-slate-900">{userEmail}</strong>
                         </p>
-                        <p className="text-sm">
-                            Click the link in the email to instantly access your <strong>results page</strong> and receive your comprehensive <strong>PDF report</strong>.
-                        </p>
+                        <p className="text-sm" dangerouslySetInnerHTML={{ __html: t('snapshot.verify.p2') }} />
                         <div className="mt-8">
                             <Button
                                 variant="outline"
                                 onClick={() => window.location.href = '/'}
                                 className="w-full bg-white/50 border-slate-200"
                             >
-                                Return to Homepage
+                                {t('snapshot.verify.returnHome')}
                             </Button>
                         </div>
                     </CardContent>
@@ -162,10 +160,10 @@ export default function CompanySnapshot() {
                         <Building2 className="w-6 h-6 text-white" />
                     </div>
                     <CardTitle className="text-3xl font-bold text-slate-900 font-heading">
-                        {i18n.language === 'de' ? 'Letzter Schritt: Unternehmensprofil' : 'Final Step: Company Profile'}
+                        {t('snapshot.form.title')}
                     </CardTitle>
                     <CardDescription className="text-slate-600 text-base max-w-md mx-auto">
-                        {i18n.language === 'de' ? 'Norden Sie Ihren KI-Kompass: Nur noch diese Details trennen Sie von Ihrem glasklaren Fahrplan für die Umsetzung.' : 'To provide accurate benchmarking, we need a few details about your organization.'}
+                        {t('snapshot.form.subtitle')}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-3 px-6 md:px-8">
@@ -173,7 +171,7 @@ export default function CompanySnapshot() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             <div className="space-y-2">
                                 <Label htmlFor="company_name" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Unternehmensname' : 'Company Name'} <span className="text-red-500">*</span>
+                                    {t('snapshot.form.companyName')} <span className="text-red-500">*</span>
                                 </Label>
                                 <div className="relative group">
                                     <Building2 className="absolute left-3 top-2.5 h-5 w-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
@@ -181,7 +179,7 @@ export default function CompanySnapshot() {
                                         id="company_name"
                                         name="company_name"
                                         required
-                                        placeholder={i18n.language === 'de' ? 'z.B. Muster GmbH' : 'e.g. Acme Corp'}
+                                        placeholder={t('snapshot.form.companyNamePlaceholder')}
                                         value={formData.company_name}
                                         onChange={handleChange}
                                         className="pl-10 h-11 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base"
@@ -191,7 +189,7 @@ export default function CompanySnapshot() {
 
                             <div className="space-y-2">
                                 <Label htmlFor="industry" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Branche' : 'Industry'} <span className="text-red-500">*</span>
+                                    {t('snapshot.form.industry')} <span className="text-red-500">*</span>
                                 </Label>
                                 <Select
                                     name="industry"
@@ -200,39 +198,19 @@ export default function CompanySnapshot() {
                                     required
                                 >
                                     <SelectTrigger className="h-11 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base">
-                                        <SelectValue placeholder={i18n.language === 'de' ? 'Branche wählen' : 'Select industry'} />
+                                        <SelectValue placeholder={t('snapshot.form.industryPlaceholder')} />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {i18n.language === 'de' ? (
-                                            <>
-                                                <SelectItem value="Industrie & Produktion">Industrie & Produktion</SelectItem>
-                                                <SelectItem value="Handwerk & Baugewerbe">Handwerk & Baugewerbe</SelectItem>
-                                                <SelectItem value="Handel & E-Commerce">Handel & E-Commerce</SelectItem>
-                                                <SelectItem value="Dienstleistungen & Beratung">Dienstleistungen & Beratung</SelectItem>
-                                                <SelectItem value="IT & Software">IT & Software</SelectItem>
-                                                <SelectItem value="Gesundheits- & Sozialwesen">Gesundheits- & Sozialwesen</SelectItem>
-                                                <SelectItem value="Logistik & Transport">Logistik & Transport</SelectItem>
-                                                <SelectItem value="Sonstige">Sonstige</SelectItem>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <SelectItem value="Technology">Technology</SelectItem>
-                                                <SelectItem value="Manufacturing">Manufacturing</SelectItem>
-                                                <SelectItem value="Healthcare">Healthcare</SelectItem>
-                                                <SelectItem value="Finance">Finance</SelectItem>
-                                                <SelectItem value="Retail">Retail</SelectItem>
-                                                <SelectItem value="Consulting">Consulting</SelectItem>
-                                                <SelectItem value="Education">Education</SelectItem>
-                                                <SelectItem value="Other">Other</SelectItem>
-                                            </>
-                                        )}
+                                        {Object.entries(t('snapshot.form.industries', { returnObjects: true })).map(([key, label]) => (
+                                            <SelectItem key={key} value={label}>{label}</SelectItem>
+                                        ))}
                                     </SelectContent>
                                 </Select>
                             </div>
 
                             <div className="space-y-2">
                                 <Label htmlFor="number_of_employees" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Unternehmensgröße' : 'Company Size'} <span className="text-red-500">*</span>
+                                    {t('snapshot.form.size')} <span className="text-red-500">*</span>
                                 </Label>
                                 <div className="relative group">
                                     <Users className="absolute left-3 top-2.5 h-5 w-5 z-10 text-slate-400 pointer-events-none group-focus-within:text-indigo-600 transition-colors" />
@@ -243,26 +221,12 @@ export default function CompanySnapshot() {
                                         required
                                     >
                                         <SelectTrigger className="h-11 pl-10 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base">
-                                            <SelectValue placeholder={i18n.language === 'de' ? 'Größe wählen' : 'Select size'} />
+                                            <SelectValue placeholder={t('snapshot.form.sizePlaceholder')} />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {i18n.language === 'de' ? (
-                                                <>
-                                                    <SelectItem value="1">Selbstständig / 1 Mitarbeiter</SelectItem>
-                                                    <SelectItem value="2-10">2 – 10 Mitarbeiter</SelectItem>
-                                                    <SelectItem value="11-50">11 – 50 Mitarbeiter</SelectItem>
-                                                    <SelectItem value="51-250">51 – 250 Mitarbeiter</SelectItem>
-                                                    <SelectItem value="250+">Über 250 Mitarbeiter</SelectItem>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <SelectItem value="1-10">1-10 employees</SelectItem>
-                                                    <SelectItem value="11-50">11-50 employees</SelectItem>
-                                                    <SelectItem value="51-200">51-200 employees</SelectItem>
-                                                    <SelectItem value="201-500">201-500 employees</SelectItem>
-                                                    <SelectItem value="500+">500+ employees</SelectItem>
-                                                </>
-                                            )}
+                                            {Object.entries(t('snapshot.form.sizes', { returnObjects: true })).map(([val, label]) => (
+                                                <SelectItem key={val} value={val}>{label}</SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                                 </div>
@@ -270,7 +234,7 @@ export default function CompanySnapshot() {
 
                             <div className="space-y-2">
                                 <Label htmlFor="website" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Website' : 'Website'} <span className="text-slate-400 font-normal normal-case">({i18n.language === 'de' ? 'Optional' : 'Optional'})</span>
+                                    {t('snapshot.form.website')} <span className="text-slate-400 font-normal normal-case">({t('snapshot.form.optional')})</span>
                                 </Label>
                                 <div className="relative group">
                                     <Globe className="absolute left-3 top-2.5 h-5 w-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
@@ -278,7 +242,7 @@ export default function CompanySnapshot() {
                                         id="website"
                                         name="website"
                                         type="url"
-                                        placeholder={i18n.language === 'de' ? 'https://ihre-firma.de' : 'https://example.com'}
+                                        placeholder={t('snapshot.form.websitePlaceholder')}
                                         value={formData.website}
                                         onChange={handleChange}
                                         className="pl-10 h-11 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base"
@@ -288,14 +252,14 @@ export default function CompanySnapshot() {
 
                             <div className="space-y-2">
                                 <Label htmlFor="city" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Hauptsitz' : 'Headquarters'} <span className="text-slate-400 font-normal normal-case">({i18n.language === 'de' ? 'Optional' : 'Optional'})</span>
+                                    {t('snapshot.form.city')} <span className="text-slate-400 font-normal normal-case">({t('snapshot.form.optional')})</span>
                                 </Label>
                                 <div className="relative group">
                                     <MapPin className="absolute left-3 top-2.5 h-5 w-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
                                     <Input
                                         id="city"
                                         name="city"
-                                        placeholder={i18n.language === 'de' ? 'z.B. Hamburg' : 'e.g. Berlin'}
+                                        placeholder={t('snapshot.form.cityPlaceholder')}
                                         value={formData.city}
                                         onChange={handleChange}
                                         className="pl-10 h-11 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base"
@@ -305,7 +269,7 @@ export default function CompanySnapshot() {
 
                             <div className="space-y-2">
                                 <Label htmlFor="email" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
-                                    {i18n.language === 'de' ? 'Geschäftliche E-Mail' : 'Work Email'} <span className="text-red-500">*</span>
+                                    {t('snapshot.form.email')} <span className="text-red-500">*</span>
                                 </Label>
                                 <div className="relative group">
                                     <Mail className="absolute left-3 top-2.5 h-5 w-5 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
@@ -314,7 +278,7 @@ export default function CompanySnapshot() {
                                         name="email"
                                         type="email"
                                         required
-                                        placeholder={i18n.language === 'de' ? 'name@unternehmen.de' : 'name@company.com'}
+                                        placeholder={t('snapshot.form.emailPlaceholder')}
                                         value={formData.email}
                                         onChange={handleChange}
                                         className="pl-10 h-11 bg-white border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-base"
@@ -336,20 +300,18 @@ export default function CompanySnapshot() {
                                         htmlFor="gdpr"
                                         className="text-sm font-medium leading-normal text-slate-700 cursor-pointer"
                                     >
-                                        {i18n.language === 'de' ? 'Ich willige in die Verarbeitung meiner Daten zur Erstellung meiner individuellen KI-Potenzialanalyse ein.' : 'I consent to the processing of my data to generate the maturity report.'}
+                                        {t('snapshot.form.consent')}
                                     </label>
                                     <p className="text-xs text-slate-500">
-                                        {i18n.language === 'de' ? 'Wir nehmen Datenschutz ernst: Ihre Daten werden ausschließlich für das Benchmarking und die Erstellung Ihres individuellen Reports verwendet. Details finden Sie in unserer ' : 'We respect your privacy. Your data is used solely for benchmarking and generating your report. See our '}
-                                        <a href="/privacy" className="underline text-blue-600 hover:text-blue-800" target="_blank">{i18n.language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}</a>.
+                                        {t('snapshot.form.privacyPrefix')}
+                                        <a href="/privacy" className="underline text-blue-600 hover:text-blue-800" target="_blank">{t('snapshot.form.privacyLink')}</a>.
                                     </p>
                                     <div className="border-t border-blue-100 mt-2 pt-2">
                                         <p className="text-xs font-semibold text-slate-600 mb-1">
-                                            {i18n.language === 'de' ? 'KI-Transparenz & Methodik:' : 'AI Transparency & Methodology:'}
+                                            {t('snapshot.form.transparencyTitle')}
                                         </p>
                                         <p className="text-xs text-slate-500 leading-relaxed">
-                                            {i18n.language === 'de'
-                                                ? 'Der AI Compass kombiniert statistische Verfahren (K-Means-Clustering) mit generativer KI, um präzise Muster in Ihrer Unternehmensstruktur zu identifizieren. Alle Analyseergebnisse basieren auf modellbasierten Wahrscheinlichkeiten und dienen als strategische Orientierungshilfe; sie ersetzen keine individuelle Expertenprüfung. Die Nutzung dieser Plattform stellt keine Rechtsberatung dar und begründet kein formales Beratungsmandat.'
-                                                : 'The AI Compass combines statistical methods (K-Means clustering) with generative AI to identify precise patterns in your organizational structure. All analysis results are based on model-driven probabilities and serve as strategic guidance; they do not replace individual expert review. Use of this platform does not constitute legal advice or establish a formal advisory relationship.'}
+                                            {t('snapshot.form.transparencyText')}
                                         </p>
                                     </div>
                                 </div>
@@ -362,7 +324,7 @@ export default function CompanySnapshot() {
                             className="w-full h-12 text-base font-bold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-500/25 transition-all group"
                             disabled={status === ('analyzing')}
                         >
-                            {i18n.language === 'de' ? 'Meinen persönlichen Report erstellen' : 'Generate My Report'}
+                            {t('snapshot.form.submitBtn')}
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                     </form>

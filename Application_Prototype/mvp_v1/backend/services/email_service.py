@@ -27,18 +27,18 @@ def _get_logo_img_tag() -> str:
     logo_url = "https://kmwe38clpa2nailq.public.blob.vercel-storage.com/ai_compass_logo.png"
     return f'<img src="{logo_url}" width="32" height="32" alt="AI Compass Logo" style="display:block;border-radius:6px;"/>'
 
-def _build_email_wrapper(body_html: str, footer_extra: str = "") -> str:
+def _build_email_wrapper(body_html: str, t: dict, footer_extra: str = "") -> str:
     """Builds the full premium email shell with header and footer."""
     
     footer_links = f"""
       <p style="margin:0 0 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:{_SLATE_500};">
-        <a href="https://the-ai-compass.de" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">Home</a> &bull;
-        <a href="https://the-ai-compass.de/imprint" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">Imprint</a> &bull;
-        <a href="https://the-ai-compass.de/privacy-policy" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">Privacy Policy</a>
+        <a href="https://the-ai-compass.de" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">{t['nav_home']}</a> &bull;
+        <a href="https://the-ai-compass.de/imprint" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">{t['nav_imprint']}</a> &bull;
+        <a href="https://the-ai-compass.de/privacy-policy" style="color:{_INDIGO};text-decoration:none;margin:0 8px;">{t['nav_privacy']}</a>
       </p>
       {footer_extra}
       <p style="margin:8px 0 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;color:{_SLATE_500};">
-        &copy; 2025 AI Compass &bull; the-ai-compass.de &bull; All rights reserved.
+        &copy; 2025 AI Compass &bull; the-ai-compass.de &bull; {t['rights']}
       </p>
     """
 
@@ -76,7 +76,7 @@ def _build_email_wrapper(body_html: str, footer_extra: str = "") -> str:
                     </table>
                   </td>
                   <td align="right" valign="middle">
-                    <span style="font-size:12px;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;font-weight:600;">Strategic AI Assessment</span>
+                    <span style="font-size:12px;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;font-weight:600;">{t['header_suffix']}</span>
                   </td>
                 </tr>
               </table>
@@ -105,8 +105,7 @@ def _build_email_wrapper(body_html: str, footer_extra: str = "") -> str:
           <tr>
             <td align="center" style="padding:0 16px;">
               <p style="font-size:11px;color:{_SLATE_500};margin:0;">
-                You received this email because an AI Compass assessment was completed using this address.<br/>
-                If this wasn&apos;t you, simply ignore this email.
+                {t.get('footer_note', '')}
               </p>
             </td>
           </tr>
@@ -190,7 +189,12 @@ class EmailService:
                 'btn': "Verify Email & View My Report",
                 'disclaimer': "This link is secure and unique to your assessment. If you didn't take an AI Compass assessment, you can safely ignore this email.",
                 'subject': f"[Action Required] Verify your email to access your AI Compass Report — {company_name}",
-                'footer_note': "You received this email because an AI Compass assessment was completed using this address.<br/>If this wasn't you, simply ignore this email."
+                'footer_note': "You received this email because an AI Compass assessment was completed using this address.<br/>If this wasn't you, simply ignore this email.",
+                'nav_home': "Home",
+                'nav_imprint': "Imprint",
+                'nav_privacy': "Privacy Policy",
+                'rights': "All rights reserved.",
+                'header_suffix': "Strategic AI Assessment"
             },
             'de': {
                 'title': f"Willkommen, {company_name}! 🎉",
@@ -206,12 +210,18 @@ class EmailService:
                 'btn': "E-Mail verifizieren & Bericht ansehen",
                 'disclaimer': "Dieser Link ist sicher und einzigartig für Ihr Assessment. Wenn Sie kein KI-Kompass-Assessment durchgeführt haben, können Sie diese E-Mail sicher ignorieren.",
                 'subject': f"[Aktion Erforderlich] Verifizieren Sie Ihre E-Mail, um auf Ihren KI-Kompass-Bericht zuzugreifen — {company_name}",
-                'footer_note': "Sie haben diese E-Mail erhalten, weil ein KI-Kompass-Assessment unter dieser Adresse abgeschlossen wurde.<br/>Wenn Sie dies nicht waren, ignorieren Sie diese E-Mail einfach."
+                'footer_note': "Sie haben diese E-Mail erhalten, weil ein KI-Kompass-Assessment unter dieser Adresse abgeschlossen wurde.<br/>Wenn Sie dies nicht waren, ignorieren Sie diese E-Mail einfach.",
+                'nav_home': "Startseite",
+                'nav_imprint': "Impressum",
+                'nav_privacy': "Datenschutz",
+                'rights': "Alle Rechte vorbehalten.",
+                'header_suffix': "Strategische KI-Bewertung"
             }
         }
         
         # fallback to EN if language is unmatched
-        active_t = t.get(lang.lower(), t['en'])
+        lang_code = lang.split('-')[0].lower()
+        active_t = t.get(lang_code, t['en'])
 
         body = f"""
 <h1 style="margin:0 0 6px;font-size:26px;font-weight:800;color:{_SLATE_900};letter-spacing:-0.5px;">
@@ -258,12 +268,7 @@ class EmailService:
   {active_t['disclaimer']}
 </p>
 """
-        # We need to temporarily adapt _build_email_wrapper if we wanted localized footer notes
-        # For simplicity, we'll swap it by injecting a replace
-        html = _build_email_wrapper(body).replace(
-            "You received this email because an AI Compass assessment was completed using this address.<br/>\n                If this wasn&apos;t you, simply ignore this email.",
-            active_t['footer_note']
-        )
+        html = _build_email_wrapper(body, t=active_t)
         
         data = {
             "sender": {"name": SENDER_NAME, "email": SENDER_EMAIL},
@@ -286,13 +291,18 @@ class EmailService:
                 'item4': "Industry Benchmarking",
                 'item5': "Cluster Profile",
                 'item6': "Executive Briefing",
-                'cta_pre': "You can also access your <strong>interactive live dashboard</strong> anytime through your secure, permanent link below:",
                 'btn': "View Report",
                 'next_steps': "Next steps",
                 'next_desc': "Review your roadmap with your leadership team and identify the highest-impact actions for your next quarter. If you'd like expert guidance implementing your strategy, our team is available for a free consultation.",
                 'confidential': f"This is a confidential report prepared exclusively for {company_name}. Your secure dashboard link is permanent — bookmark it for future reference.",
                 'secure_dash': "Your secure dashboard:",
-                'subject': f"Your AI Compass Strategic Report — {company_name}"
+                'subject': f"Your AI Compass Strategic Report — {company_name}",
+                'nav_home': "Home",
+                'nav_imprint': "Imprint",
+                'nav_privacy': "Privacy Policy",
+                'rights': "All rights reserved.",
+                'footer_note': "",
+                'header_suffix': "Strategic AI Assessment"
             },
             'de': {
                 'title': "Ihr KI-Reifegradbericht ist fertig &#128196;",
@@ -310,11 +320,17 @@ class EmailService:
                 'next_desc': "Überprüfen Sie Ihre Roadmap mit Ihrem Führungsteam und identifizieren Sie die Maßnahmen mit den höchsten Auswirkungen für das nächste Quartal. Wenn Sie fachkundige Anleitung bei der Umsetzung Ihrer Strategie wünschen, steht Ihnen unser Team für eine kostenlose Beratung zur Verfügung.",
                 'confidential': f"Dies ist ein vertraulicher Bericht, der exklusiv für {company_name} erstellt wurde. Ihr sicherer Dashboard-Link ist permanent — speichern Sie ihn für künftige Referenzen.",
                 'secure_dash': "Ihr sicheres Dashboard:",
-                'subject': f"Ihr strategischer KI-Kompass-Bericht — {company_name}"
+                'subject': f"Ihr strategischer KI-Kompass-Bericht — {company_name}",
+                'nav_home': "Startseite",
+                'nav_imprint': "Impressum",
+                'nav_privacy': "Datenschutz",
+                'rights': "Alle Rechte vorbehalten.",
+                'footer_note': "",
+                'header_suffix': "Strategische KI-Bewertung"
             }
         }
-        
-        active_t = t.get(lang.lower(), t['en'])
+        lang_code = lang.split('-')[0].lower()
+        active_t = t.get(lang_code, t['en'])
         
         import base64
         b64_pdf = base64.b64encode(pdf_bytes).decode('ascii')
@@ -381,10 +397,7 @@ class EmailService:
         {active_t['secure_dash']} <a href="{results_link}" style="color:{_INDIGO};text-decoration:none;">{results_link}</a>
       </p>
 """
-        html = _build_email_wrapper(body, footer_extra=footer_extra).replace(
-            "You received this email because an AI Compass assessment was completed using this address.<br/>\n                If this wasn&apos;t you, simply ignore this email.",
-            "" # Not used prominently at the bottom of the PDF email, but let's clear it
-        )
+        html = _build_email_wrapper(body, t=active_t, footer_extra=footer_extra)
         
         data = {
             "sender": {"name": SENDER_NAME, "email": SENDER_EMAIL},

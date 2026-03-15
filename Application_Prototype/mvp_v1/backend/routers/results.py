@@ -46,6 +46,8 @@ def get_results(result_hash: str, lang: str = "en", db: Session = Depends(get_db
     4. Return JSON
     """
     try:
+        lang_code = lang.split('-')[0].lower() if lang else 'en'
+        
         if not inference_engine or not inference_engine.loaded:
              raise HTTPException(status_code=503, detail="AI Analysis Engine is unavailable.")
 
@@ -165,7 +167,7 @@ def get_results(result_hash: str, lang: str = "en", db: Session = Depends(get_db
         grouped_q = grouped_q[grouped_q['dimension_name'] != 'General Psychology']
 
         # 5. Run Inference
-        analysis = inference_engine.run_analysis(dim_results, grouped_q, company_industry=company.industry, lang=lang)
+        analysis = inference_engine.run_analysis(dim_results, grouped_q, company_industry=company.industry, lang=lang_code)
 
         if "error" in analysis:
              raise HTTPException(status_code=500, detail=analysis["error"])
@@ -215,13 +217,16 @@ def generate_pdf(result_hash: str, lang: str = "en", db: Session = Depends(get_d
              raise HTTPException(status_code=results_data.status_code, detail="Could not fetch results data")
 
         # Generate PDF
+        lang_code = lang.split('-')[0].lower()
         pdf_service = PDFService()
-        pdf_bytes = pdf_service.generate_pdf(results_data, lang=lang)
+        pdf_bytes = pdf_service.generate_pdf(results_data, lang=lang_code)
+        
+        prefix = "KI_Kompass_Report" if lang_code == 'de' else "AI_Compass_Report"
         
         return FastAPIResponse(
             content=pdf_bytes, 
             media_type="application/pdf", 
-            headers={"Content-Disposition": f"attachment; filename=ai_maturity_report_{result_hash[:8]}.pdf"}
+            headers={"Content-Disposition": f"attachment; filename={prefix}_{result_hash[:8]}.pdf"}
         )
     except Exception as e:
         print(f"PDF Gen Error: {e}")

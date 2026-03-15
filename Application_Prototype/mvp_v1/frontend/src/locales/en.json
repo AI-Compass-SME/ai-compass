@@ -1,4 +1,77 @@
 {
+    "snapshot": {
+        "pageTitle": "AI Compass: Company Profile",
+        "toasts": {
+            "noActiveAssessment": "No active assessment found.",
+            "agreePrivacy": "Please agree to the privacy policy to continue.",
+            "submitError": "Failed to complete assessment: {{error}}"
+        },
+        "analyzing": {
+            "title": "Finalizing your strategic AI roadmap...",
+            "desc": "Verifying your industry benchmarks and generating actionable insights."
+        },
+        "verify": {
+            "title": "Please Verify Your Email",
+            "p1": "We've sent a secure verification link to:",
+            "p2": "Click the link in the email to instantly access your <strong>results page</strong> and receive your comprehensive <strong>PDF report</strong>.",
+            "returnHome": "Return to Homepage"
+        },
+        "form": {
+            "title": "Final Step: Company Profile",
+            "subtitle": "To provide accurate benchmarking, we need a few details about your organization.",
+            "companyName": "Company Name",
+            "companyNamePlaceholder": "e.g. Acme Corp",
+            "industry": "Industry",
+            "industryPlaceholder": "Select industry",
+            "size": "Company Size",
+            "sizePlaceholder": "Select size",
+            "website": "Website",
+            "websitePlaceholder": "https://example.com",
+            "city": "Headquarters",
+            "cityPlaceholder": "e.g. Berlin",
+            "email": "Work Email",
+            "emailPlaceholder": "name@company.com",
+            "optional": "Optional",
+            "consent": "I consent to the processing of my data to generate the maturity report.",
+            "privacyPrefix": "We respect your privacy. Your data is used solely for benchmarking and generating your report. See our ",
+            "privacyLink": "Privacy Policy",
+            "transparencyTitle": "AI Transparency & Methodology:",
+            "transparencyText": "The AI Compass combines statistical methods (K-Means clustering) with generative AI to identify precise patterns in your organizational structure. All analysis results are based on model-driven probabilities and serve as strategic guidance; they do not replace individual expert review. Use of this platform does not constitute legal advice or establish a formal advisory relationship.",
+            "submitBtn": "Generate My Report",
+            "industries": {
+                "Technology": "Technology",
+                "Manufacturing": "Manufacturing",
+                "Healthcare": "Healthcare",
+                "Finance": "Finance",
+                "Retail": "Retail",
+                "Consulting": "Consulting",
+                "Education": "Education",
+                "Other": "Other"
+            },
+            "sizes": {
+                "1-10": "1-10 employees",
+                "11-50": "11-50 employees",
+                "51-200": "51-200 employees",
+                "201-500": "201-500 employees",
+                "500+": "500+ employees"
+            }
+        }
+    },
+    "verifyPage": {
+        "verifying": {
+            "title": "Verifying Email...",
+            "desc": "Please wait while we verify your email address. You will be redirected shortly."
+        },
+        "success": {
+            "title": "Email Verified Successfully!",
+            "sent": "We've sent your PDF report to your inbox.",
+            "redirecting": "Redirecting you to your interactive dashboard..."
+        },
+        "error": {
+            "title": "Verification Failed",
+            "returnHome": "Return to Homepage"
+        }
+    },
     "nav": {
         "product": "Product",
         "methodology": "Methodology",
@@ -234,7 +307,7 @@
         },
         "privacy": {
             "title": "Privacy Policy",
-            "subtitle": "Status: February 2026 | Fully Compliant with EU GDPR",
+            "subtitle": "Status: March 2026 | Fully Compliant with EU GDPR",
             "intro": "The protection of your personal data and the integrity of our AI-driven methodologies are our highest priorities. This Privacy Policy informs you about how we collect, process, and protect your data within the framework of the AI Compass.",
             "s1": {
                 "title": "1. Data Controller",
@@ -242,12 +315,12 @@
                 "address": "Christian Miething, Görschstraße 10A, 13187 Berlin, Germany"
             },
             "s2": {
-                "title": "2. Hosting and Infrastructure",
-                "p1": "We host our website with Hetzner Online GmbH (or a comparable Tier-1 provider). All data is processed exclusively on ISO 27001-certified servers located within the Federal Republic of Germany / European Union. We have concluded a Data Processing Agreement (DPA) with this provider.",
+                "title": "4. Hosting and Infrastructure",
+                "p1": "The AI Compass application is hosted using the following cloud infrastructure providers: the backend API runs on Render.com, the frontend is served via Vercel, and all assessment data is stored in Supabase (PostgreSQL). We are currently using the free tiers of these services. Each provider operates under their own GDPR-aligned Privacy Policy and Terms of Service, which govern the processing of any server-side data on their infrastructure.",
                 "p2": "Our infrastructure automatically collects and stores information in \"Server Log Files\" transmitted by your browser:",
-                "l1": "Browser type/version and Operating System (OS)",
-                "l2": "Referrer URL and Hostname of the accessing computer",
-                "l3": "Time of server request and IP address",
+                "l1": "Browser type/version and Operating System (via HTTP User-Agent header)",
+                "l2": "HTTP request method, URL path, and response status code",
+                "l3": "Time of server request and IP address of the client",
                 "footer": "Legal Basis: Art. 6 (1)(f) GDPR (Legitimate Interest) for technically flawless presentation and system security."
             },
             "s3": {
@@ -267,8 +340,8 @@
                 "legal3": "Legal Basis: Art. 6 (1)(a) GDPR (Consent)."
             },
             "s4": {
-                "title": "4. Data Transmission (Service Providers)",
-                "p1": "For the reliable delivery of our analytical reports, we utilize Brevo (formerly Sendinblue). We have a Data Processing Agreement (DPA) in place with Brevo to ensure your data is handled strictly in accordance with our instructions and EU data protection standards."
+                "title": "2. Data Transmission (Service Providers)",
+                "p1": "For the reliable delivery of our analytical reports and email verification, we utilize Brevo (formerly Sendinblue). In accordance with Art. 28 GDPR, a Data Processing Agreement (DPA) between your organization and Brevo is automatically entered into upon subscription to a Brevo account or upon use of Brevo's platform. This DPA forms part of Brevo's General Conditions of Use and governs the standard processing of personal data on their platform."
             },
             "s5": {
                 "title": "5. Technical and Organizational Measures (TOMs)",
@@ -287,16 +360,16 @@
             },
             "s7": {
                 "title": "7. Analytics & Privacy by Design",
-                "p1": "This website employs a GDPR-compliant, cookieless analytics solution hosted on German servers. We measure impact, not individuals.",
-                "l1": "No personal data is stored on your device.",
-                "l2": "No persistent identifiers are used.",
-                "l3": "IP addresses are fully anonymized.",
-                "l4": "Sovereignty: No data is transferred to third countries (e.g., the USA).",
-                "footer": "Legal Basis: Art. 6 (1)(f) GDPR (Legitimate Interest) for the continuous optimization of our service."
+                "p1": "This website does not use any third-party analytics or tracking tools. We do not set tracking cookies, and we do not collect behavioral data about individual users.",
+                "l1": "No analytics cookies or tracking scripts are loaded.",
+                "l2": "No personal data is stored on your device for marketing purposes.",
+                "l3": "No persistent identifiers or fingerprinting techniques are used.",
+                "l4": "Sovereignty: No data is transferred to third countries for analytics purposes.",
+                "footer": "This approach reflects our commitment to Privacy by Design (Art. 25 GDPR)."
             },
             "s8": {
                 "title": "8. Enterprise Compliance & DPA",
-                "p1": "For corporate clients requiring formal compliance documentation, we offer a standardized Data Processing Agreement (DPA) pursuant to Art. 28 GDPR. This includes detailed information on our Technical and Organizational Measures (TOMs). Please contact us via the details provided in the imprint."
+                "p1": "For corporate clients requiring formal compliance documentation, we offer a standardized Data Processing Agreement (DPA) pursuant to Art. 28 GDPR. This includes detailed information on our Technical and Organizational Measures (TOMs). Please contact us at info@the-ai-compass.de."
             }
         },
         "imprint": {
@@ -345,6 +418,19 @@
         }
     },
     "results": {
+        "pageTitle": "AI Compass: Executive Results",
+        "loading": {
+            "title": "Finalizing your strategic AI roadmap...",
+            "subtitle": "Verifying your industry benchmarks"
+        },
+        "error": {
+            "title": "Analysis Error",
+            "noData": "No data available",
+            "returnHome": "Return Home"
+        },
+        "toasts": {
+            "fetchError": "Failed to generate analysis."
+        },
         "hero": {
             "title": "AI Compass: Executive Results Report",
             "subtitle": "This is your strategic Blueprint — a verified baseline of where you stand today, detailing your organizational maturity, competitive standing, and the strategic path forward to scaling measurable AI value.",
@@ -448,6 +534,9 @@
             "scoreLabel": "Score:",
             "analysisLabel": "Analysis:",
             "noActions": "No critical actions identified for this phase.",
+            "mustWinBattle": "Must-Win Battle",
+            "tacticalStep": "Tactical Step",
+            "peerOpportunity": "Peer Opportunity",
             "phases": {
                 "foundation": {
                     "title": "Foundation",

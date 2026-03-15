@@ -93,7 +93,8 @@ def complete_assessment(response_id: int, completion_data: schemas.ResponseCompl
             company_id=response_data["company_id"],
             created_at=response_data["created_at"],
             total_score=str(calculated_total_score), # Store the calculated value
-            cluster_id=response_data["cluster_id"]
+            cluster_id=response_data["cluster_id"],
+            lang=completion_data.lang
         )
         db.merge(db_response)
         
@@ -118,12 +119,13 @@ def complete_assessment(response_id: int, completion_data: schemas.ResponseCompl
         try:
             # Determine base URL dynamically or from env
             frontend_url = get_settings().FRONTEND_URL
-            verify_link = f"{frontend_url}/verify?token={response_data['result_hash']}"
+            lang = completion_data.lang
+            verify_link = f"{frontend_url}/verify?token={response_data['result_hash']}&lang={lang}"
             email_service.send_verification_email(
                 to_email=company_data["email"],
                 company_name=company_data["company_name"],
                 verification_link=verify_link,
-                lang=response_data.get('lang', 'en')
+                lang=completion_data.lang
             )
         except Exception as e:
             print(f"CRITICAL: Failed to dispatch verification email to {company_data['email']}. Error: {e}")
@@ -166,18 +168,18 @@ def verify_email(token: str, db: Session = Depends(get_db)):
             company = db.query(Company).filter(Company.company_id == response.company_id).first()
             if company and company.email:
                 frontend_url = get_settings().FRONTEND_URL
-                results_link = f"{frontend_url}/results/{token}"
+                lang = getattr(response, 'lang', 'en') or 'en'
+                lang_code = lang.split('-')[0].lower()
+                results_link = f"{frontend_url}/results/{token}?lang={lang_code}"
                 
                 # Import pdf generation locally to avoid circular dependencies
                 from routers.results import get_results
                 from services.pdf_service import PDFService
                 
-                lang = getattr(response, 'lang', 'en') or 'en'
-                
                 results_data = get_results(result_hash=token, lang=lang, db=db)
                 if not hasattr(results_data, 'status_code'): # Assumes success dict
                     pdf_service = PDFService()
-                    pdf_bytes = pdf_service.generate_pdf(results_data)
+                    pdf_bytes = pdf_service.generate_pdf(results_data, lang=lang_code)
                     
                     email_service.send_results_email_with_pdf(
                         to_email=company.email,

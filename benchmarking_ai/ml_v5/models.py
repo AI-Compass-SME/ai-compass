@@ -473,8 +473,8 @@ class RoadmapGenerator:
                 else:
                      analysis = f"**Analysis**: Your {theme_out} performance (score: {company_score:.1f}) is competitive, but targeted improvements will differentiate your AI maturity."
         
-        action1_label = "**Aktion 1:**" if lang == 'de' else "**Action 1:**"
-        action2_label = "**Aktion 2:**" if lang == 'de' else "**Action 2:**"
+        action1_label = "**Action 1:**" # Frontend regex strictly looks for 'Action'
+        action2_label = "**Action 2:**"
         return f"{analysis}\n\n{action1_label} {theme_actions['action1']}\n\n{action2_label} {theme_actions['action2']}"
     
     def _get_theme_specific_actions(self, theme, source, gap_pct, lang="en"):
@@ -677,8 +677,8 @@ class RoadmapGenerator:
                 )
                 roadmap[phase].append({
                     "theme": item_theme_out,
-                    "source": "Strategic Gap (Critical)" if lang == 'en' else "Strategische Lücke (Kritisch)",
-                    "impact": gap['score'],
+                    "source": "Strategic Gap (Critical)", # Always keep English for frontend categorization logic
+                    "impact_score": gap['score'],
                     "dimension": gap.get('dimension_name_out', d_name),
                     "explanation": explanation
                 })
@@ -747,8 +747,8 @@ class RoadmapGenerator:
                     )
                     roadmap[phase].append({
                         "theme": found['theme_out'],
-                        "source": "Growth Opportunity" if lang == 'en' else "Wachstumschance",
-                        "impact": found['final_score'],
+                        "source": "Growth Opportunity", # Keep English for frontend categorization
+                        "impact_score": found['final_score'],
                         "dimension": found['dimension_out'],
                         "explanation": explanation
                     })
@@ -770,8 +770,8 @@ class RoadmapGenerator:
                             )
                             roadmap[phase].append({
                                 "theme": c['theme_out'],
-                                "source": "Accelerated Growth" if lang == 'en' else "Beschleunigtes Wachstum",
-                                "impact": c['final_score'],
+                                "source": "Accelerated Growth", # Keep English for frontend categorization
+                                "impact_score": c['final_score'],
                                 "dimension": c['dimension_out'],
                                 "explanation": explanation
                             })
