@@ -58,11 +58,11 @@ export default function VerifyPage() {
                                 <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
                             </div>
                             <CardTitle className="text-2xl font-bold text-slate-900 font-heading">
-                                {t('verify.verifying.title', "Verifying your email...")}
+                                {t('verifyPage.verifying.title', "Verifying your email...")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-8 px-6 text-slate-600">
-                            <p>{t('verify.verifying.desc', "Please wait while we securely validate your link and generate your maturity report PDF.")}</p>
+                            <p>{t('verifyPage.verifying.desc', "Please wait while we securely validate your link and generate your maturity report PDF.")}</p>
                         </CardContent>
                     </>
                 )}
@@ -74,15 +74,15 @@ export default function VerifyPage() {
                                 <CheckCircle2 className="w-8 h-8 text-white" />
                             </div>
                             <CardTitle className="text-2xl font-bold text-slate-900 font-heading">
-                                {t('verify.success.title', "Email Verified Successfully!")}
+                                {t('verifyPage.success.title', "Email Verified Successfully!")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-8 px-6 text-slate-600 space-y-4 flex flex-col items-center">
                             <p className="text-base text-slate-700 font-medium">
-                                {t('verify.success.sent', "We've sent your PDF report to your inbox.")}
+                                {t('verifyPage.success.sent', "We've sent your PDF report to your inbox.")}
                             </p>
                             <p className="text-sm">
-                                {t('verify.success.redirecting', "Redirecting you to your interactive dashboard...")}
+                                {t('verifyPage.success.redirecting', "Redirecting you to your interactive dashboard...")}
                             </p>
                             <Loader2 className="w-5 h-5 text-emerald-600 animate-spin mt-2" />
                         </CardContent>
@@ -96,13 +96,13 @@ export default function VerifyPage() {
                                 <XCircle className="w-8 h-8 text-white" />
                             </div>
                             <CardTitle className="text-2xl font-bold text-slate-900 font-heading">
-                                {t('verify.error.title', "Verification Failed")}
+                                {t('verifyPage.error.title', "Verification Failed")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="pt-8 px-6 text-slate-600">
-                            <p className="mb-6">{t('verify.error.desc', "The verification link is invalid, expired, or may have already been used.")}</p>
+                            <p className="mb-6">{t('verifyPage.error.desc', "The verification link is invalid, expired, or may have already been used.")}</p>
                             <Button asChild size="lg" className="w-full bg-slate-900 text-white hover:bg-slate-800">
-                                <Link to="/">{t('verify.error.return', "Return to Homepage")}</Link>
+                                <Link to="/">{t('verifyPage.error.return', "Return to Homepage")}</Link>
                             </Button>
                         </CardContent>
                     </>

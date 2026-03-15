@@ -1,206 +1,204 @@
 # AI-Compass
 
-AI-Compass is a self-service AI maturity assessment and benchmarking tool for SMEs (Mittelstand). It converts structured questions plus free-form text/voice input into explainable maturity scores, peer benchmarks, and an actionable roadmap—replacing costly initial consulting workshops with a fast, affordable starting point.
+AI-Compass is a self-service AI maturity assessment and benchmarking platform for SMEs (Mittelstand). It guides organizations through a structured questionnaire across 7 dimensions of AI maturity, runs their answers through a proprietary ML engine, and delivers an interactive results dashboard and downloadable PDF report — replacing the first phase of expensive AI consulting engagements.
 
 ---
 
-## What problem it solves
+## 🚀 What it does
 
-Many SMEs want to “do something with AI” but lack clarity on readiness, realistic use cases, data/tech prerequisites, and internal capabilities. Traditional first-phase consulting workshops are expensive and hard to scale. AI-Compass provides a structured, explainable assessment and roadmap with near-zero marginal delivery cost.
-
----
-
-## Target customers
-
-**Primary segment:** Small and medium-sized enterprises (SMEs / Mittelstand)
-
-**Typical characteristics**
-- 20–500 employees
-- low to medium digital/AI maturity
-- limited internal AI expertise
-- cost-sensitive, pragmatic decision makers (CEO, COO, Head of IT/Digital)
-
-**Market note (Germany)**
-- ~2.5M SMEs total; realistically addressable subset estimated at **50k–200k** via digital channels + partners
+1. **Assess** — A structured questionnaire (one question per screen) covering 7 AI maturity dimensions.
+2. **Analyze** — ML v5 engine clusters the organization, scores each dimension, identifies strategic gaps, and generates a phased roadmap.
+3. **Report** — A personalized web dashboard + downloadable executive PDF report with benchmarks, gap analysis, and prioritized action steps.
 
 ---
 
-## Value proposition
+## 🏗️ Technology Stack
 
-**Core value:** A fast, affordable, and understandable first AI maturity assessment that replaces expensive initial consulting workshops.
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React 18 + Vite | SPA framework and build tooling |
+| Tailwind CSS + shadcn/ui | Styling and UI components |
+| Recharts | Radar charts, cluster profile visualization |
+| React Router v6 | Client-side routing |
+| React i18next | EN / DE internationalization (default: German) |
+| React Context + SessionStorage | Wizard state and autosave persistence |
 
-**Why it’s better than alternatives**
-- Faster and cheaper than traditional consulting
-- More contextual and explainable than static questionnaires
-- Combines LLM reasoning + ML clustering/benchmarking (rare in SME tools)
+### Backend
+| Technology | Purpose |
+|---|---|
+| FastAPI (Python 3.10+) | API layer, session management, orchestration |
+| SQLAlchemy | ORM for Supabase (PostgreSQL) |
+| Pydantic v2 | Request/response validation and schema |
+| Brevo (formerly Sendinblue) | Transactional email (verification + PDF delivery) |
+| ReportLab | Server-side vector PDF report generation |
 
----
+### Intelligence Engine (`benchmarking_ai/ml_v5`)
+| Component | Purpose |
+|---|---|
+| `ClusterEngine` | K-Means clustering (5 maturity archetypes) with PCA |
+| `StrategicGapAnalyzer` | Z-Score anomaly detection across 7 dimensions |
+| `RoadmapGenerator` | KNN-based prioritized roadmap (LLM-enhanced explanations) |
+| `InferenceEngine` | Real-time wrapper for ML analysis at assessment completion |
 
-## Product (MVP scope)
+### Database
+| Resource | Role |
+|---|---|
+| Supabase (PostgreSQL) | Companies, responses, question bank, scores |
 
-### Inputs (10–15 minutes)
-1) **Company Snapshot (form)**
-- Industry, employee band, optional revenue band
-- location/country
-- IT team size
-- current systems (ERP/CRM/BI), data sources (high-level)
-- current pain points (checklist + free text)
-
-2) **Maturity Interview (chat-like)**
-- 8–12 adaptive questions (based on company profile + prior answers)
-- text input and optional voice input (Whisper → transcript)
-
-### Outputs (paid deliverable)
-- **Maturity Score (0–100)** + **Level (1–5)** per dimension
-- **Benchmark** vs. similar companies (peer cluster + percentile)
-- **Top 5 Quick Wins (0–30 days)**
-- **Roadmap** (90 days / 6 months / 12 months), prioritized with effort/impact/prereqs
-- **Risks & prerequisites** (data quality, security, skills, process)
-- **PDF report download** and saved history (re-assessments)
-
----
-
-## Maturity framework
-
-6 pragmatic dimensions (SME-friendly, benchmarkable):
-1) Strategy & Use Cases  
-2) Data  
-3) Tech & Architecture  
-4) People & Skills  
-5) Process & Delivery  
-6) Governance, Risk & Compliance  
-
-Each dimension maps to **Level 1–5** with clear criteria. These level definitions are the core “consulting IP” inside the product.
+### Infrastructure
+| Service | Role |
+|---|---|
+| Render.com | Backend API hosting (free tier) |
+| Vercel | Frontend hosting (free tier) |
 
 ---
 
-## Business model
+## 📂 Repository Structure
 
-### Revenue streams
-**Primary**
-- SaaS subscription (self-service assessment tool)
-
-**Secondary (later)**
-- pay-per-assessment
-- white-label for consultancies
-- lead generation for AI service providers
-
-### Indicative pricing (MVP)
-- **€49–99** per assessment (one-off)
-- **€29–59 / month** subscription (limited assessments)
-
-### Customer relationships
-- Acquisition: content, guides, benchmarks, demos, partnerships
-- Retention: reassessments, progress tracking, updated benchmarks/recommendations
-- Support: self-service + minimal human support (email/chat)
-
----
-
-## Architecture (MVP)
-
-**UI:** React 18 + Vite (Responsive, Component-based)  
-**API:** FastAPI (clean separation)  
-**DB:** PostgreSQL (users, companies, assessments, history, reports)  
-**Vector DB:** ChromaDB (RAG knowledge base, framework text blocks)  
-**Embeddings:** sentence-transformers *or* provider embeddings  
-**Voice input:** Whisper (local or API)  
-**Payments:** Stripe Checkout  
-**Deployment:** Docker Compose
-
-### Why this architecture
-- Streamlit accelerates UI iteration
-- FastAPI + Postgres prevents early lock-in and supports scaling
-- ChromaDB supports explainability, references, and consistent recommendations
-
----
-
-## Data model (minimum)
-
-- `users`
-- `companies` (belongs to user)
-- `assessments` (company_id, created_at, status, language, paid_at)
-- `responses` (assessment_id, question_id, raw_text, transcript, metadata)
-- `scores` (assessment_id, dimension, score, level, rationale)
-- `benchmarks` (assessment_id, cluster_id, percentile, peers_summary)
-- `roadmap_items` (assessment_id, horizon, title, description, effort, impact, prerequisites)
-- `reports` (assessment_id, pdf_path, version)
+```text
+ai-compass/
+├── Application_Prototype/
+│   └── mvp_v1/
+│       ├── backend/                # FastAPI Application Layer
+│       │   ├── main.py             # Server entry point (CORS, router mounts)
+│       │   ├── config.py           # Settings, env vars, path resolution (dev/prod)
+│       │   ├── database.py         # DB session factory (SQLAlchemy)
+│       │   ├── models/             # SQLAlchemy ORM models
+│       │   ├── schemas/            # Pydantic request/response schemas
+│       │   ├── routers/            # Route handlers
+│       │   │   ├── companies.py    # Company registration
+│       │   │   ├── questionnaire.py# Question bank fetch
+│       │   │   ├── responses.py    # Assessment session & autosave
+│       │   │   └── results.py      # ML trigger, PDF export
+│       │   └── services/
+│       │       ├── session_store.py  # In-memory assessment state
+│       │       ├── scoring_service.py# Dimension score calculation
+│       │       ├── email_service.py  # Brevo integration (verify + PDF)
+│       │       ├── pdf_service.py    # ReportLab PDF generation
+│       │       └── cluster_content.py# Archetype-specific copy
+│       └── frontend/               # React Application Layer
+│           └── src/
+│               ├── pages/          # Full page components
+│               ├── components/     # Shared UI components
+│               ├── locales/        # en.json / de.json (i18n)
+│               └── i18n.js         # i18next configuration
+├── benchmarking_ai/
+│   └── ml_v5/                      # Core ML Engine (imported by backend)
+│       ├── models.py               # ClusterEngine, StrategicGapAnalyzer, RoadmapGenerator
+│       ├── inference.py            # InferenceEngine (real-time wrapper)
+│       ├── train_models.py         # Training script (run once)
+│       ├── data_pipeline.py        # Data ingestion & preprocessing
+│       └── model_artifacts/v5/     # Trained model files (generated by training)
+├── doc/                            # Deployment & architecture guides
+├── start.sh / start.bat            # Launches both servers in parallel
+├── setup.sh / setup.bat            # Installs all dependencies
+└── AGENT_GUIDELINES.md             # AI assistant rules for this project
+```
 
 ---
 
-## Key features (current / planned)
+## 📡 API Endpoints
 
-### Current (target MVP)
-- Stepper-based assessment flow
-- Adaptive interview (question routing)
-- Text + voice input (transcription)
-- LLM analysis pipeline -> structured JSON output
-- Payment gate before PDF/benchmark export
-- PDF report generation and persistence
-- Assessment history + re-assessment
-
-### Planned (beyond MVP)
-- Improved benchmarking (real peer data over time)
-- White-label mode for consultancies
-- Team collaboration and roles
-- Follow-up modules (roadmap execution tracking, templates, playbooks)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/v1/questionnaire` | Fetch the full question bank with metadata |
+| `POST` | `/api/v1/companies` | Register a new company profile |
+| `POST` | `/api/v1/responses` | Initialize an assessment session |
+| `PATCH` | `/api/v1/responses/{id}/items` | Autosave individual question answers |
+| `POST` | `/api/v1/responses/{id}/complete` | Finalize assessment, persist to DB, send verification email |
+| `GET` | `/api/v1/results/{id}/results` | Trigger ML inference, return full JSON report |
+| `GET` | `/api/v1/results/{id}/pdf` | Generate and stream the PDF report |
 
 ---
 
-## Running the Application Prototype
+## ⚙️ Getting Started
 
-The **Application Prototype (v1)** is located in `Application_Prototype/mvp_v1`. It includes a FastAPI backend and a React frontend.
+### Prerequisites
+1. Python 3.10+, Node.js 18+
+2. A Supabase project with the schema applied (`schema.sql` in project root)
+3. A Brevo account (free tier) for transactional email
+4. **Trained ML model artifacts** — run once before first launch:
 
-### Quick Start
-1. `cd Application_Prototype/mvp_v1`
-2. **Setup:** Run `setup.bat` (Windows) or `./setup.sh` (Mac/Linux) to install all dependencies.
-3. **Start:** Run `start.bat` (Windows) or `./start.sh` (Mac/Linux) to launch the app.
-4. **Stop:** Run `stop.bat` (Windows) or `./stop.sh` (Mac/Linux) to stop the servers.
+```bash
+# From the project root
+python -m benchmarking_ai.ml_v5.train_models
+```
+This generates artifacts in `benchmarking_ai/ml_v5/model_artifacts/v5/`.
 
-For more details, see the [Application Prototype README](Application_Prototype/README.md).
+### Environment Variables
+
+**Backend** (`Application_Prototype/mvp_v1/backend/.env`):
+```env
+DATABASE_URL=postgresql://...        # Supabase connection string
+BREVO_API_KEY=your_brevo_api_key
+FRONTEND_URL=https://the-ai-compass.de
+CORS_ORIGINS_STR=http://localhost:5173,https://the-ai-compass.de
+```
+
+**Frontend** (`Application_Prototype/mvp_v1/frontend/.env`):
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+### Automation Scripts (Recommended)
+
+Run from the **project root** (`ai-compass/`):
+
+| Script | Windows | Mac/Linux |
+|---|---|---|
+| Install all dependencies | `setup.bat` | `./setup.sh` |
+| Launch both servers | `start.bat` | `./start.sh` |
+| Stop both servers | `stop.bat` | `./stop.sh` |
+
+Starts the backend at `http://localhost:8000` and the frontend at `http://localhost:5173`.
 
 ---
 
-## Benchmarking approach (LLM + ML)
+## 🧠 AI Maturity Framework
 
-**LLM responsibilities (strict JSON outputs)**
-- Extract structured signals from unstructured input
-- Score dimensions and generate rationale (explainability)
-- Generate roadmap items using rules + knowledge base (RAG)
+The assessment evaluates 7 dimensions:
+1. Strategy & Leadership
+2. Use Cases & Value
+3. Data & Infrastructure
+4. Talent & Culture
+5. Governance & Ethics
+6. Technology & Tools
+7. Partnerships & Ecosystem
 
-**ML responsibilities (lightweight, credible)**
-- Cluster / peer group assignment from:
-  - industry + size bands + system landscape + pain points
-  - embeddings of interview responses
-- Output: `cluster_id`, `peer_summary`, `percentile`
-
-**Note on synthetic peers (MVP)**
-Benchmarking can start using synthetic profiles. If used, the product should state transparently that benchmarks are model-based and will improve with real-world data.
+Each dimension is scored 1.0–5.0. The combined profile is clustered into one of **5 maturity archetypes**:
+- Cluster 1: **Traditionalist** (Abwartender Beobachter)
+- Cluster 2: **Experimental Explorer** (Pragmatischer Anwender)
+- Cluster 3: **Structured Builder** (Systematischer Architekt)
+- Cluster 4: **Operational Scaler** (Operativer Multiplikator)
+- Cluster 5: **AI-Driven Leader** (Strategischer Innovator)
 
 ---
 
-## 🚀 Project Status (February 2026)
-- **Current Milestone:** Automated Production Deployment & Sync logic implemented.
-- **Architecture:** Transitioned to a **Dual-Repository Strategy** to separate active development from the live environment.
-- **Sync Logic:** GitHub Actions now automatically restructure and push code from the Dev repo (`ai-compass`) to the Prod repo (`the-ai-compass.de`).
+## 🌐 Localization
+
+The application is fully bilingual (English / German). German is the default language on first visit.
+
+- Translation files: `frontend/src/locales/en.json` and `de.json`
+- The language can be toggled by the user at any time; selection is persisted in `localStorage`
+- The backend generates results in the language specified at assessment completion
+
+---
+
+## 🔒 Deployment (Production)
+
+| Layer | Provider | Notes |
+|---|---|---|
+| Frontend | Vercel | Auto-deploys from production repo |
+| Backend API | Render.com | Gunicorn + Uvicorn workers |
+| Database | Supabase | PostgreSQL, free tier |
+| Email | Brevo | Transactional only (verification + PDF) |
+
+GDPR compliance: no third-party analytics or tracking. A Data Processing Agreement (DPA) with Brevo is automatically entered into upon account creation per Art. 28 GDPR.
 
 ---
 
 ## 🤖 AI Agent Instructions
-To ensure consistency and safety, all AI assistants working on this project must follow the [AGENT_GUIDELINES.md](AGENT_GUIDELINES.md) and the persistent rules defined in [.antigravity.rules](.antigravity.rules).
 
----
+All AI assistants working on this project must follow [AGENT_GUIDELINES.md](AGENT_GUIDELINES.md).
 
-## ├── Repository Structure
-├── Application_Prototype/
-│   └── mvp_v1/             # Working prototype (Active Dev)
-│       ├── backend/        # FastAPI
-│       ├── frontend/       # React + Vite
-├── benchmarking_ai/
-│   └── ml_v5/              # Core ML Analysis Engine
-├── doc/                    # Deployment & Architecture Guides
-│   ├── deployment_plan.md
-│   ├── github_actions_setup.md
-│   ├── github_workflow_guide.md
-│   └── render_vercel_deployment_guide.md
-├── AGENT_GUIDELINES.md     # Persistent Context for AI Assistants
-└── .antigravity.rules      # AI Instruction Set for IDEs

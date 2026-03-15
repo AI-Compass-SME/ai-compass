@@ -1,0 +1,969 @@
+{
+  "answers": [
+    {
+      "question_id": 1,
+      "answer_level": 1,
+      "text": "Nicht thematisiert"
+    },
+    {
+      "question_id": 1,
+      "answer_level": 2,
+      "text": "Reaktive Erwähnung (ad-hoc)"
+    },
+    {
+      "question_id": 1,
+      "answer_level": 3,
+      "text": "Fallweise Abstimmung zu konkreten Initiativen"
+    },
+    {
+      "question_id": 1,
+      "answer_level": 4,
+      "text": "Fester Bestandteil der Agenda"
+    },
+    {
+      "question_id": 1,
+      "answer_level": 5,
+      "text": "Zentraler Strategie-Treiber"
+    },
+    {
+      "question_id": 2,
+      "answer_level": 1,
+      "text": "Keine formale Planung vorhanden"
+    },
+    {
+      "question_id": 2,
+      "answer_level": 2,
+      "text": "Informelle Ansätze und isolierte Einzelziele"
+    },
+    {
+      "question_id": 2,
+      "answer_level": 3,
+      "text": "Strukturierter Rahmenentwurf (Draft)"
+    },
+    {
+      "question_id": 2,
+      "answer_level": 4,
+      "text": "Verabschiedete Roadmap mit Meilensteinen"
+    },
+    {
+      "question_id": 2,
+      "answer_level": 5,
+      "text": "Ganzheitliche Strategie inkl. Budgetierung"
+    },
+    {
+      "question_id": 3,
+      "answer_level": 1,
+      "text": "Keine dedizierte Budgetierung"
+    },
+    {
+      "question_id": 3,
+      "answer_level": 2,
+      "text": "Bedarfsorientierte Einzelfallprüfung"
+    },
+    {
+      "question_id": 3,
+      "answer_level": 3,
+      "text": "Projektbezogene Budgetallokation"
+    },
+    {
+      "question_id": 3,
+      "answer_level": 4,
+      "text": "Systematische Fachbereichs-Budgets"
+    },
+    {
+      "question_id": 3,
+      "answer_level": 5,
+      "text": "Strategische Investitionsplanung & ROI-Steuerung"
+    },
+    {
+      "question_id": 4,
+      "answer_level": 1,
+      "text": "Bewusste Zurückhaltung"
+    },
+    {
+      "question_id": 4,
+      "answer_level": 2,
+      "text": "Gezielte Beobachtung bewährter Standards"
+    },
+    {
+      "question_id": 4,
+      "answer_level": 3,
+      "text": "Zeitnahe Adaption erfolgreicher Benchmarks"
+    },
+    {
+      "question_id": 4,
+      "answer_level": 4,
+      "text": "Frühzeitige Differenzierung durch Eigenentwicklung"
+    },
+    {
+      "question_id": 4,
+      "answer_level": 5,
+      "text": "Technologische Branchen-Dominanz"
+    },
+    {
+      "question_id": 5,
+      "answer_level": 1,
+      "text": "Aktive Ablehnung"
+    },
+    {
+      "question_id": 5,
+      "answer_level": 2,
+      "text": "Abwartende Skepsis"
+    },
+    {
+      "question_id": 5,
+      "answer_level": 3,
+      "text": "Passive Akzeptanz"
+    },
+    {
+      "question_id": 5,
+      "answer_level": 4,
+      "text": "Aktive Mitwirkung"
+    },
+    {
+      "question_id": 5,
+      "answer_level": 5,
+      "text": "Hohe Eigeninitiative"
+    },
+    {
+      "question_id": 7,
+      "answer_level": 1,
+      "text": "Keine: Aktuell finden keine KI-spezifischen Schulungen statt."
+    },
+    {
+      "question_id": 7,
+      "answer_level": 2,
+      "text": "Ad-hoc: Punktuelle Angebote bei konkretem Bedarf (z. B. einzelne Webinare)."
+    },
+    {
+      "question_id": 7,
+      "answer_level": 3,
+      "text": "Reaktiv: Regelmäßige, aber unkoordinierte Formate (z. B. Workshops in Fachabteilungen)."
+    },
+    {
+      "question_id": 7,
+      "answer_level": 4,
+      "text": "Strukturiert: Geplante Weiterbildungsprogramme mit festen Lernpfaden."
+    },
+    {
+      "question_id": 7,
+      "answer_level": 5,
+      "text": "Strategisch: Fest verankerte Kultur des kontinuierlichen Lernens („Lifelong Learning“)."
+    },
+    {
+      "question_id": 9,
+      "answer_level": 1,
+      "text": "Vertriebs- & Transaktionsdaten (z. B. Historische Verkäufe, POS-Daten)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 2,
+      "text": "Kundeninteraktionsdaten (z. B. E-Mail-Verläufe, Chat-Logs, CRM-Notizen)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 3,
+      "text": "Digitale Nutzungsdaten (z. B. Website-Tracking, App-Interaktionen)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 4,
+      "text": "Kundenfeedback & Sentiment-Daten (z. B. Bewertungen, Umfragen, Rezensionen)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 5,
+      "text": "Produkt- & Maschinendaten (z. B. IoT-Sensoren, Logistik-Daten, Qualitätsdaten)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 6,
+      "text": "Finanz- & ERP-Stammdaten (z. B. Bestände, Kostenrechnung, Lieferantendaten)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 7,
+      "text": "Personal- & Organisationsdaten (z. B. Skill-Matrix, Kapazitäten, HR-Stamm)"
+    },
+    {
+      "question_id": 9,
+      "answer_level": 8,
+      "text": "Keine systematische Erfassung dieser Datentypen (Exklusive Option)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 1,
+      "text": "On-Premise-Infrastruktur (Eigene Server vor Ort)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 2,
+      "text": "Cloud-Plattformen (z. B. AWS, Azure, Google Cloud)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 3,
+      "text": "CRM-Systeme (z. B. Salesforce, HubSpot, Microsoft Dynamics)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 4,
+      "text": "ERP-Systeme (z. B. SAP, Microsoft Dynamics, Infor)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 5,
+      "text": "E-Commerce- & Vertriebsplattformen (z. B. Shopify, Shopware)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 6,
+      "text": "Business Intelligence & Analytics (z. B. Power BI, Tableau)"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 7,
+      "text": "Systemübergreifende Schnittstellen (APIs) zur Datenintegration"
+    },
+    {
+      "question_id": 10,
+      "answer_level": 8,
+      "text": "Keine der oben genannten Lösungen"
+    },
+    {
+      "question_id": 11,
+      "answer_level": 1,
+      "text": "Fragmentiert & Inkonsistent"
+    },
+    {
+      "question_id": 11,
+      "answer_level": 2,
+      "text": "Digital, aber unstrukturiert"
+    },
+    {
+      "question_id": 11,
+      "answer_level": 3,
+      "text": "Punktuell bereinigt"
+    },
+    {
+      "question_id": 11,
+      "answer_level": 4,
+      "text": "Standardisiert & Systematisch"
+    },
+    {
+      "question_id": 11,
+      "answer_level": 5,
+      "text": "Hochwertig & Echtzeit-verfügbar"
+    },
+    {
+      "question_id": 12,
+      "answer_level": 1,
+      "text": "Erfahrungsbasiert: Entscheidungen basieren primär auf Intuition und langjähriger Erfahrung."
+    },
+    {
+      "question_id": 12,
+      "answer_level": 2,
+      "text": "Punktuelles Bewusstsein: Daten werden wahrgenommen, aber nur selten systematisch in Prozesse einbezogen."
+    },
+    {
+      "question_id": 12,
+      "answer_level": 3,
+      "text": "Sicherer Umgang mit Kennzahlen: Standard-KPIs werden verstanden und regelmäßig zur Kontrolle genutzt."
+    },
+    {
+      "question_id": 12,
+      "answer_level": 4,
+      "text": "Analytische Arbeitsweise: Das Team leitet eigenständig Erkenntnisse aus Daten ab, um Abläufe zu optimieren."
+    },
+    {
+      "question_id": 12,
+      "answer_level": 5,
+      "text": "Datengesteuerte Kultur: Daten sind die primäre Grundlage für strategische und operative Entscheidungen."
+    },
+    {
+      "question_id": 13,
+      "answer_level": 1,
+      "text": "Ad-hoc & Intuitionsbasiert: Projekte starten oft ohne formelle Vorabprüfung von Datenreife oder Compliance."
+    },
+    {
+      "question_id": 13,
+      "answer_level": 2,
+      "text": "Reaktive Bewertung: Fundierte Prüfungen erfolgen meist erst nach Projektstart, was oft zu Verzögerungen führt."
+    },
+    {
+      "question_id": 13,
+      "answer_level": 3,
+      "text": "Informelle Vorabprüfung: Große Initiativen durchlaufen einen Basis-Check der Datenlage und rechtlichen Hürden."
+    },
+    {
+      "question_id": 13,
+      "answer_level": 4,
+      "text": "Strukturierter Gate-Prozess: Jeder Use Case erfordert eine formelle Validierung (Daten, Recht, Business), bevor Budget fließt."
+    },
+    {
+      "question_id": 13,
+      "answer_level": 5,
+      "text": "Integriertes Framework: Ein standardisierter Prozess sichert die perfekte Abstimmung von Technik, Strategie und Regulierung ab Tag eins."
+    },
+    {
+      "question_id": 14,
+      "answer_level": 1,
+      "text": "Keine"
+    },
+    {
+      "question_id": 14,
+      "answer_level": 2,
+      "text": "Konzeption (Ideen & Brainstorming)"
+    },
+    {
+      "question_id": 14,
+      "answer_level": 3,
+      "text": "Pilotierung (1-2 Testprojekte)"
+    },
+    {
+      "question_id": 14,
+      "answer_level": 4,
+      "text": "Produktiv (Mehrere im Einsatz)"
+    },
+    {
+      "question_id": 14,
+      "answer_level": 5,
+      "text": "Skaliert (Voll integriert)"
+    },
+    {
+      "question_id": 15,
+      "answer_level": 1,
+      "text": "Keine systematische Messung: Erfolg wird bisher nicht formal erfasst oder bewertet."
+    },
+    {
+      "question_id": 15,
+      "answer_level": 2,
+      "text": "Reines Kosten-Controlling: Die Überwachung beschränkt sich primär auf die Einhaltung der Projektbudgets."
+    },
+    {
+      "question_id": 15,
+      "answer_level": 3,
+      "text": "Qualitative Nutzenbewertung: Der Erfolg wird anhand von weichen Faktoren (z. B. Mitarbeiterfeedback, gefühlte Entlastung) bewertet."
+    },
+    {
+      "question_id": 15,
+      "answer_level": 4,
+      "text": "KPI-basiertes Tracking: Messung erfolgt über definierte operative Kennzahlen (z. B. Zeitersparnis, Fehlerrate)."
+    },
+    {
+      "question_id": 15,
+      "answer_level": 5,
+      "text": "Quantitativer ROI: Der finanzielle Wertbeitrag wird präzise berechnet und gegen die Investitionskosten gestellt."
+    },
+    {
+      "question_id": 16,
+      "answer_level": 1,
+      "text": "Rein explorativ: Fokus liegt auf Experimenten und dem Kennenlernen der Technologie ohne direkten Geschäftsbezug."
+    },
+    {
+      "question_id": 16,
+      "answer_level": 2,
+      "text": "Randbereiche: KI berührt zwar Kernprozesse, löst aber noch keine kritischen oder strategischen Probleme."
+    },
+    {
+      "question_id": 16,
+      "answer_level": 3,
+      "text": "Punktuelle Entlastung: KI wird bei bekannten Engpässen eingesetzt, der messbare Erfolg ist jedoch noch nicht durchgängig belegt."
+    },
+    {
+      "question_id": 16,
+      "answer_level": 4,
+      "text": "Systematische Optimierung: KI behebt gezielt schwere Engpässe und sorgt für nachweisbare Produktivitätssteigerungen."
+    },
+    {
+      "question_id": 16,
+      "answer_level": 5,
+      "text": "Strategischer Hebel: KI definiert Prozesse neu, beseitigt strukturelle Barrieren und sichert langfristige Wettbewerbsvorteile."
+    },
+    {
+      "question_id": 17,
+      "answer_level": 1,
+      "text": "Informell: Prozesse sind kaum dokumentiert und hängen stark vom Wissen einzelner Mitarbeiter ab."
+    },
+    {
+      "question_id": 17,
+      "answer_level": 2,
+      "text": "Punktuell: Es existieren grobe Checklisten oder Leitfäden für wichtige Teilbereiche."
+    },
+    {
+      "question_id": 17,
+      "answer_level": 3,
+      "text": "Systematisch dokumentiert: Kernprozesse sind schriftlich fixiert und für das Team zugänglich."
+    },
+    {
+      "question_id": 17,
+      "answer_level": 4,
+      "text": "Standardisierte SOPs: Verbindliche Standard-Betriebsabläufe (SOPs) sind unternehmensweit etabliert."
+    },
+    {
+      "question_id": 17,
+      "answer_level": 5,
+      "text": "Digital & Automatisiert: Prozesse sind vollständig digital abgebildet und ermöglichen eine datengestützte Optimierung."
+    },
+    {
+      "question_id": 18,
+      "answer_level": 1,
+      "text": "Ad-hoc & Undefiniert: Projekte entstehen zufällig; es gibt keine festen Abläufe oder klaren Verantwortlichkeiten."
+    },
+    {
+      "question_id": 18,
+      "answer_level": 2,
+      "text": "Personenabhängig: Die Umsetzung hängt vom Engagement einzelner „KI-Treiber“ ab; ein einheitliches Playbook fehlt."
+    },
+    {
+      "question_id": 18,
+      "answer_level": 3,
+      "text": "Standardisierte Workflows: Wir nutzen konsistente Methoden (z. B. Task-Boards, Sprints), um Projekte planbar zu steuern."
+    },
+    {
+      "question_id": 18,
+      "answer_level": 4,
+      "text": "Spezifische KI-Methodik: Ein angepasster Prozess (inkl. Prototyping & Daten-Check) sichert die effiziente Ressourcennutzung."
+    },
+    {
+      "question_id": 18,
+      "answer_level": 5,
+      "text": "Agile Skalierung: Ein hocheffizienter Prozess ermöglicht den nahtlosen Übergang vom Pilotprojekt (PoC) in den produktiven Live-Betrieb."
+    },
+    {
+      "question_id": 19,
+      "answer_level": 1,
+      "text": "> 12 Monate"
+    },
+    {
+      "question_id": 19,
+      "answer_level": 2,
+      "text": "7 – 12 Monate"
+    },
+    {
+      "question_id": 19,
+      "answer_level": 3,
+      "text": "3 – 6 Monate"
+    },
+    {
+      "question_id": 19,
+      "answer_level": 4,
+      "text": "1 – 2 Monate"
+    },
+    {
+      "question_id": 19,
+      "answer_level": 5,
+      "text": "< 4 Wochen"
+    },
+    {
+      "question_id": 20,
+      "answer_level": 1,
+      "text": "Ad-hoc: Es existiert kein definierter Prozess; die Umsetzung erfolgt nach individueller Gelegenheit."
+    },
+    {
+      "question_id": 20,
+      "answer_level": 2,
+      "text": "Fallbasiert: Der Übergang erfolgt manuell und wird für jedes Projekt individuell neu organisiert."
+    },
+    {
+      "question_id": 20,
+      "answer_level": 3,
+      "text": "Standardisiert: Es gibt einen festen Leitfaden für die Entwicklung und den Go-Live von KI-Lösungen."
+    },
+    {
+      "question_id": 20,
+      "answer_level": 4,
+      "text": "Optimierter Skalierungspfad: Ein systematischer Prozess sichert Qualität und Effizienz beim Rollout ab."
+    },
+    {
+      "question_id": 20,
+      "answer_level": 5,
+      "text": "Vollautomatisierter Rollout: Ein integriertes System (z. B. MLOps) ermöglicht eine nahtlose und automatisierte Bereitstellung."
+    },
+    {
+      "question_id": 21,
+      "answer_level": 1,
+      "text": "Kein Regelwerk: Es gibt bisher keine schriftlichen Vorgaben oder Verbote für die Nutzung von KI-Tools."
+    },
+    {
+      "question_id": 21,
+      "answer_level": 2,
+      "text": "Informelle Absprachen: Es existieren mündliche oder unverbindliche Empfehlungen (z. B. „Keine Kundendaten in ChatGPT“)."
+    },
+    {
+      "question_id": 21,
+      "answer_level": 3,
+      "text": "Konzeptioneller Entwurf: Ein offizielles Regelwerk (KI-Policy) ist in Arbeit oder liegt als Entwurf vor."
+    },
+    {
+      "question_id": 21,
+      "answer_level": 4,
+      "text": "Publizierte Richtlinie: Eine verbindliche KI-Leitlinie ist offiziell kommuniziert und für alle Mitarbeiter zugänglich."
+    },
+    {
+      "question_id": 21,
+      "answer_level": 5,
+      "text": "Gelebte Governance: Die Einhaltung der Richtlinien wird aktiv überwacht (Compliance-Checks) und regelmäßig an neue Gesetze (z. B. EU AI Act) angepasst."
+    },
+    {
+      "question_id": 22,
+      "answer_level": 1,
+      "text": "Ungeprüft (Hohes Risiko)"
+    },
+    {
+      "question_id": 22,
+      "answer_level": 2,
+      "text": "Punktuell (Reaktive Prüfung)"
+    },
+    {
+      "question_id": 22,
+      "answer_level": 3,
+      "text": "DSGVO-konform (Standard)"
+    },
+    {
+      "question_id": 22,
+      "answer_level": 4,
+      "text": "Systematisch (Privacy by Design)"
+    },
+    {
+      "question_id": 22,
+      "answer_level": 5,
+      "text": "Revisionssicher (Full Compliance)"
+    },
+    {
+      "question_id": 23,
+      "answer_level": 1,
+      "text": "Undefiniert: Es gibt keine explizite Zuweisung von Verantwortlichkeiten für KI-Outputs."
+    },
+    {
+      "question_id": 23,
+      "answer_level": 2,
+      "text": "Individuell: Die Verantwortung liegt ad-hoc bei den jeweiligen Mitarbeitern, die ein Tool nutzen."
+    },
+    {
+      "question_id": 23,
+      "answer_level": 3,
+      "text": "Dezentral: Abteilungsleiter tragen die Verantwortung für die in ihrem Bereich eingesetzte KI."
+    },
+    {
+      "question_id": 23,
+      "answer_level": 4,
+      "text": "Zentralisiert: Ein benannter KI-Verantwortlicher (AI Lead) koordiniert die Strategie und Risiken."
+    },
+    {
+      "question_id": 23,
+      "answer_level": 5,
+      "text": "Institutionalisiert: Eine etablierte Governance-Struktur mit klaren Haftungs- und Überwachungsregeln ist aktiv."
+    },
+    {
+      "question_id": 24,
+      "answer_level": 1,
+      "text": "Keine Anforderungen: Wir verlassen uns auf die Standardangaben der Anbieter; es gibt keine spezifischen Prüfprozesse."
+    },
+    {
+      "question_id": 24,
+      "answer_level": 2,
+      "text": "Passive Akzeptanz: Wir fordern Standard-Zertifikate an, prüfen aber nicht die Details der KI-Modelle oder Datenherkunft."
+    },
+    {
+      "question_id": 24,
+      "answer_level": 3,
+      "text": "Grundlegende Transparenz: Partner müssen wesentliche Informationen (z. B. DSGVO-Konformität, Einsatzbereiche) vertraglich zusichern."
+    },
+    {
+      "question_id": 24,
+      "answer_level": 4,
+      "text": "Detaillierte Offenlegung: Wir fordern Einblick in Modell-Details, Trainingsdaten-Struktur und potenzielle Biases (Voreingenommenheiten)."
+    },
+    {
+      "question_id": 24,
+      "answer_level": 5,
+      "text": "Strategische Partnerschaft: Volle Transparenz über den gesamten Lebenszyklus sowie regelmäßige Audits der KI-Systeme sind fest verankert."
+    },
+    {
+      "question_id": 25,
+      "answer_level": 1,
+      "text": "On-Premise (Lokal)"
+    },
+    {
+      "question_id": 25,
+      "answer_level": 2,
+      "text": "Virtualisiert (On-Prem+)"
+    },
+    {
+      "question_id": 25,
+      "answer_level": 3,
+      "text": "Hybrid (Mix)"
+    },
+    {
+      "question_id": 25,
+      "answer_level": 4,
+      "text": "Cloud-First"
+    },
+    {
+      "question_id": 25,
+      "answer_level": 5,
+      "text": "Cloud-Native"
+    },
+    {
+      "question_id": 26,
+      "answer_level": 1,
+      "text": "Fertige KI-Anwendungen (SaaS): Direkte Nutzung von Tools wie ChatGPT (Team/Enterprise), Jasper oder DeepL."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 2,
+      "text": "Integrierte KI-Assistenten: KI-Funktionen innerhalb bestehender Software (z. B. Microsoft Copilot, Salesforce Einstein, SAP AI)."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 3,
+      "text": "Low-Code / No-Code Plattformen: Tools zum Bau einfacher KI-Workflows ohne Programmierung (z. B. MS Power Platform, Make, Zapier)."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 4,
+      "text": "Frameworks für Eigenentwicklungen: Programmumgebungen für eigene Modelle (z. B. Python-Libraries, Jupyter Notebooks, PyTorch)."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 5,
+      "text": "Managed AI/ML Plattformen: Cloud-Umgebungen zur professionellen Entwicklung und Skalierung (z. B. Azure AI Studio, AWS SageMaker, Vertex AI)."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 6,
+      "text": "Keine spezifischen KI-Tools: Wir nutzen aktuell keine dedizierten KI-Anwendungen."
+    },
+    {
+      "question_id": 26,
+      "answer_level": 7,
+      "text": "Nicht sicher / Keine Angabe (Exklusive Option)"
+    },
+    {
+      "question_id": 27,
+      "answer_level": 1,
+      "text": "Manuell (Hoher Aufwand)"
+    },
+    {
+      "question_id": 27,
+      "answer_level": 2,
+      "text": "Komplex (Einzelfall-Lösung)"
+    },
+    {
+      "question_id": 27,
+      "answer_level": 3,
+      "text": "Standardisiert (IT-Regelprozess)"
+    },
+    {
+      "question_id": 27,
+      "answer_level": 4,
+      "text": "Modular (Plug & Play)"
+    },
+    {
+      "question_id": 27,
+      "answer_level": 5,
+      "text": "Automatisiert (Skalierung per Klick)"
+    },
+    {
+      "question_id": 28,
+      "answer_level": 1,
+      "text": "Marktanpassung: Orientierung an aktuellen Trends und Wettbewerbern."
+    },
+    {
+      "question_id": 28,
+      "answer_level": 2,
+      "text": "Effizienzsteigerung: Fokus auf Kostensenkung und Automatisierung."
+    },
+    {
+      "question_id": 28,
+      "answer_level": 3,
+      "text": "Strategische Planung: Erstellung einer fundierten Roadmap."
+    },
+    {
+      "question_id": 28,
+      "answer_level": 4,
+      "text": "Befähigungs-Check: Analyse von technischer und personeller Reife."
+    },
+    {
+      "question_id": 28,
+      "answer_level": 5,
+      "text": "Innovationsführerschaft: Ausbau von echten Wettbewerbsvorteilen."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 1,
+      "text": "Exzellenz im Kundenservice: Effizienzsteigerung im Support (z. B. durch intelligente Chatbots/Assistenten)."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 2,
+      "text": "Operative Effizienz: Automatisierung repetitiver Aufgaben und Backoffice-Prozesse."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 3,
+      "text": "Data-Driven Insights: Gewinnung tieferer Erkenntnisse aus vorhandenen Datenbeständen."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 4,
+      "text": "Intelligente Suche & Knowledge Management: Schnelleres Auffinden von Informationen und Expertenwissen."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 5,
+      "text": "Automatisierte Dokumentenanalyse: Intelligente Erfassung und Verarbeitung von Verträgen, Rechnungen etc."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 6,
+      "text": "Hyper-Personalisierung: Individuelle Kundenansprache und maßgeschneiderte Angebote."
+    },
+    {
+      "question_id": 29,
+      "answer_level": 7,
+      "text": "Direkte Kostensenkung: Reduzierung der Betriebskosten durch Prozessoptimierung."
+    },
+    {
+      "question_id": 30,
+      "answer_level": 1,
+      "text": "Keine Verankerung: KI-Trends wurden bisher nicht systematisch bewertet; es existiert keine schriftliche Strategie."
+    },
+    {
+      "question_id": 30,
+      "answer_level": 2,
+      "text": "Marktgetriebene Reaktion: Wir reagieren punktuell auf Entwicklungen im Marktumfeld oder bei Mitbewerbern."
+    },
+    {
+      "question_id": 30,
+      "answer_level": 3,
+      "text": "Explorative Erprobung: Trends werden aktiv beobachtet und erste Pilotprojekte zur strategischen Validierung durchgeführt."
+    },
+    {
+      "question_id": 30,
+      "answer_level": 4,
+      "text": "Strategische Integration: Eine formelle KI-Roadmap mit klaren Zielen ist fester Bestandteil der Unternehmensplanung."
+    },
+    {
+      "question_id": 30,
+      "answer_level": 5,
+      "text": "Transformatorische Führung: KI definiert unser Geschäftsmodell neu und dient als primärer Treiber für Brancheninnovationen."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 1,
+      "text": "Geschäftsführung / Vorstand (Top-Down): KI wird als strategische Priorität von der Unternehmensleitung forciert."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 2,
+      "text": "IT- & Technologie-Abteilung: Die Initiative liegt primär in der Verantwortung der IT (technologiegetrieben)."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 3,
+      "text": "Digital Transformation / Innovation Team: Ein dediziertes Team steuert die KI-Initiativen abteilungsübergreifend."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 4,
+      "text": "Operative Fachabteilungen (z. B. Marketing, Vertrieb, HR): Die Nachfrage nach KI kommt direkt aus dem Kerngeschäft."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 5,
+      "text": "Operations & Supply Chain: Der Fokus liegt auf der Optimierung von Produktion, Logistik und Lieferketten."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 6,
+      "text": "Data Science & Analytics Team: Spezialisten für Datenanalyse treiben die Entwicklung von KI-Modellen voran."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 7,
+      "text": "Einzelne Early Adopter (Bottom-Up): Motivierte Mitarbeiter nutzen KI-Tools eigeninitiativ in ihrem Arbeitsalltag."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 8,
+      "text": "Externe Partner & Berater: Die Impulse und die Umsetzung kommen maßgeblich von außen."
+    },
+    {
+      "question_id": 31,
+      "answer_level": 9,
+      "text": "Kein definierter interner Treiber: Es gibt aktuell keine klare Zuständigkeit oder treibende Kraft."
+    },
+    {
+      "question_id": 32,
+      "answer_level": 1,
+      "text": "Keine (Interessierter Beobachter)"
+    },
+    {
+      "question_id": 32,
+      "answer_level": 2,
+      "text": "Operativ (Verantwortung auf Projekt- oder Teamebene)"
+    },
+    {
+      "question_id": 32,
+      "answer_level": 3,
+      "text": "Strategisch (Gesamtverantwortung / Geschäftsführung)"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 1,
+      "text": "Unternehmensleitung / C-Level (Geschäftsführung, Vorstand, Inhaber)"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 2,
+      "text": "IT-Management / Technologie-Leitung (CIO, CTO, IT-Leiter)"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 3,
+      "text": "Fachbereichsleitung / Prozessverantwortung (z. B. Marketing, Vertrieb, Produktion)"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 4,
+      "text": "Strategie, Innovation & Business Analyse"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 5,
+      "text": "Data Science & KI-Spezialisierung"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 6,
+      "text": "Projekt- & Programmmanagement"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 7,
+      "text": "Fachexperte / Key User (Anwenderebene)"
+    },
+    {
+      "question_id": 33,
+      "answer_level": 8,
+      "text": "Externer Berater"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": 1,
+      "text": "Welchen strategischen Stellenwert nimmt KI in Ihren Gremien-Sitzungen ein?"
+    },
+    {
+      "question_id": 2,
+      "text": "Wie weit ist Ihre KI-Strategie dokumentiert und im Unternehmen verankert?"
+    },
+    {
+      "question_id": 3,
+      "text": "Nach welcher Logik erfolgt die Budgetierung Ihrer KI-Investitionen?"
+    },
+    {
+      "question_id": 4,
+      "text": "Welche wettbewerbsstrategische Positionierung streben Sie im Bereich KI an?"
+    },
+    {
+      "question_id": 5,
+      "text": "Wie bewerten Sie die aktuelle Akzeptanz und kulturelle Bereitschaft Ihrer Belegschaft gegenüber KI?"
+    },
+    {
+      "question_id": 7,
+      "text": "Wie systematisch ist die KI-Weiterbildung in Ihrem Unternehmen verankert?"
+    },
+    {
+      "question_id": 9,
+      "text": "Welche Datenbestände liegen in Ihrem Unternehmen digital und verwertbar vor? (Alles Zutreffende auswählen)"
+    },
+    {
+      "question_id": 10,
+      "text": "Welche Bausteine bilden das Fundament Ihrer aktuellen IT-Landschaft? (Alles Zutreffende auswählen)"
+    },
+    {
+      "question_id": 11,
+      "text": "Wie bewerten Sie die Qualität und Konsistenz Ihrer Geschäftsdaten?"
+    },
+    {
+      "question_id": 12,
+      "text": "Wie sicher ist Ihr Team darin, Daten für tägliche Entscheidungen zu nutzen?"
+    },
+    {
+      "question_id": 13,
+      "text": "Wie systematisch prüfen Sie die Machbarkeit von KI-Projekten vor dem Start?"
+    },
+    {
+      "question_id": 14,
+      "text": "In welchem Stadium befinden sich Ihre KI-Initiativen?"
+    },
+    {
+      "question_id": 15,
+      "text": "Wie messen Sie den Erfolg und Wertbeitrag Ihrer KI-Projekte?"
+    },
+    {
+      "question_id": 16,
+      "text": "Wie stark ist der Fokus Ihrer KI-Projekte auf die Lösung kritischer Engpässe im Kerngeschäft?"
+    },
+    {
+      "question_id": 17,
+      "text": "Wie hoch ist der Standardisierungsgrad Ihrer Kernprozesse?"
+    },
+    {
+      "question_id": 18,
+      "text": "Wie strukturiert ist Ihr Prozess für die Planung und Umsetzung von KI-Projekten?"
+    },
+    {
+      "question_id": 20,
+      "text": "Wie strukturiert erfolgt der Übergang von der KI-Idee in den produktiven Live-Betrieb?"
+    },
+    {
+      "question_id": 21,
+      "text": "Wie verbindlich ist der regulatorische Rahmen für den KI-Einsatz in Ihrem Unternehmen?"
+    },
+    {
+      "question_id": 22,
+      "text": "Wie konform und sicher ist Ihre Datenverarbeitung im Kontext des EU AI Acts?"
+    },
+    {
+      "question_id": 23,
+      "text": "Wie klar ist die Verantwortung für die Ergebnisse und Risiken von KI-Anwendungen geregelt?"
+    },
+    {
+      "question_id": 24,
+      "text": "Wie transparent müssen externe Partner den Einsatz und die Funktionsweise ihrer KI-Lösungen gegenüber Ihrem Unternehmen offenlegen?"
+    },
+    {
+      "question_id": 26,
+      "text": "Welche Tools und Plattformen stehen Ihren Teams für die Arbeit mit KI zur Verfügung? (Alles Zutreffende auswählen)"
+    },
+    {
+      "question_id": 28,
+      "text": "Welches Hauptziel verfolgen Sie mit dieser KI-Bewertung?"
+    },
+    {
+      "question_id": 29,
+      "text": "In welchen Bereichen sehen Sie das größte Potenzial für eine KI-gestützte Optimierung? (Wählen Sie bis zu 3 Schwerpunkte)"
+    },
+    {
+      "question_id": 30,
+      "text": "Inwieweit ist KI bereits fest in Ihre Unternehmensstrategie integriert?"
+    },
+    {
+      "question_id": 31,
+      "text": "Wer sind die treibenden Kräfte hinter der KI-Adaption in Ihrem Unternehmen? (Alles Zutreffende auswählen)"
+    },
+    {
+      "question_id": 32,
+      "text": "In welchem Umfang steuern oder verantworten Sie KI-Initiativen?"
+    },
+    {
+      "question_id": 33,
+      "text": "Welche Rolle beschreibt Ihre Position und Entscheidungsbefugnis am besten? (Alles Zutreffende auswählen)"
+    }
+  ],
+  "dimensions": []
+}

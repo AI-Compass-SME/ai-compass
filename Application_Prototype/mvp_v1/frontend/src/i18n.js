@@ -14,7 +14,8 @@ i18n
         },
         fallbackLng: 'de',
         detection: {
-            order: ['localStorage'],
+            order: ['querystring', 'localStorage'],
+            lookupQuerystring: 'lang',
             caches: ['localStorage'],
         },
         interpolation: {

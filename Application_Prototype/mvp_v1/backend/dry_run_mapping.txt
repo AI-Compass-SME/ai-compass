@@ -1,0 +1,594 @@
+=== QUESTIONS ===
+ID 1:
+  Old: Wie wird KI in Management-Meetings priorisiert?
+  New: Welchen strategischen Stellenwert nimmt KI in Ihren Gremien-Sitzungen ein?
+ID 2:
+  Old: Gibt es eine dokumentierte KI-Strategie oder Roadmap?
+  New: Wie weit ist Ihre KI-Strategie dokumentiert und im Unternehmen verankert?
+ID 3:
+  Old: Wie werden KI-Finanzierung und -Investitionen gehandhabt?
+  New: Nach welcher Logik erfolgt die Budgetierung Ihrer KI-Investitionen?
+ID 4:
+  Old: Was ist Ihr Ziel in Bezug auf KI im Vergleich zu Mitbewerbern?
+  New: Welche wettbewerbsstrategische Positionierung streben Sie im Bereich KI an?
+ID 5:
+  Old: Wie reagieren Mitarbeiter generell auf das Thema KI?
+  New: Wie bewerten Sie die aktuelle Akzeptanz und kulturelle Bereitschaft Ihrer Belegschaft gegenüber KI?
+ID 7:
+  Old: Wie oft erhalten Mitarbeiter eine KI-Schulung?
+  New: Wie systematisch ist die KI-Weiterbildung in Ihrem Unternehmen verankert?
+ID 9:
+  Old: Welche Arten von Geschäftsdaten sammeln Sie aktiv? (Alles Zutreffende auswählen)
+  New: Welche Datenbestände liegen in Ihrem Unternehmen digital und verwertbar vor? (Alles Zutreffende auswählen)
+ID 10:
+  Old: Nutzen Sie derzeit eine dieser Technologien? (Alles Zutreffende auswählen)
+  New: Welche Bausteine bilden das Fundament Ihrer aktuellen IT-Landschaft? (Alles Zutreffende auswählen)
+ID 11:
+  Old: Beschreiben Sie die „Sauberkeit“ Ihrer Geschäftsdaten.
+  New: Wie bewerten Sie die Qualität und Konsistenz Ihrer Geschäftsdaten?
+ID 12:
+  Old: Wie vertraut ist Ihr Team mit Dateneinblicken?
+  New: Wie sicher ist Ihr Team darin, Daten für tägliche Entscheidungen zu nutzen?
+ID 13:
+  Old: Wie gründlich validiert Ihr Unternehmen die technische und regulatorische Machbarkeit eines KI-Anwendungsfalls, bevor es Ressourcen bereitstellt?
+  New: Wie systematisch prüfen Sie die Machbarkeit von KI-Projekten vor dem Start?
+ID 14:
+  Old: Wie viele KI-Anwendungsfälle sind derzeit aktiv?
+  New: In welchem Stadium befinden sich Ihre KI-Initiativen?
+ID 15:
+  Old: Messen Sie die finanziellen Auswirkungen von KI-Projekten?
+  New: Wie messen Sie den Erfolg und Wertbeitrag Ihrer KI-Projekte?
+ID 16:
+  Old: Inwieweit behebt KI konkrete Engpässe in Ihrem Kerngeschäft und nicht experimentelle Themen?
+  New: Wie stark ist der Fokus Ihrer KI-Projekte auf die Lösung kritischer Engpässe im Kerngeschäft?
+ID 17:
+  Old: Sind Kernprozesse dokumentiert und wiederholbar?
+  New: Wie hoch ist der Standardisierungsgrad Ihrer Kernprozesse?
+ID 18:
+  Old: Wie strukturiert ist Ihr Ansatz bei der Planung, Umsetzung und Durchführung von KI-bezogenen Projekten?
+  New: Wie strukturiert ist Ihr Prozess für die Planung und Umsetzung von KI-Projekten?
+ID 20:
+  Old: Gibt es einen definierten Weg, um die KI-Idee in die Produktion zu überführen?
+  New: Wie strukturiert erfolgt der Übergang von der KI-Idee in den produktiven Live-Betrieb?
+ID 21:
+  Old: Gibt es einen internen „KI-Verhaltenskodex“?
+  New: Wie verbindlich ist der regulatorische Rahmen für den KI-Einsatz in Ihrem Unternehmen?
+ID 22:
+  Old: Wie streng wird mit Daten nach dem EU-KI-Gesetz umgegangen?
+  New: Wie konform und sicher ist Ihre Datenverarbeitung im Kontext des EU AI Acts?
+ID 23:
+  Old: Wer ist für KI-Ergebnisse und -Fehler verantwortlich?
+  New: Wie klar ist die Verantwortung für die Ergebnisse und Risiken von KI-Anwendungen geregelt?
+ID 24:
+  Old: Welche Offenlegungspflichten bestehen für externe Partner?
+  New: Wie transparent müssen externe Partner den Einsatz und die Funktionsweise ihrer KI-Lösungen gegenüber Ihrem Unternehmen offenlegen?
+ID 26:
+  Old: Welche Arten von KI-Entwicklungstools sind derzeit in Ihrem Unternehmen verfügbar? (Alles Zutreffende auswählen)
+  New: Welche Tools und Plattformen stehen Ihren Teams für die Arbeit mit KI zur Verfügung? (Alles Zutreffende auswählen)
+ID 28:
+  Old: Warum führen Sie diese KI-Bewertung durch?
+  New: Welches Hauptziel verfolgen Sie mit dieser KI-Bewertung?
+ID 29:
+  Old: Welche geschäftliche Herausforderung hat für Sie höchste Priorität? (Alles Zutreffende auswählen)
+  New: In welchen Bereichen sehen Sie das größte Potenzial für eine KI-gestützte Optimierung? (Wählen Sie bis zu 3 Schwerpunkte)
+ID 30:
+  Old: Wie beeinflusst KI die Strategie Ihres Unternehmens?
+  New: Inwieweit ist KI bereits fest in Ihre Unternehmensstrategie integriert?
+ID 31:
+  Old: Wer ist der Haupttreiber der KI in Ihrem Unternehmen? (Alles Zutreffende auswählen)
+  New: Wer sind die treibenden Kräfte hinter der KI-Adaption in Ihrem Unternehmen? (Alles Zutreffende auswählen)
+ID 32:
+  Old: Sind Sie für KI-Initiativen verantwortlich?
+  New: In welchem Umfang steuern oder verantworten Sie KI-Initiativen?
+ID 33:
+  Old: Welche Option beschreibt Ihre Position und Entscheidungsbefugnis am besten? (Alles Zutreffende auswählen)
+  New: Welche Rolle beschreibt Ihre Position und Entscheidungsbefugnis am besten? (Alles Zutreffende auswählen)
+
+=== ANSWERS ===
+ID 1 (Q1 L1):
+  Old: Kein Thema / Ignoriert
+  New: Nicht thematisiert
+ID 2 (Q1 L2):
+  Old: Seltene Erwähnung in Besprechungen
+  New: Reaktive Erwähnung (ad-hoc)
+ID 3 (Q1 L3):
+  Old: Gelegentliche Diskussion
+  New: Fallweise Abstimmung zu konkreten Initiativen
+ID 4 (Q1 L4):
+  Old: Regelmäßiger Tagesordnungspunkt
+  New: Fester Bestandteil der Agenda
+ID 5 (Q1 L5):
+  Old: Strategischer Kernpfeiler
+  New: Zentraler Strategie-Treiber
+ID 6 (Q2 L1):
+  Old: Keine / Kein Plan
+  New: Keine formale Planung vorhanden
+ID 7 (Q2 L2):
+  Old: Grobe Ideen geteilt
+  New: Informelle Ansätze und isolierte Einzelziele
+ID 8 (Q2 L3):
+  Old: Es liegt ein Entwurf auf hoher Ebene vor
+  New: Strukturierter Rahmenentwurf (Draft)
+ID 9 (Q2 L4):
+  Old: Formalisiertes Dokument
+  New: Verabschiedete Roadmap mit Meilensteinen
+ID 10 (Q2 L5):
+  Old: Genehmigt und detailliert
+  New: Ganzheitliche Strategie inkl. Budgetierung
+ID 11 (Q3 L1):
+  Old: Kein Budget verfügbar
+  New: Keine dedizierte Budgetierung
+ID 12 (Q3 L2):
+  Old: Einzelfallfinanzierung
+  New: Bedarfsorientierte Einzelfallprüfung
+ID 13 (Q3 L3):
+  Old: Ad-hoc-Projektmittel
+  New: Projektbezogene Budgetallokation
+ID 14 (Q3 L4):
+  Old: Eigenes Abteilungsbudget
+  New: Systematische Fachbereichs-Budgets
+ID 15 (Q3 L5):
+  Old: Festes jährliches KI-Budget
+  New: Strategische Investitionsplanung & ROI-Steuerung
+ID 16 (Q4 L1):
+  Old: Vermeidung/Verweigerung
+  New: Bewusste Zurückhaltung
+ID 17 (Q4 L2):
+  Old: Spätanwender
+  New: Gezielte Beobachtung bewährter Standards
+ID 18 (Q4 L3):
+  Old: Schneller Follower
+  New: Zeitnahe Adaption erfolgreicher Benchmarks
+ID 19 (Q4 L4):
+  Old: Proaktiver Innovator
+  New: Frühzeitige Differenzierung durch Eigenentwicklung
+ID 20 (Q4 L5):
+  Old: Marktführer
+  New: Technologische Branchen-Dominanz
+ID 21 (Q5 L1):
+  Old: Angst / Widerstand
+  New: Aktive Ablehnung
+ID 22 (Q5 L2):
+  Old: Skeptisch / Passiv
+  New: Abwartende Skepsis
+ID 23 (Q5 L3):
+  Old: Neutral / Vorsichtig
+  New: Passive Akzeptanz
+ID 24 (Q5 L4):
+  Old: Interessiert / Offen
+  New: Aktive Mitwirkung
+ID 25 (Q5 L5):
+  Old: Proaktive Begeisterung
+  New: Hohe Eigeninitiative
+ID 31 (Q7 L1):
+  Old: Nie/Keine
+  New: Keine: Aktuell finden keine KI-spezifischen Schulungen statt.
+ID 32 (Q7 L2):
+  Old: Gelegentliche Webinare
+  New: Ad-hoc: Punktuelle Angebote bei konkretem Bedarf (z. B. einzelne Webinare).
+ID 33 (Q7 L3):
+  Old: Unregelmäßige Workshops
+  New: Reaktiv: Regelmäßige, aber unkoordinierte Formate (z. B. Workshops in Fachabteilungen).
+ID 34 (Q7 L4):
+  Old: Geplante Lehrpläne
+  New: Strukturiert: Geplante Weiterbildungsprogramme mit festen Lernpfaden.
+ID 35 (Q7 L5):
+  Old: Kontinuierliches Lernen
+  New: Strategisch: Fest verankerte Kultur des kontinuierlichen Lernens („Lifelong Learning“).
+ID 41 (Q9 L1):
+  Old: Verkaufs- und Transaktionsdaten
+  New: Vertriebs- & Transaktionsdaten (z. B. Historische Verkäufe, POS-Daten)
+ID 42 (Q9 L2):
+  Old: Kundeninteraktionen (E-Mails, Chats, Anrufe)
+  New: Kundeninteraktionsdaten (z. B. E-Mail-Verläufe, Chat-Logs, CRM-Notizen)
+ID 43 (Q9 L3):
+  Old: Analyse der Website-/App-Nutzung
+  New: Digitale Nutzungsdaten (z. B. Website-Tracking, App-Interaktionen)
+ID 44 (Q9 L4):
+  Old: Kundenfeedback und Bewertungen
+  New: Kundenfeedback & Sentiment-Daten (z. B. Bewertungen, Umfragen, Rezensionen)
+ID 45 (Q9 L5):
+  Old: Produktdaten
+  New: Produkt- & Maschinendaten (z. B. IoT-Sensoren, Logistik-Daten, Qualitätsdaten)
+ID 46 (Q9 L6):
+  Old: Finanzielle und betriebliche Kennzahlen
+  New: Finanz- & ERP-Stammdaten (z. B. Bestände, Kostenrechnung, Lieferantendaten)
+ID 47 (Q9 L7):
+  Old: Mitarbeiter-/HR-Daten
+  New: Personal- & Organisationsdaten (z. B. Skill-Matrix, Kapazitäten, HR-Stamm)
+ID 48 (Q9 L8):
+  Old: Begrenzte Datenerfassung (exklusive Option)
+  New: Keine systematische Erfassung dieser Datentypen (Exklusive Option)
+ID 49 (Q10 L1):
+  Old: Interne (vor Ort befindliche) Server
+  New: On-Premise-Infrastruktur (Eigene Server vor Ort)
+ID 50 (Q10 L2):
+  Old: Cloud-Plattformen (AWS, Azure, Google Cloud)
+  New: Cloud-Plattformen (z. B. AWS, Azure, Google Cloud)
+ID 51 (Q10 L3):
+  Old: CRM-Systeme (Salesforce, HubSpot usw.)
+  New: CRM-Systeme (z. B. Salesforce, HubSpot, Microsoft Dynamics)
+ID 52 (Q10 L4):
+  Old: ERP-System -
+  New: ERP-Systeme (z. B. SAP, Microsoft Dynamics, Infor)
+ID 53 (Q10 L5):
+  Old: E-Commerce-Plattformen (Shopify, WooCommerce usw.)
+  New: E-Commerce- & Vertriebsplattformen (z. B. Shopify, Shopware)
+ID 54 (Q10 L6):
+  Old: Business-Intelligence-Tools (Tableau, Power BI usw.)
+  New: Business Intelligence & Analytics (z. B. Power BI, Tableau)
+ID 55 (Q10 L7):
+  Old: API-Integrationen zwischen Systemen
+  New: Systemübergreifende Schnittstellen (APIs) zur Datenintegration
+ID 56 (Q10 L8):
+  Old: Keines der oben genannten (exklusive Option)?
+  New: Keine der oben genannten Lösungen
+ID 57 (Q11 L1):
+  Old: Unordentlich / isoliert
+  New: Fragmentiert & Inkonsistent
+ID 58 (Q11 L2):
+  Old: Grundlegende digitale Aufzeichnungen
+  New: Digital, aber unstrukturiert
+ID 59 (Q11 L3):
+  Old: Teilweise gereinigt
+  New: Punktuell bereinigt
+ID 60 (Q11 L4):
+  Old: Standardisierte Formate
+  New: Standardisiert & Systematisch
+ID 61 (Q11 L5):
+  Old: Hohe Qualität/Automatische Synchronisierung
+  New: Hochwertig & Echtzeit-verfügbar
+ID 62 (Q12 L1):
+  Old: Probleme/Keine Fähigkeiten
+  New: Erfahrungsbasiert: Entscheidungen basieren primär auf Intuition und langjähriger Erfahrung.
+ID 63 (Q12 L2):
+  Old: Grundlegendes Werkzeugbewusstsein
+  New: Punktuelles Bewusstsein: Daten werden wahrgenommen, aber nur selten systematisch in Prozesse einbezogen.
+ID 64 (Q12 L3):
+  Old: Sicher im Umgang mit KPIs
+  New: Sicherer Umgang mit Kennzahlen: Standard-KPIs werden verstanden und regelmäßig zur Kontrolle genutzt.
+ID 65 (Q12 L4):
+  Old: Analytische Denkweisen
+  New: Analytische Arbeitsweise: Das Team leitet eigenständig Erkenntnisse aus Daten ab, um Abläufe zu optimieren.
+ID 66 (Q12 L5):
+  Old: Datengesteuerte Experten
+  New: Datengesteuerte Kultur: Daten sind die primäre Grundlage für strategische und operative Entscheidungen.
+ID 67 (Q13 L1):
+  Old: Minimal/Unsicher – Wir haben keine formelle Machbarkeitsprüfung; Projekte werden oft aus Begeisterung oder Intuition gestartet, ohne vorher Daten oder Compliance-Anforderungen zu überprüfen.
+  New: Ad-hoc & Intuitionsbasiert: Projekte starten oft ohne formelle Vorabprüfung von Datenreife oder Compliance.
+ID 68 (Q13 L2):
+  Old: Reaktive Bewertung – Wir führen grundlegende Prüfungen erst nach Projektbeginn durch, was oft zu Verzögerungen oder „steckengebliebenen“ Projekten führt, wenn unerwartet Daten- oder Rechtsprobleme auftauchen.
+  New: Reaktive Bewertung: Fundierte Prüfungen erfolgen meist erst nach Projektstart, was oft zu Verzögerungen führt.
+ID 69 (Q13 L3):
+  Old: Grundlegende Due Diligence – Bei Großprojekten führen wir einen informellen „Pre-Check“ durch, bei dem wir prüfen, ob die erforderlichen Daten vorhanden sind und ob offensichtliche rechtliche Hürden bestehen.
+  New: Informelle Vorabprüfung: Große Initiativen durchlaufen einen Basis-Check der Datenlage und rechtlichen Hürden.
+ID 70 (Q13 L4):
+  Old: Strukturierte Validierung – Wir verwenden für jeden Anwendungsfall einen klaren „Go/No-Go“-Prozess, der die Datenbereitschaft, die Prozessausrichtung und die Einhaltung gesetzlicher Vorschriften validiert, bevor ein Budget freigegeben wird.
+  New: Strukturierter Gate-Prozess: Jeder Use Case erfordert eine formelle Validierung (Daten, Recht, Business), bevor Budget fließt.
+ID 71 (Q13 L5):
+  Old: Optimierte strategische Filterung – Wir verwenden eine standardisierte, datengesteuerte Validierungs-Engine, die sicherstellt, dass jede Initiative von Anfang an perfekt auf die Geschäftsziele, technischen Fähigkeiten und Compliance-Standards abgestimmt ist.
+  New: Integriertes Framework: Ein standardisierter Prozess sichert die perfekte Abstimmung von Technik, Strategie und Regulierung ab Tag eins.
+ID 72 (Q14 L1):
+  Old: Nicht gestartet
+  New: Keine
+ID 73 (Q14 L2):
+  Old: Theorie / Brainstorming
+  New: Konzeption (Ideen & Brainstorming)
+ID 74 (Q14 L3):
+  Old: 1-2 aktive Piloten
+  New: Pilotierung (1-2 Testprojekte)
+ID 75 (Q14 L4):
+  Old: Mehrere Live-Apps
+  New: Produktiv (Mehrere im Einsatz)
+ID 76 (Q14 L5):
+  Old: KI im Produkt eingebettet
+  New: Skaliert (Voll integriert)
+ID 77 (Q15 L1):
+  Old: Keine Nachverfolgung
+  New: Keine systematische Messung: Erfolg wird bisher nicht formal erfasst oder bewertet.
+ID 78 (Q15 L2):
+  Old: Nur Kostenverfolgung
+  New: Reines Kosten-Controlling: Die Überwachung beschränkt sich primär auf die Einhaltung der Projektbudgets.
+ID 79 (Q15 L3):
+  Old: Qualitative Wirkung
+  New: Qualitative Nutzenbewertung: Der Erfolg wird anhand von weichen Faktoren (z. B. Mitarbeiterfeedback, gefühlte Entlastung) bewertet.
+ID 80 (Q15 L4):
+  Old: Definiertes KPI-Tracking
+  New: KPI-basiertes Tracking: Messung erfolgt über definierte operative Kennzahlen (z. B. Zeitersparnis, Fehlerrate).
+ID 81 (Q15 L5):
+  Old: Strikter finanzieller ROI
+  New: Quantitativer ROI: Der finanzielle Wertbeitrag wird präzise berechnet und gegen die Investitionskosten gestellt.
+ID 82 (Q16 L1):
+  Old: KI-Initiativen sind meist explorativ und haben keinen Bezug zu Kerngeschäftsengpässen.
+  New: Rein explorativ: Fokus liegt auf Experimenten und dem Kennenlernen der Technologie ohne direkten Geschäftsbezug.
+ID 83 (Q16 L2):
+  Old: Einige KI-Anwendungsfälle berühren Kernprozesse, konzentrieren sich jedoch nicht auf die kritischsten Einschränkungen.
+  New: Randbereiche: KI berührt zwar Kernprozesse, löst aber noch keine kritischen oder strategischen Probleme.
+ID 84 (Q16 L3):
+  Old: KI wird bei bekannten Engpässen im Kerngeschäft eingesetzt, mit gemischten oder unbewiesenen Auswirkungen.
+  New: Punktuelle Entlastung: KI wird bei bekannten Engpässen eingesetzt, der messbare Erfolg ist jedoch noch nicht durchgängig belegt.
+ID 85 (Q16 L4):
+  Old: KI bekämpft systematisch schwerwiegende Engpässe im Kerngeschäft und sorgt für messbare Verbesserungen.
+  New: Systematische Optimierung: KI behebt gezielt schwere Engpässe und sorgt für nachweisbare Produktivitätssteigerungen.
+ID 86 (Q16 L5):
+  Old: KI ist ein strategischer Hebel zur Beseitigung oder Neudefinition von Engpässen im Kerngeschäft und prägt die Wettbewerbsfähigkeit des Unternehmens.
+  New: Strategischer Hebel: KI definiert Prozesse neu, beseitigt strukturelle Barrieren und sichert langfristige Wettbewerbsvorteile.
+ID 87 (Q17 L1):
+  Old: Wissen im Kopf
+  New: Informell: Prozesse sind kaum dokumentiert und hängen stark vom Wissen einzelner Mitarbeiter ab.
+ID 88 (Q17 L2):
+  Old: Grobe Checklisten
+  New: Punktuell: Es existieren grobe Checklisten oder Leitfäden für wichtige Teilbereiche.
+ID 89 (Q17 L3):
+  Old: Teilweise dokumentiert
+  New: Systematisch dokumentiert: Kernprozesse sind schriftlich fixiert und für das Team zugänglich.
+ID 90 (Q17 L4):
+  Old: Standard-SOPs
+  New: Standardisierte SOPs: Verbindliche Standard-Betriebsabläufe (SOPs) sind unternehmensweit etabliert.
+ID 91 (Q17 L5):
+  Old: Vollständig digitale Arbeitsabläufe
+  New: Digital & Automatisiert: Prozesse sind vollständig digital abgebildet und ermöglichen eine datengestützte Optimierung.
+ID 92 (Q18 L1):
+  Old: Undefiniert/Ad-hoc – Wir haben keinen festgelegten Prozess für KI-Projekte; Aufgaben werden so bearbeitet, wie sie anfallen, ohne formelle Planung oder klare Verantwortlichkeit.
+  New: Ad-hoc & Undefiniert: Projekte entstehen zufällig; es gibt keine festen Abläufe oder klaren Verantwortlichkeiten.
+ID 93 (Q18 L2):
+  Old: Individuelle Initiative – Die Projektabwicklung hängt vom Einsatz bestimmter Personen ab. Während einige Projekte erfolgreich sind, fehlt uns ein wiederholbares „Playbook“ für das gesamte Team.
+  New: Personenabhängig: Die Umsetzung hängt vom Engagement einzelner „KI-Treiber“ ab; ein einheitliches Playbook fehlt.
+ID 94 (Q18 L3):
+  Old: Grundlegende Standardisierung – Wir verwenden einen konsistenten Workflow (z. B. einfache Aufgabenverfolgung oder wöchentliche Sprints), der es uns ermöglicht, KI-Projekte mit vorhersehbaren Zeitplänen zu verwalten.
+  New: Standardisierte Workflows: Wir nutzen konsistente Methoden (z. B. Task-Boards, Sprints), um Projekte planbar zu steuern.
+ID 95 (Q18 L4):
+  Old: Gezielt und ergebnisorientiert – Wir verwenden einen speziell für KI angepassten Prozess (z. B. frühes Prototyping und Datenbereitschaftsprüfungen), um sicherzustellen, dass wir keine Ressourcen für nicht umsetzbare Ideen verschwenden.
+  New: Spezifische KI-Methodik: Ein angepasster Prozess (inkl. Prototyping & Daten-Check) sichert die effiziente Ressourcennutzung.
+ID 96 (Q18 L5):
+  Old: Hochgeschwindigkeitslieferung – Unsere Implementierungs-Engine ist hocheffizient; Wir können mit minimaler Reibung und klarer ROI-Verfolgung schnell von einem „Proof of Concept“ zu einem Live-Tool übergehen.
+  New: Agile Skalierung: Ein hocheffizienter Prozess ermöglicht den nahtlosen Übergang vom Pilotprojekt (PoC) in den produktiven Live-Betrieb.
+ID 97 (Q19 L1):
+  Old: > 1 Jahr
+  New: > 12 Monate
+ID 98 (Q19 L2):
+  Old: 7 - 12 Monate
+  New: 7 – 12 Monate
+ID 99 (Q19 L3):
+  Old: 3 - 6 Monate
+  New: 3 – 6 Monate
+ID 100 (Q19 L4):
+  Old: 1 - 2 Monate
+  New: 1 – 2 Monate
+ID 101 (Q19 L5):
+  Old: < 4 Wochen
+  New: < 4 Wochen
+ID 102 (Q20 L1):
+  Old: Kein Plan
+  New: Ad-hoc: Es existiert kein definierter Prozess; die Umsetzung erfolgt nach individueller Gelegenheit.
+ID 103 (Q20 L2):
+  Old: Theoretische Idee
+  New: Fallbasiert: Der Übergang erfolgt manuell und wird für jedes Projekt individuell neu organisiert.
+ID 104 (Q20 L3):
+  Old: Einzelfallauswahl
+  New: Standardisiert: Es gibt einen festen Leitfaden für die Entwicklung und den Go-Live von KI-Lösungen.
+ID 105 (Q20 L4):
+  Old: Definierter Skalierungspfad
+  New: Optimierter Skalierungspfad: Ein systematischer Prozess sichert Qualität und Effizienz beim Rollout ab.
+ID 106 (Q20 L5):
+  Old: Automatisierte Bereitstellung
+  New: Vollautomatisierter Rollout: Ein integriertes System (z. B. MLOps) ermöglicht eine nahtlose und automatisierte Bereitstellung.
+ID 107 (Q21 L1):
+  Old: Keiner
+  New: Kein Regelwerk: Es gibt bisher keine schriftlichen Vorgaben oder Verbote für die Nutzung von KI-Tools.
+ID 108 (Q21 L2):
+  Old: Informelle Regeln
+  New: Informelle Absprachen: Es existieren mündliche oder unverbindliche Empfehlungen (z. B. „Keine Kundendaten in ChatGPT“).
+ID 109 (Q21 L3):
+  Old: In Bearbeitung / Entwurf
+  New: Konzeptioneller Entwurf: Ein offizielles Regelwerk (KI-Policy) ist in Arbeit oder liegt als Entwurf vor.
+ID 110 (Q21 L4):
+  Old: Umgesetzte Richtlinie
+  New: Publizierte Richtlinie: Eine verbindliche KI-Leitlinie ist offiziell kommuniziert und für alle Mitarbeiter zugänglich.
+ID 111 (Q21 L5):
+  Old: Geprüfte Governance
+  New: Gelebte Governance: Die Einhaltung der Richtlinien wird aktiv überwacht (Compliance-Checks) und regelmäßig an neue Gesetze (z. B. EU AI Act) angepasst.
+ID 112 (Q22 L1):
+  Old: Hohes Risiko / Unbekannt
+  New: Ungeprüft (Hohes Risiko)
+ID 113 (Q22 L2):
+  Old: Minimale Compliance
+  New: Punktuell (Reaktive Prüfung)
+ID 114 (Q22 L3):
+  Old: Grundlegende DSGVO aktiv
+  New: DSGVO-konform (Standard)
+ID 115 (Q22 L4):
+  Old: Datenschutz durch Design
+  New: Systematisch (Privacy by Design)
+ID 116 (Q22 L5):
+  Old: Volle Souveränität
+  New: Revisionssicher (Full Compliance)
+ID 117 (Q23 L1):
+  Old: Niemand ist verantwortlich
+  New: Undefiniert: Es gibt keine explizite Zuweisung von Verantwortlichkeiten für KI-Outputs.
+ID 118 (Q23 L2):
+  Old: Vage / individuelle Aufgaben
+  New: Individuell: Die Verantwortung liegt ad-hoc bei den jeweiligen Mitarbeitern, die ein Tool nutzen.
+ID 119 (Q23 L3):
+  Old: Geteilte Verantwortung
+  New: Dezentral: Abteilungsleiter tragen die Verantwortung für die in ihrem Bereich eingesetzte KI.
+ID 120 (Q23 L4):
+  Old: Klare Abteilungsleitung
+  New: Zentralisiert: Ein benannter KI-Verantwortlicher (AI Lead) koordiniert die Strategie und Risiken.
+ID 121 (Q23 L5):
+  Old: Engagierter KI-Offizier
+  New: Institutionalisiert: Eine etablierte Governance-Struktur mit klaren Haftungs- und Überwachungsregeln ist aktiv.
+ID 122 (Q24 L1):
+  Old: Unbekannt
+  New: Keine Anforderungen: Wir verlassen uns auf die Standardangaben der Anbieter; es gibt keine spezifischen Prüfprozesse.
+ID 123 (Q24 L2):
+  Old: Von Partnern definiert
+  New: Passive Akzeptanz: Wir fordern Standard-Zertifikate an, prüfen aber nicht die Details der KI-Modelle oder Datenherkunft.
+ID 124 (Q24 L3):
+  Old: Minimal
+  New: Grundlegende Transparenz: Partner müssen wesentliche Informationen (z. B. DSGVO-Konformität, Einsatzbereiche) vertraglich zusichern.
+ID 125 (Q24 L4):
+  Old: Medium
+  New: Detaillierte Offenlegung: Wir fordern Einblick in Modell-Details, Trainingsdaten-Struktur und potenzielle Biases (Voreingenommenheiten).
+ID 126 (Q24 L5):
+  Old: Hohe Offenlegung
+  New: Strategische Partnerschaft: Volle Transparenz über den gesamten Lebenszyklus sowie regelmäßige Audits der KI-Systeme sind fest verankert.
+ID 127 (Q25 L1):
+  Old: Vollständig vor Ort
+  New: On-Premise (Lokal)
+ID 128 (Q25 L2):
+  Old: Modernisiertes On-Prem
+  New: Virtualisiert (On-Prem+)
+ID 129 (Q25 L3):
+  Old: Hybrid-Cloud-Setup
+  New: Hybrid (Mix)
+ID 130 (Q25 L4):
+  Old: Cloud-First-Ansatz
+  New: Cloud-First
+ID 131 (Q25 L5):
+  Old: Cloud-nativ
+  New: Cloud-Native
+ID 132 (Q26 L1):
+  Old: Derzeit sind keine KI-Entwicklungstools verfügbar (exklusive Option)?
+  New: Fertige KI-Anwendungen (SaaS): Direkte Nutzung von Tools wie ChatGPT (Team/Enterprise), Jasper oder DeepL.
+ID 133 (Q26 L2):
+  Old: Vorgefertigte KI-Tools oder Plattformen (z. B. Analysen, Chatbots, Automatisierungstools)?
+  New: Integrierte KI-Assistenten: KI-Funktionen innerhalb bestehender Software (z. B. Microsoft Copilot, Salesforce Einstein, SAP AI).
+ID 134 (Q26 L3):
+  Old: Benutzerdefinierte Entwicklungstools für KI oder maschinelles Lernen?
+  New: Low-Code / No-Code Plattformen: Tools zum Bau einfacher KI-Workflows ohne Programmierung (z. B. MS Power Platform, Make, Zapier).
+ID 135 (Q26 L4):
+  Old: Cloudbasierte KI-Dienste (z. B. verwaltete KI/ML-Plattformen)?
+  New: Frameworks für Eigenentwicklungen: Programmumgebungen für eigene Modelle (z. B. Python-Libraries, Jupyter Notebooks, PyTorch).
+ID 136 (Q26 L5):
+  Old: Eine Kombination aus vorgefertigten und benutzerdefinierten KI-Tools?
+  New: Managed AI/ML Plattformen: Cloud-Umgebungen zur professionellen Entwicklung und Skalierung (z. B. Azure AI Studio, AWS SageMaker, Vertex AI).
+ID 137 (Q26 L6):
+  Old: Nicht sicher
+  New: Keine spezifischen KI-Tools: Wir nutzen aktuell keine dedizierten KI-Anwendungen.
+ID 138 (Q27 L1):
+  Old: Manuell/schmerzhaft
+  New: Manuell (Hoher Aufwand)
+ID 139 (Q27 L2):
+  Old: Arbeitsintensiv
+  New: Komplex (Einzelfall-Lösung)
+ID 140 (Q27 L3):
+  Old: Standard-IT-Prozess
+  New: Standardisiert (IT-Regelprozess)
+ID 141 (Q27 L4):
+  Old: Modular und einfach
+  New: Modular (Plug & Play)
+ID 142 (Q27 L5):
+  Old: Sofortige/automatische Skalierung
+  New: Automatisiert (Skalierung per Klick)
+ID 143 (Q28 L1):
+  Old: Externer Druck – Wir reagieren auf externe Hypes oder Maßnahmen von Mitbewerbern ohne ein klares internes Ziel.
+  New: Marktanpassung: Orientierung an aktuellen Trends und Wettbewerbern.
+ID 144 (Q28 L2):
+  Old: Ressourcenoptimierung – Wir möchten herausfinden, wo KI Kosten senken oder sich wiederholende manuelle Aufgaben automatisieren kann.
+  New: Effizienzsteigerung: Fokus auf Kostensenkung und Automatisierung.
+ID 145 (Q28 L3):
+  Old: Strategische Klarheit – Wir brauchen eine professionelle Roadmap, um KI-Initiativen mit unseren Kerngeschäftszielen in Einklang zu bringen.
+  New: Strategische Planung: Erstellung einer fundierten Roadmap.
+ID 146 (Q28 L4):
+  Old: Readiness Check – Unser Ziel ist es, unsere technische Infrastruktur und die Fähigkeiten unserer Arbeitskräfte für die bevorstehende Skalierung zu bewerten.
+  New: Befähigungs-Check: Analyse von technischer und personeller Reife.
+ID 147 (Q28 L5):
+  Old: Wettbewerbsvorteil – Wir streben eine marktführende Position durch wirkungsvolle KI-Innovationen an.
+  New: Innovationsführerschaft: Ausbau von echten Wettbewerbsvorteilen.
+ID 148 (Q29 L1):
+  Old: Verbesserung der Effizienz des Kundenservice
+  New: Exzellenz im Kundenservice: Effizienzsteigerung im Support (z. B. durch intelligente Chatbots/Assistenten).
+ID 149 (Q29 L2):
+  Old: Wiederkehrende Aufgaben automatisieren
+  New: Operative Effizienz: Automatisierung repetitiver Aufgaben und Backoffice-Prozesse.
+ID 150 (Q29 L3):
+  Old: Bessere Datenanalyse und Erkenntnisse
+  New: Data-Driven Insights: Gewinnung tieferer Erkenntnisse aus vorhandenen Datenbeständen.
+ID 151 (Q29 L4):
+  Old: Verbesserung der Such-/Empfehlungsfunktionen
+  New: Intelligente Suche & Knowledge Management: Schnelleres Auffinden von Informationen und Expertenwissen.
+ID 152 (Q29 L5):
+  Old: Optimierte Dokumentenverarbeitung
+  New: Automatisierte Dokumentenanalyse: Intelligente Erfassung und Verarbeitung von Verträgen, Rechnungen etc.
+ID 153 (Q29 L6):
+  Old: Kundenerlebnisse personalisieren
+  New: Hyper-Personalisierung: Individuelle Kundenansprache und maßgeschneiderte Angebote.
+ID 154 (Q29 L7):
+  Old: Reduzierung der Betriebskosten
+  New: Direkte Kostensenkung: Reduzierung der Betriebskosten durch Prozessoptimierung.
+ID 156 (Q30 L1):
+  Old: Keine Auswirkung – Wir haben KI-Trends nicht bewertet und haben keine dokumentierte Strategie diesbezüglich.
+  New: Keine Verankerung: KI-Trends wurden bisher nicht systematisch bewertet; es existiert keine schriftliche Strategie.
+ID 157 (Q30 L2):
+  Old: Reaktiv – Wir erkennen den Trend, reagieren aber nur ad hoc auf externen Druck.
+  New: Marktgetriebene Reaktion: Wir reagieren punktuell auf Entwicklungen im Marktumfeld oder bei Mitbewerbern.
+ID 158 (Q30 L3):
+  Old: Explorativ – Wir beobachten Trends und haben Pilotprojekte initiiert, um auf spezifische Bedürfnisse einzugehen.
+  New: Explorative Erprobung: Trends werden aktiv beobachtet und erste Pilotprojekte zur strategischen Validierung durchgeführt.
+ID 159 (Q30 L4):
+  Old: Strategisch – KI ist ein wichtiger Planungstreiber mit einem formellen Fahrplan für die systematische Integration.
+  New: Strategische Integration: Eine formelle KI-Roadmap mit klaren Zielen ist fester Bestandteil der Unternehmensplanung.
+ID 160 (Q30 L5):
+  Old: Innovativ – Wir nutzen KI, um unser Geschäftsmodell neu zu definieren und Branchenstandards zu setzen.
+  New: Transformatorische Führung: KI definiert unser Geschäftsmodell neu und dient als primärer Treiber für Brancheninnovationen.
+ID 161 (Q31 L1):
+  Old: Geschäftsführung / Vorstand
+  New: Geschäftsführung / Vorstand (Top-Down): KI wird als strategische Priorität von der Unternehmensleitung forciert.
+ID 162 (Q31 L2):
+  Old: Abteilung IT/Technologie
+  New: IT- & Technologie-Abteilung: Die Initiative liegt primär in der Verantwortung der IT (technologiegetrieben).
+ID 163 (Q31 L3):
+  Old: Digitale Transformation / Innovationsteam
+  New: Digital Transformation / Innovation Team: Ein dediziertes Team steuert die KI-Initiativen abteilungsübergreifend.
+ID 164 (Q31 L4):
+  Old: Vertrieb und Marketing
+  New: Operative Fachabteilungen (z. B. Marketing, Vertrieb, HR): Die Nachfrage nach KI kommt direkt aus dem Kerngeschäft.
+ID 165 (Q31 L5):
+  Old: Betrieb und Lieferkette
+  New: Operations & Supply Chain: Der Fokus liegt auf der Optimierung von Produktion, Logistik und Lieferketten.
+ID 166 (Q31 L6):
+  Old: Spezialisten für Datenwissenschaft/Analyse
+  New: Data Science & Analytics Team: Spezialisten für Datenanalyse treiben die Entwicklung von KI-Modellen voran.
+ID 167 (Q31 L7):
+  Old: Einzelne Mitarbeiter / Early Adopters
+  New: Einzelne Early Adopter (Bottom-Up): Motivierte Mitarbeiter nutzen KI-Tools eigeninitiativ in ihrem Arbeitsalltag.
+ID 168 (Q31 L8):
+  Old: Externe Partner / Berater
+  New: Externe Partner & Berater: Die Impulse und die Umsetzung kommen maßgeblich von außen.
+ID 169 (Q31 L9):
+  Old: Kein klarer interner Treiber
+  New: Kein definierter interner Treiber: Es gibt aktuell keine klare Zuständigkeit oder treibende Kraft.
+ID 170 (Q32 L1):
+  Old: NEIN
+  New: Keine (Interessierter Beobachter)
+ID 171 (Q32 L2):
+  Old: Manchmal
+  New: Operativ (Verantwortung auf Projekt- oder Teamebene)
+ID 172 (Q32 L3):
+  Old: Ja
+  New: Strategisch (Gesamtverantwortung / Geschäftsführung)
+ID 173 (Q33 L1):
+  Old: Führungskraft/C-Level
+  New: Unternehmensleitung / C-Level (Geschäftsführung, Vorstand, Inhaber)
+ID 174 (Q33 L2):
+  Old: Geschäftsleitung
+  New: IT-Management / Technologie-Leitung (CIO, CTO, IT-Leiter)
+ID 175 (Q33 L3):
+  Old: Produkt-/Prozesseigentümer
+  New: Fachbereichsleitung / Prozessverantwortung (z. B. Marketing, Vertrieb, Produktion)
+ID 176 (Q33 L4):
+  Old: IT-/Technologiemanagement
+  New: Strategie, Innovation & Business Analyse
+ID 177 (Q33 L5):
+  Old: Daten-/KI-Spezialist
+  New: Data Science & KI-Spezialisierung
+ID 178 (Q33 L6):
+  Old: Rolle als Business Analyst/Strategie/Innovation
+  New: Projekt- & Programmmanagement
+ID 179 (Q33 L7):
+  Old: Betriebspersonal/Domänenexperte
+  New: Fachexperte / Key User (Anwenderebene)
+ID 180 (Q33 L8):
+  Old: Projekt-/Programmmanager
+  New: Externer Berater
