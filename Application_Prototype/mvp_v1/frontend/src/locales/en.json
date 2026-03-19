@@ -406,12 +406,12 @@
             "frameworkTitle": "The 7-Dimension Framework",
             "frameworkDesc": "We don't just look at technology. True AI maturity requires a holistic approach across your entire organization. Our assessment evaluates:",
             "dimensions": {
-                "1": "Strategy & Leadership",
+                "1": "Strategy & Business Vision",
                 "2": "Use Cases & Value",
                 "3": "Data & Infrastructure",
                 "4": "Talent & Culture",
                 "5": "Governance & Ethics",
-                "6": "Technology & Tools",
+                "6": "Tech Infrastructure",
                 "7": "Partnerships & Ecosystem"
             },
             "startBtn": "Start Your Assessment"
@@ -487,12 +487,12 @@
             "yourCompany": "Your Company",
             "benchmark": "Industry Benchmark",
             "dimensions": {
-                "strategy": "Strategy & Leadership",
+                "strategy": "Strategy & Business Vision",
                 "useCases": "Use Cases & Value",
                 "data": "Data & Infrastructure",
                 "talent": "Talent & Culture",
                 "governance": "Governance & Ethics",
-                "technology": "Technology & Tools",
+                "technology": "Tech Infrastructure",
                 "partnerships": "Partnerships & Ecosystem",
                 "execution": "Execution & Scale",
                 "processes": "Processes & Scaling"

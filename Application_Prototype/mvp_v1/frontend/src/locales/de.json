@@ -281,7 +281,7 @@
                     "title": "KI-Profil Clustering",
                     "subtitle": "UNSUPERVISED LEARNING",
                     "p1": "Wir nutzen <1>K-Means-Clustering</1> (k=5), um Unternehmen in distinkte Reifegrad-Profile zu kategorisieren.",
-                    "p2": "Das Modell basiert auf unserem proprietären Datensatz von über 500 Profilen. Die Zuordnung Ihres Unternehmens erfolgt über die euklidische Distanz zum nächsten Zentroiden. Dies ermöglicht eine objektive Klassifizierung – vom „Traditionalisten“ bis zum „KI-Vorreiter“."
+                    "p2": "Das Modell basiert auf unserem proprietären Datensatz von über 500 Profilen. Die Zuordnung Ihres Unternehmens erfolgt über die euklidische Distanz zum nächsten Zentroiden. Dies ermöglicht eine objektive Klassifizierung – vom abwartenden Beobachter bis zum strategischen Innovator."
                 },
                 "3": {
                     "title": "Prädiktive Roadmap-Erstellung",
@@ -406,7 +406,7 @@
             "frameworkTitle": "Das 7-Dimensionen-Framework",
             "frameworkDesc": "Echte KI-Reife ist keine rein technologische Frage, sondern erfordert einen ganzheitlichen Ansatz über die gesamte Organisation hinweg. Unser Assessment evaluiert Ihre Leistungsfähigkeit in diesen Dimensionen:",
             "dimensions": {
-                "1": "Strategie & Zielbild",
+                "1": "Strategie & Geschäftsvision",
                 "2": "Mensch & Kultur",
                 "3": "Datenreife & Datenkompetenz",
                 "4": "Use Cases & Business Value",
@@ -487,7 +487,7 @@
             "yourCompany": "Ihr Unternehmen",
             "benchmark": "Branchen-Benchmark",
             "dimensions": {
-                "strategy": "Strategie & Zielbild",
+                "strategy": "Strategie & Geschäftsvision",
                 "useCases": "Use Cases & Business Value",
                 "data": "Datenreife & Datenkompetenz",
                 "talent": "Mensch & Kultur",
