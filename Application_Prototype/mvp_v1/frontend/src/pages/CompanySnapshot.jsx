@@ -151,13 +151,13 @@ export default function CompanySnapshot() {
     }
 
     return (
-        <div className="flex items-start justify-center min-h-screen pt-20 pb-8 px-4 relative overflow-hidden font-sans">
+        <div className="flex items-start justify-center min-h-screen pt-8 pb-8 px-4 relative overflow-hidden font-sans">
             <PageBackground />
 
             <Card className="w-full max-w-4xl glass-premium shadow-2xl relative z-10 border-white/60">
-                <CardHeader className="text-center space-y-1 pb-2 border-b border-white/20 bg-white/30">
-                    <div className="mx-auto w-12 h-12 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-500/30 ring-4 ring-white">
-                        <Building2 className="w-6 h-6 text-white" />
+                <CardHeader className="text-center space-y-1 pb-1.5 border-b border-white/20 bg-white/30">
+                    <div className="mx-auto w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center mb-2 shadow-lg shadow-indigo-500/30 ring-4 ring-white">
+                        <Building2 className="w-5 h-5 text-white" />
                     </div>
                     <CardTitle className="text-3xl font-bold text-slate-900 font-heading">
                         {t('snapshot.form.title')}
@@ -166,8 +166,8 @@ export default function CompanySnapshot() {
                         {t('snapshot.form.subtitle')}
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-3 px-6 md:px-8">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                <CardContent className="pt-2 px-6 md:px-8">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             <div className="space-y-2">
                                 <Label htmlFor="company_name" className="text-slate-700 font-bold text-xs uppercase tracking-wide">
@@ -287,8 +287,8 @@ export default function CompanySnapshot() {
                             </div>
                         </div>
 
-                        <div className="pt-4 border-t border-slate-100">
-                            <div className="flex items-start space-x-3 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                        <div className="pt-3 border-t border-slate-100">
+                            <div className="flex items-start space-x-3 p-3 bg-blue-50/50 rounded-xl border border-blue-100">
                                 <Checkbox
                                     id="gdpr"
                                     checked={agreedToGDPR}
@@ -310,7 +310,7 @@ export default function CompanySnapshot() {
                                         <p className="text-xs font-semibold text-slate-600 mb-1">
                                             {t('snapshot.form.transparencyTitle')}
                                         </p>
-                                        <p className="text-xs text-slate-500 leading-relaxed">
+                                        <p className="text-[10px] text-slate-500 leading-relaxed">
                                             {t('snapshot.form.transparencyText')}
                                         </p>
                                     </div>
