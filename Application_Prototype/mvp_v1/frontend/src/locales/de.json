@@ -18,7 +18,7 @@
         },
         "form": {
             "title": "Letzter Schritt: Unternehmensprofil",
-            "subtitle": "Norden Sie Ihren KI-Kompass: Nur noch diese Details trennen Sie von Ihrem glasklaren Fahrplan für die Umsetzung.",
+            "subtitle": "Richten Sie Ihren AI Compass aus: Nur noch diese Details trennen Sie von Ihrem glasklaren Fahrplan für die Umsetzung.",
             "companyName": "Unternehmensname",
             "companyNamePlaceholder": "z.B. Muster GmbH",
             "industry": "Branche",
@@ -316,7 +316,7 @@
             },
             "s2": {
                 "title": "4. Hosting und Server-Log-Dateien",
-                "p1": "Der AI Compass wird über folgende Cloud-Infrastruktur betrieben: Das Backend-API läuft auf Render.com, das Frontend wird über Vercel bereitgestellt und alle Assessment-Daten werden in Supabase (PostgreSQL) gespeichert. Wir nutzen derzeit die kostenlosen Tarife dieser Dienste. Jeder Anbieter unterliegt einer eigenen DSGVO-konformen Datenschutzerklärung und Nutzungsbedingungen, die die serverseitige Datenverarbeitung regeln.",
+                "p1": "Der AI Compass nutzt folgende Cloud-Infrastruktur-Anbieter: Das Backend-API läuft auf Render.com, das Frontend wird über Vercel bereitgestellt und alle Assessment-Daten werden in Supabase (PostgreSQL) gespeichert. Wir nutzen derzeit die kostenlosen Tarife dieser Dienste. Jeder Anbieter verarbeitet infrastrukturelle Daten (wie Server-Logs) in unserem Auftrag im Rahmen des Hostings unserer Anwendung, gemäß seiner jeweiligen DSGVO-konformen Datenschutzerklärung.",
                 "p2": "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt:",
                 "l1": "Browsertyp und -version / Betriebssystem (via HTTP User-Agent-Header)",
                 "l2": "HTTP-Anfragemethode, URL-Pfad und Antwortstatuscode",
@@ -341,7 +341,7 @@
             },
             "s4": {
                 "title": "2. E-Mail-Versand (Brevo)",
-                "p1": "Für den zuverlässigen Versand unserer Berichte und Verifikations-E-Mails nutzen wir Brevo (ehemals Sendinblue). Gemäß Art. 28 DSGVO wird ein Auftragsverarbeitungsvertrag (AVV) zwischen Ihrer Organisation und Brevo automatisch bei der Registrierung eines Brevo-Kontos oder bei der Nutzung der Brevo-Plattform abgeschlossen. Dieser AVV ist Bestandteil der Allgemeinen Geschäftsbedingungen von Brevo und regelt die standardmäßige Verarbeitung personenbezogener Daten auf ihrer Plattform."
+                "p1": "Zur Zustellung von E-Mail-Verifizierungsnachrichten und analytischen Berichten an unsere Nutzer setzen wir Brevo (ehemals Sendinblue) als E-Mail-Dienstleister ein. In dieser Funktion handelt Brevo als Auftragsverarbeiter in unserem Auftrag und verarbeitet ausschließlich die E-Mail-Adresse, die zur Zustellung der angeforderten Kommunikation erforderlich ist. Gemäß Art. 28 DSGVO haben wir mit Brevo einen Auftragsverarbeitungsvertrag (AVV) abgeschlossen, der sicherstellt, dass Ihre Daten ausschließlich nach unseren dokumentierten Weisungen und gemäß den EU-Datenschutzstandards verarbeitet werden."
             },
             "s5": {
                 "title": "5. Datensicherheit und technische Maßnahmen",
@@ -418,7 +418,7 @@
         }
     },
     "results": {
-        "pageTitle": "KI Kompass: Executive Results",
+        "pageTitle": "AI Compass: Executive Results",
         "loading": {
             "title": "Ihre strategische KI-Roadmap wird finalisiert...",
             "subtitle": "Ihre Branchen-Benchmarks werden verifiziert"
@@ -516,7 +516,7 @@
         },
         "roadmap": {
             "title": "Strategische Roadmap & Empfehlungen",
-            "subtitle": "Priorisierte Initiativen zur Beschleunigung Ihrer KI-Kultur basierend auf Ihrem Cluster-Profil.",
+            "subtitle": "Maßgeschneiderte Initiativen zur Skalierung Ihrer KI-Kompetenz, präzise abgeleitet aus den Ergebnissen Ihrer individuellen Reifegrad-Analyse.",
             "impact": "Wirkung",
             "effort": "Aufwand",
             "timeframe": "Zeitrahmen",

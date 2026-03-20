@@ -316,7 +316,7 @@
             },
             "s2": {
                 "title": "4. Hosting and Infrastructure",
-                "p1": "The AI Compass application is hosted using the following cloud infrastructure providers: the backend API runs on Render.com, the frontend is served via Vercel, and all assessment data is stored in Supabase (PostgreSQL). We are currently using the free tiers of these services. Each provider operates under their own GDPR-aligned Privacy Policy and Terms of Service, which govern the processing of any server-side data on their infrastructure.",
+                "p1": "The AI Compass application is hosted using the following cloud infrastructure providers: the backend API runs on Render.com, the frontend is served via Vercel, and all assessment data is stored in Supabase (PostgreSQL). We are currently using the free tiers of these services. Each provider processes infrastructure-level data (such as server logs) on our behalf as part of hosting our service, under their respective GDPR-aligned Privacy Policies.",
                 "p2": "Our infrastructure automatically collects and stores information in \"Server Log Files\" transmitted by your browser:",
                 "l1": "Browser type/version and Operating System (via HTTP User-Agent header)",
                 "l2": "HTTP request method, URL path, and response status code",
@@ -341,7 +341,7 @@
             },
             "s4": {
                 "title": "2. Data Transmission (Service Providers)",
-                "p1": "For the reliable delivery of our analytical reports and email verification, we utilize Brevo (formerly Sendinblue). In accordance with Art. 28 GDPR, a Data Processing Agreement (DPA) between your organization and Brevo is automatically entered into upon subscription to a Brevo account or upon use of Brevo's platform. This DPA forms part of Brevo's General Conditions of Use and governs the standard processing of personal data on their platform."
+                "p1": "To deliver email verification messages and analytical reports to our users, we use Brevo (formerly Sendinblue) as our email service provider. In this capacity, Brevo acts as a data processor on our behalf and processes only the email address necessary to deliver the requested communication. As required by Art. 28 GDPR, we have entered into a Data Processing Agreement (DPA) with Brevo, ensuring that your data is handled strictly in accordance with our documented instructions and EU data protection standards."
             },
             "s5": {
                 "title": "5. Technical and Organizational Measures (TOMs)",

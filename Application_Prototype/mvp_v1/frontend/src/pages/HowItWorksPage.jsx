@@ -1,15 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigation } from '../components/Navigation';
 import { PageBackground } from '@/components/ui/PageBackground';
 import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, BarChart3, FileText, Lightbulb, Workflow, Network, Fingerprint, Hexagon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { initializeVisitorSession } from '../lib/assessment';
+import { ArrowRight, CheckCircle2, BarChart3, FileText, Lightbulb, Workflow, Network, Fingerprint, Hexagon, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 export default function HowItWorksPage() {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const [starting, setStarting] = useState(false);
+
+    const handleStartAssessment = async () => {
+        setStarting(true);
+        try {
+            const { responseId } = await initializeVisitorSession();
+            navigate(`/assessment/${responseId}`);
+        } catch (error) {
+            console.error('Failed to start assessment:', error);
+            toast.error('Could not start the assessment. Please try again or check your connection.');
+            setStarting(false);
+        }
+    };
 
     useEffect(() => {
         document.title = `${t('pages.howItWorks.title')} | AI Compass`;
@@ -111,11 +127,17 @@ export default function HowItWorksPage() {
                     </section>
 
                     <div className="flex justify-center pt-8">
-                        <Button asChild size="lg" className="px-8 h-12 text-base font-bold rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-lg hover:scene-pop transition-all">
-                            <Link to="/snapshot" className="flex items-center gap-2">
-                                {t('pages.howItWorks.startBtn')}
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
+                        <Button
+                            size="lg"
+                            onClick={handleStartAssessment}
+                            disabled={starting}
+                            className="px-8 h-12 text-base font-bold rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-lg hover:scene-pop transition-all"
+                        >
+                            {starting ? (
+                                <><Loader2 className="w-5 h-5 animate-spin" /> Starting...</>
+                            ) : (
+                                <>{t('pages.howItWorks.startBtn')}<ArrowRight className="w-5 h-5" /></>
+                            )}
                         </Button>
                     </div>
 

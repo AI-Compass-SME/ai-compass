@@ -38,7 +38,7 @@ def _build_email_wrapper(body_html: str, t: dict, footer_extra: str = "") -> str
       </p>
       {footer_extra}
       <p style="margin:8px 0 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;color:{_SLATE_500};">
-        &copy; 2025 AI Compass &bull; the-ai-compass.de &bull; {t['rights']}
+        &copy; 2026 AI Compass &bull; the-ai-compass.de &bull; {t['rights']}
       </p>
     """
 
@@ -197,25 +197,25 @@ class EmailService:
                 'header_suffix': "Strategic AI Assessment"
             },
             'de': {
-                'title': f"Willkommen, {company_name}! 🎉",
-                'subtitle': "Ihr AI Maturity Assessment ist abgeschlossen und Ihr persönlicher strategischer Bericht ist bereit.",
-                'includes': "Ihr Bericht enthält",
-                'item1': "AI Maturity Score",
-                'item2': "Strategische Lückenanalyse",
-                'item3': "3-Phasen-Roadmap",
-                'item4': "Branchen-Benchmark",
-                'item5': "Cluster-Profil",
-                'item6': "Executive Briefing + PDF",
-                'cta_text': "Klicken Sie auf den Button unten, um <strong>Ihre E-Mail zu verifizieren</strong> und sofortigen Zugriff auf Ihr interaktives Dashboard und Ihren PDF-Bericht zu erhalten.",
-                'btn': "E-Mail verifizieren & Bericht ansehen",
-                'disclaimer': "Dieser Link ist sicher und einzigartig für Ihr Assessment. Wenn Sie kein KI-Kompass-Assessment durchgeführt haben, können Sie diese E-Mail sicher ignorieren.",
-                'subject': f"[Aktion Erforderlich] Verifizieren Sie Ihre E-Mail, um auf Ihren KI-Kompass-Bericht zuzugreifen — {company_name}",
-                'footer_note': "Sie haben diese E-Mail erhalten, weil ein KI-Kompass-Assessment unter dieser Adresse abgeschlossen wurde.<br/>Wenn Sie dies nicht waren, ignorieren Sie diese E-Mail einfach.",
+                'title': f"Willkommen beim AI Compass!",
+                'subtitle': "Ihre maßgeschneiderte Analyse und strategische Roadmap für belastbare Entscheidungen und einen nachhaltigen Wettbewerbsvorteil liegen nun bereit.",
+                'includes': "IHR BERICHT ENTHÄLT",
+                'item1': "Individueller Reifegrad-Score",
+                'item2': "Strategische Roadmap",
+                'item3': "KI-Profil",
+                'item4': "Gap-Analyse",
+                'item5': "Exklusiver Branchen-Benchmark",
+                'item6': "Management-Briefing & PDF-Export",
+                'cta_text': "Klicken Sie auf den Button unten, um Ihre E-Mail zu bestätigen und sofortigen Zugriff auf Ihre Analyse sowie den vollständigen Report zu erhalten:",
+                'btn': "Jetzt Analyse und Roadmap öffnen",
+                'disclaimer': "Dieser Link ist exklusiv für Ihr Assessment generiert worden. Falls Sie keine KI-Bewertung angefordert haben, können Sie diese Nachricht einfach ignorieren. Ihre Daten werden in diesem Fall nicht weiter verarbeitet.",
+                'subject': f"[Aktion erforderlich] E-Mail bestätigen & Ihren AI Compass-Bericht abrufen — {company_name}",
+                'footer_note': "Sie haben diese E-Mail erhalten, weil ein AI Compass Assessment unter dieser Adresse abgeschlossen wurde.<br/>Falls Sie dies nicht waren, ignorieren Sie diese E-Mail einfach.",
                 'nav_home': "Startseite",
                 'nav_imprint': "Impressum",
                 'nav_privacy': "Datenschutz",
                 'rights': "Alle Rechte vorbehalten.",
-                'header_suffix': "Strategische KI-Bewertung"
+                'header_suffix': "Strategische KI-Analyse"
             }
         }
         
@@ -320,7 +320,7 @@ class EmailService:
                 'next_desc': "Überprüfen Sie Ihre Roadmap mit Ihrem Führungsteam und identifizieren Sie die Maßnahmen mit den höchsten Auswirkungen für das nächste Quartal. Wenn Sie fachkundige Anleitung bei der Umsetzung Ihrer Strategie wünschen, steht Ihnen unser Team für eine kostenlose Beratung zur Verfügung.",
                 'confidential': f"Dies ist ein vertraulicher Bericht, der exklusiv für {company_name} erstellt wurde. Ihr sicherer Dashboard-Link ist permanent — speichern Sie ihn für künftige Referenzen.",
                 'secure_dash': "Ihr sicheres Dashboard:",
-                'subject': f"Ihr strategischer KI-Kompass-Bericht — {company_name}",
+                'subject': f"Ihr strategischer AI Compass-Bericht — {company_name}",
                 'nav_home': "Startseite",
                 'nav_imprint': "Impressum",
                 'nav_privacy': "Datenschutz",
