@@ -428,13 +428,13 @@ class RoadmapGenerator:
         dim_key = dimension
         if lang == 'de':
              dim_de_map_rev = {
-                  "Strategie & Vision": "Strategy & Business Vision",
-                  "Menschen & Kultur": "People & Culture",
-                  "Datenkompetenz": "Data Readiness & Literacy",
-                  "Anwendungsfälle & Geschäftswert": "Use Cases & Business Value",
-                  "Prozesse & Skalierbarkeit": "Processes & Scaling",
+                  "Strategie & Geschäftsvision": "Strategy & Business Vision",
+                  "Mensch & Kultur": "People & Culture",
+                  "Datenreife & -kompetenz": "Data Readiness & Literacy",
+                  "Use Cases & Business Value": "Use Cases & Business Value",
+                  "Prozesse & Skalierung": "Processes & Scaling",
                   "Governance & Compliance": "Governance & Compliance",
-                  "Technologie & Infrastruktur": "Tech Infrastructure"
+                  "Technische Infrastruktur": "Tech Infrastructure"
              }
              dim_key = dim_de_map_rev.get(dimension, dimension)
              

@@ -55,8 +55,8 @@ export function ExpertConsultation() {
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-base font-medium text-slate-400">{t('results.consultation.contact.email', 'Email')}</p>
-                                                <a href="mailto:contact@ai-compass.com" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
-                                                    contact@ai-compass.com
+                                                <a href="mailto:info@the-ai-compass.de" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
+                                                    info@the-ai-compass.de
                                                 </a>
                                             </div>
                                         </div>
