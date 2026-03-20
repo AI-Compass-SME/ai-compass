@@ -480,77 +480,130 @@ class RoadmapGenerator:
     def _get_theme_specific_actions(self, theme, source, gap_pct, lang="en"):
         """
         Generate theme-specific actionable recommendations.
-        
-        Args:
-            theme: The tactical theme
-            source: Strategic Gap or Growth Opportunity
-            gap_pct: Gap percentage
-            
-        Returns:
-            dict with action1 and action2
+        Returns localized action1 and action2 based on theme, gap, and language.
         """
-        # Theme-specific action mapping
         theme_lower = theme.lower()
-        
-        # Default actions as fallback
+        is_de = (lang == 'de')
+
+        # --- Default fallback actions ---
         if source == "Strategic Gap (Critical)" and gap_pct > 10:
-            action1 = f"Launch a focused {theme} improvement initiative with executive sponsorship and dedicated resources to close the performance gap."
-            action2 = f"Implement monthly progress tracking with clear KPIs and accountability measures to ensure sustained improvement in {theme}."
+            if is_de:
+                action1 = f"Starten Sie eine fokussierte Initiative zur Stärkung von {theme} mit klarem Executive-Sponsoring und dedizierten Ressourcen, um die Leistungslücke zu schließen."
+                action2 = f"Implementieren Sie ein monatliches Fortschritts-Tracking mit klaren KPIs und Verantwortlichkeiten, um nachhaltige Verbesserungen in {theme} sicherzustellen."
+            else:
+                action1 = f"Launch a focused {theme} improvement initiative with executive sponsorship and dedicated resources to close the performance gap."
+                action2 = f"Implement monthly progress tracking with clear KPIs and accountability measures to ensure sustained improvement in {theme}."
         elif source == "Strategic Gap (Critical)":
-            action1 = f"Conduct a comprehensive assessment of current {theme} practices and identify quick wins for immediate implementation."
-            action2 = f"Develop a 90-day action plan with specific milestones to strengthen {theme} capabilities and build organizational momentum."
+            if is_de:
+                action1 = f"Führen Sie eine gezielte Bestandsaufnahme Ihrer {theme}-Praktiken durch und priorisieren Sie Maßnahmen mit hohem Hebeleffekt zur sofortigen Umsetzung."
+                action2 = f"Entwickeln Sie einen 90-Tage-Aktionsplan mit konkreten Meilensteinen, um Ihre {theme}-Kompetenz systematisch zu stärken."
+            else:
+                action1 = f"Conduct a targeted review of your {theme} practices and prioritize high-leverage improvements for immediate implementation."
+                action2 = f"Develop a 90-day action plan with concrete milestones to systematically strengthen your {theme} capabilities."
         elif gap_pct > 15:
-            action1 = f"Benchmark {theme} practices against industry leaders and adopt proven frameworks to accelerate capability development."
-            action2 = f"Consider strategic partnerships or external expertise in {theme} to fast-track implementation and achieve competitive parity within 6 months."
+            if is_de:
+                action1 = f"Benchmarken Sie Ihre {theme}-Praktiken mit Branchenführern und übernehmen Sie bewährte Frameworks, um die Kompetenzentwicklung zu beschleunigen."
+                action2 = f"Erwägen Sie strategische Partnerschaften oder externe Expertise in {theme}, um innerhalb von 6 Monaten Wettbewerbsparität zu erreichen."
+            else:
+                action1 = f"Benchmark {theme} practices against industry leaders and adopt proven frameworks to accelerate capability development."
+                action2 = f"Consider strategic partnerships or external expertise in {theme} to fast-track implementation and achieve competitive parity within 6 months."
         else:
-            action1 = f"Optimize existing {theme} processes through continuous improvement cycles and innovation initiatives."
-            action2 = f"Establish knowledge-sharing programs and best practice documentation to maintain competitive advantage in {theme}."
-        
-        # Theme-specific customizations
+            if is_de:
+                action1 = f"Optimieren Sie bestehende {theme}-Prozesse durch kontinuierliche Verbesserungszyklen und gezielte Innovationsinitiativen."
+                action2 = f"Etablieren Sie Programme zum Wissensaustausch und zur Dokumentation von Best Practices, um Ihren Vorsprung in {theme} zu sichern."
+            else:
+                action1 = f"Optimize existing {theme} processes through continuous improvement cycles and targeted innovation initiatives."
+                action2 = f"Establish knowledge-sharing programs and best practice documentation to maintain your competitive advantage in {theme}."
+
+        # --- Theme-specific overrides (bilingual) ---
         if 'staff' in theme_lower or 'proficiency' in theme_lower:
-            action1 = "Design and deploy comprehensive AI literacy programs for all staff levels, including hands-on workshops and certification tracks."
-            action2 = "Create internal AI champions network and mentorship programs to accelerate skill development and knowledge transfer across teams."
-        
+            if is_de:
+                action1 = "Entwickeln und implementieren Sie umfassende KI-Schulungsprogramme für alle Mitarbeiterebenen, inklusive Workshops und Zertifizierungspfaden."
+                action2 = "Bauen Sie ein internes KI-Champions-Netzwerk und Mentoring-Programme auf, um den Kompetenztransfer im gesamten Unternehmen zu beschleunigen."
+            else:
+                action1 = "Design and deploy comprehensive AI literacy programs for all staff levels, including hands-on workshops and certification tracks."
+                action2 = "Create internal AI champions network and mentorship programs to accelerate skill development and knowledge transfer across teams."
+
         elif 'leadership' in theme_lower or 'alignment' in theme_lower:
-            action1 = "Conduct executive AI strategy workshops to align leadership vision, establish clear AI governance, and secure C-suite commitment."
-            action2 = "Implement quarterly AI steering committee meetings with defined decision-making authority and resource allocation frameworks."
-        
+            if is_de:
+                action1 = "Führen Sie Executive-KI-Strategie-Workshops durch, um die Führungsvision zu schärfen, klare KI-Governance zu etablieren und C-Suite-Commitment zu sichern."
+                action2 = "Implementieren Sie quartalsweise KI-Steuerkreis-Meetings mit definierten Entscheidungskompetenzen und Ressourcenallokationsrahmen."
+            else:
+                action1 = "Conduct executive AI strategy workshops to align leadership vision, establish clear AI governance, and secure C-suite commitment."
+                action2 = "Implement quarterly AI steering committee meetings with defined decision-making authority and resource allocation frameworks."
+
         elif 'data' in theme_lower and 'privacy' in theme_lower:
-            action1 = "Establish comprehensive data governance framework with clear privacy policies, consent management, and compliance protocols."
-            action2 = "Deploy privacy-by-design principles across all AI initiatives and conduct regular privacy impact assessments with legal review."
-        
+            if is_de:
+                action1 = "Etablieren Sie ein umfassendes Daten-Governance-Framework mit klaren Datenschutzrichtlinien, Einwilligungsmanagement und Compliance-Protokollen."
+                action2 = "Verankern Sie Privacy-by-Design-Prinzipien in allen KI-Initiativen und führen Sie regelmäßige Datenschutz-Folgenabschätzungen mit rechtlicher Prüfung durch."
+            else:
+                action1 = "Establish a comprehensive data governance framework with clear privacy policies, consent management, and compliance protocols."
+                action2 = "Deploy privacy-by-design principles across all AI initiatives and conduct regular privacy impact assessments with legal review."
+
         elif 'data' in theme_lower or 'types' in theme_lower:
-            action1 = "Audit current data infrastructure and implement data quality improvement programs with automated validation and cleansing pipelines."
-            action2 = "Expand data collection capabilities to include diverse data types (structured, unstructured, real-time) with proper cataloging and metadata management."
-        
-        elif 'strategic' in theme_lower or 'priority' in theme_lower:
-            action1 = "Define clear AI strategic priorities aligned with business objectives and establish a prioritization framework for AI initiatives."
-            action2 = "Create a strategic AI roadmap with measurable outcomes and regular review cycles to ensure alignment with evolving business needs."
-        
+            if is_de:
+                action1 = "Auditieren Sie Ihre bestehende Dateninfrastruktur und implementieren Sie Qualitätsverbesserungsprogramme mit automatisierten Validierungs- und Bereinigungspipelines."
+                action2 = "Erweitern Sie Ihre Datenerfassung um diverse Datentypen (strukturiert, unstrukturiert, Echtzeit) mit angemessener Katalogisierung und Metadatenverwaltung."
+            else:
+                action1 = "Audit current data infrastructure and implement data quality improvement programs with automated validation and cleansing pipelines."
+                action2 = "Expand data collection capabilities to include diverse data types (structured, unstructured, real-time) with proper cataloging and metadata management."
+
+        elif 'strategic' in theme_lower or 'priority' in theme_lower or 'clarity' in theme_lower:
+            if is_de:
+                action1 = "Definieren Sie klare KI-Strategieprioritäten im Einklang mit Ihren Unternehmenszielen und etablieren Sie einen Priorisierungsrahmen für KI-Initiativen."
+                action2 = "Erstellen Sie eine strategische KI-Roadmap mit messbaren Ergebnissen und regelmäßigen Review-Zyklen, um die Ausrichtung an sich ändernde Geschäftsanforderungen sicherzustellen."
+            else:
+                action1 = "Define clear AI strategic priorities aligned with business objectives and establish a prioritization framework for AI initiatives."
+                action2 = "Create a strategic AI roadmap with measurable outcomes and regular review cycles to ensure alignment with evolving business needs."
+
         elif 'standardization' in theme_lower or 'process' in theme_lower:
-            action1 = "Develop and document standardized AI development processes, including MLOps practices, testing protocols, and deployment procedures."
-            action2 = "Implement process automation tools and establish centers of excellence to ensure consistent quality and scalability across AI projects."
-        
+            if is_de:
+                action1 = "Entwickeln und dokumentieren Sie standardisierte KI-Entwicklungsprozesse, einschließlich MLOps-Praktiken, Testprotokolle und Deployment-Verfahren."
+                action2 = "Implementieren Sie Prozessautomatisierungstools und richten Sie Centers of Excellence ein, um konsistente Qualität und Skalierbarkeit sicherzustellen."
+            else:
+                action1 = "Develop and document standardized AI development processes, including MLOps practices, testing protocols, and deployment procedures."
+                action2 = "Implement process automation tools and establish centers of excellence to ensure consistent quality and scalability across AI projects."
+
         elif 'governance' in theme_lower or 'compliance' in theme_lower:
-            action1 = "Build robust AI governance structure with clear roles, responsibilities, and escalation paths for ethical and compliance issues."
-            action2 = "Establish regular compliance audits, risk assessments, and policy updates to maintain regulatory alignment and ethical AI practices."
-        
+            if is_de:
+                action1 = "Bauen Sie eine robuste KI-Governance-Struktur mit klaren Rollen, Verantwortlichkeiten und Eskalationspfaden für ethische und Compliance-Fragen auf."
+                action2 = "Etablieren Sie regelmäßige Compliance-Audits, Risikobewertungen und Richtlinienaktualisierungen, um regulatorische Ausrichtung und ethische KI-Praktiken zu gewährleisten."
+            else:
+                action1 = "Build a robust AI governance structure with clear roles, responsibilities, and escalation paths for ethical and compliance issues."
+                action2 = "Establish regular compliance audits, risk assessments, and policy updates to maintain regulatory alignment and ethical AI practices."
+
         elif 'infrastructure' in theme_lower or 'tech' in theme_lower:
-            action1 = "Modernize technical infrastructure with cloud-native AI platforms, scalable compute resources, and MLOps tooling."
-            action2 = "Implement infrastructure-as-code practices and establish DevOps pipelines to enable rapid experimentation and deployment."
-        
+            if is_de:
+                action1 = "Modernisieren Sie Ihre technische Infrastruktur mit Cloud-nativen KI-Plattformen, skalierbaren Compute-Ressourcen und MLOps-Tooling."
+                action2 = "Implementieren Sie Infrastructure-as-Code-Praktiken und DevOps-Pipelines, um schnelle Experimente und zuverlässige Deployments zu ermöglichen."
+            else:
+                action1 = "Modernize technical infrastructure with cloud-native AI platforms, scalable compute resources, and MLOps tooling."
+                action2 = "Implement infrastructure-as-code practices and establish DevOps pipelines to enable rapid experimentation and deployment."
+
         elif 'execution' in theme_lower or 'maturity' in theme_lower:
-            action1 = "Strengthen project management capabilities with agile AI delivery frameworks and cross-functional team structures."
-            action2 = "Establish success metrics, post-implementation reviews, and continuous improvement processes to enhance execution maturity."
-        
+            if is_de:
+                action1 = "Stärken Sie Ihre Projektmanagement-Kompetenzen mit agilen KI-Delivery-Frameworks und funktionsübergreifenden Teamstrukturen."
+                action2 = "Etablieren Sie Erfolgskennzahlen, Post-Implementation-Reviews und kontinuierliche Verbesserungsprozesse zur Steigerung der Umsetzungsreife."
+            else:
+                action1 = "Strengthen project management capabilities with agile AI delivery frameworks and cross-functional team structures."
+                action2 = "Establish success metrics, post-implementation reviews, and continuous improvement processes to enhance execution maturity."
+
         elif 'tooling' in theme_lower or 'stack' in theme_lower:
-            action1 = "Evaluate and standardize AI tooling stack with enterprise-grade platforms for development, deployment, and monitoring."
-            action2 = "Provide comprehensive training on selected tools and establish internal support structures for technical enablement."
-        
+            if is_de:
+                action1 = "Evaluieren und standardisieren Sie Ihren KI-Tool-Stack mit Enterprise-Plattformen für Entwicklung, Deployment und Monitoring."
+                action2 = "Stellen Sie umfassende Schulungen für ausgewählte Tools bereit und bauen Sie interne Supportstrukturen für technisches Enablement auf."
+            else:
+                action1 = "Evaluate and standardize AI tooling stack with enterprise-grade platforms for development, deployment, and monitoring."
+                action2 = "Provide comprehensive training on selected tools and establish internal support structures for technical enablement."
+
         elif 'competitive' in theme_lower or 'ambition' in theme_lower:
-            action1 = "Define competitive AI positioning strategy and identify differentiation opportunities through advanced AI capabilities."
-            action2 = "Foster innovation culture with dedicated time for experimentation, hackathons, and recognition programs for AI-driven initiatives."
-        
+            if is_de:
+                action1 = "Definieren Sie eine wettbewerbsorientierte KI-Positionierungsstrategie und identifizieren Sie Differenzierungsmöglichkeiten durch fortschrittliche KI-Fähigkeiten."
+                action2 = "Fördern Sie eine Innovationskultur durch dedizierte Experimentierzeit, Hackathons und Anerkennungsprogramme für KI-getriebene Initiativen."
+            else:
+                action1 = "Define competitive AI positioning strategy and identify differentiation opportunities through advanced AI capabilities."
+                action2 = "Foster innovation culture with dedicated time for experimentation, hackathons, and recognition programs for AI-driven initiatives."
+
         return {'action1': action1, 'action2': action2}
 
     def get_peer_benchmark(self, company_dim_series, company_industry=None):
