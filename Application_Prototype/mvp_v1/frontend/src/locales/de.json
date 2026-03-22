@@ -340,8 +340,8 @@
                 "legal3": "Rechtsgrundlage: Art. 6 Abs. 1 lit. a (Einwilligung)."
             },
             "s4": {
-                "title": "2. E-Mail-Versand (Brevo)",
-                "p1": "Zur Zustellung von E-Mail-Verifizierungsnachrichten und analytischen Berichten an unsere Nutzer setzen wir Brevo (ehemals Sendinblue) als E-Mail-Dienstleister ein. In dieser Funktion handelt Brevo als Auftragsverarbeiter in unserem Auftrag und verarbeitet ausschließlich die E-Mail-Adresse, die zur Zustellung der angeforderten Kommunikation erforderlich ist. Gemäß Art. 28 DSGVO haben wir mit Brevo einen Auftragsverarbeitungsvertrag (AVV) abgeschlossen, der sicherstellt, dass Ihre Daten ausschließlich nach unseren dokumentierten Weisungen und gemäß den EU-Datenschutzstandards verarbeitet werden."
+                "title": "2. E-Mail-Versand",
+                "p1": "Für die systemseitige Übermittlung Ihrer Verifizierungs-E-Mails und Analyse-Berichte nutzen wir die Infrastruktur von Brevo (Sendinblue GmbH, Berlin). In dieser Funktion agiert Brevo als weisungsgebundener Auftragsverarbeiter gemäß Art. 28 DSGVO. Wir haben mit dem Anbieter einen entsprechenden Auftragsverarbeitungsvertrag (AVV) geschlossen, der sicherstellt, dass Ihre E-Mail-Adresse ausschließlich zweckgebunden für die Zustellung der angeforderten Kommunikation und unter strikter Einhaltung europäischer Datenschutzstandards verarbeitet wird. Eine darüber hinausgehende Nutzung oder Weitergabe Ihrer Daten findet nicht statt."
             },
             "s5": {
                 "title": "5. Datensicherheit und technische Maßnahmen",

@@ -341,7 +341,7 @@
             },
             "s4": {
                 "title": "2. Data Transmission (Service Providers)",
-                "p1": "To deliver email verification messages and analytical reports to our users, we use Brevo (formerly Sendinblue) as our email service provider. In this capacity, Brevo acts as a data processor on our behalf and processes only the email address necessary to deliver the requested communication. As required by Art. 28 GDPR, we have entered into a Data Processing Agreement (DPA) with Brevo, ensuring that your data is handled strictly in accordance with our documented instructions and EU data protection standards."
+                "p1": "To deliver email verification messages and analytical reports to our users, we use Brevo (Sendinblue GmbH, Berlin) as our email service provider. In this capacity, Brevo acts as a data processor on our behalf and processes only the email address necessary to deliver the requested communication. As required by Art. 28 GDPR, we have entered into a Data Processing Agreement (DPA) with Brevo, ensuring that your data is handled strictly in accordance with our documented instructions and EU data protection standards."
             },
             "s5": {
                 "title": "5. Technical and Organizational Measures (TOMs)",
