@@ -26,6 +26,9 @@ export function MaturityProfile({ data }) {
         return rawDim.trim();
     };
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const tickFontSize = isMobile ? 10 : 14.5;
+
     // Transform dimension_scores (dict) to array for Recharts
     const radarData = Object.entries(data.dimension_scores).map(([dim, score]) => {
         // Fallback: If no real benchmark data, generate a plausible "Peer Average" 
@@ -66,7 +69,7 @@ export function MaturityProfile({ data }) {
                                 <PolarGrid stroke="#94a3b8" strokeDasharray="3 3" />
                                 <PolarAngleAxis
                                     dataKey="subject"
-                                    tick={{ fill: '#475569', fontSize: 14.5, fontWeight: 600, fontFamily: 'Inter, sans-serif' }}
+                                    tick={{ fill: '#475569', fontSize: tickFontSize, fontWeight: 600, fontFamily: 'Inter, sans-serif' }}
                                 />
                                 <PolarRadiusAxis
                                     angle={30}
