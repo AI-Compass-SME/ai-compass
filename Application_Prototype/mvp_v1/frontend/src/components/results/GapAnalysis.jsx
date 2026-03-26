@@ -6,8 +6,25 @@ import { cn } from "@/lib/utils";
 import { useTranslation } from 'react-i18next';
 
 export function GapAnalysis({ data }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     if (!data || !data.strategic_gaps) return null;
+
+    const DE_DIM_MAP = {
+        'Strategy & Business Vision': 'Strategie & Geschäftsvision',
+        'People & Culture': 'Mensch & Kultur',
+        'Data Readiness & Literacy': 'Datenreife & -kompetenz',
+        'Use Cases & Business Value': 'Use Cases & Business Value',
+        'Processes & Scaling': 'Prozesse & Skalierung',
+        'Governance & Compliance': 'Governance & Compliance',
+        'Tech Infrastructure': 'Technische Infrastruktur',
+    };
+
+    const getDimName = (gap) => {
+        if (i18n.language === 'de') {
+            return gap.dimension_name_de || DE_DIM_MAP[gap.dimension_name] || gap.dimension_name;
+        }
+        return gap.dimension_name;
+    };
 
     const gaps = data.strategic_gaps;
     const briefing = data.executive_briefing;
@@ -155,7 +172,7 @@ export function GapAnalysis({ data }) {
                                 {/* Bottom Meta Data */}
                                 <div className="flex items-center gap-2 pt-2 text-xs font-medium text-slate-400">
                                     <Target className="w-3.5 h-3.5" />
-                                    <span>{t('results.gaps.affects')}: {gap.dimension_name || gap.source_dim || t('results.gaps.generalCapability')}</span>
+                                    <span>{t('results.gaps.affects')}: {getDimName(gap) || gap.source_dim || t('results.gaps.generalCapability')}</span>
                                 </div>
                             </CardContent>
                         </Card>

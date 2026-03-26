@@ -308,12 +308,12 @@ class EmailService:
                 'title': "Ihr KI-Reifegradbericht ist fertig &#128196;",
                 'subtitle': f"Hallo <strong>{company_name}</strong>, danke für die Verifizierung Ihrer E-Mail. Ihr vollständiger strategischer KI-Reifegradbericht ist dieser E-Mail als PDF beigefügt.",
                 'inside': "Was in Ihrem PDF enthalten ist",
-                'item1': "Reifegrad-Übersicht",
-                'item2': "Kritische Lückenanalyse",
-                'item3': "3-Phasen-Aktions-Roadmap",
+                'item1': "Individueller Reifegrad-Score",
+                'item2': "Strategische Gap-Analyse",
+                'item3': "Strategische Roadmap & Empfehlungen",
                 'item4': "Branchen-Benchmarking",
-                'item5': "Cluster-Profil",
-                'item6': "Executive Briefing",
+                'item5': "KI-Profil",
+                'item6': "AI-Compass Strategisches Briefing",
                 'cta_pre': "Sie können jederzeit über Ihren sicheren, dauerhaften Link unten auf Ihr <strong>interaktives Live-Dashboard</strong> zugreifen:",
                 'btn': "Bericht ansehen",
                 'next_steps': "Nächste Schritte",
@@ -326,7 +326,7 @@ class EmailService:
                 'nav_privacy': "Datenschutz",
                 'rights': "Alle Rechte vorbehalten.",
                 'footer_note': "",
-                'header_suffix': "Strategische KI-Bewertung"
+                'header_suffix': "Strategische KI-Analyse"
             }
         }
         lang_code = lang.split('-')[0].lower()
@@ -407,7 +407,7 @@ class EmailService:
             "attachment": [
                 {
                     "content": b64_pdf,
-                    "name": f"AI_Compass_Report_{company_name.replace(' ', '_')}.pdf"
+                    "name": f"AI_Compass_Strategischer_Bericht_{company_name.replace(' ', '_')}.pdf" if lang_code == 'de' else f"AI_Compass_Report_{company_name.replace(' ', '_')}.pdf"
                 }
             ]
         }

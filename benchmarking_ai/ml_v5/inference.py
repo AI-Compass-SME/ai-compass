@@ -71,11 +71,11 @@ class InferenceEngine:
         
         if lang == "de":
             cluster_de_map = {
-                "1 - The Traditionalist": "1 - Der Traditionalist",
-                "2 - The Experimental Explorer": "2 - Der experimentelle Entdecker",
-                "3 - The Structured Builder": "3 - Der strukturierte Aufbauer",
-                "4 - The Operational Scaler": "4 - Der operative Skalierer",
-                "5 - The AI-Driven Leader": "5 - Der KI-gesteuerte Vorreiter"
+                "1 - The Traditionalist": "1 - Abwartender Beobachter",
+                "2 - The Experimental Explorer": "2 - Pragmatischer Anwender",
+                "3 - The Structured Builder": "3 - Systematischer Architekt",
+                "4 - The Operational Scaler": "4 - Operativer Multiplikator",
+                "5 - The AI-Driven Leader": "5 - Strategischer Innovator"
             }
             cluster_info["cluster_name"] = cluster_de_map.get(raw_name, raw_name)
         

@@ -202,7 +202,7 @@ export function Roadmap({ data }) {
                                                                                             <ArrowRight className="w-3 h-3 text-primary" />
                                                                                         </div>
                                                                                         <div className="text-sm text-slate-700">
-                                                                                            <span className="font-semibold text-slate-800 text-xs uppercase tracking-wide mr-2">
+                                                                                            <span className="font-semibold text-slate-800 text-xs tracking-wide mr-2">
                                                                                                 {t('results.roadmap.actionLabel', "Action")} {i + 1}:
                                                                                             </span>
                                                                                             {cleanAction.replace(/^Action \d+:\s*/i, '')}

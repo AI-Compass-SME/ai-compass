@@ -447,7 +447,7 @@ class RoadmapGenerator:
             gap_pct = ((peer_avg - company_score) / company_score) * 100
         
         # Theme-specific recommendations
-        theme_actions = self._get_theme_specific_actions(theme, source, gap_pct, lang)
+        theme_actions = self._get_theme_specific_actions(theme, theme_out, source, gap_pct, lang)
         
         # Generate analysis
         if source == "Strategic Gap (Critical)":
@@ -477,43 +477,46 @@ class RoadmapGenerator:
         action2_label = "**Action 2:**"
         return f"{analysis}\n\n{action1_label} {theme_actions['action1']}\n\n{action2_label} {theme_actions['action2']}"
     
-    def _get_theme_specific_actions(self, theme, source, gap_pct, lang="en"):
+    def _get_theme_specific_actions(self, theme, theme_out, source, gap_pct, lang="en"):
         """
         Generate theme-specific actionable recommendations.
         Returns localized action1 and action2 based on theme, gap, and language.
+        theme: English key used for keyword matching
+        theme_out: Localized display name used in German text
         """
         theme_lower = theme.lower()
         is_de = (lang == 'de')
+        display = theme_out  # use localized name in output text
 
         # --- Default fallback actions ---
         if source == "Strategic Gap (Critical)" and gap_pct > 10:
             if is_de:
-                action1 = f"Starten Sie eine fokussierte Initiative zur Stärkung von {theme} mit klarem Executive-Sponsoring und dedizierten Ressourcen, um die Leistungslücke zu schließen."
-                action2 = f"Implementieren Sie ein monatliches Fortschritts-Tracking mit klaren KPIs und Verantwortlichkeiten, um nachhaltige Verbesserungen in {theme} sicherzustellen."
+                action1 = f"Starten Sie eine fokussierte Initiative zur Stärkung von {display} mit klarem Executive-Sponsoring und dedizierten Ressourcen, um die Leistungslücke zu schließen."
+                action2 = f"Implementieren Sie ein monatliches Fortschritts-Tracking mit klaren KPIs und Verantwortlichkeiten, um nachhaltige Verbesserungen in {display} sicherzustellen."
             else:
-                action1 = f"Launch a focused {theme} improvement initiative with executive sponsorship and dedicated resources to close the performance gap."
-                action2 = f"Implement monthly progress tracking with clear KPIs and accountability measures to ensure sustained improvement in {theme}."
+                action1 = f"Launch a focused {display} improvement initiative with executive sponsorship and dedicated resources to close the performance gap."
+                action2 = f"Implement monthly progress tracking with clear KPIs and accountability measures to ensure sustained improvement in {display}."
         elif source == "Strategic Gap (Critical)":
             if is_de:
-                action1 = f"Führen Sie eine gezielte Bestandsaufnahme Ihrer {theme}-Praktiken durch und priorisieren Sie Maßnahmen mit hohem Hebeleffekt zur sofortigen Umsetzung."
-                action2 = f"Entwickeln Sie einen 90-Tage-Aktionsplan mit konkreten Meilensteinen, um Ihre {theme}-Kompetenz systematisch zu stärken."
+                action1 = f"Führen Sie eine gezielte Bestandsaufnahme Ihrer {display}-Praktiken durch und priorisieren Sie Maßnahmen mit hohem Hebeleffekt zur sofortigen Umsetzung."
+                action2 = f"Entwickeln Sie einen 90-Tage-Aktionsplan mit konkreten Meilensteinen, um Ihre {display}-Kompetenz systematisch zu stärken."
             else:
-                action1 = f"Conduct a targeted review of your {theme} practices and prioritize high-leverage improvements for immediate implementation."
-                action2 = f"Develop a 90-day action plan with concrete milestones to systematically strengthen your {theme} capabilities."
+                action1 = f"Conduct a targeted review of your {display} practices and prioritize high-leverage improvements for immediate implementation."
+                action2 = f"Develop a 90-day action plan with concrete milestones to systematically strengthen your {display} capabilities."
         elif gap_pct > 15:
             if is_de:
-                action1 = f"Benchmarken Sie Ihre {theme}-Praktiken mit Branchenführern und übernehmen Sie bewährte Frameworks, um die Kompetenzentwicklung zu beschleunigen."
-                action2 = f"Erwägen Sie strategische Partnerschaften oder externe Expertise in {theme}, um innerhalb von 6 Monaten Wettbewerbsparität zu erreichen."
+                action1 = f"Benchmarken Sie Ihre {display}-Praktiken mit Branchenführern und übernehmen Sie bewährte Frameworks, um die Kompetenzentwicklung zu beschleunigen."
+                action2 = f"Erwägen Sie strategische Partnerschaften oder externe Expertise in {display}, um innerhalb von 6 Monaten Wettbewerbsparität zu erreichen."
             else:
-                action1 = f"Benchmark {theme} practices against industry leaders and adopt proven frameworks to accelerate capability development."
-                action2 = f"Consider strategic partnerships or external expertise in {theme} to fast-track implementation and achieve competitive parity within 6 months."
+                action1 = f"Benchmark {display} practices against industry leaders and adopt proven frameworks to accelerate capability development."
+                action2 = f"Consider strategic partnerships or external expertise in {display} to fast-track implementation and achieve competitive parity within 6 months."
         else:
             if is_de:
-                action1 = f"Optimieren Sie bestehende {theme}-Prozesse durch kontinuierliche Verbesserungszyklen und gezielte Innovationsinitiativen."
-                action2 = f"Etablieren Sie Programme zum Wissensaustausch und zur Dokumentation von Best Practices, um Ihren Vorsprung in {theme} zu sichern."
+                action1 = f"Optimieren Sie bestehende {display}-Prozesse durch kontinuierliche Verbesserungszyklen und gezielte Innovationsinitiativen."
+                action2 = f"Etablieren Sie Programme zum Wissensaustausch und zur Dokumentation von Best Practices, um Ihren Vorsprung in {display} zu sichern."
             else:
-                action1 = f"Optimize existing {theme} processes through continuous improvement cycles and targeted innovation initiatives."
-                action2 = f"Establish knowledge-sharing programs and best practice documentation to maintain your competitive advantage in {theme}."
+                action1 = f"Optimize existing {display} processes through continuous improvement cycles and targeted innovation initiatives."
+                action2 = f"Establish knowledge-sharing programs and best practice documentation to maintain your competitive advantage in {display}."
 
         # --- Theme-specific overrides (bilingual) ---
         if 'staff' in theme_lower or 'proficiency' in theme_lower:
