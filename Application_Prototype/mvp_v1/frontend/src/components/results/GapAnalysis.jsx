@@ -123,7 +123,7 @@ export function GapAnalysis({ data }) {
                             <div className={cn("absolute top-0 right-0 w-64 h-64 bg-gradient-to-br blur-3xl opacity-50 rounded-full -mr-16 -mt-16 pointer-events-none", visuals.gradient)} />
 
                             <CardHeader className="pb-4 relative">
-                                <div className="flex items-start justify-between gap-4">
+                                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                                     <div className="flex items-start gap-3">
                                         <div className={cn("p-2.5 rounded-xl border shrink-0 mt-1", visuals.bgClass)}>
                                             <Icon className={cn("w-6 h-6", visuals.colorClass)} />
@@ -139,11 +139,11 @@ export function GapAnalysis({ data }) {
                                     </div>
 
                                     {/* Score Indicator */}
-                                    <div className="flex flex-col items-end shrink-0">
+                                    <div className="flex flex-col items-start sm:items-end shrink-0 mt-2 sm:mt-0 p-3 sm:p-0 bg-slate-50/50 sm:bg-transparent rounded-lg sm:rounded-none border sm:border-0 border-slate-100">
                                         <div className="text-2xl font-bold text-slate-700">
                                             {gap.score ? gap.score.toFixed(1) : "N/A"}
                                         </div>
-                                        <span className="text-[10px] items-center text-muted-foreground uppercase tracking-wider font-semibold">
+                                        <span className="text-[10px] sm:text-right text-muted-foreground uppercase tracking-widest font-semibold mt-1">
                                             {t('results.gaps.impactScore')}
                                         </span>
                                     </div>

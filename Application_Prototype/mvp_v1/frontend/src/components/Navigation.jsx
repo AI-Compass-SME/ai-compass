@@ -73,12 +73,12 @@ export function Navigation() {
                         <Button
                             size="sm"
                             disabled={isDownloading}
-                            className="relative px-6 h-10 text-sm font-semibold rounded-xl transition-colors bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm"
+                            className="relative px-3 md:px-6 h-10 text-sm font-semibold rounded-xl transition-colors bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm"
                             onClick={handleDownload}
                         >
                             <span className="flex items-center">
-                                {isDownloading ? <Loader2 className="w-4 h-4 mr-2 animate-spin text-slate-400" /> : <Download className="w-4 h-4 mr-2 text-slate-400" />}
-                                {isDownloading ? t('nav.generatingPdf', "Generating...") : t('nav.downloadReport', "Download Report")}
+                                {isDownloading ? <Loader2 className="w-4 h-4 md:mr-2 animate-spin text-slate-400" /> : <Download className="w-4 h-4 md:mr-2 text-slate-400" />}
+                                <span className="hidden md:inline">{isDownloading ? t('nav.generatingPdf', "Generating...") : t('nav.downloadReport', "Download Report")}</span>
                             </span>
                         </Button>
                     )}
