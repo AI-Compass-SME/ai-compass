@@ -139,11 +139,11 @@ export function GapAnalysis({ data }) {
                                     </div>
 
                                     {/* Score Indicator */}
-                                    <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start shrink-0 mt-2 sm:mt-0 p-3 sm:p-0 bg-slate-50/50 sm:bg-transparent rounded-lg sm:rounded-none border sm:border-0 border-slate-100 w-full sm:w-auto">
-                                        <span className="text-[10.5px] sm:text-[10px] sm:text-right text-muted-foreground uppercase tracking-widest font-semibold sm:mt-1 order-2 sm:order-1 sm:max-w-[120px]">
+                                    <div className="flex flex-col items-start sm:items-end shrink-0 w-full sm:w-auto mt-2 sm:mt-0 p-4 sm:p-0 bg-slate-50 border sm:border-0 rounded-xl sm:bg-transparent sm:rounded-none border-slate-100">
+                                        <div className="text-[10px] sm:text-[10.5px] font-bold uppercase tracking-widest text-slate-500 mb-1 sm:text-right w-full break-words">
                                             {t('results.gaps.impactScore')}
-                                        </span>
-                                        <div className="text-xl md:text-2xl font-bold text-slate-700 order-1 sm:order-2">
+                                        </div>
+                                        <div className="text-2xl font-black text-slate-800">
                                             {gap.score ? gap.score.toFixed(1) : "N/A"}
                                         </div>
                                     </div>
