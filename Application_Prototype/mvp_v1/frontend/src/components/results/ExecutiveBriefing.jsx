@@ -118,29 +118,33 @@ export function ExecutiveBriefing({ data }) {
                                             <div className={cn("absolute top-0 right-0 w-64 h-64 bg-gradient-to-br blur-3xl opacity-50 rounded-full -mr-16 -mt-16 pointer-events-none", visuals.gradient)} />
 
                                             <CardHeader className="pb-4 relative">
-                                                <div className="flex items-start justify-between gap-4">
-                                                    <div className="flex items-start gap-3">
+                                                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4 w-full">
+                                                    {/* Icon, Badge, Title */}
+                                                    <div className="flex items-start gap-3 w-full lg:w-auto">
                                                         <div className={cn("p-2.5 rounded-xl border shrink-0 mt-1", visuals.bgClass)}>
                                                             <Icon className={cn("w-6 h-6", visuals.colorClass)} />
                                                         </div>
-                                                        <div>
+                                                        <div className="flex-1 min-w-0 max-w-full">
                                                             <Badge variant="outline" className={cn("mb-2 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
                                                                 {visuals.label}
                                                             </Badge>
-                                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug">
+                                                            <CardTitle className="text-lg md:text-xl font-bold text-slate-800 leading-snug break-words whitespace-normal hyphens-auto">
                                                                 {gap.title.replace(/^(Critical Gap|Structural Imbalance):\s*/i, '')}
                                                             </CardTitle>
                                                         </div>
                                                     </div>
 
-                                                    {/* Score Indicator */}
-                                                    <div className="flex flex-col items-end shrink-0">
-                                                        <div className="text-2xl font-bold text-slate-700">
+                                                    {/* Score Indicator - Desktop (Classic) & Mobile (Stacked) */}
+                                                    <div className="flex flex-col items-start lg:items-end shrink-0 w-full lg:w-auto mt-2 lg:mt-0 p-4 lg:p-0 bg-slate-50 border lg:border-0 rounded-xl lg:bg-transparent lg:rounded-none border-slate-100">
+                                                        <div className="text-2xl font-bold text-slate-700 hidden lg:block">
                                                             {gap.score ? gap.score.toFixed(1) : "N/A"}
                                                         </div>
-                                                        <span className="text-[10px] items-center text-muted-foreground uppercase tracking-wider font-semibold">
+                                                        <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wide text-slate-500 mb-1 lg:mb-0 break-words whitespace-normal w-full lg:w-auto lg:text-right">
                                                             {t('results.gaps.impactScore')}
                                                         </span>
+                                                        <div className="text-3xl font-black text-slate-800 lg:hidden">
+                                                            {gap.score ? gap.score.toFixed(1) : "N/A"}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </CardHeader>

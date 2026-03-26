@@ -66,6 +66,7 @@ export function GapAnalysis({ data }) {
             };
         }
     };
+    console.log("TESTING GAP UPDATE")
 
     return (
         <section className="space-y-8">
