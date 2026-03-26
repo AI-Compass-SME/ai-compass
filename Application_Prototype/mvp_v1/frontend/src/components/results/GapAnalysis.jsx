@@ -123,27 +123,28 @@ export function GapAnalysis({ data }) {
                             <div className={cn("absolute top-0 right-0 w-64 h-64 bg-gradient-to-br blur-3xl opacity-50 rounded-full -mr-16 -mt-16 pointer-events-none", visuals.gradient)} />
 
                             <CardHeader className="pb-4 relative">
-                                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 w-full">
-                                    <div className="flex items-start gap-3 w-full sm:w-auto">
+                                <div className="flex flex-col gap-5 w-full">
+                                    {/* Icon, Badge, Title */}
+                                    <div className="flex items-start gap-4 w-full">
                                         <div className={cn("p-2.5 rounded-xl border shrink-0 mt-1", visuals.bgClass)}>
                                             <Icon className={cn("w-6 h-6", visuals.colorClass)} />
                                         </div>
-                                        <div className="flex-1 min-w-0">
-                                            <Badge variant="outline" className={cn("mb-2 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
+                                        <div className="flex-1 min-w-0 max-w-full">
+                                            <Badge variant="outline" className={cn("mb-3 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
                                                 {visuals.label}
                                             </Badge>
-                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug break-words">
+                                            <CardTitle className="text-lg md:text-xl font-bold text-slate-800 leading-snug break-words whitespace-normal hyphens-auto">
                                                 {gap.title.replace(/^(Critical Gap|Structural Imbalance):\s*/i, '')}
                                             </CardTitle>
                                         </div>
                                     </div>
 
-                                    {/* Score Indicator */}
-                                    <div className="flex flex-col items-start sm:items-end shrink-0 w-full sm:w-auto mt-2 sm:mt-0 p-4 sm:p-0 bg-slate-50 border sm:border-0 rounded-xl sm:bg-transparent sm:rounded-none border-slate-100">
-                                        <div className="text-[10px] sm:text-[10.5px] font-bold uppercase tracking-widest text-slate-500 mb-1 sm:text-right w-full break-words">
+                                    {/* Score Indicator Footer Block */}
+                                    <div className="flex flex-col items-start w-full p-4 bg-slate-50 border rounded-xl border-slate-100 mt-1">
+                                        <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wide text-slate-500 mb-1 break-words whitespace-normal w-full">
                                             {t('results.gaps.impactScore')}
-                                        </div>
-                                        <div className="text-2xl font-black text-slate-800">
+                                        </span>
+                                        <div className="text-3xl font-black text-slate-800">
                                             {gap.score ? gap.score.toFixed(1) : "N/A"}
                                         </div>
                                     </div>
