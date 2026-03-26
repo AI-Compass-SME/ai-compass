@@ -46,7 +46,7 @@ export function ClusterProfile({ data }) {
             <Card className="border-none shadow-none bg-transparent">
                 <CardContent className="p-0 space-y-4">
                     {/* Combined Visualization Area */}
-                    <div className="relative mt-12 md:mt-16">
+                    <div className="relative mt-20 md:mt-24">
                         {/* Y-Axis Label */}
                         <div className="absolute top-5 -left-8 md:-left-10 z-10 w-0 h-0">
                             <div className="absolute top-0 right-0 origin-top-right -rotate-90 flex items-center gap-3 text-[10px] md:text-[11px] font-bold text-slate-400 tracking-wider uppercase whitespace-nowrap">
@@ -106,7 +106,7 @@ export function ClusterProfile({ data }) {
                                         )}
                                     >
                                         <h4 className={cn(
-                                            "font-bold mb-1 md:mb-2 text-[9px] sm:text-[11px] md:text-sm leading-tight hyphens-auto break-words",
+                                            "font-bold mb-1 md:mb-2 text-[8px] sm:text-[10px] md:text-sm leading-none sm:leading-tight break-all sm:break-words hyphens-auto",
                                             isActive ? "text-indigo-700" : "text-slate-700"
                                         )}>
                                             {t(`results.cluster.definitions.${cluster.id}.name`)}
