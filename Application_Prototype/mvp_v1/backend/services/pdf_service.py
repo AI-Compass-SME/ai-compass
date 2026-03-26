@@ -21,15 +21,15 @@ class PDFService:
         """
         t = {
             'en': {
-                'header_title': "AI EVOLUTION BLUEPRINT",
+                'header_title': "AI COMPASS STRATEGIC REPORT",
                 'confidential': "CONFIDENTIAL",
-                'footer_text': "© 2024 AI-Compass Intelligence",
+                'footer_text': "© 2026 AI-Compass Intelligence",
                 'page': "Page"
             },
             'de': {
-                'header_title': "KI EVOLUTIONS-BLUEPRINT",
+                'header_title': "AI COMPASS STRATEGISCHER BERICHT",
                 'confidential': "VERTRAULICH",
-                'footer_text': "© 2024 AI-Compass Intelligence",
+                'footer_text': "© 2026 AI-Compass Intelligence",
                 'page': "Seite"
             }
         }
@@ -123,34 +123,39 @@ class PDFService:
                 'critical_weakness': "CRITICAL WEAKNESS",
                 'strategic_implication': "STRATEGIC IMPLICATION",
                 'no_critical_gaps': "No critical gaps detected.",
-                'next_best_action': "\"Next Best Action\" Roadmap",
-                'action_prefix': "ACTION",
-                'no_immediate_actions': "No immediate actions."
+                'next_best_action': "Strategic Roadmap & Recommendations",
+                'action_prefix': "Action",
+                'no_immediate_actions': "No critical actions identified for this phase."
             },
             'de': {
-                'doc_title': "KI-Kompass Reifegradbericht",
-                'cover_title': "Executive Ergebnisbericht",
-                'cover_sub': "STRATEGISCHE REIFEGRADBEWERTUNG",
+                'doc_title': "AI-Compass Strategischer Bericht",
+                'cover_title': "Ihre Strategische Standortbestimmung & Roadmap",
+                'cover_sub': "",
                 'prepared_for': "ERSTELLT FÜR:",
                 'confidential_co': "Vertrauliches Unternehmen",
                 'overall_maturity': "GESAMTREIFEGRAD",
                 'industry_benchmark': "BRANCHEN-BENCHMARK",
                 'top_pct': "Top {pct}%",
                 'vs_peers': "vs {peer_group} Unternehmen",
-                'cluster_profile': "CLUSTER-PROFIL",
-                'your_cluster': "Ihr Cluster-Profil:",
+                'cluster_profile': "KI-PROFIL",
+                'your_cluster': "Ihr KI-Profil:",
                 'multi_dim_profile': "Das mehrdimensionale Reifegradprofil",
-                'strategic_gap_analysis': "Strategische Lückenanalyse",
-                'exec_briefing': "Executive Briefing",
+                'strategic_gap_analysis': "Strategische Gap-Analyse",
+                'exec_briefing': "AI-Compass Strategisches Briefing",
                 'key_insights': "WICHTIGE ERKENNTNISSE",
                 'critical_findings': "Kritische Erkenntnisse",
                 'structural_imbalance': "STRUKTURELLES UNGLEICHGEWICHT",
                 'critical_weakness': "KRITISCHE SCHWÄCHE",
-                'strategic_implication': "STRATEGISCHE AUSWIRKUNG",
+                'strategic_implication': "STRATEGISCHE IMPLIKATION",
                 'no_critical_gaps': "Keine kritischen Lücken erkannt.",
-                'next_best_action': "\"Next Best Action\" Roadmap",
-                'action_prefix': "AKTION",
-                'no_immediate_actions': "Keine sofortigen Aktionen."
+                'next_best_action': "Strategische Roadmap & Empfehlungen",
+                'action_prefix': "Maßnahme",
+                'no_immediate_actions': "Für diese Phase wurden keine kritischen Maßnahmen identifiziert.",
+                'phase_names': {
+                    'foundation': 'Fundament',
+                    'implementation': 'Implementierung',
+                    'scaleGovernance': 'Skalierung & Governance'
+                }
             }
         }
         active_t = t.get(lang, t['en'])
@@ -205,45 +210,20 @@ class PDFService:
         raw_cluster_name = str(cluster.get("cluster_name") or "Unknown")
         
         if lang == 'de':
-            raw_cluster_name = raw_cluster_name.replace("The Traditionalist", "Der Traditionalist") \
-                                               .replace("The Experimental Explorer", "Der Experimentelle Entdecker") \
-                                               .replace("The Structured Builder", "Der Strukturierte Gestalter") \
-                                               .replace("The Operational Scaler", "Der Operative Skalierer") \
-                                               .replace("The AI-Driven Leader", "Der KI-getriebene Marktführer")
-            dim_map_fuzzy = {
-                'strateg': 'Strategie & Führung',
-                'case': 'Anwendungsfälle & Wert',
-                'wert': 'Anwendungsfälle & Wert',
-                'value': 'Anwendungsfälle & Wert',
-                'data': 'Daten & Infrastruktur',
-                'daten': 'Daten & Infrastruktur',
-                'talent': 'Talent & Kultur',
-                'cultur': 'Talent & Kultur',
-                'kultur': 'Talent & Kultur',
-                'people': 'Talent & Kultur',
-                'govern': 'Governance & Ethik',
-                'ethic': 'Governance & Ethik',
-                'ethik': 'Governance & Ethik',
-                'tech': 'Technologie & Tools',
-                'tool': 'Technologie & Tools',
-                'partner': 'Partnerschaften & Ökosystem',
-                'ecosystem': 'Partnerschaften & Ökosystem',
-                'ökosystem': 'Partnerschaften & Ökosystem',
-                'exec': 'Ausführung & Skalierung',
-                'scale': 'Ausführung & Skalierung',
-                'ausführung': 'Ausführung & Skalierung',
-                'process': 'Prozesse & Skalierung',
-                'prozess': 'Prozesse & Skalierung'
+            # Map dimension names to canonical German names (matching DB and results page)
+            dim_en_to_de = {
+                'Strategy & Business Vision': 'Strategie & Geschäftsvision',
+                'People & Culture': 'Mensch & Kultur',
+                'Data Readiness & Literacy': 'Datenreife & -kompetenz',
+                'Use Cases & Business Value': 'Use Cases & Business Value',
+                'Processes & Scaling': 'Prozesse & Skalierung',
+                'Governance & Compliance': 'Governance & Compliance',
+                'Tech Infrastructure': 'Technische Infrastruktur',
             }
             new_dim_scores = {}
             for k, v in data.get("dimension_scores", {}).items():
-                k_lower = str(k).lower()
-                matched_de = k
-                for fuzzy_str, de_str in dim_map_fuzzy.items():
-                    if fuzzy_str in k_lower:
-                        matched_de = de_str
-                        break
-                new_dim_scores[matched_de] = v
+                de_name = dim_en_to_de.get(k, k)
+                new_dim_scores[de_name] = v
             data["dimension_scores"] = new_dim_scores
             
         cluster_name = raw_cluster_name.replace(" - ", ": ")
@@ -305,7 +285,8 @@ class PDFService:
         
         story.append(Spacer(1, 2*cm))
         story.append(Paragraph(active_t['cover_title'], style_cover_title))
-        story.append(Paragraph(active_t['cover_sub'], style_cover_sub))
+        if active_t.get('cover_sub'):
+            story.append(Paragraph(active_t['cover_sub'], style_cover_sub))
         
         story.append(Spacer(1, 2.5*cm))
         
@@ -363,19 +344,19 @@ class PDFService:
         
         if lang == 'de':
             clusters_def = [
-                {"id": 1, "name": "Traditionalist", "h": 0.2},
-                {"id": 2, "name": "Entdecker", "h": 0.4},
-                {"id": 3, "name": "Gestalter", "h": 0.6},
-                {"id": 4, "name": "Skalierer", "h": 0.8},
-                {"id": 5, "name": "Marktführer", "h": 1.0},
+                {"id": 1, "name": "Abwartender Beobachter", "h": 0.2},
+                {"id": 2, "name": "Pragmatischer Anwender", "h": 0.4},
+                {"id": 3, "name": "Systematischer Architekt", "h": 0.6},
+                {"id": 4, "name": "Operativer Multiplikator", "h": 0.8},
+                {"id": 5, "name": "Strategischer Innovator", "h": 1.0},
             ]
         else:
             clusters_def = [
-                {"id": 1, "name": "Traditionalist", "h": 0.2},
-                {"id": 2, "name": "Explorer", "h": 0.4},
-                {"id": 3, "name": "Builder", "h": 0.6},
-                {"id": 4, "name": "Scaler", "h": 0.8},
-                {"id": 5, "name": "Leader", "h": 1.0},
+                {"id": 1, "name": "The Traditionalist", "h": 0.2},
+                {"id": 2, "name": "Experimental Explorer", "h": 0.4},
+                {"id": 3, "name": "Structured Builder", "h": 0.6},
+                {"id": 4, "name": "Operational Scaler", "h": 0.8},
+                {"id": 5, "name": "AI-Driven Leader", "h": 1.0},
             ]
         active_id = 1
         c_name_raw = cluster.get("cluster_name")
@@ -383,7 +364,7 @@ class PDFService:
              m = re.match(r"(\d+)", str(c_name_raw))
              if m: active_id = int(m.group(1))
         
-        vg_drawing = Drawing(453, 75)
+        vg_drawing = Drawing(453, 88)
         bar_gap = 10
         avail_w = 453 - (bar_gap * 4)
         single_bar_w = avail_w / 5
@@ -391,11 +372,16 @@ class PDFService:
         for c_def in clusters_def:
             is_active = (c_def['id'] == active_id)
             fill_c = colors.HexColor('#4f46e5') if is_active else colors.HexColor('#f1f5f9')
-            vg_drawing.add(Rect(x_cursor, 12, single_bar_w, c_def['h'] * 55, fillColor=fill_c, strokeColor=None, rx=4, ry=4))
+            vg_drawing.add(Rect(x_cursor, 22, single_bar_w, c_def['h'] * 55, fillColor=fill_c, strokeColor=None, rx=4, ry=4))
             
             lbl_color = colors.HexColor('#4338ca') if is_active else colors.HexColor('#64748b')
             font_n = 'Helvetica-Bold' if is_active else 'Helvetica'
-            vg_drawing.add(String(x_cursor + single_bar_w/2, 5, c_def['name'], textAnchor='middle', fontName=font_n, fontSize=8, fillColor=lbl_color))
+            words = c_def['name'].split(' ', 1)
+            word1 = words[0]
+            word2 = words[1] if len(words) > 1 else ''
+            vg_drawing.add(String(x_cursor + single_bar_w/2, 13, word1, textAnchor='middle', fontName=font_n, fontSize=7, fillColor=lbl_color))
+            if word2:
+                vg_drawing.add(String(x_cursor + single_bar_w/2, 4, word2, textAnchor='middle', fontName=font_n, fontSize=7, fillColor=lbl_color))
             x_cursor += single_bar_w + bar_gap
             
         kp_analysis.append(vg_drawing)
@@ -566,9 +552,23 @@ class PDFService:
         story.append(Paragraph(active_t['next_best_action'], style_h1))
         roadmap = data.get("roadmap", {}) or {}
         
+        phase_map_en = {
+            'foundation': 'Foundation',
+            'implementation': 'Implementation',
+            'scaleGovernance': 'Scale & Governance'
+        }
+        
         for i, (phase, items) in enumerate(roadmap.items()):
             kp_phase = []
-            kp_phase.append(Paragraph(phase.upper(), ParagraphStyle('PhaseHeader', parent=style_normal, fontName='Helvetica-Bold', fontSize=10, textColor=col_primary, spaceAfter=8)))
+            
+            # Map raw phase key ('scaleGovernance') to translated name
+            phase_display = phase
+            if lang == 'de':
+                phase_display = active_t.get('phase_names', {}).get(phase, phase)
+            else:
+                phase_display = phase_map_en.get(phase, phase)
+                
+            kp_phase.append(Paragraph(phase_display.upper(), ParagraphStyle('PhaseHeader', parent=style_normal, fontName='Helvetica-Bold', fontSize=10, textColor=col_primary, spaceAfter=8)))
             
             if items:
                 item_rows = []

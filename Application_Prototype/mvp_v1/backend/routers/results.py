@@ -221,7 +221,7 @@ def generate_pdf(result_hash: str, lang: str = "en", db: Session = Depends(get_d
         pdf_service = PDFService()
         pdf_bytes = pdf_service.generate_pdf(results_data, lang=lang_code)
         
-        prefix = "KI_Kompass_Report" if lang_code == 'de' else "AI_Compass_Report"
+        prefix = "AI_Compass_Strategischer_Bericht" if lang_code == 'de' else "AI_Compass_Report"
         
         return FastAPIResponse(
             content=pdf_bytes, 
