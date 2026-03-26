@@ -123,29 +123,29 @@ export function GapAnalysis({ data }) {
                             <div className={cn("absolute top-0 right-0 w-64 h-64 bg-gradient-to-br blur-3xl opacity-50 rounded-full -mr-16 -mt-16 pointer-events-none", visuals.gradient)} />
 
                             <CardHeader className="pb-4 relative">
-                                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                                    <div className="flex items-start gap-3">
+                                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 w-full">
+                                    <div className="flex items-start gap-3 w-full sm:w-auto">
                                         <div className={cn("p-2.5 rounded-xl border shrink-0 mt-1", visuals.bgClass)}>
                                             <Icon className={cn("w-6 h-6", visuals.colorClass)} />
                                         </div>
-                                        <div>
+                                        <div className="flex-1 min-w-0">
                                             <Badge variant="outline" className={cn("mb-2 font-semibold tracking-wide border-0 px-0", visuals.colorClass)}>
                                                 {visuals.label}
                                             </Badge>
-                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug">
+                                            <CardTitle className="text-xl font-bold text-slate-800 leading-snug break-words">
                                                 {gap.title.replace(/^(Critical Gap|Structural Imbalance):\s*/i, '')}
                                             </CardTitle>
                                         </div>
                                     </div>
 
                                     {/* Score Indicator */}
-                                    <div className="flex flex-col items-start sm:items-end shrink-0 mt-2 sm:mt-0 p-3 sm:p-0 bg-slate-50/50 sm:bg-transparent rounded-lg sm:rounded-none border sm:border-0 border-slate-100">
-                                        <div className="text-2xl font-bold text-slate-700">
-                                            {gap.score ? gap.score.toFixed(1) : "N/A"}
-                                        </div>
-                                        <span className="text-[10px] sm:text-right text-muted-foreground uppercase tracking-widest font-semibold mt-1">
+                                    <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start shrink-0 mt-2 sm:mt-0 p-3 sm:p-0 bg-slate-50/50 sm:bg-transparent rounded-lg sm:rounded-none border sm:border-0 border-slate-100 w-full sm:w-auto">
+                                        <span className="text-[10.5px] sm:text-[10px] sm:text-right text-muted-foreground uppercase tracking-widest font-semibold sm:mt-1 order-2 sm:order-1 sm:max-w-[120px]">
                                             {t('results.gaps.impactScore')}
                                         </span>
+                                        <div className="text-xl md:text-2xl font-bold text-slate-700 order-1 sm:order-2">
+                                            {gap.score ? gap.score.toFixed(1) : "N/A"}
+                                        </div>
                                     </div>
                                 </div>
                             </CardHeader>

@@ -26,8 +26,8 @@ export function MaturityProfile({ data }) {
         return rawDim.trim();
     };
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const tickFontSize = isMobile ? 10 : 14.5;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const tickFontSize = isMobile ? 8.5 : 14;
 
     // Transform dimension_scores (dict) to array for Recharts
     const radarData = Object.entries(data.dimension_scores).map(([dim, score]) => {
@@ -45,6 +45,46 @@ export function MaturityProfile({ data }) {
             fullMark: 5
         };
     });
+
+    const renderCustomTick = (props) => {
+        const { payload, x, y, cx } = props;
+        const text = payload.value || "";
+        
+        // Smart split: break at '&' if present, otherwise split in half
+        let line1 = text;
+        let line2 = "";
+        
+        if (text.includes(" & ")) {
+            const parts = text.split(" & ");
+            line1 = parts[0] + " &";
+            line2 = parts[1];
+        } else if (text.includes(" ")) {
+            const words = text.split(" ");
+            const mid = Math.ceil(words.length / 2);
+            line1 = words.slice(0, mid).join(" ");
+            line2 = words.slice(mid).join(" ");
+        }
+
+        let anchor = "middle";
+        if (Math.abs(x - cx) > 20) {
+            anchor = x > cx ? "start" : "end";
+        }
+
+        return (
+            <text 
+                x={x} 
+                y={y - (line2 ? 4 : 0)} 
+                textAnchor={anchor} 
+                fill="#475569" 
+                fontSize={tickFontSize} 
+                fontWeight={600} 
+                fontFamily="Inter, sans-serif"
+            >
+                <tspan x={x} dy={0}>{line1}</tspan>
+                {line2 && <tspan x={x} dy={tickFontSize * 1.3}>{line2}</tspan>}
+            </text>
+        );
+    };
 
     return (
         <section className="space-y-4">
@@ -69,7 +109,7 @@ export function MaturityProfile({ data }) {
                                 <PolarGrid stroke="#94a3b8" strokeDasharray="3 3" />
                                 <PolarAngleAxis
                                     dataKey="subject"
-                                    tick={{ fill: '#475569', fontSize: tickFontSize, fontWeight: 600, fontFamily: 'Inter, sans-serif' }}
+                                    tick={renderCustomTick}
                                 />
                                 <PolarRadiusAxis
                                     angle={30}
