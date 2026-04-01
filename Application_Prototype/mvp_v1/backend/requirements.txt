@@ -6,7 +6,7 @@ pydantic
 pydantic-settings
 python-dotenv
 pandas
-scikit-learn==1.4.0
+scikit-learn
 numpy
 reportlab
 email-validator
