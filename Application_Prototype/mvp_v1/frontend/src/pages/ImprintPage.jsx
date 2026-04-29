@@ -38,9 +38,18 @@ export default function ImprintPage() {
                         <section>
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.contact')}</h2>
                             <p className="leading-relaxed">
-                                E-Mail: info@the-ai-compass.de<br />
-                                {t('pages.contact.phone.title')}: {t('pages.contact.phone.val')}<br />
-                                Website: www.the-ai-compass.de
+                                E-Mail:{' '}
+                                <a href="mailto:info@the-ai-compass.de" className="hover:text-blue-600 hover:underline transition-colors">
+                                    info@the-ai-compass.de
+                                </a><br />
+                                {t('pages.contact.phone.title')}:{' '}
+                                <a href={`tel:${t('pages.contact.phone.val')}`} className="hover:text-blue-600 hover:underline transition-colors">
+                                    {t('pages.contact.phone.val')}
+                                </a><br />
+                                Website:{' '}
+                                <a href="https://www.the-ai-compass.de" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:underline transition-colors">
+                                    www.the-ai-compass.de
+                                </a>
                             </p>
                         </section>
 

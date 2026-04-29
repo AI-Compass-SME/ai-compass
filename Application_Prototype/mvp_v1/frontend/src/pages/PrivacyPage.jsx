@@ -3,7 +3,7 @@ import { Navigation } from '../components/Navigation';
 import { PageBackground } from '@/components/ui/PageBackground';
 import { PageHeader } from '../components/PageHeader';
 import { Footer } from '../components/Footer';
-import { Shield, Lock, Server, Mail, FileText, UserCheck, EyeOff, Building2 } from 'lucide-react';
+import { Shield, Lock, Server, Mail, FileText, UserCheck, EyeOff, Building2, Phone } from 'lucide-react';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Section = ({ title, icon: Icon, children }) => (
@@ -51,8 +51,11 @@ export default function PrivacyPage() {
                             <p>{t('pages.privacy.s1.p1')}</p>
                             <p className="font-semibold text-gray-900">
                                 {t('pages.privacy.s1.address')}<br />
-                                <a href="mailto:info@the-ai-compass.de" className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
-                                    <Mail className="w-3 h-3" /> info@the-ai-compass.de
+                                <a href={`mailto:${t('pages.contact.email.val')}`} className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
+                                    <Mail className="w-3 h-3" /> {t('pages.contact.email.val')}
+                                </a><br />
+                                <a href={`tel:${t('pages.contact.phone.val')}`} className="text-blue-600 hover:underline inline-flex items-center gap-1 mt-1">
+                                    <Phone className="w-3 h-3" /> {t('pages.contact.phone.val')}
                                 </a>
                             </p>
                         </Section>
