@@ -26,11 +26,12 @@ export function Footer() {
                 </div>
 
                 <div>
-                    <h3 className="font-semibold mb-4 text-slate-200">Legal</h3>
+                    <h3 className="font-semibold mb-4 text-slate-200">Legal & Support</h3>
                     <ul className="space-y-2 text-slate-400 text-sm">
                         <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
                         <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
                         <li><a href="#" className="hover:text-blue-400 transition-colors">Imprint</a></li>
+                        <li><a href="tel:+493086319343" className="hover:text-blue-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
             </div>

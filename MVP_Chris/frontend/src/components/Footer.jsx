@@ -44,7 +44,7 @@ export function Footer() {
                             <li><a href="#" className="hover:text-blue-400 transition-colors">About</a></li>
                             <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
                             <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition-colors">Contact</a></li>
+                            <li><a href="tel:+493086319343" className="hover:text-blue-400 transition-colors">Contact</a></li>
                         </ul>
                     </div>
                 </div>
