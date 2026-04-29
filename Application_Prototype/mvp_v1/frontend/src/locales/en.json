@@ -369,7 +369,7 @@
             },
             "s8": {
                 "title": "8. Enterprise Compliance & DPA",
-                "p1": "For corporate clients requiring formal compliance documentation, we offer a standardized Data Processing Agreement (DPA) pursuant to Art. 28 GDPR. This includes detailed information on our Technical and Organizational Measures (TOMs). Please contact us at info@the-ai-compass.de."
+                "p1": "For corporate clients requiring formal compliance documentation, we offer a standardized Data Processing Agreement (DPA) pursuant to Art. 28 GDPR. This includes detailed information on our Technical and Organizational Measures (TOMs). Please contact us at <1>info@the-ai-compass.de</1>."
             }
         },
         "imprint": {

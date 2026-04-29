@@ -141,7 +141,12 @@ export default function PrivacyPage() {
 
                         {/* 8. AVV */}
                         <Section title={t('pages.privacy.s8.title')} icon={Building2}>
-                            <p>{t('pages.privacy.s8.p1')}</p>
+                            <p>
+                                <Trans 
+                                    i18nKey="pages.privacy.s8.p1" 
+                                    components={{ 1: <a href="mailto:info@the-ai-compass.de" className="text-blue-600 hover:underline transition-colors" /> }} 
+                                />
+                            </p>
                         </Section>
                     </div>
                 </div>
