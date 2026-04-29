@@ -45,7 +45,12 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-base font-bold text-gray-900 mb-1">{t('pages.contact.phone.title')}</h3>
-                                    <p className="text-sm font-medium text-gray-900">{t('pages.contact.phone.main')}: <span className="text-gray-500 font-normal">{t('pages.contact.phone.val')}</span></p>
+                                    <p className="text-sm font-medium text-gray-900">
+                                        {t('pages.contact.phone.main')}:{' '}
+                                        <a href={`tel:${t('pages.contact.phone.val')}`} className="text-gray-500 font-normal hover:text-blue-600 hover:underline transition-colors">
+                                            {t('pages.contact.phone.val')}
+                                        </a>
+                                    </p>
                                     <p className="text-xs text-gray-500 mt-1">{t('pages.contact.phone.time')}</p>
                                 </div>
                             </div>
@@ -57,7 +62,12 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-base font-bold text-gray-900 mb-1">{t('pages.contact.email.title')}</h3>
-                                    <p className="text-sm font-medium text-gray-900">{t('pages.contact.email.main')}: <span className="text-gray-500 font-normal">{t('pages.contact.email.val')}</span></p>
+                                    <p className="text-sm font-medium text-gray-900">
+                                        {t('pages.contact.email.main')}:{' '}
+                                        <a href={`mailto:${t('pages.contact.email.val')}`} className="text-gray-500 font-normal hover:text-blue-600 hover:underline transition-colors">
+                                            {t('pages.contact.email.val')}
+                                        </a>
+                                    </p>
                                     <p className="text-xs text-gray-500 mt-1">{t('pages.contact.email.time')}</p>
                                 </div>
                             </div>
