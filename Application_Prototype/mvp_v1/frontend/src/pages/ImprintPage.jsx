@@ -38,8 +38,8 @@ export default function ImprintPage() {
                         <section>
                             <h2 className="text-sm font-bold text-gray-900 mb-1 uppercase tracking-wide text-xs">{t('pages.imprint.contact')}</h2>
                             <p className="leading-relaxed">
-                                {t('pages.contact.phone.title')}: {t('pages.contact.phone.val')}<br />
                                 E-Mail: info@the-ai-compass.de<br />
+                                {t('pages.contact.phone.title')}: {t('pages.contact.phone.val')}<br />
                                 Website: www.the-ai-compass.de
                             </p>
                         </section>
