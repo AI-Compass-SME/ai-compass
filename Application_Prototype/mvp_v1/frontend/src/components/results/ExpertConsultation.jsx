@@ -39,7 +39,7 @@ export function ExpertConsultation() {
                                 {t('results.consultation.cta.title', 'Get in Touch for a Strategy Deep-Dive')}
                             </h3>
 
-                            <p className="text-lg text-slate-300 leading-relaxed max-w-xl">
+                            <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl">
                                 {t('results.consultation.cta.desc', "Every SME journey is unique. Contact our AI Compass strategist to validate your roadmap and identify industry-specific 'Low-Hanging Fruit'.")}
                             </p>
 
@@ -55,7 +55,7 @@ export function ExpertConsultation() {
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-base font-medium text-slate-400">{t('results.consultation.contact.email', 'Email')}</p>
-                                                <a href="mailto:info@the-ai-compass.de" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
+                                                <a href="mailto:info@the-ai-compass.de" className="text-white text-base md:text-lg font-semibold hover:text-indigo-300 transition-colors">
                                                     info@the-ai-compass.de
                                                 </a>
                                             </div>
@@ -69,8 +69,8 @@ export function ExpertConsultation() {
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-base font-medium text-slate-400">{t('results.consultation.contact.phone', 'Phone')}</p>
-                                                <a href="tel:+1234567890" className="text-white text-lg font-semibold hover:text-indigo-300 transition-colors">
-                                                    +1 (234) 567-890
+                                                <a href="tel:+493086319343" className="text-white text-base md:text-lg font-semibold hover:text-indigo-300 transition-colors">
+                                                    +493086319343
                                                 </a>
                                             </div>
                                         </div>
@@ -89,7 +89,7 @@ export function ExpertConsultation() {
                                         t('results.consultation.features.2', 'Roadmap validation'),
                                         t('results.consultation.features.3', 'Budget ROI modeling')
                                     ].map((feature, i) => (
-                                        <li key={i} className="flex items-center gap-2.5 text-slate-200 text-lg">
+                                        <li key={i} className="flex items-center gap-2.5 text-slate-200 text-base md:text-lg">
                                             <div className="flex-none p-0.5 rounded-full bg-emerald-500/20 text-emerald-400">
                                                 <CheckCircle className="w-4 h-4" />
                                             </div>
