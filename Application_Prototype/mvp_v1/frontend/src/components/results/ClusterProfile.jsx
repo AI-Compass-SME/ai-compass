@@ -106,7 +106,7 @@ export function ClusterProfile({ data }) {
                                         )}
                                     >
                                         <h4 className={cn(
-                                            "font-bold mb-1 md:mb-2 text-[8px] sm:text-[10px] md:text-sm leading-none sm:leading-tight break-all sm:break-words hyphens-auto",
+                                            "font-bold mb-1 md:mb-2 text-[8px] sm:text-[10px] md:text-sm leading-tight break-words hyphens-auto",
                                             isActive ? "text-indigo-700" : "text-slate-700"
                                         )}>
                                             {t(`results.cluster.definitions.${cluster.id}.name`)}

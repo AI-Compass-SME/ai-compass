@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 export function HeroSection({ onStart, isStarting }) {
     const { t } = useTranslation();
     return (
-        <section className="pt-32 pb-16 px-6">
+        <section className="pt-20 md:pt-32 pb-16 px-6">
             <div className="max-w-[80rem] mx-auto">
                 <div className="grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-16 items-center">
                     <div>
@@ -18,7 +18,7 @@ export function HeroSection({ onStart, isStarting }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 leading-tight tracking-tight">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 leading-tight tracking-tight">
                                 {t('landing.hero.title')}
                             </h1>
                             <p className="text-xl text-gray-600 mb-8 leading-relaxed">

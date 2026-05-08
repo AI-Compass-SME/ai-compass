@@ -38,7 +38,7 @@ export function DownloadCTA({ responseId }) {
                     <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-50" />
                     <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-purple-100 rounded-full blur-3xl opacity-50" />
 
-                    <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 text-center md:text-left">
+                    <div className="relative z-10 p-5 md:p-8 lg:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
                         {/* Icon Section */}
                         <div className="flex-shrink-0">
                             <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white shadow-xl rotate-3 transform hover:rotate-6 transition-transform duration-300">
@@ -49,8 +49,8 @@ export function DownloadCTA({ responseId }) {
                         {/* Content Section */}
                         <div className="flex-1 space-y-6">
                             <div>
-                                <h2 className="text-3xl font-bold text-slate-800 tracking-tight">{t('results.download.title')}</h2>
-                                <p className="text-slate-600 text-lg mt-2">
+                                <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">{t('results.download.title')}</h2>
+                                <p className="text-slate-600 text-base md:text-lg mt-2">
                                     {t('results.download.desc')}
                                 </p>
                             </div>

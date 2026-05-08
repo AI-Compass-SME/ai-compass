@@ -109,6 +109,9 @@ export function Roadmap({ data }) {
                                             `${phaseDef.gradientFrom} to-transparent`
                                         )} />
 
+                                        <span className={cn("block md:hidden text-4xl font-extrabold tracking-tight leading-none", phaseDef.titleStyle)}>
+                                            {phaseDef.step}
+                                        </span>
                                         <h3 className={cn("text-2xl font-bold tracking-tight mb-2 relative z-10", phaseDef.titleStyle)}>
                                             {t(`results.roadmap.phases.${phaseDef.titleKey}.title`, phaseDef.titleKey)}
                                         </h3>
@@ -120,7 +123,7 @@ export function Roadmap({ data }) {
                                 </div>
 
                                 {/* 2. Center Column: Step Indicator */}
-                                <div className="relative flex justify-center z-10 my-4 md:my-0">
+                                <div className="relative hidden md:flex justify-center z-10 my-4 md:my-0">
                                     <div className={cn(
                                         "w-16 h-16 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-xl font-bold ring-4",
                                         phaseDef.stepStyle
