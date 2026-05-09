@@ -60,10 +60,10 @@ export function OutcomePreview() {
                         </h3>
                         <div className="flex-1 min-h-[300px] w-full">
                             <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart data={radarData}>
+                                <RadarChart data={radarData} outerRadius={typeof window !== 'undefined' && window.innerWidth < 640 ? "55%" : "75%"}>
                                     <PolarGrid stroke="#e5e7eb" />
                                     <PolarAngleAxis dataKey="subject" tick={{ fill: '#6b7280', fontSize: 13 }} />
-                                    <PolarRadiusAxis angle={90} domain={[0, 5]} tick={{ fill: '#9ca3af', fontSize: 11 }} />
+                                    <PolarRadiusAxis angle={30} domain={[0, 5]} tick={{ fill: '#9ca3af', fontSize: 11 }} />
                                     <Radar
                                         name={t('landing.outcome.radarLabel')}
                                         dataKey="value"
