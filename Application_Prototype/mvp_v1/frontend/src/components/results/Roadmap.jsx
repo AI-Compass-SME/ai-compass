@@ -103,7 +103,7 @@ export function Roadmap({ data }) {
                                 {/* 1. Left Column: Phase Info (Aligned Right on Desktop) */}
                                 <div className="md:text-right md:sticky md:top-24 md:pt-4">
                                     {/* Mobile-only styled circle, flush above the card */}
-                                    <div className="flex md:hidden justify-center mb-0">
+                                    <div className="flex md:hidden justify-center mb-3">
                                         <div className={cn(
                                             "w-16 h-16 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-xl font-bold ring-4",
                                             phaseDef.stepStyle
