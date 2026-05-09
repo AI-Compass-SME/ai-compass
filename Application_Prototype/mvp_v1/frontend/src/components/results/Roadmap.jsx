@@ -101,7 +101,16 @@ export function Roadmap({ data }) {
                             <div key={phaseDef.key} className="relative grid grid-cols-1 md:grid-cols-[40%_auto_1fr] gap-8 md:gap-12 items-start">
 
                                 {/* 1. Left Column: Phase Info (Aligned Right on Desktop) */}
-                                <div className="md:text-right md:sticky md:top-24 pt-4">
+                                <div className="md:text-right md:sticky md:top-24 md:pt-4">
+                                    {/* Mobile-only styled circle, flush above the card */}
+                                    <div className="flex md:hidden justify-center mb-0">
+                                        <div className={cn(
+                                            "w-16 h-16 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-xl font-bold ring-4",
+                                            phaseDef.stepStyle
+                                        )}>
+                                            {phaseDef.step}
+                                        </div>
+                                    </div>
                                     <div className={cn("block w-full text-left md:text-right rounded-2xl border p-6 shadow-sm transition-all bg-white relative overflow-hidden",
                                         `border-l-4 ${phaseDef.borderColor} border-y-slate-100 border-r-slate-100`
                                     )}>
@@ -109,9 +118,6 @@ export function Roadmap({ data }) {
                                             `${phaseDef.gradientFrom} to-transparent`
                                         )} />
 
-                                        <span className={cn("block md:hidden text-4xl font-extrabold tracking-tight leading-none", phaseDef.titleStyle)}>
-                                            {phaseDef.step}
-                                        </span>
                                         <h3 className={cn("text-2xl font-bold tracking-tight mb-2 relative z-10", phaseDef.titleStyle)}>
                                             {t(`results.roadmap.phases.${phaseDef.titleKey}.title`, phaseDef.titleKey)}
                                         </h3>
